@@ -16,8 +16,14 @@ import io.fabric8.kubernetes.client.DefaultKubernetesClient;
  *
  * @date   2018年1月3日
  */
+@SuppressWarnings("serial")
 public class KVToModelParametersGeneratorTest {
 
+	/*******************************************************************************
+	 * 
+	 *                          Create Namespace
+	 * 
+	 ********************************************************************************/
 	public static Map<String, Object> createNSParams = new HashMap<String, Object>();
 	
 	static {
@@ -25,59 +31,105 @@ public class KVToModelParametersGeneratorTest {
 		createNSParams.put("setMetadata-setLabels", new HashMap<String,String>(){
 			{
 				put("name","busybox-wuheng");
+				put("version","20180788");
 			}
 		});
 	}
 	
-	public static Map<String, Object> createParams = new HashMap<String, Object>();
+	/*******************************************************************************
+	 * 
+	 *                          Delete Namespace
+	 * 
+	 ********************************************************************************/
+	public static Map<String, Object> deleteNSParams = new HashMap<String, Object>();
 	
 	static {
-		createParams.put("setMetadata-setName", "busybox-dmdx");
-		createParams.put("setMetadata-setNamespace", "wuheng");
-		createParams.put("setMetadata-setLabels", new HashMap<String,String>(){
+		deleteNSParams.put("setMetadata-setName", "wuheng");
+	}
+	
+	/*******************************************************************************
+	 * 
+	 *                          Create Deployment
+	 * 
+	 ********************************************************************************/
+	public static Map<String, Object> createDMParams = new HashMap<String, Object>();
+	
+	static {
+		createDMParams.put("setMetadata-setName", "busybox-dmdx");
+		createDMParams.put("setMetadata-setNamespace", "wuheng");
+		createDMParams.put("setMetadata-setLabels", new HashMap<String,String>(){
 			{
 				put("app","busybox-dmdx");
-				put("name","busybox-dmdx");
 			}
 		});
-		createParams.put("setSpec-setReplicas", 3);
-		createParams.put("setSpec-setTemplate-setMetadata-setName", "busybox-dmdx");
-		createParams.put("setSpec-setTemplate-setMetadata-setLabels", new HashMap<String,String>(){
+		createDMParams.put("setSpec-setReplicas", 3);
+		createDMParams.put("setSpec-setTemplate-setMetadata-setName", "busybox-dmdx");
+		createDMParams.put("setSpec-setTemplate-setMetadata-setLabels", new HashMap<String,String>(){
 			{
 				put("app","busybox-dmdx");
 			}
 		});
-		createParams.put("setSpec-setTemplate-setSpec-setContainers", new ArrayList<Object>() {
+		createDMParams.put("setSpec-setTemplate-setSpec-setContainers", new ArrayList<Object>() {
 			{
 				add(new HashMap<String,Object>(){
 					{
 						put("setImage","dcr.io:5000/busybox:latest");
 						put("setImagePullPolicy","IfNotPresent");
 						put("setName","busybox-dmdx");
+						put("setCommand", new ArrayList<String>() {
+							{
+								add("sleep");
+								add("3600");
+							}
+						});
 					}
 				});
 			}
 		});
 	}
 	
-	public static Map<String, Object> deleteParams = new HashMap<String, Object>();
+	/*******************************************************************************
+	 * 
+	 *                          Delete Deployment
+	 * 
+	 ********************************************************************************/
+	public static Map<String, Object> deleteDMParams = new HashMap<String, Object>();
 	
 	static {
-		deleteParams.put("setMetadata-setName", "busybox-dmdx");
-		deleteParams.put("setMetadata-setNamespace", "wuheng");
+		deleteDMParams.put("setMetadata-setName", "busybox-dmdx");
+		deleteDMParams.put("setMetadata-setNamespace", "wuheng");
+	}
+	
+	/*******************************************************************************
+	 * 
+	 *                          Update Deployment
+	 * 
+	 ********************************************************************************/
+	public static Map<String, Object> updateDMParams = new HashMap<String, Object>();
+	
+	static {
+		updateDMParams.put("setMetadata-setName", "busybox-dmdx");
+		updateDMParams.put("setMetadata-setNamespace", "wuheng");
+		updateDMParams.put("setSpec-setReplicas", 1);
 	}
 	
 	/**
 	 * @param args
 	 * @throws Exception 
 	 */
+	@SuppressWarnings({ "resource", "unused" })
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
+		client.extensions().deployments().inNamespace("wuheng").withName("busybox-dmdx").scale(1);
+		
 		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-		System.out.println(generator.create(client, "Namespace", createNSParams));
-//		System.out.println(generator.create(client, "Deployment", createParams));
-//		System.out.println(generator.delete(client, "Deployment", deleteParams));
+//		System.out.println(generator.delete(client, "Namespace", deleteNSParams));
+//		System.out.println(generator.create(client, "Namespace", createNSParams));
+//		System.out.println(generator.create(client, "Deployment", createDMParams));
+//		System.out.println(generator.delete(client, "Deployment", deleteDMParams));
+		System.out.println(generator.scaleTo(client, "Deployment", "wuheng", "busybox-dmdx", 4));
+		
 	}
 
 }

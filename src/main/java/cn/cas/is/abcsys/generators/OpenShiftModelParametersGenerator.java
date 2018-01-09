@@ -3,13 +3,9 @@
  */
 package cn.cas.is.abcsys.generators;
 
-import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Stack;
 
-import cn.cas.is.abcsys.analyzers.KubernetesKindsAnalyzer;
-import cn.cas.is.abcsys.analyzers.KubernetesModelParametersAnalyzer;
 import cn.cas.is.abcsys.analyzers.OpenShiftKindsAnalyzer;
 import cn.cas.is.abcsys.analyzers.OpenShiftModelParametersAnalyzer;
 import cn.cas.is.abcsys.utils.StringUtils;
