@@ -16,7 +16,7 @@ import cn.cas.is.abcsys.utils.StringUtils;
  *
  * @date   2018年1月3日
  */
-public class Fabric8ModelFilterRule {
+public class Fabric8Kind2ModelFilterRule {
 
 	private final static Set<String> filters = new HashSet<String>();
 	

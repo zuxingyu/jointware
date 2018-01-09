@@ -16,7 +16,7 @@ import cn.cas.is.abcsys.utils.StringUtils;
  * 
  * 记录单词转换的规则
  */
-public class Fabric8KindsRule {
+public class Fabric8Kind2DescRule {
 
     private final static Map<String, String> rules = new HashMap<String, String>();
 	

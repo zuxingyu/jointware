@@ -7,7 +7,7 @@ import java.lang.reflect.Method;
 
 import cn.cas.is.abcsys.Constants;
 import cn.cas.is.abcsys.KindsAnalyzer;
-import cn.cas.is.abcsys.rules.Fabric8KindsRule;
+import cn.cas.is.abcsys.rules.Fabric8Kind2DescRule;
 import cn.cas.is.abcsys.utils.ObjectUtils;
 import cn.cas.is.abcsys.utils.StringUtils;
 
@@ -66,7 +66,7 @@ public class KubernetesKindsAnalyzer extends KindsAnalyzer {
 	 */
 	@Override
 	protected String toKind(String name) {
-		return Fabric8KindsRule.getName(name);
+		return Fabric8Kind2DescRule.getName(name);
 	}
 
 	/**

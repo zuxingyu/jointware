@@ -14,7 +14,7 @@ import cn.cas.is.abcsys.utils.StringUtils;
  *
  * @date   2018年1月3日
  */
-public class Fabric8ModelIgnoreRule {
+public class Fabric8ModelParametersIgnoreRule {
 
 	private final static Set<String> ignores = new HashSet<String>();
 	
@@ -22,9 +22,12 @@ public class Fabric8ModelIgnoreRule {
 		ignores.add("setStatus");
 		ignores.add("setResult");
 		ignores.add("setApiVersion");
-//		ignores.add("setKind");
+		ignores.add("setKind");
 		ignores.add("setPaused");
 		ignores.add("setInitContainers");
+		ignores.add("setUid");
+		ignores.add("setSelfLink");
+		ignores.add("setCreationTimestamp");
 	}
 	
 	public static boolean ignore(String name) {
