@@ -52,7 +52,7 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 
 	@Override
 	protected Object getParameter(Map<String, Object> allParams, String kind) throws Exception {
-		Map<String, String> paramMapping = KubernetesModelParameterssAnalyzer.getAnalyzer().getModel(kind);
+		Map<String, String> paramMapping = KubernetesModelParameterssAnalyzer.getAnalyzer().getModelParameters(kind);
 		for (String paramNameTag : allParams.keySet()) {
 			
 			Stack<String> stack = new Stack<String>();

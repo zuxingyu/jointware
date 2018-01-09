@@ -108,7 +108,7 @@ public abstract class ModelParametersAnalyzer {
 		return models;
 	}
 	
-	public Map<String, String> getModel(String kind) {
+	public Map<String, String> getModelParameters(String kind) {
 		return StringUtils.isNull(kind) 
 				? new HashMap<String, String>() : models.get(kind);
 	}
@@ -130,7 +130,7 @@ public abstract class ModelParametersAnalyzer {
 			int len = split.length;
 			int i = 0;
 			while (i++ < len -1) {
-				sb.append("\t");
+				sb.append("  ");
 			}
 			sb.append(split[i - 1].substring(3)).append("=").append(map.get(name)).append("\n");
 		}

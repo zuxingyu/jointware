@@ -91,6 +91,14 @@ public abstract class KindsAnalyzer {
 		return kinds.keySet();
 	}
 	
+	/**
+	 * 获取kind的描述，以便后续可以通过反射进行实例化
+	 * 比如kind是Deployment，desc是extensions-deployments
+	 * 表示可以通过client.extensions().deployments()进行实例化
+	 * 
+	 * @param kind
+	 * @return
+	 */
 	public String getKindDesc(String kind) {
 		return StringUtils.isNull(kind) ? null : kinds.get(kind);
 	}

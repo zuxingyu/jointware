@@ -33,7 +33,7 @@ public class OpenShiftModelParametersGenerator extends KubernetesModelParameters
 
 	@Override
 	protected Object getParameter(Map<String, Object> allParams, String kind) throws Exception {
-		Map<String, String> paramMapping = OpenShiftModelParametersAnalyzer.getAnalyzer().getModel(kind);
+		Map<String, String> paramMapping = OpenShiftModelParametersAnalyzer.getAnalyzer().getModelParameters(kind);
 		for (String paramNameTag : allParams.keySet()) {
 			
 			Stack<String> stack = new Stack<String>();

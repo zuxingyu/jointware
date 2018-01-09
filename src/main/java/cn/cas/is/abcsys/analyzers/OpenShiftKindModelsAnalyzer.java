@@ -3,7 +3,6 @@
  */
 package cn.cas.is.abcsys.analyzers;
 
-import java.util.List;
 import java.util.Set;
 
 import cn.cas.is.abcsys.Constants;
@@ -25,10 +24,9 @@ public class OpenShiftKindModelsAnalyzer extends KindModelsAnalyzer {
 	}
 
 	@Override
-	protected List<String> getPackages() {
+	protected void initPackages() {
 		packages.add(Constants.MODEL_OPENSHIFT_PACKAHE);
 		this.initCommonsPackages();
-		return packages;
 	}
 	
 	public static KindModelsAnalyzer getAnalyzer() {

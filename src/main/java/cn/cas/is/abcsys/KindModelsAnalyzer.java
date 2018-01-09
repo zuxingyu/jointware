@@ -39,11 +39,12 @@ public abstract class KindModelsAnalyzer {
 	
 	protected KindModelsAnalyzer() {
 		super();
+		initPackages();
 		analyseKindModels();
 	}
 
 	private void analyseKindModels() {
-		for(String pkg : getPackages()) {
+		for(String pkg : packages) {
 			analyse(pkg);
 		}
 	}
@@ -70,9 +71,19 @@ public abstract class KindModelsAnalyzer {
 	 * 
 	 * 
 	 ************************************************************************************/
+	/**
+	 * 获取所有的kind
+	 * 
+	 * @return
+	 */
 	protected abstract Set<String> getKinds();
 	
-	protected abstract List<String> getPackages();
+	/**
+	 * 在指定的Packages中查询kind对应的fabric8的model
+	 * 
+	 * @return
+	 */
+	protected abstract void initPackages();
 	
 	public Map<String, String> getKindModels() {
 		return mapping;
