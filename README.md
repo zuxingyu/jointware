@@ -21,7 +21,8 @@ cluster-dispatcher
 
 ### Links
 
-* [Documentation](https://fabric8.io/docs/)
+* [Kubernetes and OpenShift features](docs/yaml-kinds.md)
+* [fabric8 model for both Kubernetes and OpenShift features](docs/kind-models.md) 
 
 ### Building the code
 
