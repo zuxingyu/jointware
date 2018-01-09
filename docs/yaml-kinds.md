@@ -5,7 +5,7 @@
 - ThirdPartyResource
 - Node
 - Deployment
-- Endpoint
+- Endpoint (Unsupport)
 - ResourceQuota
 - ReplicationController
 - Job
@@ -15,7 +15,7 @@
 - NetworkPolicy
 - CustomResourceDefinition
 - Ingress
-- SecurityContextConstraint
+- SecurityContextConstraint (Unsupport)
 - Service
 - Namespace
 - Secret
@@ -25,7 +25,7 @@
 - DaemonSet
 - PersistentVolumeClaim
 - PersistentVolume
-- Componentstatus
+- Componentstatus (Unsupport)
 - StatefulSet
 ```
 
