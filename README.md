@@ -26,11 +26,11 @@ cluster-dispatcher
 
 ### Building the code
 
-Please see the [building.md](building.md) file.
+Please see the [building.md](docs/building.md) file.
 
 ### Contributing to the project
 
-We love [contributions](Contributing.md) and you are very welcome to help.
+We love [contributions](docs/contributing.md) and you are very welcome to help.
 
 Check out the [Community](https://fabric8.io/community/index.html)
 
