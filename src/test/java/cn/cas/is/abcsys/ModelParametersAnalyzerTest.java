@@ -4,7 +4,7 @@
 package cn.cas.is.abcsys;
 
 import cn.cas.is.abcsys.ModelParametersAnalyzer;
-import cn.cas.is.abcsys.analyzers.KubernetesModelParameterssAnalyzer;
+import cn.cas.is.abcsys.analyzers.KubernetesModelParametersAnalyzer;
 import cn.cas.is.abcsys.analyzers.OpenShiftModelParametersAnalyzer;
 import junit.framework.TestCase;
 
@@ -17,12 +17,12 @@ import junit.framework.TestCase;
 public class ModelParametersAnalyzerTest extends TestCase {
 
 	public void testKubernetesModelsAnalyzer() throws Exception {
-		ModelParametersAnalyzer analyzer = KubernetesModelParameterssAnalyzer.getAnalyzer();
-		System.out.println(analyzer.printModel1("Deployment"));
+		ModelParametersAnalyzer analyzer = KubernetesModelParametersAnalyzer.getAnalyzer();
+		System.out.println(new ModelParamtersViewer(analyzer).printModel1("Deployment"));
 	}
 	
 	public void testOpenShiftAnalyzer() throws Exception {
-//		ModelsAnalyzer analyzer = OpenShiftModelsAnalyzer.getAnalyzer();
-//		System.out.println(analyzer.printModel2("DeploymentConfig"));
+		ModelParametersAnalyzer analyzer = OpenShiftModelParametersAnalyzer.getAnalyzer();
+		System.out.println(new ModelParamtersViewer(analyzer).printModel2("DeploymentConfig"));
 	}
 }

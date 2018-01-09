@@ -21,10 +21,10 @@ public abstract class ModelParamtersGenerator {
 	protected Object kindModel = null;
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public Object generate(Object client, String kind, Map<String, Object> params) throws Exception {
-		Createable object = (Createable) getKindObject(client, kind);
+	public Object create(Object client, String kind, Map<String, Object> params) throws Exception {
+		Createable instance = (Createable) getKindObject(client, kind);
 		Object param = getParameter(params, kind);
-		return object.create(param);
+		return instance.create(param);
 	}
 	
 	protected Object getKindModel(Object client, String desc) throws Exception {

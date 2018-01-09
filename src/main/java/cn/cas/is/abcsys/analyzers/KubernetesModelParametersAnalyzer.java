@@ -13,11 +13,11 @@ import cn.cas.is.abcsys.ModelParametersAnalyzer;
  *
  * @date   2018年1月3日
  */
-public class KubernetesModelParameterssAnalyzer extends ModelParametersAnalyzer {
+public class KubernetesModelParametersAnalyzer extends ModelParametersAnalyzer {
 
-	private static KubernetesModelParameterssAnalyzer analyzer = null;
+	private static KubernetesModelParametersAnalyzer analyzer = null;
 	
-	protected KubernetesModelParameterssAnalyzer() throws Exception {
+	protected KubernetesModelParametersAnalyzer() throws Exception {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -26,7 +26,7 @@ public class KubernetesModelParameterssAnalyzer extends ModelParametersAnalyzer 
 	public static ModelParametersAnalyzer getAnalyzer() {
 		if(analyzer == null) {
 			try {
-				analyzer = new KubernetesModelParameterssAnalyzer();
+				analyzer = new KubernetesModelParametersAnalyzer();
 			} catch (Exception e) {
 				return DefaultModelParametersAnalyzer.getAnalyzer();
 			}

@@ -78,7 +78,7 @@ public class KVToModelParametersGeneratorTest {
 //		System.out.println(client.extensions().deployments());
 //		
 		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-		generator.generate(client, "Deployment", params);
+		generator.create(client, "Deployment", params);
 	}
 
 }

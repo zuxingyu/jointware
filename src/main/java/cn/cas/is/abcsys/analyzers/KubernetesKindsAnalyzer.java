@@ -29,7 +29,6 @@ public class KubernetesKindsAnalyzer extends KindsAnalyzer {
 
 	protected KubernetesKindsAnalyzer() throws Exception {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	/**

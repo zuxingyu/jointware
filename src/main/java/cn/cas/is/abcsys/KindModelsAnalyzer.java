@@ -27,8 +27,15 @@ import cn.cas.is.abcsys.utils.StringUtils;
  */
 public abstract class KindModelsAnalyzer {
 
-	protected final Map<String, String> mapping = new HashMap<String, String>();
+	/**
+	 * 记录kind和model的对应关系，比如：
+	 * Deployment=io.fabric8.kubernetes.api.model.extensions.Deployment
+	 */
+	protected final Map<String, String> models = new HashMap<String, String>();
 	
+	/**
+	 * 基于先验知识，给出fabrci8实现这个kind模型所在的目录
+	 */
 	protected final List<String> packages = new ArrayList<String>();
 	
 	/************************************************************************************
@@ -59,7 +66,7 @@ public abstract class KindModelsAnalyzer {
 		 for (String kind : getKinds()) {
 			 try {
 				 Class.forName(pakagesName + "." + kind);
-				 mapping.put(kind, pakagesName + "." + kind);
+				 models.put(kind, pakagesName + "." + kind);
 			} catch (ClassNotFoundException e) {
 				// ignore here
 			}
@@ -86,10 +93,10 @@ public abstract class KindModelsAnalyzer {
 	protected abstract void initPackages();
 	
 	public Map<String, String> getKindModels() {
-		return mapping;
+		return models;
 	}
 	
 	public String getKindModel(String kind) {
-		return StringUtils.isNull(kind) ? null : mapping.get(kind);
+		return StringUtils.isNull(kind) ? null : models.get(kind);
 	}
 }

@@ -15,7 +15,7 @@ import java.util.Stack;
 import cn.cas.is.abcsys.ModelParamtersGenerator;
 import cn.cas.is.abcsys.analyzers.KubernetesKindModelsAnalyzer;
 import cn.cas.is.abcsys.analyzers.KubernetesKindsAnalyzer;
-import cn.cas.is.abcsys.analyzers.KubernetesModelParameterssAnalyzer;
+import cn.cas.is.abcsys.analyzers.KubernetesModelParametersAnalyzer;
 import cn.cas.is.abcsys.rules.JavaObjectRule;
 
 /**
@@ -52,7 +52,7 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 
 	@Override
 	protected Object getParameter(Map<String, Object> allParams, String kind) throws Exception {
-		Map<String, String> paramMapping = KubernetesModelParameterssAnalyzer.getAnalyzer().getModelParameters(kind);
+		Map<String, String> paramMapping = KubernetesModelParametersAnalyzer.getAnalyzer().getModelParameters(kind);
 		for (String paramNameTag : allParams.keySet()) {
 			
 			Stack<String> stack = new Stack<String>();
