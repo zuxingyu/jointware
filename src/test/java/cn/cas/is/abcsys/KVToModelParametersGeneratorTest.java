@@ -68,6 +68,7 @@ public class KVToModelParametersGeneratorTest {
 		createDMParams.put("setSpec-setTemplate-setMetadata-setLabels", new HashMap<String, String>() {
 			{
 				put("app", "busybox-dmdx");
+				put("version", "20180109");
 			}
 		});
 		createDMParams.put("setSpec-setTemplate-setSpec-setContainers", new ArrayList<Object>() {
@@ -101,18 +102,6 @@ public class KVToModelParametersGeneratorTest {
 		deleteDMParams.put("setMetadata-setNamespace", "wuheng");
 	}
 
-	/*******************************************************************************
-	 * 
-	 * Update Deployment
-	 * 
-	 ********************************************************************************/
-	public static Map<String, Object> updateDMParams = new HashMap<String, Object>();
-
-	static {
-		updateDMParams.put("setMetadata-setName", "busybox-dmdx");
-		updateDMParams.put("setMetadata-setNamespace", "wuheng");
-		updateDMParams.put("setSpec-setReplicas", 1);
-	}
 
 	/**
 	 * @param args
@@ -125,9 +114,9 @@ public class KVToModelParametersGeneratorTest {
 		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
 		// System.out.println(generator.delete(client, "Namespace", deleteNSParams));
 		// System.out.println(generator.create(client, "Namespace", createNSParams));
-		// System.out.println(generator.create(client, "Deployment", createDMParams));
-		// System.out.println(generator.delete(client, "Deployment", deleteDMParams));
-		System.out.println(generator.scaleTo(client, "Deployment", "wuheng", "busybox-dmdx", 8));
+		System.out.println(generator.delete(client, "Deployment", deleteDMParams));
+		System.out.println(generator.create(client, "Deployment", createDMParams));
+//		System.out.println(generator.scaleTo(client, "Deployment", "wuheng", "busybox-dmdx", 8));
 
 		// DefaultKubernetesClient client = new
 		// DefaultKubernetesClient("http://127.0.0.1:9888");

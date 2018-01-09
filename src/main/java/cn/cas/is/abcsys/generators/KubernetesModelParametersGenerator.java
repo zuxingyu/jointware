@@ -71,6 +71,7 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 			}
 
 		}
+		objCaches.clear();
 		return kindModel;
 	}
 

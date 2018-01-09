@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import cn.cas.is.abcsys.utils.ObjectUtils;
 import cn.cas.is.abcsys.utils.StringUtils;
 import io.fabric8.kubernetes.client.dsl.Createable;
 import io.fabric8.kubernetes.client.dsl.MultiDeleteable;
@@ -45,6 +46,10 @@ public abstract class ModelParamtersGenerator {
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public Object create(Object client, String kind, Map<String, Object> params) throws Exception {
+		if (ObjectUtils.isNull(params) || ObjectUtils.isNull(client) || StringUtils.isNull(kind)) {
+			throw new Exception("neither name or namespace is null,  or the number is less than 0.");
+		}
+		
 		Createable instance = (Createable) generateKindModel(client, kind);
 		Object param = generateParameters(params, kind);
 		return instance.create(param);
@@ -86,6 +91,9 @@ public abstract class ModelParamtersGenerator {
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public boolean delete(Object client, String kind, Map<String, Object> params) throws Exception {
+		if (ObjectUtils.isNull(params) || ObjectUtils.isNull(client) || StringUtils.isNull(kind)) {
+			throw new Exception("neither name or namespace is null,  or the number is less than 0.");
+		}
 		MultiDeleteable instance = (MultiDeleteable) generateKindModel(client, kind);
 		Object param = generateParameters(params, kind);
 		return (boolean) instance.delete(param);
