@@ -60,6 +60,7 @@ public class KVToModelParametersGeneratorTest {
 		createDMParams.put("setMetadata-setLabels", new HashMap<String,String>(){
 			{
 				put("app","busybox-dmdx");
+				put("version","20180109");
 			}
 		});
 		createDMParams.put("setSpec-setReplicas", 3);
@@ -121,14 +122,12 @@ public class KVToModelParametersGeneratorTest {
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
-		client.extensions().deployments().inNamespace("wuheng").withName("busybox-dmdx").scale(1);
-		
 		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
 //		System.out.println(generator.delete(client, "Namespace", deleteNSParams));
 //		System.out.println(generator.create(client, "Namespace", createNSParams));
 //		System.out.println(generator.create(client, "Deployment", createDMParams));
 //		System.out.println(generator.delete(client, "Deployment", deleteDMParams));
-		System.out.println(generator.scaleTo(client, "Deployment", "wuheng", "busybox-dmdx", 4));
+		System.out.println(generator.scaleTo(client, "Deployment", "wuheng", "busybox-dmdx", 8));
 		
 	}
 
