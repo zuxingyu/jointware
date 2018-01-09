@@ -4,11 +4,15 @@
 package cn.cas.is.abcsys.generators;
 
 import java.lang.reflect.Method;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
 
+import cn.cas.is.abcsys.analyzers.KubernetesKindsAnalyzer;
+import cn.cas.is.abcsys.analyzers.KubernetesModelParametersAnalyzer;
 import cn.cas.is.abcsys.analyzers.OpenShiftKindsAnalyzer;
 import cn.cas.is.abcsys.analyzers.OpenShiftModelParametersAnalyzer;
+import cn.cas.is.abcsys.utils.StringUtils;
 
 /**
  * @author henry
@@ -19,39 +23,21 @@ import cn.cas.is.abcsys.analyzers.OpenShiftModelParametersAnalyzer;
 public class OpenShiftModelParametersGenerator extends KubernetesModelParametersGenerator {
 
 	@Override
-	protected Object getKindObject(Object client, String kind) throws Exception {
+	protected Object generateKindModel(Object client, String kind) throws Exception {
 		String desc = OpenShiftKindsAnalyzer.getAnalyzer().getKindDesc(kind);
-		return _getKindObject(client, desc);
+		return createKindModelByDesc(client, desc);
 	}
 
 	@Override
-	protected Method getCreateMethod(Object client, String kind) throws Exception {
-		String desc = OpenShiftKindsAnalyzer.getAnalyzer().getKindDesc(kind);
-		Object kindModel = getKindModel(client, desc);
-		return getMethod(kindModel, NEW_OBJECT_METHOD);
+	protected Map<String, String> getModelParams(String kind) {
+		return StringUtils.isNull(kind) ? new HashMap<String, String>() : 
+			OpenShiftModelParametersAnalyzer.getAnalyzer().getModelParameters(kind);
 	}
 
 	@Override
-	protected Object getParameter(Map<String, Object> allParams, String kind) throws Exception {
-		Map<String, String> paramMapping = OpenShiftModelParametersAnalyzer.getAnalyzer().getModelParameters(kind);
-		for (String paramNameTag : allParams.keySet()) {
-			
-			Stack<String> stack = new Stack<String>();
-			String temp = paramNameTag;
-			stack.push(temp);
-			while (temp.lastIndexOf("-") != -1) {
-				temp = temp.substring(0, temp.lastIndexOf("-")); 
-				stack.push(temp);
-			}
-			
-			while (!stack.isEmpty()) {
-				initParameter(paramMapping, 
-						stack.pop(), 
-						allParams);
-			}
-			
-		}
-		return kindModel;
+	protected String getDesc(String kind) {
+		return StringUtils.isNull(kind) ? "" 
+				: OpenShiftKindsAnalyzer.getAnalyzer().getKindDesc(kind);
 	}
 
 	

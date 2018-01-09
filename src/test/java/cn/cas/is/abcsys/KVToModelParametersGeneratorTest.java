@@ -18,26 +18,36 @@ import io.fabric8.kubernetes.client.DefaultKubernetesClient;
  */
 public class KVToModelParametersGeneratorTest {
 
-	public static Map<String, Object> params = new HashMap<String, Object>();
+	public static Map<String, Object> createNSParams = new HashMap<String, Object>();
 	
 	static {
-		params.put("setMetadata-setName", "busybox-dmdx");
-		params.put("setMetadata-setNamespace", "default");
-		params.put("setMetadata-setLabels", new HashMap<String,String>(){
+		createNSParams.put("setMetadata-setName", "wuheng");
+		createNSParams.put("setMetadata-setLabels", new HashMap<String,String>(){
+			{
+				put("name","busybox-wuheng");
+			}
+		});
+	}
+	
+	public static Map<String, Object> createParams = new HashMap<String, Object>();
+	
+	static {
+		createParams.put("setMetadata-setName", "busybox-dmdx");
+		createParams.put("setMetadata-setNamespace", "wuheng");
+		createParams.put("setMetadata-setLabels", new HashMap<String,String>(){
 			{
 				put("app","busybox-dmdx");
 				put("name","busybox-dmdx");
 			}
 		});
-		params.put("setSpec-setReplicas", 3);
-//		params.put("setSpec-setTemplate-setMetadata-setNamespace", "default");
-		params.put("setSpec-setTemplate-setMetadata-setName", "busybox-dmdx");
-		params.put("setSpec-setTemplate-setMetadata-setLabels", new HashMap<String,String>(){
+		createParams.put("setSpec-setReplicas", 3);
+		createParams.put("setSpec-setTemplate-setMetadata-setName", "busybox-dmdx");
+		createParams.put("setSpec-setTemplate-setMetadata-setLabels", new HashMap<String,String>(){
 			{
 				put("app","busybox-dmdx");
 			}
 		});
-		params.put("setSpec-setTemplate-setSpec-setContainers", new ArrayList<Object>() {
+		createParams.put("setSpec-setTemplate-setSpec-setContainers", new ArrayList<Object>() {
 			{
 				add(new HashMap<String,Object>(){
 					{
@@ -50,6 +60,13 @@ public class KVToModelParametersGeneratorTest {
 		});
 	}
 	
+	public static Map<String, Object> deleteParams = new HashMap<String, Object>();
+	
+	static {
+		deleteParams.put("setMetadata-setName", "busybox-dmdx");
+		deleteParams.put("setMetadata-setNamespace", "wuheng");
+	}
+	
 	/**
 	 * @param args
 	 * @throws Exception 
@@ -57,28 +74,10 @@ public class KVToModelParametersGeneratorTest {
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
-		client.inNamespace("default");
-//		client.extensions().daemonSets().inNamespace(null).
-//		MixedOperation<Deployment, DeploymentList, DoneableDeployment, ScalableResource<Deployment, DoneableDeployment>> deployments = client.extensions().deployments();
-//		Method method = deployments.getClass().getMethod("create", new Object[] {}.getClass());
-//		System.out.println(deployments instanceof Createable);
-//		method.invoke(deployments, new Deployment());
-		
-//		for (Method method : deployments.getClass().getMethods()) {
-//			if ("create".equals(method.getName())) {
-//				System.out.println(method + ":" + method.getParameterTypes()[0].getTypeName());
-//				method.invoke(client.extensions().deployments(), new Object[] {new Deployment()});
-//			}
-//		}
-		
-//		deployments.create(new Deployment());
-//		Object[] allParams = new Object[] {"123243"};
-//		System.out.println(allParams.getClass().getTypeName());
-//		System.out.println(new Deployment());
-//		System.out.println(client.extensions().deployments());
-//		
 		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-		generator.create(client, "Deployment", params);
+		System.out.println(generator.create(client, "Namespace", createNSParams));
+//		System.out.println(generator.create(client, "Deployment", createParams));
+//		System.out.println(generator.delete(client, "Deployment", deleteParams));
 	}
 
 }

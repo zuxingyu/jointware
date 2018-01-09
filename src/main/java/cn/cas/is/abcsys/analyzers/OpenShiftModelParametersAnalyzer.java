@@ -19,7 +19,6 @@ public class OpenShiftModelParametersAnalyzer extends ModelParametersAnalyzer {
 	
 	protected OpenShiftModelParametersAnalyzer() throws Exception {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 
