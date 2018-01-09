@@ -5,7 +5,7 @@
 - ThirdPartyResource
 - Node
 - Deployment
-- Endpoint (Unsupport)
+- Endpoint <b>(Unsupport)<b>
 - ResourceQuota
 - ReplicationController
 - Job
