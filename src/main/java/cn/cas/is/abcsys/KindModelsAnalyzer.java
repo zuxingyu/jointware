@@ -1,7 +1,7 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package cas.is.abcsys.wukong;
+package cn.cas.is.abcsys;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import cas.is.abcsys.wukong.utils.StringUtils;
+import cn.cas.is.abcsys.utils.StringUtils;
 
 /**
  * @author henry
@@ -74,11 +74,11 @@ public abstract class KindModelsAnalyzer {
 	
 	protected abstract List<String> getPackages();
 	
-	public Map<String, String> getModels() {
+	public Map<String, String> getKindModels() {
 		return mapping;
 	}
 	
-	public String getModel(String kind) {
+	public String getKindModel(String kind) {
 		return StringUtils.isNull(kind) ? null : mapping.get(kind);
 	}
 }

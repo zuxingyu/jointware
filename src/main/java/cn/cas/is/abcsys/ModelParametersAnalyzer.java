@@ -1,17 +1,17 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package cas.is.abcsys.wukong;
+package cn.cas.is.abcsys;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import cas.is.abcsys.wukong.rules.Fabric8ModelFilterRule;
-import cas.is.abcsys.wukong.rules.Fabric8ModelIgnoreRule;
-import cas.is.abcsys.wukong.utils.ObjectUtils;
-import cas.is.abcsys.wukong.utils.StringUtils;
+import cn.cas.is.abcsys.rules.Fabric8ModelFilterRule;
+import cn.cas.is.abcsys.rules.Fabric8ModelIgnoreRule;
+import cn.cas.is.abcsys.utils.ObjectUtils;
+import cn.cas.is.abcsys.utils.StringUtils;
 
 /**
  * @author henry

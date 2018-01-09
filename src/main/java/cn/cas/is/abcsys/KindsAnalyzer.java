@@ -1,14 +1,14 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package cas.is.abcsys.wukong;
+package cn.cas.is.abcsys;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import cas.is.abcsys.wukong.utils.StringUtils;
+import cn.cas.is.abcsys.utils.StringUtils;
 
 /**
  * @author henry

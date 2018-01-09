@@ -1,12 +1,12 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package cas.is.abcsys.wukong.rules;
+package cn.cas.is.abcsys.rules;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import cas.is.abcsys.wukong.utils.StringUtils;
+import cn.cas.is.abcsys.utils.StringUtils;
 
 /**
  * @author henry

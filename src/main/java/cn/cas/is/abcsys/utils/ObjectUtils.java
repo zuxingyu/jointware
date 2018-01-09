@@ -1,7 +1,7 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package cas.is.abcsys.wukong.utils;
+package cn.cas.is.abcsys.utils;
 
 /**
  * @author henry

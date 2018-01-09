@@ -1,12 +1,12 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package cas.is.abcsys.wukong.analyzers;
+package cn.cas.is.abcsys.analyzers;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import cas.is.abcsys.wukong.ModelParametersAnalyzer;
+import cn.cas.is.abcsys.ModelParametersAnalyzer;
 
 /**
  * @author henry

@@ -1,7 +1,7 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package cas.is.abcsys.wukong.generators;
+package cn.cas.is.abcsys.generators;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -12,11 +12,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
-import cas.is.abcsys.wukong.ModelParamtersGenerator;
-import cas.is.abcsys.wukong.analyzers.KubernetesKindModelsAnalyzer;
-import cas.is.abcsys.wukong.analyzers.KubernetesKindsAnalyzer;
-import cas.is.abcsys.wukong.analyzers.KubernetesModelParameterssAnalyzer;
-import cas.is.abcsys.wukong.rules.JavaObjectRule;
+import cn.cas.is.abcsys.ModelParamtersGenerator;
+import cn.cas.is.abcsys.analyzers.KubernetesKindModelsAnalyzer;
+import cn.cas.is.abcsys.analyzers.KubernetesKindsAnalyzer;
+import cn.cas.is.abcsys.analyzers.KubernetesModelParameterssAnalyzer;
+import cn.cas.is.abcsys.rules.JavaObjectRule;
 
 /**
  * @author henry
@@ -33,7 +33,7 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 	@Override
 	protected Object getKindObject(Object client, String kind) throws Exception {
 		this.kindModel = Class.forName(KubernetesKindModelsAnalyzer
-										.getAnalyzer().getModel(kind))
+										.getAnalyzer().getKindModel(kind))
 										.newInstance();
 		String desc = KubernetesKindsAnalyzer.getAnalyzer().getKindDesc(kind);
 		return _getKindObject(client, desc);

@@ -1,10 +1,11 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package cas.is.abcsys.wukong;
+package cn.cas.is.abcsys;
 
-import cas.is.abcsys.wukong.analyzers.KubernetesModelParameterssAnalyzer;
-import cas.is.abcsys.wukong.analyzers.OpenShiftModelParametersAnalyzer;
+import cn.cas.is.abcsys.ModelParametersAnalyzer;
+import cn.cas.is.abcsys.analyzers.KubernetesModelParameterssAnalyzer;
+import cn.cas.is.abcsys.analyzers.OpenShiftModelParametersAnalyzer;
 import junit.framework.TestCase;
 
 /**

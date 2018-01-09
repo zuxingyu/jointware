@@ -1,11 +1,11 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package cas.is.abcsys.wukong.analyzers;
+package cn.cas.is.abcsys.analyzers;
 
 import java.util.Map;
 
-import cas.is.abcsys.wukong.ModelParametersAnalyzer;
+import cn.cas.is.abcsys.ModelParametersAnalyzer;
 
 /**
  * @author henry
@@ -36,7 +36,7 @@ public class OpenShiftModelParametersAnalyzer extends ModelParametersAnalyzer {
 
 	@Override
 	protected Map<String, String> getKindModels() {
-		return OpenShiftKindModelsAnalyzer.getAnalyzer().getModels();
+		return OpenShiftKindModelsAnalyzer.getAnalyzer().getKindModels();
 	}
 
 }

@@ -1,13 +1,13 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package cas.is.abcsys.wukong.analyzers;
+package cn.cas.is.abcsys.analyzers;
 
 import java.util.List;
 import java.util.Set;
 
-import cas.is.abcsys.wukong.Constants;
-import cas.is.abcsys.wukong.KindModelsAnalyzer;
+import cn.cas.is.abcsys.Constants;
+import cn.cas.is.abcsys.KindModelsAnalyzer;
 
 /**
  * @author henry

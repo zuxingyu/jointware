@@ -1,10 +1,10 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package cas.is.abcsys.wukong.analyzers;
+package cn.cas.is.abcsys.analyzers;
 
-import cas.is.abcsys.wukong.Constants;
-import cas.is.abcsys.wukong.KindsAnalyzer;
+import cn.cas.is.abcsys.Constants;
+import cn.cas.is.abcsys.KindsAnalyzer;
 
 /**
  * @author henry
@@ -18,7 +18,6 @@ public class OpenShiftKindsAnalyzer extends KubernetesKindsAnalyzer {
 	
 	protected OpenShiftKindsAnalyzer() throws Exception {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

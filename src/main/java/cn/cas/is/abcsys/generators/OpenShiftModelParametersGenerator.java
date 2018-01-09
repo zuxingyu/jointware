@@ -1,14 +1,14 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package cas.is.abcsys.wukong.generators;
+package cn.cas.is.abcsys.generators;
 
 import java.lang.reflect.Method;
 import java.util.Map;
 import java.util.Stack;
 
-import cas.is.abcsys.wukong.analyzers.OpenShiftKindsAnalyzer;
-import cas.is.abcsys.wukong.analyzers.OpenShiftModelParametersAnalyzer;
+import cn.cas.is.abcsys.analyzers.OpenShiftKindsAnalyzer;
+import cn.cas.is.abcsys.analyzers.OpenShiftModelParametersAnalyzer;
 
 /**
  * @author henry

@@ -1,10 +1,11 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package cas.is.abcsys.wukong;
+package cn.cas.is.abcsys;
 
-import cas.is.abcsys.wukong.analyzers.KubernetesKindsAnalyzer;
-import cas.is.abcsys.wukong.analyzers.OpenShiftKindsAnalyzer;
+import cn.cas.is.abcsys.KindsAnalyzer;
+import cn.cas.is.abcsys.analyzers.KubernetesKindsAnalyzer;
+import cn.cas.is.abcsys.analyzers.OpenShiftKindsAnalyzer;
 import junit.framework.Assert;
 import junit.framework.TestCase;
 

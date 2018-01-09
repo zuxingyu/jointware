@@ -1,13 +1,13 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package cas.is.abcsys.wukong;
+package cn.cas.is.abcsys;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import cas.is.abcsys.wukong.generators.KubernetesModelParametersGenerator;
+import cn.cas.is.abcsys.generators.KubernetesModelParametersGenerator;
 import io.fabric8.kubernetes.client.DefaultKubernetesClient;
 
 /**

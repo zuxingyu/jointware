@@ -1,15 +1,15 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package cas.is.abcsys.wukong.analyzers;
+package cn.cas.is.abcsys.analyzers;
 
 import java.lang.reflect.Method;
 
-import cas.is.abcsys.wukong.Constants;
-import cas.is.abcsys.wukong.KindsAnalyzer;
-import cas.is.abcsys.wukong.rules.Fabric8KindsRule;
-import cas.is.abcsys.wukong.utils.ObjectUtils;
-import cas.is.abcsys.wukong.utils.StringUtils;
+import cn.cas.is.abcsys.Constants;
+import cn.cas.is.abcsys.KindsAnalyzer;
+import cn.cas.is.abcsys.rules.Fabric8KindsRule;
+import cn.cas.is.abcsys.utils.ObjectUtils;
+import cn.cas.is.abcsys.utils.StringUtils;
 
 /**
  * @author henry
