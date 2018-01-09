@@ -32,8 +32,6 @@ Please see the [building.md](docs/building.md) file.
 
 We love [contributions](docs/contributing.md) and you are very welcome to help.
 
-Check out the [Community](https://fabric8.io/community/index.html)
-
 ### License
 
 This project is [Apache Licensed](license.txt)
