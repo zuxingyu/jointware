@@ -6,6 +6,7 @@ package cn.cas.is.abcsys.kinds;
 import java.util.HashMap;
 import java.util.Map;
 
+import cn.cas.is.abcsys.Constants;
 import cn.cas.is.abcsys.generators.KubernetesModelParametersGenerator;
 import io.fabric8.kubernetes.client.DefaultKubernetesClient;
 import junit.framework.TestCase;
@@ -39,12 +40,12 @@ public class NamespaceTest extends TestCase {
 	public void testCreateNamespace() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
 		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-		generator.create(client, "Namespace", createNSParams);
+		generator.create(client, Constants.YAML_NAMESPACE, createNSParams);
 	}
 	
 	public void testDeleteNamespace() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
 		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-		generator.delete(client, "Namespace", "wuheng");
+		generator.delete(client, Constants.YAML_NAMESPACE, "wuheng");
 	}
 }

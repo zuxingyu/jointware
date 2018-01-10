@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import cn.cas.is.abcsys.Constants;
 import cn.cas.is.abcsys.generators.KubernetesModelParametersGenerator;
 import io.fabric8.kubernetes.client.DefaultKubernetesClient;
 import junit.framework.TestCase;
@@ -65,18 +66,18 @@ public class DeploymentTest extends TestCase {
 	public void testCreateDeployment() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
 		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-		generator.create(client, "Deployment", createDMParams);
+		generator.create(client, Constants.YAML_DEPLOYMENT, createDMParams);
 	}
 	
 	public void testUpdateDeployment() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
 		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-		generator.scaleTo(client, "Deployment", "wuheng", "busybox-dmdx", 1);
+		generator.scaleTo(client, Constants.YAML_DEPLOYMENT, "wuheng", "busybox-dmdx", 1);
 	}
 	
 	public void testDeleteDeployment() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
 		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-		generator.delete(client, "Deployment", "wuheng", "busybox-dmdx");
+		generator.delete(client, Constants.YAML_DEPLOYMENT, "wuheng", "busybox-dmdx");
 	}
 }
