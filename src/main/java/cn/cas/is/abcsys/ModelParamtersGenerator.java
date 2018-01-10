@@ -140,10 +140,6 @@ public abstract class ModelParamtersGenerator {
 			throw new Exception("client, or kind, or name, or namespace is null.");
 		}
 		
-		if(!workloadControllers.contains(kind) ) {
-			throw new Exception("Unsupport kind, kind should be " + workloadControllers);
-		}
-		
 		Object instance = generateKindModel(client, kind);
 		
 		if (instance instanceof Namespaceable) {
@@ -159,7 +155,6 @@ public abstract class ModelParamtersGenerator {
 				return obj;
 			}
 		}
-		
 		return null;
 	}
 	

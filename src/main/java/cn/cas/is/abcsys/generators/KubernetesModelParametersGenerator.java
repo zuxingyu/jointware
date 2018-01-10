@@ -81,6 +81,18 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 		Object kindModel = getKindModel(client, desc);
 		return getMethod(kindModel, NEW_OBJECT_METHOD);
 	}
+	
+	protected String getClassNameForMapStyle(String fullname) throws ClassNotFoundException {
+		int start = fullname.indexOf(",");
+		int end = fullname.indexOf(">");
+		return fullname.substring(start + 2, end);
+	}
+	
+	protected String getClassNameForListStyle(String fullname) throws ClassNotFoundException {
+		int start = fullname.indexOf("<");
+		int end = fullname.indexOf(">");
+		return fullname.substring(start + 1, end);
+	}
 
 	/************************************************************************************
 	 * 
@@ -153,6 +165,7 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 	 * 
 	 * 
 	 ************************************************************************************/
+	@SuppressWarnings("unchecked")
 	protected void generateParameter(Map<String, String> paramMapping, String paramName, Map<String, Object> allParams)
 			throws Exception {
 
@@ -161,9 +174,20 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 		if (JavaObjectRule.isList(classname)) {
 			List<Object> objects = new ArrayList<Object>();
 			generateCommonsParameter(paramName, objects);
-			generateListParameters(paramMapping, paramName, allParams, objects);
+			if (JavaObjectRule.isStringList(classname)) {
+				List<String> list = (List<String>) allParams.get(paramName);
+				for(String value : list) {
+					objects.add(value);
+				}
+			} else {
+				generateListParameters(paramMapping, paramName, allParams, objects);
+			}
 		} else if (JavaObjectRule.isMap(classname)) {
-			generateMapParameters(paramName, allParams);
+			if (JavaObjectRule.isStringMap(classname)) {
+				generateStringMapParameters(paramName, allParams);
+			} else {
+				generatObjectMapParameters(paramName, allParams, getClassNameForMapStyle(classname));
+			}
  		}else {
 			generateCommonsParameter(paramName, 
 					getInstance(paramName, paramMapping.get(paramName), allParams));
@@ -172,7 +196,21 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 	}
 
 	@SuppressWarnings("unchecked")
-	protected void generateMapParameters(String paramName, Map<String, Object> allParams) throws Exception {
+	protected void generatObjectMapParameters(String paramName, 
+			Map<String, Object> allParams, String classname) throws Exception {
+		Map<String, Object> objects = new HashMap<String, Object>();
+		Map<String, String> maps = (Map<String, String>)allParams.get(paramName);
+		for (String key : maps.keySet()) {
+			Class<?> clazz = Class.forName(classname);
+			Constructor<?> cst = clazz.getConstructor(String.class);
+			Object obj = cst.newInstance(maps.get(key));
+			objects.put(key.substring(3).toLowerCase(), obj);
+		}
+		generateCommonsParameter(paramName, objects);
+	}
+	
+	@SuppressWarnings("unchecked")
+	protected void generateStringMapParameters(String paramName, Map<String, Object> allParams) throws Exception {
 		Map<String, String> objects = new HashMap<String, String>();
 		Map<String, String> maps = (Map<String, String>)allParams.get(paramName);
 		for (String key : maps.keySet()) {
@@ -188,7 +226,8 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 		List<Object> list = (List<Object>) allParams.get(paramName);
 		Map<String, Object> tempParams = new HashMap<String, Object>();
 		for (int i = 0; i < list.size(); i++) {
-			Object newInstance = Class.forName(toClassName(paramMapping.get(paramName))).newInstance();
+			String className = toClassName(paramMapping.get(paramName));
+			Object newInstance = Class.forName(className).newInstance();
 			objCaches.put(paramName, newInstance);
 			objects.add(newInstance);
 			tempParams.put(paramName, newInstance);
@@ -204,7 +243,7 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 							generateListParameters(paramMapping, paramName + "-" + key, tempParams, (List<Object>)map.get(key));
 						}
 					} else if (map.get(key) instanceof Map) {
-						generateMapParameters(paramName + "-" + key, (Map<String, Object>)map.get(key));
+						generateStringMapParameters(paramName + "-" + key, (Map<String, Object>)map.get(key));
 					} else {
 						generateCommonsParameter(paramName + "-" + key, 
 												getInstance(paramName + "-" + key, 

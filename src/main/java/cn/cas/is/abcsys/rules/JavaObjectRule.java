@@ -40,6 +40,15 @@ public class JavaObjectRule {
 		return StringUtils.isNull(name) ? false : name.startsWith(Map.class.getName());
 	}
 	
+	public static boolean isStringList(String name) {
+		return StringUtils.isNull(name) ? false : name.equals(List.class.getName() + "<" + String.class.getName() + ">");
+	}
+	
+	public static boolean isStringMap(String name) {
+		return StringUtils.isNull(name) ? false : name.equals(Map.class.getName() + 
+								"<" + String.class.getName() + ", " + String.class.getName() +">");
+	}
+	
 	public static boolean isList(String name) {
 		return StringUtils.isNull(name) ? false : name.startsWith(List.class.getName());
 	}
