@@ -1,0 +1,17 @@
+{
+  "apiVersion": "v1",
+  "kind": "PersistentVolume",
+  "metadata": {
+    "name": "registry-pv"
+  },
+  "spec": {
+    "capacity": {
+        "storage": "400Gi"
+        },
+    "accessModes": [ "ReadWriteOnce","ReadWriteMany" ],
+    "nfs": {
+        "path": "/stage2/dockerqa02",
+        "server": "10.7.0.245"
+    }
+  }
+} 

@@ -1,0 +1,204 @@
+apiVersion: v1
+kind: Template
+labels:
+  template: idm
+  xpaas: 1.2.0
+metadata:
+  annotations:
+    description: Application template for JWS applications.
+    iconClass: icon-tomcat
+    tags: tomcat,java,jboss,xpaas
+    version: 1.2.0
+  creationTimestamp: null
+  name: idm
+objects:
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      description: The web server's http port.
+    labels:
+      application: ${APPLICATION_NAME}
+    name: ${APPLICATION_NAME}
+  spec:
+    ports:
+    - port: 8080
+      targetPort: 8080
+    selector:
+      deploymentConfig: ${APPLICATION_NAME}
+- apiVersion: v1
+  id: ${APPLICATION_NAME}-http
+  kind: Route
+  metadata:
+    annotations:
+      description: Route for application's http service.
+    labels:
+      application: ${APPLICATION_NAME}
+      router: exrouter
+    name: ${APPLICATION_NAME}
+  spec:
+#    host: ${HOSTNAME_HTTP}
+    host: ${APPLICATION_NAME}.exapps.jqpqa.c.saic-gm.net
+    to:
+      name: ${APPLICATION_NAME}
+    tls:
+      termination: edge
+      certificate: |
+        -----BEGIN CERTIFICATE-----
+        MIIGKzCCBROgAwIBAgIQfkjn+bn5VCMUPTddqIBhnjANBgkqhkiG9w0BAQsFADCB
+        hDELMAkGA1UEBhMCVVMxHTAbBgNVBAoTFFN5bWFudGVjIENvcnBvcmF0aW9uMR8w
+        HQYDVQQLExZTeW1hbnRlYyBUcnVzdCBOZXR3b3JrMTUwMwYDVQQDEyxTeW1hbnRl
+        YyBDbGFzcyAzIFNlY3VyZSBTZXJ2ZXIgU0hBMjU2IFNTTCBDQTAeFw0xNzExMTUw
+        MDAwMDBaFw0xODExMTYyMzU5NTlaMIGfMQswCQYDVQQGEwJDTjERMA8GA1UECAwI
+        U2hhbmdoYWkxETAPBgNVBAcMCFNoYW5naGFpMTAwLgYDVQQKDCdTQUlDIEdlbmVy
+        YWwgTW90b3JzIENvcnBvcmF0aW9uIExpbWl0ZWQxETAPBgNVBAsMCElUIERlcHQu
+        MSUwIwYDVQQDDBwqLmV4YXBwcy5qcXBxYS5jLnNhaWMtZ20ubmV0MIIBIjANBgkq
+        hkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtJdcnMlm7NStz1FIGLOxfqXCLoLVREnE
+        AHs71PLhnzZndFsnxMVwSa1rzfNzs/h+qfi0SZs0MiqJSs1ZkrxjVD9jKsN7FZeR
+        iGT8vqNuKF27py4B1qd/R4GtznwSLXUHWoYEMvL8rWLNG2oMckYX1Kp2Zgb4lsPi
+        EFlIc3Lgm8rXpNVMcX6wDcD4ZHciOB+IW0WW23Mj9TOxYqNiiz0/XaDfCdR9TlyM
+        6u2k9fEQfB/k4XX8/2NW5XhEyanHeYAaYPq70OlrWunqcsop/yPRDt2HPSMfKrj/
+        H9mlGFcT5UjawRDnbK1wedxGl1Q/sxWoJK4PnSJP9eg/1TDeWz6xrwIDAQABo4IC
+        ejCCAnYwJwYDVR0RBCAwHoIcKi5leGFwcHMuanFwcWEuYy5zYWljLWdtLm5ldDAJ
+        BgNVHRMEAjAAMA4GA1UdDwEB/wQEAwIFoDAdBgNVHSUEFjAUBggrBgEFBQcDAQYI
+        KwYBBQUHAwIwYQYDVR0gBFowWDBWBgZngQwBAgIwTDAjBggrBgEFBQcCARYXaHR0
+        cHM6Ly9kLnN5bWNiLmNvbS9jcHMwJQYIKwYBBQUHAgIwGQwXaHR0cHM6Ly9kLnN5
+        bWNiLmNvbS9ycGEwHwYDVR0jBBgwFoAU22Ig+30CiXzSO2/H5DJsBVIdrbEwKwYD
+        VR0fBCQwIjAgoB6gHIYaaHR0cDovL3NnLnN5bWNiLmNvbS9zZy5jcmwwVwYIKwYB
+        BQUHAQEESzBJMB8GCCsGAQUFBzABhhNodHRwOi8vc2cuc3ltY2QuY29tMCYGCCsG
+        AQUFBzAChhpodHRwOi8vc2cuc3ltY2IuY29tL3NnLmNydDCCAQUGCisGAQQB1nkC
+        BAIEgfYEgfMA8QB2AN3rHSt6DU+mIIuBrYFocH4ujp0B1VyIjT0RxM227L7MAAAB
+        X74kvuMAAAQDAEcwRQIgfPJ2BgkqqJxga83UJYAv6eQQhJH2d8367ajTIv9FlGAC
+        IQDxAO33D6PcQ7dvWuwJuEsBqWgY3dCNgdhLhtwYvJnC1gB3AKS5CZC0GFgUh7sT
+        osxncAo8NZgE+RvfuON3zQ7IDdwQAAABX74kvvUAAAQDAEgwRgIhALt/xg9pQFnB
+        e861EHUYxRt98R2yoZxXp3/9rfTPt4pLAiEAtRr5fohYlibn1lr7QanXoy0sd3nJ
+        dmZEIF8+F+QrI48wDQYJKoZIhvcNAQELBQADggEBAJ7rK3bNBKrEgKneitNdPEQz
+        GurMVSP5f7FbTBEf/wWasBZDut03s9VLZyXEm9Rlzb6cuO84+gi3gmlzUPJRSm8Y
+        AhVRQkjQbIFMnH4O6WlocxqkBop4q1Lp1nlHrP1oVvjlZiXJKFkOBzWdgEkfzqA9
+        B1yPTUpZNMJ6hAO8vp6biFUmO5jGvVcKIvM0BARhjmUCzbCwusjIYo60rdWI5BKB
+        3HlA1lYSRdkaz0EClkuf+owlmiHe6cW84FUKY0kigXOL1aZz3gzpAhxOsxSmXbSL
+        rmJAnfkesyDkFqjPIWejvL4qt+OrR7syt9FnXrLgMCxwichEJRE6MecohgDUhnw=
+        -----END CERTIFICATE-----
+
+      key: |
+        -----BEGIN PRIVATE KEY-----
+        MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC0l1ycyWbs1K3P
+        UUgYs7F+pcIugtVEScQAezvU8uGfNmd0WyfExXBJrWvN83Oz+H6p+LRJmzQyKolK
+        zVmSvGNUP2Mqw3sVl5GIZPy+o24oXbunLgHWp39Hga3OfBItdQdahgQy8vytYs0b
+        agxyRhfUqnZmBviWw+IQWUhzcuCbytek1UxxfrANwPhkdyI4H4hbRZbbcyP1M7Fi
+        o2KLPT9doN8J1H1OXIzq7aT18RB8H+Thdfz/Y1bleETJqcd5gBpg+rvQ6Wta6epy
+        yin/I9EO3Yc9Ix8quP8f2aUYVxPlSNrBEOdsrXB53EaXVD+zFagkrg+dIk/16D/V
+        MN5bPrGvAgMBAAECggEALkvTaTpUkYhgWpKq2fJPIXmbE1NlGxGSFtGA4DG315oZ
+        4YFw64f2Jl04Et9DnTKqPibNCUWplubCtZN5UB3NlQ5+/LqKdlmZ7I5/INxC5ERL
+        VCt+OypLfehnx1SVUGP9E57hurICRuzaShngwPbpKxLcMYG9/uCOtsQ8x6P+otFp
+        77Jsub8oL0VPDm34PUq60tc7DnlpZpBXT7y29pQ8pmckbeyVoTw001cZqvvSHM6b
+        QYjWMXB++eloRQpjwOw3xBrWl13o3kCeMHr9wAgDDwVyh6ajfYPVX/mGOOIIqKww
+        3jOEEsj0goPGi7X2R0ce1jgv067GpflZJlimJ1luSQKBgQDoJfk5K/Me8pP3yVVV
+        ExmOdtJT3GJyy1/yv+yUf4vc+Q4oTHQh5f1tTHhPK/kebXK5urHh6uo9A168QoI0
+        DETGp/SqQHpFuGEZUkSl/6LhehLmM2BlaIi+Eyl9/aHeSdLYtCO3JCH8BAHJU1En
+        HJkbsXojTWTfnynlvOi9+spQQwKBgQDHJVII/8qHJlZOLrgTVp7wxZgXcA6bQK/V
+        H9837KbWM3OaH5CLOYjy2+k6oo7G6UnltqJYJXuEefKdYX5TB5HVU0qA4kvDPvO2
+        20vW327ZE0xVuB4CbB+5Mp1wQHoYmaKB8grSHOuU9EHANeEl00bdxAVAOYPWUz0z
+        G4fDvBUIJQKBgHAwqdjvXHdAVDIToqGSsW8gDVVp1EoV7zCpf/PkD/uigS0Ihbc8
+        JtWDd0ELx0DlM+R+TSkZFkqWLlpc6f+tTi+TS7Jbpru693H9SB/RAy5kiG2ntpZL
+        hooVSKASyv9aPgNsSzZex+27IgHhuf5k27l+c8BLzswjZ2QXf4MQiGVxAoGAexgB
+        bhiV2hYDUM4l76YiFlc8nHgiPyqrxMOvmQTJVyt0cDbEhJoqoVr2/cxPDnpSuA+8
+        p1l70LYEFe2WRMIwDTkvmxzFkcjOoh9I8GcpQDpie7WTrxGgRjwX/rOMBLqqLUIs
+        GBXSND8KiUGEinnemuM4D6u9ZvQKpxWERKN0KJUCgYEAv7Q7vgTw0xnL8FUzGMdn
+        EwMrDuNSBy9HerLAyRsdkoaHJHUXEMam8n24RnUbTIdI5tRd2jHSq77LTD513+Bn
+        XsNHfaFE0k9HlLMesmgdqPFPcuX6QbbvefXms1dQ3KB/I6GsRMPo2TncXuOCnALb
+        +pwISXHyqbvn265vOTdvIVk=
+        -----END PRIVATE KEY-----
+
+      caCertificate: |
+        -----BEGIN CERTIFICATE-----
+        MIIEczCCA1ugAwIBAgIQclgfBsXr5LdG8tNOs+rZszANBgkqhkiG9w0BAQUFADCB
+        rDEjMCEGCSqGSIb3DQEJARYUYWRtaW5Ac2hhbmdoYWlnbS5jb20xCzAJBgNVBAYT
+        AkNOMREwDwYDVQQIEwhTaGFuZ2hhaTERMA8GA1UEBxMIU2hhbmdoYWkxIDAeBgNV
+        BAoTF1NoYW5naGFpIEdlbmVyYWwgTW90b3JzMSAwHgYDVQQLExdTaGFuZ2hhaSBH
+        ZW5lcmFsIE1vdG9yczEOMAwGA1UEAxMFU0dNQ0EwHhcNMTIxMDMwMDYyMTU2WhcN
+        MjIxMDMwMDYyMjUyWjCBrDEjMCEGCSqGSIb3DQEJARYUYWRtaW5Ac2hhbmdoYWln
+        bS5jb20xCzAJBgNVBAYTAkNOMREwDwYDVQQIEwhTaGFuZ2hhaTERMA8GA1UEBxMI
+        U2hhbmdoYWkxIDAeBgNVBAoTF1NoYW5naGFpIEdlbmVyYWwgTW90b3JzMSAwHgYD
+        VQQLExdTaGFuZ2hhaSBHZW5lcmFsIE1vdG9yczEOMAwGA1UEAxMFU0dNQ0EwggEi
+        MA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDd0mlZ9D9O2JXE0lPBw1/jTmTL
+        Ajp8EWGGHpbE1NbzF6bw5SaLgw4iHLWYfyuMV5mZ/mU8KLD7t12/+yRfgy/MtDpr
+        GEII0ozwyrXYqWWzqjK2vHo1n9Bw1BYaytUAfGAmF1hAr/wUcQ3TUpiZLQdOtQeE
+        uXJIDBoG7uASL1yLNBdG2tbPpKwcb7BP1bWjojcHnoGHP4JuHuiMNERtngIJe3Z+
+        edGamH8TO2IEQAsEDMFphD+xC1EQozslxr7GqG+S5oX5ZFpzU5IfurkEqmWwO+ux
+        qq43cCBnLoxCBGqgVEGd/zlCopzyTPdNUY1eV5DNQ8P+P6HNWa0buU5HqFfzAgMB
+        AAGjgY4wgYswEwYJKwYBBAGCNxQCBAYeBABDAEEwCwYDVR0PBAQDAgFGMA8GA1Ud
+        EwEB/wQFMAMBAf8wHQYDVR0OBBYEFDD8T3VylGetjBRDAcSSWpT92WVYMBIGCSsG
+        AQQBgjcVAQQFAgMBAAEwIwYJKwYBBAGCNxUCBBYEFFvgkDn94956SHTxs/lU0/5i
+        7zjWMA0GCSqGSIb3DQEBBQUAA4IBAQCxFNEb0SPd1sNNxAXjb6c7DTa0q3gYh2Oh
+        bYt7X7XznLIvHc62OSH5i0ufDX97Y6taXKJ6npek31pTA2J5YbCTEpBxcRf5AiC9
+        sTeMeFDoKgqihMGKsOjIo49+seZvjdfr6MfqZ2d5rtU+LwUkpCVptdsMZiySn0RG
+        WQtHfsFi9kmVOCHHiIiQxeqmGHDR33RdUcbt4Ni3SyK0z0kfJEF6RCMhyEfTFp6/
+        GRfuow2VEXTYR11zaavJ6B+hvhSRQNp5yqIoZ0Sk+Wa8JwxetQqeUbH0LVztXLjl
+        TJjdSb3Il9ybr7XfzxhvqhQW4Gio8i6UOEotbXpCSI+TOepPvsIF
+        -----END CERTIFICATE-----
+
+      insecureEdgeTerminationPolicy: None
+    wildcardPolicy: None
+
+
+- apiVersion: v1
+  kind: DeploymentConfig
+  metadata:
+    labels:
+      application: ${APPLICATION_NAME}
+    name: ${APPLICATION_NAME}
+  spec:
+    replicas: 1
+    selector:
+      deploymentConfig: ${APPLICATION_NAME}
+    strategy:
+      type: Recreate
+    template:
+      metadata:
+        labels:
+          application: ${APPLICATION_NAME}
+          deploymentConfig: ${APPLICATION_NAME}
+        name: ${APPLICATION_NAME}
+      spec:
+        containers:
+        - image: ${IMAGE_NAME}
+          imagePullPolicy: Always
+          name: ${APPLICATION_NAME}
+          ports:
+          - containerPort: 8080
+            name: http
+            protocol: TCP
+
+    triggers:
+#    - type: ConfigChange
+    - type: "ImageChange"
+      imageChangeParams:
+        automatic: true
+        from:
+          kind: "ImageStreamTag"
+          name: "idm:latest"
+          namespace: "idm"
+        containerNames:
+          - ${APPLICATION_NAME}
+
+
+
+parameters:
+- description: The name for the application.
+  name: APPLICATION_NAME
+  required: true
+#  value: jws-app
+  generate: expression
+  from: "idm-[a-z]{2}[0-9]{1}[a-z]{3}"
+
+#- description: 'Custom hostname for http service route.  Leave blank for default hostname,
+#    e.g.: <application-name>-<project>.<default-domain-suffix>'
+#  name: HOSTNAME_HTTP
+#  required: true
+
+
+- description: deploy image name
+  name: IMAGE_NAME
+  required: true
+  value: registry.jqpqa.c.saic-gm.net:5000/idm

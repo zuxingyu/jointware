@@ -1,0 +1,8 @@
+ind: "ImageStream"
+apiVersion: "v1"
+metadata:
+  name: "idm"
+  annotations:
+    openshift.io/image.insecureRepository: "true"
+spec:
+  dockerImageRepository: "registry.jqpreh.c.saic-gm.net:5000/idm"

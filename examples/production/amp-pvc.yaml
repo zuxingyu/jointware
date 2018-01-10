@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: Template
+metadata:
+  creationTimestamp: 2017-12-27T03:03:25Z
+  name: amp-pvc
+  namespace: openshift
+  resourceVersion: "920"
+  selfLink: /oapi/v1/namespaces/openshift/templates/amp-pvc
+  uid: 81821e34-eab2-11e7-8531-0050569c0b78
+objects:
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    name: system-storage
+  spec:
+    accessModes:
+    - ReadWriteMany
+    resources:
+      requests:
+        storage: 100Mi
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    name: mysql-storage
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 1Gi
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    name: system-redis-storage
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 1Gi
+- apiVersion: v1
+  kind: PersistentVolumeClaim
+  metadata:
+    name: backend-redis-storage
+  spec:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 1Gi
