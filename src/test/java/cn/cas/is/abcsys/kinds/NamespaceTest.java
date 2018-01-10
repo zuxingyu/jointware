@@ -35,16 +35,6 @@ public class NamespaceTest extends TestCase {
 		});
 	}
 
-	/*******************************************************************************
-	 * 
-	 * Delete Namespace
-	 * 
-	 ********************************************************************************/
-	public static Map<String, Object> deleteNSParams = new HashMap<String, Object>();
-
-	static {
-		deleteNSParams.put("setMetadata-setName", "wuheng");
-	}
 	
 	public void testCreateNamespace() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
@@ -55,6 +45,6 @@ public class NamespaceTest extends TestCase {
 	public void testDeleteNamespace() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
 		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-		generator.delete(client, "Namespace", deleteNSParams);
+		generator.delete(client, "Namespace", "wuheng");
 	}
 }

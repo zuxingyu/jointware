@@ -39,7 +39,7 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 	 ************************************************************************************/
 
 	@Override
-	protected Object generateKindModel(Object client, String kind) throws Exception {
+	public Object generateKindModel(Object client, String kind) throws Exception {
 		String desc = getDesc(kind);
 		return createKindModelByDesc(client, desc);
 	}
@@ -52,7 +52,7 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 	 * java.lang.String)
 	 */
 	@Override
-	protected Object generateParameters(Map<String, Object> allParams, String kind) throws Exception {
+	public Object generateParameters(Map<String, Object> allParams, String kind) throws Exception {
 		kindModel = Class.forName(KubernetesKindModelsAnalyzer.getAnalyzer().getKindModel(kind)).newInstance();
 		Map<String, String> paramMapping = getModelParams(kind);
 		for (String currentParamName : allParams.keySet()) {

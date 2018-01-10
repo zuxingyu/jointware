@@ -46,16 +46,6 @@ public class NodeTest extends TestCase {
 		});
 	}
 
-	/*******************************************************************************
-	 * 
-	 * Delete Namespace
-	 * 
-	 ********************************************************************************/
-	public static Map<String, Object> deleteNodeParams = new HashMap<String, Object>();
-
-	static {
-		deleteNodeParams.put("setMetadata-setName", "izm5e5tgjv84bevngsmq1az");
-	}
 	
 	public void testCreateNode() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
@@ -63,9 +53,9 @@ public class NodeTest extends TestCase {
 		System.out.println(generator.create(client, "Node", createNodeParams));
 	}
 	
-//	public void testDeleteNode() throws Exception {
-//		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
-//		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-//		generator.delete(client, "Node", deleteNodeParams);
-//	}
+	public void testDeleteNode() throws Exception {
+		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
+		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
+		generator.delete(client, "Node", "izm5e5tgjv84bevngsmq1az");
+	}
 }

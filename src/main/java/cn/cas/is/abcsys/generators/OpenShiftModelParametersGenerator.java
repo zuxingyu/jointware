@@ -19,7 +19,7 @@ import cn.cas.is.abcsys.utils.StringUtils;
 public class OpenShiftModelParametersGenerator extends KubernetesModelParametersGenerator {
 
 	@Override
-	protected Object generateKindModel(Object client, String kind) throws Exception {
+	public Object generateKindModel(Object client, String kind) throws Exception {
 		String desc = OpenShiftKindsAnalyzer.getAnalyzer().getKindDesc(kind);
 		return createKindModelByDesc(client, desc);
 	}

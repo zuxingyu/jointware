@@ -10,8 +10,12 @@ import java.util.Set;
 
 import cn.cas.is.abcsys.utils.ObjectUtils;
 import cn.cas.is.abcsys.utils.StringUtils;
+import io.fabric8.kubernetes.api.model.HasMetadata;
+import io.fabric8.kubernetes.api.model.KubernetesResourceList;
+import io.fabric8.kubernetes.client.dsl.CreateOrReplaceable;
 import io.fabric8.kubernetes.client.dsl.Createable;
-import io.fabric8.kubernetes.client.dsl.MultiDeleteable;
+import io.fabric8.kubernetes.client.dsl.Deletable;
+import io.fabric8.kubernetes.client.dsl.Listable;
 import io.fabric8.kubernetes.client.dsl.Nameable;
 import io.fabric8.kubernetes.client.dsl.Namespaceable;
 import io.fabric8.kubernetes.client.dsl.Scaleable;
@@ -26,6 +30,8 @@ public abstract class ModelParamtersGenerator {
 
 	private final static Set<String> workloadControllers = new HashSet<String>();
 	
+	private final static String IGNORE_NAMESPACE = "ignore.namespace";
+	
 	static {
 		workloadControllers.add("Deployment");
 		workloadControllers.add("ReplicationController");
@@ -38,11 +44,14 @@ public abstract class ModelParamtersGenerator {
 	protected Object kindModel = null;
 	
 	/**
-	 * @param client kubernetes or OpenShit client
-	 * @param kind Deployment, Namespace, etcd
-	 * @param params see <code>ModelParamtersViewer.printModel3<code>
-	 * @return
-	 * @throws Exception
+	 * 根据 用户 需要 发布的kind（如 Deployment, StatefulSet等），以及用户指定的<key, value>对params
+	 * 向指定的Kubernetes和OpenShift进行部署
+	 * 
+	 * 如果名字存在重名，则发布失败，
+	 * 
+	 * 如果输入参数有问题，则会返回异常，通常包括空指针异常、无该方法可反射等异常
+	 * 
+	 * 此外，该方法适用于所有的kind，详情见https://github.com/is-dream/cluster-dispatcher/blob/master/docs/yaml-kinds.md
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public Object create(Object client, String kind, Map<String, Object> params) throws Exception {
@@ -56,9 +65,37 @@ public abstract class ModelParamtersGenerator {
 	}
 	
 	/**
+	 * 根据 用户 需要 发布的kind（如 Deployment, StatefulSet等），以及用户指定的<key, value>对params
+	 * 向指定的Kubernetes和OpenShift进行部署
+	 * 
+	 * 如果名字存在重名，则会替换，不会报错。
+	 * 
+	 * 如果输入参数有问题，则会返回异常，通常包括空指针异常、无该方法可反射等异常
+	 * 
+	 * 此外，该方法适用于所有的kind，详情见https://github.com/is-dream/cluster-dispatcher/blob/master/docs/yaml-kinds.md
+	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public Object createOrReplace(Object client, String kind, Map<String, Object> params) throws Exception {
+		if (ObjectUtils.isNull(params) || ObjectUtils.isNull(client) || StringUtils.isNull(kind)) {
+			throw new Exception("neither name or namespace is null,  or the number is less than 0.");
+		}
+		
+		CreateOrReplaceable instance = (CreateOrReplaceable) generateKindModel(client, kind);
+		Object param = generateParameters(params, kind);
+		
+		return instance.createOrReplace(param);
+	}
+	
+	/**
+	 * 根用户 向指定的Kubernetes和OpenShift发起发送扩容/缩容请求，必须满足特定类型、namespace和name
+	 * 
+	 * 这里的名是指Metedata.name的名字
+	 * 
 	 * 扩展/缩小实例数,这里的numbers是指扩展后，或者收缩后的实例数。
-	 * 比如当前实例数为2，如果numberes填写4，则执行后有4个pods
-	 * 反之，如果numbers填写1， ，则执行后仅有4个pods
+	 * 
+	 * 比如当前实例数为2，
+	 *  - 如果numberes填写4，则执行后有4个pod
+	 *  - 反之，如果numbers填写1， 则执行后仅有1个pod
 	 * 
 	 * 仅仅对以下kind有效 <br>
 	 * 
@@ -69,15 +106,11 @@ public abstract class ModelParamtersGenerator {
 	 * - StatefulSet  <br>
 	 * - DeploymentConfig  <br>
 	 * 
-	 * @param client
-	 * @param kind
-	 * @param params
-	 * @return
-	 * @throws Exception
 	 */
 	@SuppressWarnings("rawtypes")
 	public Object scaleTo(Object client, String kind, String namespace, String name, int numbers) throws Exception {
-		if (StringUtils.isNull(namespace) || StringUtils.isNull(namespace) || numbers <= 0 || numbers >= Integer.MAX_VALUE) {
+		if (ObjectUtils.isNull(client) || StringUtils.isNull(kind) || 
+				StringUtils.isNull(namespace) || StringUtils.isNull(name) || numbers <= 0 || numbers >= Integer.MAX_VALUE) {
 			throw new Exception("neither name or namespace is null,  or the number is less than 0.");
 		}
 		
@@ -89,14 +122,72 @@ public abstract class ModelParamtersGenerator {
 		return ((Scaleable)((Nameable)instance.inNamespace(namespace)).withName(name)).scale(numbers);
 	}
 	
-	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public boolean delete(Object client, String kind, Map<String, Object> params) throws Exception {
-		if (ObjectUtils.isNull(params) || ObjectUtils.isNull(client) || StringUtils.isNull(kind)) {
-			throw new Exception("neither name or namespace is null,  or the number is less than 0.");
+	public Object query(Object client, String kind, String name) throws Exception {
+		return this.query(client, kind, IGNORE_NAMESPACE, name);
+	}
+	/**
+	 * 根用户 向指定的Kubernetes和OpenShift进行查询，必须满足特定类型、namespace和name
+	 * 
+	 * 这里的名是指Metedata.name的名字
+	 * 
+	 * 返回的是指定类型的对象
+	 * 
+     * 此外，该方法适用于所有的kind，详情见https://github.com/is-dream/cluster-dispatcher/blob/master/docs/yaml-kinds.md
+	 */
+	@SuppressWarnings("rawtypes")
+	public Object query(Object client, String kind, String namespace, String name) throws Exception {
+		if (ObjectUtils.isNull(client) || StringUtils.isNull(namespace) || StringUtils.isNull(name)) {
+			throw new Exception("client, or kind, or name, or namespace is null.");
 		}
-		MultiDeleteable instance = (MultiDeleteable) generateKindModel(client, kind);
-		Object param = generateParameters(params, kind);
-		return (boolean) instance.delete(param);
+		
+		if(!workloadControllers.contains(kind) ) {
+			throw new Exception("Unsupport kind, kind should be " + workloadControllers);
+		}
+		
+		Object instance = generateKindModel(client, kind);
+		
+		if (instance instanceof Namespaceable) {
+			instance = ((Namespaceable)instance).inNamespace(namespace);
+		} else if (!namespace.equals(IGNORE_NAMESPACE)) {
+			throw new Exception("invalid namespace");
+		}
+		
+		instance =  ((Listable)instance).list();
+		
+		for (Object obj : ((KubernetesResourceList)instance).getItems()) {
+			if (name.equals(((HasMetadata)obj).getMetadata().getName())) {
+				return obj;
+			}
+		}
+		
+		return null;
+	}
+	
+	
+	/**
+	 * 删除不需要namespace的资源，比如Namespace自身
+	 */
+	public boolean delete(Object client, String kind, String name) throws Exception {
+		return delete(client, kind, IGNORE_NAMESPACE, name);
+	}
+	
+	/**
+	 * 删除需要namespace的资源，比如Deployment、Job等
+	 */
+	@SuppressWarnings("rawtypes")
+	public boolean delete(Object client, String kind, String namespace, String name) throws Exception {
+		if (ObjectUtils.isNull(client) || StringUtils.isNull(namespace) || StringUtils.isNull(name)) {
+			throw new Exception("client, or kind, or name, or namespace is null.");
+		}
+		Object instance = generateKindModel(client, kind);
+		
+		if (instance instanceof Namespaceable) {
+			instance = ((Namespaceable)instance).inNamespace(namespace);
+		} else if (!namespace.equals(IGNORE_NAMESPACE)) {
+			throw new Exception("invalid namespace");
+		}
+		
+		return (boolean) ((Deletable)((Nameable)instance).withName(name)).delete();
 	}
 	
 	protected Object getKindModel(Object client, String desc) throws Exception {
@@ -108,9 +199,9 @@ public abstract class ModelParamtersGenerator {
 		return obj;
 	}
 	
-	protected abstract Object generateKindModel(Object client, String kind) throws Exception;
+	public abstract Object generateKindModel(Object client, String kind) throws Exception;
 	
-	protected abstract Object generateParameters(Map<String, Object> params, String kind) throws Exception;
+	public abstract Object generateParameters(Map<String, Object> params, String kind) throws Exception;
 	
 	protected abstract Method getCreateMethod(Object client, String kind) throws Exception;
 }
