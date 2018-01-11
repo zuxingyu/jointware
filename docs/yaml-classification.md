@@ -9,15 +9,15 @@
 
 - ServiceAccount
 - Node
-- Endpoint
+- Endpoint (Unsupport)
 - ConfigMap
 - NetworkPolicy
 - Ingress
 - Service
 - Namespace
 - PersistentVolumeClaim
-- PersistentVolume
-- Componentstatus
+- PersistentVolume 
+- Componentstatus  (Unsupport)
 - Route
 - Project
 
@@ -38,7 +38,7 @@
 - ThirdPartyResource
 - ResourceQuota
 - CustomResourceDefinition
-- SecurityContextConstraint
+- SecurityContextConstraint  (Unsupport)
 - Secret
 - LimitRange
 - Policy
