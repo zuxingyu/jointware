@@ -35,9 +35,9 @@
 
 ## Service managers
 
-- ThirdPartyResource
+- ThirdPartyResource  (Unsupport)
 - ResourceQuota
-- CustomResourceDefinition
+- CustomResourceDefinition 
 - SecurityContextConstraint  (Unsupport)
 - Secret
 - LimitRange
