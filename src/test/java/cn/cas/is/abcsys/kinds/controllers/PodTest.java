@@ -36,14 +36,7 @@ public class PodTest extends TestCase {
 				put("version", "20180109");
 			}
 		});
-		createDMParams.put("setSpec-setTemplate-setMetadata-setName", "busybox-pod");
-		createDMParams.put("setSpec-setTemplate-setMetadata-setLabels", new HashMap<String, String>() {
-			{
-				put("app", "busybox-pod");
-				put("version", "20180109");
-			}
-		});
-		createDMParams.put("setSpec-setTemplate-setSpec-setContainers", new ArrayList<Object>() {
+		createDMParams.put("setSpec-setContainers", new ArrayList<Object>() {
 			{
 				add(new HashMap<String, Object>() {
 					{
