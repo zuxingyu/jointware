@@ -24,7 +24,7 @@ cluster-dispatcher
 * [Kubernetes and OpenShift features](docs/yaml-kinds.md)
 * [fabric8 model for both Kubernetes and OpenShift features](docs/kind-models.md) 
 * [fabric8 model parameters for both Kubernetes and OpenShift](docs/model-parameters.md)
-* [What is the classification of all fabric8 models] (docs/yaml-classification.md)
+* [What is the classification of all fabric8 models](docs/yaml-classification.md)
 
 ### Building the code
 
