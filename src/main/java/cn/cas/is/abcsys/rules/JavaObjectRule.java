@@ -30,6 +30,12 @@ public class JavaObjectRule {
 		primitive.add(Double.class.getName());
 		primitive.add(Float.class.getName());
 		primitive.add(Byte.class.getName());
+		primitive.add("boolean");
+		primitive.add("int");
+		primitive.add("long");
+		primitive.add("double");
+		primitive.add("float");
+		primitive.add("byte");
 	}
 	
 	public static boolean isPrimitive(String name) {

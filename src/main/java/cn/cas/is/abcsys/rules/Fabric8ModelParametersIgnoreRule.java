@@ -28,6 +28,22 @@ public class Fabric8ModelParametersIgnoreRule {
 		ignores.add("setUid");
 		ignores.add("setSelfLink");
 		ignores.add("setCreationTimestamp");
+		ignores.add("getStatus");
+		ignores.add("getResult");
+		ignores.add("getApiVersion");
+		ignores.add("getKind");
+		ignores.add("getPaused");
+		ignores.add("getInitContainers");
+		ignores.add("getUid");
+		ignores.add("getSelfLink");
+		ignores.add("getCreationTimestamp");
+		ignores.add("toString");
+		ignores.add("hashCode");
+		ignores.add("wait");
+		ignores.add("clone");
+		ignores.add("getClass");
+		ignores.add("notify");
+		ignores.add("notifyAll");
 	}
 	
 	public static boolean ignore(String name) {
