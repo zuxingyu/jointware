@@ -34,6 +34,10 @@ Please see the [building.md](docs/building.md) file.
 
 We love [contributions](docs/contributing.md) and you are very welcome to help.
 
+### Roadmap
+
+* [1.1.0](docs/roadmap-1.1.0.md)
+
 ### License
 
 This project is [Apache Licensed](license.txt)
