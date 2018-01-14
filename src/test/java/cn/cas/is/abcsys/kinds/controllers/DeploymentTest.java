@@ -38,6 +38,7 @@ public class DeploymentTest extends TestCase {
 		});
 		createDMParams.put("setSpec-setReplicas", 3);
 		createDMParams.put("setSpec-setTemplate-setMetadata-setName", "busybox-deployment");
+		
 		createDMParams.put("setSpec-setTemplate-setMetadata-setLabels", new HashMap<String, String>() {
 			{
 				put("app", "busybox-deployment");
