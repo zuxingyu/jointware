@@ -3,15 +3,10 @@
  */
 package cn.cas.is.abcsys;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Map;
 
-import org.yaml.snakeyaml.Yaml;
-
-import cn.cas.is.abcsys.analyzers.KubernetesKindModelsAnalyzer;
 import cn.cas.is.abcsys.rules.Fabric8ModelParametersIgnoreRule;
 import cn.cas.is.abcsys.rules.JavaObjectRule;
 import cn.cas.is.abcsys.utils.ObjectUtils;
@@ -94,6 +89,7 @@ public class UserMapWriter {
 	}
 	
 	
+	// 下一个版本再优化
 	@SuppressWarnings("unchecked")
 	protected StringBuffer initParameters(Object object, 
 					String parent, String style, 
@@ -115,35 +111,41 @@ public class UserMapWriter {
 			
 			String typeName = method.getGenericReturnType().getTypeName();
 			if (JavaObjectRule.isPrimitive(typeName)) {
+				// 基本类型
 				if (typeName.equals("String") || typeName.equals(String.class.getName())) {
 					initPrimitive1(parent, style, indent, sb, method, thisValue);
 				} else {
 					initPrimitive2(parent, style, indent, sb, method, thisValue);
 				}
 			} else if (JavaObjectRule.isStringMap(typeName)) {
+				// Map<String, String>类型
 				Map<String, String> map = (Map<String, String>) thisValue;
 				if (!map.isEmpty()) {
 					initStringMap(parent, style, indent, sb, method, map);
 				}
 				continue;
 			} else if (JavaObjectRule.isMap(typeName)) {
+				// Map<String, Object>类型
 				Map<String, Object> map = (Map<String, Object>) thisValue;
 				if (!map.isEmpty()) {
 					initObjectMap(parent, style, indent, sb, method, map);
 				}
 
 			} else if (JavaObjectRule.isStringList(typeName)) {
+				// List<String>类型
 				List<String> list = (List<String>) thisValue;
 				if (!list.isEmpty()) {
 					initStringList(parent, style, indent, sb, method, list);
 				}
 				continue;
 			} else if (JavaObjectRule.isList(typeName)) {
+				// List<Object>类型
 				List<Object> list = (List<Object>) thisValue;
 				if (!list.isEmpty()) {
 					initObjectList(parent, style, indent, sb, method, list);
 				}
 			} else {
+				// Object类型
 				initParameters(thisValue, getThisParam(parent, method), style, indent, sb);
 			}
 		}
@@ -280,26 +282,6 @@ public class UserMapWriter {
 	
 	protected static boolean ignore(Method method) {
 		return Fabric8ModelParametersIgnoreRule.ignore(method.getName());
-	}
-
-	/**
-	 * @param args
-	 * @throws Exception
-	 */
-	public static void main(String[] args) throws Exception {
-		System.out.println(write(Constants.YAML_DEPLOYMENT, "examples/controllers/busybox-dm.yaml"));
-		System.out.println(write(Constants.YAML_PERSISTENTVOLUME, "examples/constructors/persistentvolume.yaml"));
-	}
-
-
-
-	protected static String write(String kind, String file) throws ClassNotFoundException, FileNotFoundException, Exception {
-		Class<?> clazz = Class.forName(KubernetesKindModelsAnalyzer
-							.getAnalyzer().getKindModel(kind));
-		
-		Object obj = new Yaml().loadAs(new FileInputStream(file), clazz);
-
-		return new UserMapWriter().yamlToMap(obj);
 	}
 
 }

@@ -1,7 +1,7 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package cn.cas.is.abcsys.kinds;
+package cn.cas.is.abcsys.kinds.constructors;
 
 import java.util.HashMap;
 import java.util.Map;
