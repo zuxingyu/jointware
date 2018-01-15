@@ -30,7 +30,7 @@ public class ServiceTest extends TestCase {
 
 	static {
 		params.put("setMetadata-setName", "service-tomcat");
-		params.put("setMetadata-setNamespace", "xuyuanjia-namespace");
+		params.put("setMetadata-setNamespace", "wuheng");
 		params.put("setMetadata-setLabels", new HashMap<String, String>() {
 			{
 				put("name", "label-tomcat");

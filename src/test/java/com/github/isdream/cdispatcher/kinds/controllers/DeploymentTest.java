@@ -68,15 +68,15 @@ public class DeploymentTest extends TestCase {
 		generator.create(client, Constants.YAML_DEPLOYMENT, params);
 	}
 	
-//	public void testUpdateDeployment() throws Exception {
-//		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
-//		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-//		generator.scaleTo(client, Constants.YAML_DEPLOYMENT, "wuheng", "busybox-deployment", 1);
-//	}
-//	
-//	public void testDeleteDeployment() throws Exception {
-//		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
-//		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-//		generator.delete(client, Constants.YAML_DEPLOYMENT, "wuheng", "busybox-deployment");
-//	}
+	public void testUpdateDeployment() throws Exception {
+		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
+		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
+		generator.scaleTo(client, Constants.YAML_DEPLOYMENT, "wuheng", "busybox-dm", 1);
+	}
+	
+	public void testDeleteDeployment() throws Exception {
+		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
+		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
+		generator.delete(client, Constants.YAML_DEPLOYMENT, "wuheng", "busybox-dm");
+	}
 }

@@ -75,6 +75,7 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 			 * 所以出栈stack的顺序应该是先setMetadata，再setMetadata-setInitializers
 			 */
 			while (!paramStack.isEmpty()) {
+//				generateParameter(paramTypes, paramStack.pop(), paramValues);
 				generateParameter(paramStack.pop(), paramValues);
 			}
 		}
@@ -100,11 +101,12 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 			thisParam = new ArrayList<Object>();
 			List<Object> values = (List<Object>) paramValues.get(fullname);
 			HashMap<String, Object> newParamValues = new HashMap<String, Object>();
-			for(Object subObj : values) {
-				objCaches.put(fullname, Class.forName(
-						getClassNameForListStyle(typename)).newInstance());
-				((List<Object>)thisParam).add(subObj);
-				Map<String, Object> mapValues = (Map<String, Object>) subObj;
+			for(Object subObjValue : values) {
+				Object subObject = Class.forName(
+						getClassNameForListStyle(typename)).newInstance();
+				objCaches.put(fullname, subObject);
+				((List<Object>)thisParam).add(subObject);
+				Map<String, Object> mapValues = (Map<String, Object>) subObjValue;
 				for(String newKey : mapValues.keySet()) {
 					newParamValues.put(fullname + "-" + newKey, mapValues.get(newKey));
 				}
@@ -121,12 +123,30 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 				 ((Map<String, String>)thisParam).put(key, values.get(key));
 			}
 		} else if (JavaObjectRule.isObjectMap(typename)) {
-			
+			thisParam = new HashMap<String, Object>();
+			System.out.println(paramValues.get(fullname));
+			System.out.println(paramValues.get(fullname).getClass());
+//			List<Object> values = (List<Object>) paramValues.get(fullname);
+//			HashMap<String, Object> newParamValues = new HashMap<String, Object>();
+//			for(Object subObjValue : values) {
+//				Object subObject = Class.forName(
+//						getClassNameForListStyle(typename)).newInstance();
+//				objCaches.put(fullname, subObject);
+//				((List<Object>)thisParam).add(subObject);
+//				Map<String, Object> mapValues = (Map<String, Object>) subObjValue;
+//				for(String newKey : mapValues.keySet()) {
+//					newParamValues.put(fullname + "-" + newKey, mapValues.get(newKey));
+//				}
+//				initAndGenerateParameters(newParamValues, fullname);
+//				for(String newKey : mapValues.keySet()) {
+//					objCaches.remove(fullname + "-" + newKey);
+//				}
+//				objCaches.remove(fullname);
+//			}
 		} else {
 			if(objCaches.get(fullname) != null) {
 				return;
 			}
-			System.out.println(paramTypes.get("setSpec"));
 			thisParam = getObjectInstance(fullname, paramTypes.get(fullname));
 		}
 		Object parentObject = getParentObject(fullname);
