@@ -48,7 +48,7 @@ public class ServiceTest extends TestCase {
 					{
 						put("setPort", 8080);
 						put("setNodePort", 31234);
-						put("setTarsetPort-setStrVal", "8080");
+						put("setTargetPort-setStrVal", "8080");
 					}
 				});
 			}

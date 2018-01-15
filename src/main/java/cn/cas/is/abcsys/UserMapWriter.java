@@ -251,7 +251,7 @@ public class UserMapWriter {
 	 *******************************************************************/
 	
 	protected static String getThisParam(String parent, Method method) {
-		return (DEFAULT_PARENT.equals(parent)) ? method.getName().replace("get", "set") 
+		return (DEFAULT_PARENT.equals(parent)) ? "get" + method.getName().substring(3)
 												: parent + "-" + method.getName().replace("get", "set");
 	}
 	

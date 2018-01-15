@@ -22,6 +22,7 @@ public class UserMapWriterTest extends TestCase {
 //		System.out.println(write(Constants.YAML_DEPLOYMENT, "examples/controllers/busybox-dm.yaml"));
 //		System.out.println(write(Constants.YAML_PERSISTENTVOLUME, "examples/constructors/persistentvolume.yaml"));
 		System.out.println(write(Constants.YAML_SERVICE, "examples/constructors/service.yaml"));
+//		System.out.println(write(Constants.YAML_DEPLOYMENT, "examples/controllers/deployment.yaml"));
 	}
 
 

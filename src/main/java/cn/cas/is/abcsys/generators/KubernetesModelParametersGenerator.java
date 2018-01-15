@@ -234,6 +234,16 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 			if (list.get(i) instanceof Map) {
 				Map<String, Object> map = (Map<String, Object>) list.get(i);
 				for (String key : map.keySet()) {
+
+					Stack<String> paramStack = toParams(key);
+					if (paramStack.size() > 1) {
+						String pop = paramStack.pop();
+						String className2 = paramMapping.get(paramName + "-" + pop);
+						System.out.println(className2);
+						generateCommonsParameter(pop, Class.forName(
+								className2).newInstance());
+					}
+					
 					tempParams.put(paramName + "-" + key, map.get(key));
 					if(map.get(key) instanceof List) {
 						List<Object> values = (List<Object>) map.get(key);
