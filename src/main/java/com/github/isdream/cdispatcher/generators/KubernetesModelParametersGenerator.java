@@ -29,6 +29,12 @@ import com.github.isdream.cdispatcher.utils.StringUtils;
 public class KubernetesModelParametersGenerator extends ModelParamtersGenerator {
 
 	protected final static String NEW_OBJECT_METHOD = "create";
+	
+	protected final static String DEFAULT_PREFIX = "";
+	
+	protected final static String NO_IGNORE = "";
+	
+	protected final static Class<?> NEW_OBJECT_METHOD_PARAMS = new Object[] {}.getClass();
 
 	protected final Map<String, Object> objCaches = new HashMap<String, Object>();
 
@@ -38,12 +44,6 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 	 * 
 	 ************************************************************************************/
 
-	@Override
-	public Object generateKindModel(Object client, String kind) throws Exception {
-		String desc = getDesc(kind);
-		return createKindModelByDesc(client, desc);
-	}
-
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -52,51 +52,206 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 	 * java.lang.String)
 	 */
 	@Override
-	public Object generateParameters(Map<String, Object> allParams, String kind) throws Exception {
-		kindModel = Class.forName(KubernetesKindModelsAnalyzer.getAnalyzer().getKindModel(kind)).newInstance();
-		Map<String, String> paramMapping = getModelParams(kind);
-		for (String currentParamName : allParams.keySet()) {
+	public Object generateParameters(Map<String, Object> paramValues, String kind) throws Exception {
+		// 
+		kindModel = createKindModel(kind);
+		paramTypes =  createParamsType(kind);
+		initAndGenerateParameters(paramValues, NO_IGNORE);
+		objCaches.clear();
+		return kindModel;
+	}
+
+
+	protected void initAndGenerateParameters(Map<String, Object> paramValues, String ignore) throws Exception {
+		for (String fullname : paramValues.keySet()) {
 			/**
 			 * 使用stack的原因，是参数是由如下形式组成 setMetadata-setInitializers 首先需要先反射setMetadata
 			 * 再基于此反射化setInitializers
 			 * 
 			 * 此时，stack里面存在两个参数，如栈顺序分别是 setMetadata-setInitializers和setMetadata
 			 */
-			Stack<String> paramStack = toParams(currentParamName);
+			Stack<String> paramStack = initParamStack(fullname, ignore);
 			/**
 			 * 所以出栈stack的顺序应该是先setMetadata，再setMetadata-setInitializers
 			 */
 			while (!paramStack.isEmpty()) {
-				generateParameter(paramMapping, paramStack.pop(), allParams);
+				generateParameter(paramStack.pop(), paramValues);
 			}
-
 		}
-		objCaches.clear();
-		return kindModel;
 	}
 
+	
+	@SuppressWarnings("unchecked")
+	protected void generateParameter(String fullname, Map<String, Object> paramValues)
+			throws Exception {
+
+		String typename = paramTypes.get(fullname);
+		Object thisParam = null;
+		if (JavaObjectRule.isPrimitive(typename)) {
+			thisParam = getPrimitiveInstance(fullname, 
+					   paramTypes.get(fullname), paramValues.get(fullname));
+		} else if (JavaObjectRule.isStringList(typename)) {
+			thisParam = new ArrayList<String>();
+			List<String> values = (List<String>) paramValues.get(fullname);
+			for(String key : values) {
+				 ((List<String>)thisParam).add(key);
+			}
+		} else if (JavaObjectRule.isObjectList(typename)) {
+			thisParam = new ArrayList<Object>();
+			List<Object> values = (List<Object>) paramValues.get(fullname);
+			HashMap<String, Object> newParamValues = new HashMap<String, Object>();
+			for(Object subObj : values) {
+				objCaches.put(fullname, Class.forName(
+						getClassNameForListStyle(typename)).newInstance());
+				((List<Object>)thisParam).add(subObj);
+				Map<String, Object> mapValues = (Map<String, Object>) subObj;
+				for(String newKey : mapValues.keySet()) {
+					newParamValues.put(fullname + "-" + newKey, mapValues.get(newKey));
+				}
+				initAndGenerateParameters(newParamValues, fullname);
+				for(String newKey : mapValues.keySet()) {
+					objCaches.remove(fullname + "-" + newKey);
+				}
+				objCaches.remove(fullname);
+			}
+		} else if (JavaObjectRule.isStringMap(typename)) {
+			thisParam = new HashMap<String, String>();
+			Map<String, String> values = (Map<String, String>) paramValues.get(fullname);
+			for(String key : values.keySet()) {
+				 ((Map<String, String>)thisParam).put(key, values.get(key));
+			}
+		} else if (JavaObjectRule.isObjectMap(typename)) {
+			
+		} else {
+			if(objCaches.get(fullname) != null) {
+				return;
+			}
+			System.out.println(paramTypes.get("setSpec"));
+			thisParam = getObjectInstance(fullname, paramTypes.get(fullname));
+		}
+		Object parentObject = getParentObject(fullname);
+		Method parentMethod = getMethod(parentObject, fullname, getParamType(typename));
+		parentMethod.invoke(parentObject, thisParam);
+		objCaches.put(fullname, thisParam);
+	}
+	
+	/************************************************************************************
+	 * 
+	 *                            Create
+	 * 
+	 ************************************************************************************/
+	
+	protected Map<String, String> createParamsType(String kind) {
+		return StringUtils.isNull(kind) ? new HashMap<String, String>()
+									: KubernetesModelParametersAnalyzer.getAnalyzer().getModelParameters(kind);
+	}
+
+	protected void createParamsObject(String paramName, Object instance) throws Exception {
+		int idx = paramName.lastIndexOf("-");
+		String realParamName = (idx == -1) ? paramName : paramName.substring(idx + 1);
+		String objectIndex = (idx == -1) ? paramName : paramName.substring(0, idx);
+		// default parent is kindModel
+		Object parentObject = (idx == -1) ? kindModel : objCaches.get(objectIndex);
+		Method parentMethod = getMethod(parentObject, realParamName);
+		parentMethod.invoke(parentObject, instance);
+	}
+	
+	protected Object createKindModel(String kind) throws Exception {
+		return Class.forName(KubernetesKindModelsAnalyzer
+				.getAnalyzer().getKindModel(kind)).newInstance();
+	}
+
+	/************************************************************************************
+	 * 
+	 *                             Getter and Setter
+	 * 
+	 ************************************************************************************/
+	
+	protected Class<?> getParamType(String typename) throws Exception {
+		// if fullname is setMetadata-setName, paramName is setName
+		// if fullname is setMatadata paramName is setMatadata
+		if(JavaObjectRule.isMap(typename)) {
+			return Map.class;
+		} else if (JavaObjectRule.isList(typename)) {
+			return List.class;
+		} else {
+			return Class.forName(typename);
+		}
+	}
+	
+	protected Method getMethod(Object object, String fullname, Class<?> paramType) throws Exception {
+		// if fullname is setMetadata-setName, paramName is setName
+		// if fullname is setMatadata paramName is setMatadata
+		String paramName = getParamName(fullname);
+		return object.getClass().getMethod(paramName, paramType);
+	}
+
+
+	protected String getParamName(String fullname) {
+		int idx = fullname.lastIndexOf("-");
+		String paramName = (idx == -1) ? fullname : fullname.substring(idx + 1);
+		return paramName;
+	}
+	
+	protected Object getParentObject(String fullname) {
+		String methodKey = getParentMethodKey(fullname);
+		return (methodKey.equals(fullname)) ? kindModel : objCaches.get(methodKey);
+	}
+
+
+	protected String getParentMethodKey(String fullname) {
+		int idx = fullname.lastIndexOf("-");
+		String methodName = (idx == -1) ? fullname : fullname.substring(0, idx);
+		return methodName;
+	}
+	
 	@Override
 	protected Method getCreateMethod(Object client, String kind) throws Exception {
-		String desc = getDesc(kind);
-		Object kindModel = getKindModel(client, desc);
-		return getMethod(kindModel, NEW_OBJECT_METHOD);
+		String kindDesc = getDesc(kind);
+		Class<?> kindModel = getKindModel(client, kindDesc).getClass();
+		return kindModel.getMethod(NEW_OBJECT_METHOD, NEW_OBJECT_METHOD_PARAMS);
 	}
 	
-	protected String getClassNameForMapStyle(String fullname) throws ClassNotFoundException {
+	protected String getClassNameForMapStyle(String fullname) {
+		// Map<String, Object>，需要返回Object的类名
 		int start = fullname.indexOf(",");
 		int end = fullname.indexOf(">");
-		return fullname.substring(start + 2, end);
+		return fullname.substring(start + 2, end); //<String, Object>的,后有一个空格
 	}
 	
-	protected String getClassNameForListStyle(String fullname) throws ClassNotFoundException {
+	protected String getClassNameForListStyle(String fullname) {
+		// List<Object>，需要返回Object的类名
 		int start = fullname.indexOf("<");
 		int end = fullname.indexOf(">");
 		return fullname.substring(start + 1, end);
 	}
 
+	@Override
+	public Object getKindModel(Object client, String kind) throws Exception {
+		// client.extensions.depolyments()
+		Object thisObject = client;
+		for (String name : getDesc(kind).split("-")) {
+			Method method = thisObject.getClass().getMethod(name);
+			thisObject = method.invoke(thisObject);
+		}
+		return thisObject;
+	}
+	
+	protected Object getPrimitiveInstance(String paramName, String paramType, Object paramValue) throws Exception {
+		// valueOf
+		String value = String.valueOf(paramValue);
+		Constructor<?> csr = Class.forName(paramType).getConstructor(String.class);
+		return csr.newInstance(value);
+	}
+	
+	protected Object getObjectInstance(String fullname, String paramType) throws Exception {
+		Object obj = objCaches.get(fullname);
+		return (obj == null) ? Class.forName(paramType).newInstance() : obj;
+	}
+	
 	/************************************************************************************
 	 * 
-	 * 
+	 *  Deprecated
 	 * 
 	 ************************************************************************************/
 	/**
@@ -137,7 +292,7 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 	 * 
 	 * 
 	 ************************************************************************************/
-	protected Stack<String> toParams(String currentParamName) {
+	protected Stack<String> initParamStack(String fullname, String ignore) {
 		/**
 		 * 使用stack的原因，是参数是由如下形式组成 setMetadata-setInitializers 首先需要先反射setMetadata
 		 * 再基于此反射化setInitializers
@@ -146,15 +301,19 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 		 */
 		Stack<String> paramStack = new Stack<String>();
 
-		String temp = currentParamName;
-		paramStack.push(temp);
-		while (temp.lastIndexOf("-") != -1) {
-			temp = temp.substring(0, temp.lastIndexOf("-"));
-			paramStack.push(temp);
+		String tfn = fullname;
+		paramStack.push(tfn);
+		while (tfn.lastIndexOf("-") != -1) {
+			tfn = tfn.substring(0, tfn.lastIndexOf("-"));
+			if (!NO_IGNORE.equals(ignore) && tfn.length() <= ignore.length()) {
+				break;
+			} 
+			paramStack.push(tfn);
 		}
 		return paramStack;
 	}
-	
+
+
 	protected String toClassName(String fullname) {
 		return fullname.indexOf("<") == -1 ? fullname
 				: fullname.substring(fullname.indexOf("<") + 1, fullname.indexOf(">"));
@@ -172,15 +331,15 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 		String classname = paramMapping.get(paramName);
 
 		if (JavaObjectRule.isList(classname)) {
-			List<Object> objects = new ArrayList<Object>();
-			generateCommonsParameter(paramName, objects);
+			List<Object> thisObject = new ArrayList<Object>();
+			generateThisParameter(paramName, thisObject);
 			if (JavaObjectRule.isStringList(classname)) {
 				List<String> list = (List<String>) allParams.get(paramName);
 				for(String value : list) {
-					objects.add(value);
+					thisObject.add(value);
 				}
 			} else {
-				generateListParameters(paramMapping, paramName, allParams, objects);
+				generateListParameters(paramMapping, paramName, allParams, thisObject);
 			}
 		} else if (JavaObjectRule.isMap(classname)) {
 			if (JavaObjectRule.isStringMap(classname)) {
@@ -189,7 +348,7 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 				generatObjectMapParameters(paramName, allParams, getClassNameForMapStyle(classname));
 			}
  		}else {
-			generateCommonsParameter(paramName, 
+			generateThisParameter(paramName, 
 					getInstance(paramName, paramMapping.get(paramName), allParams));
 		}
 
@@ -206,7 +365,7 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 			Object obj = cst.newInstance(maps.get(key));
 			objects.put(key.substring(3).toLowerCase(), obj);
 		}
-		generateCommonsParameter(paramName, objects);
+		generateThisParameter(paramName, objects);
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -216,7 +375,7 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 		for (String key : maps.keySet()) {
 			objects.put(key, maps.get(key));
 		}
-		generateCommonsParameter(paramName, objects);
+		generateThisParameter(paramName, objects);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -239,14 +398,14 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 					if(map.get(key) instanceof List) {
 						List<Object> values = (List<Object>) map.get(key);
 						if(values.size() > 0 && values.get(0) instanceof String) {
-							generateCommonsParameter(paramName + "-" + key, values);
+							generateThisParameter(paramName + "-" + key, values);
 						} else {
 							generateListParameters(paramMapping, paramName + "-" + key, tempParams, (List<Object>)map.get(key));
 						}
 					} else if (map.get(key) instanceof Map) {
 						generateStringMapParameters(paramName + "-" + key, (Map<String, Object>)map.get(key));
 					} else {
-						generateCommonsParameter(paramName + "-" + key, 
+						generateThisParameter(paramName + "-" + key, 
 												getInstance(paramName + "-" + key, 
 														map.get(key).getClass().getName(), tempParams));
 					}
@@ -259,8 +418,7 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 	}
 
 	
-	protected void generateCommonsParameter(String paramName, Object instance) throws Exception {
-		
+	protected void generateThisParameter(String paramName, Object instance) throws Exception {
 		if (ObjectUtils.isNull(instance)) {
 			return;
 		}
@@ -280,6 +438,8 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 	 * 
 	 ************************************************************************************/
 
+	
+	
 	protected Object getInstance(String paramName, String paramValue, Map<String, Object> allParams)
 			throws NoSuchMethodException, ClassNotFoundException, InstantiationException, IllegalAccessException,
 			InvocationTargetException {
@@ -316,8 +476,7 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 	}
 
 	protected Map<String, String> getModelParams(String kind) {
-		return StringUtils.isNull(kind) ? new HashMap<String, String>()
-				: KubernetesModelParametersAnalyzer.getAnalyzer().getModelParameters(kind);
+		return createParamsType(kind);
 	}
 
 	protected String getDesc(String kind) {

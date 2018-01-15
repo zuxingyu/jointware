@@ -50,6 +50,10 @@ public class JavaObjectRule {
 		return StringUtils.isNull(name) ? false : name.equals(List.class.getName() + "<" + String.class.getName() + ">");
 	}
 	
+	public static boolean isObjectMap(String name) {
+		return isMap(name) && !isStringMap(name);
+	}
+	
 	public static boolean isStringMap(String name) {
 		return StringUtils.isNull(name) ? false : name.equals(Map.class.getName() + 
 								"<" + String.class.getName() + ", " + String.class.getName() +">");
@@ -57,5 +61,9 @@ public class JavaObjectRule {
 	
 	public static boolean isList(String name) {
 		return StringUtils.isNull(name) ? false : name.startsWith(List.class.getName());
+	}
+	
+	public static boolean isObjectList(String name) {
+		return isList(name) && !isStringList(name);
 	}
 }

@@ -44,6 +44,8 @@ public abstract class ModelParamtersGenerator {
 	
 	protected Object kindModel = null;
 	
+	protected Map<String, String> paramTypes = null;
+	
 	/**
 	 * 根据 用户 需要 发布的kind（如 Deployment, StatefulSet等），以及用户指定的<key, value>对params
 	 * 向指定的Kubernetes和OpenShift进行部署
@@ -60,8 +62,9 @@ public abstract class ModelParamtersGenerator {
 			throw new Exception("neither name or namespace is null,  or the number is less than 0.");
 		}
 		
-		Createable instance = (Createable) generateKindModel(client, kind);
+		Createable instance = (Createable) getKindModel(client, kind);
 		Object param = generateParameters(params, kind);
+		System.out.println(param);
 		return instance.create(param);
 	}
 	
@@ -81,7 +84,7 @@ public abstract class ModelParamtersGenerator {
 			throw new Exception("neither name or namespace is null,  or the number is less than 0.");
 		}
 		
-		CreateOrReplaceable instance = (CreateOrReplaceable) generateKindModel(client, kind);
+		CreateOrReplaceable instance = (CreateOrReplaceable) getKindModel(client, kind);
 		Object param = generateParameters(params, kind);
 		
 		return instance.createOrReplace(param);
@@ -119,7 +122,7 @@ public abstract class ModelParamtersGenerator {
 			throw new Exception("Unsupport kind, kind should be " + workloadControllers);
 		}
 		
-		Namespaceable instance = (Namespaceable) generateKindModel(client, kind);
+		Namespaceable instance = (Namespaceable) getKindModel(client, kind);
 		return ((Scaleable)((Nameable)instance.inNamespace(namespace)).withName(name)).scale(numbers);
 	}
 	
@@ -141,7 +144,7 @@ public abstract class ModelParamtersGenerator {
 			throw new Exception("client, or kind, or name, or namespace is null.");
 		}
 		
-		Object instance = generateKindModel(client, kind);
+		Object instance = getKindModel(client, kind);
 		
 		if (instance instanceof Namespaceable) {
 			instance = ((Namespaceable)instance).inNamespace(namespace);
@@ -175,7 +178,7 @@ public abstract class ModelParamtersGenerator {
 		if (ObjectUtils.isNull(client) || StringUtils.isNull(namespace) || StringUtils.isNull(name)) {
 			throw new Exception("client, or kind, or name, or namespace is null.");
 		}
-		Object instance = generateKindModel(client, kind);
+		Object instance = getKindModel(client, kind);
 		
 		if (instance instanceof Namespaceable) {
 			instance = ((Namespaceable)instance).inNamespace(namespace);
@@ -186,16 +189,8 @@ public abstract class ModelParamtersGenerator {
 		return (boolean) ((Deletable)((Nameable)instance).withName(name)).delete();
 	}
 	
-	protected Object getKindModel(Object client, String desc) throws Exception {
-		Object obj = client;
-		for (String name : desc.split("-")) {
-			Method method = obj.getClass().getMethod(name);
-			obj = method.invoke(obj);
-		}
-		return obj;
-	}
 	
-	public abstract Object generateKindModel(Object client, String kind) throws Exception;
+	public abstract Object getKindModel(Object client, String kind) throws Exception;
 	
 	public abstract Object generateParameters(Map<String, Object> params, String kind) throws Exception;
 	

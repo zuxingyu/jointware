@@ -19,7 +19,7 @@ import com.github.isdream.cdispatcher.utils.StringUtils;
 public class OpenShiftModelParametersGenerator extends KubernetesModelParametersGenerator {
 
 	@Override
-	public Object generateKindModel(Object client, String kind) throws Exception {
+	public Object getKindModel(Object client, String kind) throws Exception {
 		String desc = OpenShiftKindsAnalyzer.getAnalyzer().getKindDesc(kind);
 		return createKindModelByDesc(client, desc);
 	}

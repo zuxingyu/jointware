@@ -55,7 +55,6 @@ public class ServiceTest extends TestCase {
 			}
 		});
 	}
-
 	
 	public void testCreateSVC() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
@@ -63,9 +62,9 @@ public class ServiceTest extends TestCase {
 		System.out.println(generator.create(client, Constants.YAML_SERVICE, params));
 	}
 	
-//	public void testDeleteNode() throws Exception {
-//		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
-//		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-//		generator.delete(client, Constants.YAML_NODE, "izm5e5tgjv84bevngsmq1az");
-//	}
+	public void testDeleteNode() throws Exception {
+		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
+		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
+		generator.delete(client, Constants.YAML_NODE, "izm5e5tgjv84bevngsmq1az");
+	}
 }
