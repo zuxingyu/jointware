@@ -4,6 +4,7 @@
 package com.github.isdream.cdispatcher;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -144,7 +145,7 @@ public class UserMapWriter {
 				// List<Object>类型
 				List<Object> list = (List<Object>) thisValue;
 				if (!list.isEmpty()) {
-					initObjectList(parent, style, indent, sb, method, list);
+					initObjectList(parent, style, indent, sb, method, list, false);
 				}
 			} else {
 				// Object类型
@@ -163,21 +164,28 @@ public class UserMapWriter {
 														+ TAG_START_HASHMAP_OBJECT).append(INDENT_NEWLINE);
 		sb.append(indent).append(TAG_LEFT_ANGLE_BRACKE).append(INDENT_NEWLINE);
 
+		
 		for (String key : map.keySet()) {
-			this.initParameters(map.get(key), DEFAULT_PARENT, STYLE_JUST_PUT, 
-											indent + INDENT_TAB + INDENT_TAB, sb);
+			List<Object> list = new ArrayList<Object>();
+			list.add(map.get(key));
+			initObjectList(key, STYLE_JUST_PUT, 
+					indent + INDENT_TAB + INDENT_TAB, sb, method, list, true);
 		}
-
+		
 		sb.append(indent).append(TAG_RIGHT_ANGLE_BRACKE).append(INDENT_NEWLINE);
 		sb.append(indent).append(TAG_END_HASHMAP).append(INDENT_NEWLINE);
 	}
-
-
-
+	
+	
 	protected void initObjectList(String parent, String style, String indent, StringBuffer sb, Method method,
-			List<Object> list) throws Exception {
-		sb.append(indent).append(getPrefix(style)).append(TAG_LEFT_BRACKET).append(getThisParam(parent, method))
+			List<Object> list, boolean direct) throws Exception {
+		if (!direct) {
+			sb.append(indent).append(getPrefix(style)).append(TAG_LEFT_BRACKET).append(getThisParam(parent, method))
 														.append(TAG_START_ARRAYLIST_OBJECT).append(INDENT_NEWLINE);
+		} else {
+			sb.append(indent).append(getPrefix(style)).append(TAG_LEFT_BRACKET).append(parent)
+														.append(TAG_START_ARRAYLIST_OBJECT).append(INDENT_NEWLINE);
+		}
 		sb.append(indent).append(TAG_LEFT_ANGLE_BRACKE).append(INDENT_NEWLINE);
 		sb.append(indent).append(TAG_ADD_HASHMAP).append(INDENT_NEWLINE);
 		sb.append(indent).append(INDENT_TAB).append(INDENT_TAB)
@@ -261,8 +269,16 @@ public class UserMapWriter {
 	 *******************************************************************/
 	
 	protected static String getThisParam(String parent, Method method) {
+		if (!method.getName().startsWith("get")) {
+			return parent;
+		}
 		return (DEFAULT_PARENT.equals(parent)) ? "set" + method.getName().substring(3)
 												: parent + "-set" + method.getName().substring(3);
+	}
+	
+	protected String getParentForMapStyle(String name) {
+		int idx = name.indexOf(".");
+		return (idx == -1) ? name : name.substring(0, idx);
 	}
 	
 
@@ -272,7 +288,10 @@ public class UserMapWriter {
 			prefix = STYLE_JUST_PUT;
 		} else if (STYLE_PARAM_PUT.equals(style)){
 			prefix = STYLE_PARAM_PUT;
-		} else {
+		}  else if (STYLE_JUST_ADD.equals(style)){
+			prefix = STYLE_JUST_ADD;
+		}
+		else {
 			throw new Exception("Unsupport type.");
 		}
 		return prefix;

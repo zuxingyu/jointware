@@ -65,6 +65,8 @@ public class Fabric8ModelParametersIgnoreRule {
 		ignores.add("getTypeName");
 		ignores.add("getTypeParameters");
 		ignores.add("getClass");
+		ignores.add("getBytes");
+		
 		
 	}
 	

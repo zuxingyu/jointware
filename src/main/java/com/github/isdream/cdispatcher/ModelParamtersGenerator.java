@@ -64,7 +64,6 @@ public abstract class ModelParamtersGenerator {
 		
 		Createable instance = (Createable) getKindModel(client, kind);
 		Object param = generateParameters(params, kind);
-		System.out.println(param);
 		return instance.create(param);
 	}
 	

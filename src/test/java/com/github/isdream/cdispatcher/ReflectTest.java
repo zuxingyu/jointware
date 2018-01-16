@@ -12,6 +12,8 @@ import java.util.Map;
 import io.fabric8.kubernetes.api.model.IntOrString;
 import io.fabric8.kubernetes.api.model.Namespace;
 import io.fabric8.kubernetes.api.model.ObjectMeta;
+import io.fabric8.kubernetes.api.model.Quantity;
+import io.fabric8.kubernetes.api.model.ResourceQuota;
 import io.fabric8.kubernetes.api.model.Service;
 import io.fabric8.kubernetes.api.model.ServicePort;
 import io.fabric8.kubernetes.client.DefaultKubernetesClient;
@@ -69,8 +71,9 @@ public class ReflectTest {
 //				System.out.println(method.getName() + ":" + method.getParameterCount() + "-" + method.getParameterTypes()[0]);
 //			}
 //		}
-//		System.out.println(kindModel.getClass().getMethod("create", new Object[] {}.getClass()));
-		System.out.println(UserMapWriterTest.write(Constants.YAML_SERVICE, "examples/constructors/service.yaml"));
+//		System.out.println(UserMapWriterTest.write(Constants.YAML_SERVICE, "examples/constructors/service.yaml"));
+		System.out.println(UserMapWriterTest.write(Constants.YAML_RESOURCEQUOTA, "examples/generators/ResourceQuota.yaml"));
+		
 	}
 	
 	public static Object getKindModel(Object client, String desc) throws Exception {
