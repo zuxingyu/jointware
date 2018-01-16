@@ -25,21 +25,19 @@
 			<groupId>io.fabric8</groupId>
 			<artifactId>kubernetes-client</artifactId>
 			<version>3.1.7</version>
-			<scope>runtime</scope>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/io.fabric8/openshift-client -->
 		<dependency>
 			<groupId>io.fabric8</groupId>
 			<artifactId>openshift-client</artifactId>
 			<version>3.1.7</version>
-			<scope>runtime</scope>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.yaml/snakeyaml -->
 		<dependency>
 			<groupId>org.yaml</groupId>
 			<artifactId>snakeyaml</artifactId>
 			<version>1.19</version>
-			<scope>runtime</scope>
+
 		</dependency>
 
 	</dependencies>
@@ -66,7 +64,7 @@
 	<scm>
 		<connection>scm:git@github.com:isdream/cluster-dispatcher.git</connection>
 		<developerConnection>scm:git@github.com:isdream/cluster-dispatcher.git</developerConnection>
-		<url>git@git@github.com:isdream/cluster-dispatcher.git</url>
+		<url>git@github.com:isdream/cluster-dispatcher.git</url>
 	</scm>
 
 	<build>
