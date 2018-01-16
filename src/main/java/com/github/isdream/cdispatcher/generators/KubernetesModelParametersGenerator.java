@@ -113,6 +113,7 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 					objCaches.remove(fullname + "-" + newKey);
 				}
 				objCaches.remove(fullname);
+				newParamValues.clear();
 			}
 		} else if (JavaObjectRule.isStringMap(typename)) {
 			thisParam = new HashMap<String, String>();

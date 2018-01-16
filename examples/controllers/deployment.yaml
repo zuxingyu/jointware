@@ -35,7 +35,7 @@ spec:
         version-id: version-id-50000019
     spec:
       containers:
-      - image: abcsys.cn:5000/docker:tomcat-centos
+      - image: dcr.io:5000/tomcat:latest
         imagePullPolicy: IfNotPresent
         name: tomcat1
         volumeMounts:
@@ -62,7 +62,7 @@ spec:
           requests:
             cpu: 400m
             memory: 512Mi
-      - image: kube-registry:5000/busybox
+      - image: dci.io:5000/busybox:latest
         command:
         - sleep
         - "3600"

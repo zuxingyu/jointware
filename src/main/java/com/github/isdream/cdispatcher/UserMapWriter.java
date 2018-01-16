@@ -5,6 +5,7 @@ package com.github.isdream.cdispatcher;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -64,6 +65,17 @@ public class UserMapWriter {
 	public final static String TAG_LEFT_ANGLE_BRACKE = "\t{";
 	
 	public final static String TAG_RIGHT_ANGLE_BRACKE = "\t}";
+	
+	public final static Map<String, String> cases = new HashMap<String, String>();
+	
+	static {
+		//setSpec-setStrategy-setRollingUpdate-setMaxSurge-setStrVal
+		//setTargetPort-setStrVal
+		//setSpec-setStrategy-setRollingUpdate-setMaxUnavailable-setStrVal
+		cases.put("setSpec-setStrategy-setRollingUpdate-setMaxSurge-setStrVal", "setSpec-setStrategy-setRollingUpdate-setMaxSurge-setIntVal");
+		cases.put("setSpec-setStrategy-setRollingUpdate-setMaxUnavailable-setStrVal", "setSpec-setStrategy-setRollingUpdate-setMaxUnavailable-setIntVal");
+		cases.put("setTargetPort-setStrVal", "setTargetPort-setIntVal");
+	}
 	
 	public String yamlToMap(Object object) throws Exception {
 		
@@ -187,19 +199,23 @@ public class UserMapWriter {
 														.append(TAG_START_ARRAYLIST_OBJECT).append(INDENT_NEWLINE);
 		}
 		sb.append(indent).append(TAG_LEFT_ANGLE_BRACKE).append(INDENT_NEWLINE);
-		sb.append(indent).append(TAG_ADD_HASHMAP).append(INDENT_NEWLINE);
-		sb.append(indent).append(INDENT_TAB).append(INDENT_TAB)
-						.append(TAG_LEFT_ANGLE_BRACKE).append(INDENT_NEWLINE);
 
 		for (Object obj : list) {
+			
+			sb.append(indent).append(TAG_ADD_HASHMAP).append(INDENT_NEWLINE);
+			sb.append(indent).append(INDENT_TAB).append(INDENT_TAB)
+							.append(TAG_LEFT_ANGLE_BRACKE).append(INDENT_NEWLINE);
+			
 			this.initParameters(obj, DEFAULT_PARENT, STYLE_JUST_PUT, 
 					indent+INDENT_TAB+INDENT_TAB+INDENT_TAB+INDENT_TAB, sb);
+			
+			sb.append(indent).append(INDENT_TAB).append(INDENT_TAB)
+						.append(TAG_RIGHT_ANGLE_BRACKE).append(INDENT_NEWLINE);
+			sb.append(indent).append(INDENT_TAB).append(INDENT_TAB)
+					.append(TAG_END_HASHMAP).append(INDENT_NEWLINE);
 		}
 		
-		sb.append(indent).append(INDENT_TAB).append(INDENT_TAB)
-						.append(TAG_RIGHT_ANGLE_BRACKE).append(INDENT_NEWLINE);
-		sb.append(indent).append(INDENT_TAB).append(INDENT_TAB)
-								.append(TAG_END_HASHMAP).append(INDENT_NEWLINE);
+		
 		
 		sb.append(indent).append(TAG_RIGHT_ANGLE_BRACKE).append(INDENT_NEWLINE);
 		sb.append(indent).append(TAG_END_ARRAYLIST).append(INDENT_NEWLINE);
@@ -244,10 +260,17 @@ public class UserMapWriter {
 			String indent, StringBuffer sb, Method method, Object thisValue) throws Exception {
 		
 		String thisParam = getThisParam(parent, method);
+		//setSpec-setStrategy-setRollingUpdate-setMaxSurge-setStrVal
+		//setTargetPort-setStrVal
+//		if (cases.keySet().contains(thisParam)) {
+//			sb.append(indent).append(getPrefix(style) + TAG_LEFT_BRACKET + cases.get(thisParam) 
+//					+ TAG_MIDDLE_BRACKET2 + thisValue + TAG_RIGHT_BRACKET2).append(INDENT_NEWLINE);
+//			return;
+//		}
 		
-		if ("setTargetPort-setStrVal".equals(thisParam)) {
-			sb.append(indent).append(getPrefix(style) + TAG_LEFT_BRACKET + "setTargetPort-setIntVal" 
-					+ TAG_MIDDLE_BRACKET2 + thisValue + TAG_RIGHT_BRACKET2).append(INDENT_NEWLINE);
+		if (thisParam.endsWith("setStrVal")) {
+			sb.append(indent).append(getPrefix(style) + TAG_LEFT_BRACKET + thisParam.substring(0, thisParam.length() - "setStrVal".length()) + "setIntVal" 
+								+ TAG_MIDDLE_BRACKET2 + thisValue + TAG_RIGHT_BRACKET2).append(INDENT_NEWLINE);
 			return;
 		}
 		

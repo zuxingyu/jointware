@@ -29,7 +29,7 @@ public class ProductionDeploymentTest extends TestCase {
 	public static Map<String, Object> params = new HashMap<String, Object>();
 
 	static {
-		params.put("setMetadata-setName", "tomcat-43-v1-4dc75");
+		params.put("setMetadata-setName", "tomcat-45-v1-4dc75");
 		params.put("setMetadata-setNamespace", "default");
 		params.put("setMetadata-setLabels", new HashMap<String, String>() {
 			{
@@ -40,8 +40,8 @@ public class ProductionDeploymentTest extends TestCase {
 		});
 		params.put("setSpec-setReplicas", 2);
 		params.put("setSpec-setStrategy-setType", "RollingUpdate");
-		params.put("setSpec-setStrategy-setRollingUpdate-setMaxSurge-setStrVal", "1");
-		params.put("setSpec-setStrategy-setRollingUpdate-setMaxUnavailable-setStrVal", "1");
+		params.put("setSpec-setStrategy-setRollingUpdate-setMaxUnavailable-setIntVal", 1);
+		params.put("setSpec-setStrategy-setRollingUpdate-setMaxSurge-setIntVal", 1);
 		params.put("setSpec-setTemplate-setMetadata-setLabels", new HashMap<String, String>() {
 			{
 				put("application-real-name", "tomcat-20180103115009290");
@@ -54,16 +54,48 @@ public class ProductionDeploymentTest extends TestCase {
 				add(new HashMap<String, Object>() {
 					{
 						put("setName", "tomcat1");
-						put("setResources-setRequests", new HashMap<String, Object>() {
-							{
-								put("setAmount", "400m");
-								put("setAmount", "512Mi");
-							}
-						});
 						put("setResources-setLimits", new HashMap<String, Object>() {
 							{
-								put("setAmount", "800m");
-								put("setAmount", "2Gi");
+								put("cpu", new ArrayList<Object>() {
+									{
+										add(new HashMap<String, Object>() {
+											{
+												put("setAmount", "800m");
+											}
+										});
+									}
+								});
+								put("memory", new ArrayList<Object>() {
+									{
+										add(new HashMap<String, Object>() {
+											{
+												put("setAmount", "2Gi");
+											}
+										});
+									}
+								});
+							}
+						});
+						put("setResources-setRequests", new HashMap<String, Object>() {
+							{
+								put("cpu", new ArrayList<Object>() {
+									{
+										add(new HashMap<String, Object>() {
+											{
+												put("setAmount", "400m");
+											}
+										});
+									}
+								});
+								put("memory", new ArrayList<Object>() {
+									{
+										add(new HashMap<String, Object>() {
+											{
+												put("setAmount", "512Mi");
+											}
+										});
+									}
+								});
 							}
 						});
 						put("setEnv", new ArrayList<Object>() {
@@ -72,14 +104,17 @@ public class ProductionDeploymentTest extends TestCase {
 									{
 										put("setName", "MESSAGE");
 										put("setValue", "“hello world”");
+									}
+								});
+								add(new HashMap<String, Object>() {
+									{
 										put("setName", "BAD");
 										put("setValue", "“bad world”");
 									}
 								});
 							}
 						});
-						put("setImage", "abcsys.cn:5000/docker:tomcat-centos");
-						put("setImagePullPolicy", "IfNotPresent");
+						put("setImage", "dcr.io:5000/tomcat:latest");
 						put("setPorts", new ArrayList<Object>() {
 							{
 								add(new HashMap<String, Object>() {
@@ -95,12 +130,21 @@ public class ProductionDeploymentTest extends TestCase {
 									{
 										put("setName", "hostpath");
 										put("setMountPath", "/opt");
+									}
+								});
+								add(new HashMap<String, Object>() {
+									{
 										put("setName", "emptydir");
 										put("setMountPath", "/etc");
 									}
 								});
 							}
 						});
+						put("setImagePullPolicy", "IfNotPresent");
+					}
+				});
+				add(new HashMap<String, Object>() {
+					{
 						put("setName", "busybox");
 						put("setCommand", new ArrayList<String>() {
 							{
@@ -108,7 +152,7 @@ public class ProductionDeploymentTest extends TestCase {
 								add("3600");
 							}
 						});
-						put("setImage", "kube-registry:5000/busybox");
+						put("setImage", "dci.io:5000/busybox:latest");
 						put("setImagePullPolicy", "IfNotPresent");
 					}
 				});
@@ -123,6 +167,10 @@ public class ProductionDeploymentTest extends TestCase {
 					{
 						put("setName", "hostpath");
 						put("setHostPath-setPath", "/opt");
+					}
+				});
+				add(new HashMap<String, Object>() {
+					{
 						put("setName", "emptydir");
 					}
 				});
@@ -145,12 +193,12 @@ public class ProductionDeploymentTest extends TestCase {
 //	public void testUpdateDeployment() throws Exception {
 //		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
 //		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-//		generator.scaleTo(client, Constants.YAML_DEPLOYMENT, "wuheng", "busybox-deployment", 1);
+//		generator.scaleTo(client, Constants.YAML_DEPLOYMENT, "default", "tomcat-45-v1-4dc75", 1);
 //	}
 //	
 //	public void testDeleteDeployment() throws Exception {
 //		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
 //		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-//		generator.delete(client, Constants.YAML_DEPLOYMENT, "wuheng", "busybox-deployment");
+//		generator.delete(client, Constants.YAML_DEPLOYMENT, "default", "tomcat-45-v1-4dc75");
 //	}
 }
