@@ -110,6 +110,8 @@ public class UserMapWriter {
 			}
 			
 			String typeName = method.getGenericReturnType().getTypeName();
+			
+			
 			if (JavaObjectRule.isPrimitive(typeName)) {
 				// 基本类型
 				if (typeName.equals("String") || typeName.equals(String.class.getName())) {
@@ -233,7 +235,15 @@ public class UserMapWriter {
 	protected void initPrimitive1(String parent, String style, 
 			String indent, StringBuffer sb, Method method, Object thisValue) throws Exception {
 		
-		sb.append(indent).append(getPrefix(style) + TAG_LEFT_BRACKET + getThisParam(parent, method) 
+		String thisParam = getThisParam(parent, method);
+		
+		if ("setTargetPort-setStrVal".equals(thisParam)) {
+			sb.append(indent).append(getPrefix(style) + TAG_LEFT_BRACKET + "setTargetPort-setIntVal" 
+					+ TAG_MIDDLE_BRACKET2 + thisValue + TAG_RIGHT_BRACKET2).append(INDENT_NEWLINE);
+			return;
+		}
+		
+		sb.append(indent).append(getPrefix(style) + TAG_LEFT_BRACKET + thisParam 
         					+ TAG_MIDDLE_BRACKET + thisValue + TAG_RIGHT_BRACKET).append(INDENT_NEWLINE);
 	}
 	

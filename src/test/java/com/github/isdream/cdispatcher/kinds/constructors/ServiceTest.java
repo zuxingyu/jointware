@@ -49,7 +49,7 @@ public class ServiceTest extends TestCase {
 					{
 						put("setPort", 8080);
 						put("setNodePort", 31234);
-						put("setTargetPort-setStrVal", "8080");
+						put("setTargetPort-setIntVal", 8080);
 					}
 				});
 			}
@@ -62,9 +62,9 @@ public class ServiceTest extends TestCase {
 		System.out.println(generator.create(client, Constants.YAML_SERVICE, params));
 	}
 	
-	public void testDeleteNode() throws Exception {
-		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
-		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-		generator.delete(client, Constants.YAML_NODE, "izm5e5tgjv84bevngsmq1az");
-	}
+//	public void testDeleteNode() throws Exception {
+//		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
+//		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
+//		generator.delete(client, Constants.YAML_NODE, "izm5e5tgjv84bevngsmq1az");
+//	}
 }
