@@ -16,7 +16,7 @@ cluster-dispatcher
 
 ### Getting Started
 
-* [Getting Started guides](http://fabric8.io/guide/getStarted.html)
+* [Getting Started guides](get-started.md)
 
 
 ### Links
