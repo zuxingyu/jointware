@@ -35,7 +35,7 @@ public class DeploymentTest extends TestCase {
 				put("app", "busybox-dm");
 			}
 		});
-		params.put("setMetadata-setNamespace", "wuheng");
+		params.put("setMetadata-setNamespace", "default");
 		params.put("setSpec-setReplicas", 2);
 		params.put("setSpec-setTemplate-setMetadata-setName", "busybox-dm");
 		params.put("setSpec-setTemplate-setMetadata-setLabels", new HashMap<String, String>() {
@@ -71,12 +71,12 @@ public class DeploymentTest extends TestCase {
 	public void testUpdateDeployment() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
 		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-		generator.scaleTo(client, Constants.YAML_DEPLOYMENT, "wuheng", "busybox-dm", 1);
+		generator.scaleTo(client, Constants.YAML_DEPLOYMENT, "default", "busybox-dm", 4);
 	}
 	
 	public void testDeleteDeployment() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
 		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-		generator.delete(client, Constants.YAML_DEPLOYMENT, "wuheng", "busybox-dm");
+		generator.delete(client, Constants.YAML_DEPLOYMENT, "default", "busybox-dm");
 	}
 }
