@@ -258,6 +258,10 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 		return thisObject;
 	}
 	
+	protected Map<String, String> getModelParams(String kind) {
+		return createParamsType(kind);
+	}
+	
 	protected Object getPrimitiveInstance(String paramName, String paramType, Object paramValue) throws Exception {
 		// valueOf
 		String value = String.valueOf(paramValue);
@@ -268,6 +272,39 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 	protected Object getObjectInstance(String fullname, String paramType) throws Exception {
 		Object obj = objCaches.get(fullname);
 		return (obj == null) ? Class.forName(paramType).newInstance() : obj;
+	}
+	
+	/**
+	 * 比如，对于
+	 * <p>
+	 * 
+	 * ```<br>
+	 * DefaultKubernetesClient client = new DefaultKubernetesClient(); <br>
+	 * client.extensions().deployments(). <br>
+	 * ``` <br>
+	 * 
+	 * 在这里，object就是client的对象，desc为extensions-deployments <br>
+	 * 
+	 * 故需要得到deployments对象，在client基础上，先要执行extension =
+	 * client.extensions()，然后是extension.deployments() <br>
+	 * 
+	 * 以下过程描述的就是该实例化过程 <br>
+	 * 
+	 * @param client
+	 * @param desc
+	 * @return
+	 * @throws NoSuchMethodException
+	 * @throws IllegalAccessException
+	 * @throws InvocationTargetException
+	 */
+	protected Object createKindModelByDesc(Object client, String desc)
+			throws Exception {
+		Object thisObject = client;
+		for (String name : desc.split("-")) {
+			Method method = thisObject.getClass().getMethod(name);
+			thisObject = method.invoke(thisObject);
+		}
+		return thisObject;
 	}
 	
 	/************************************************************************************
@@ -296,226 +333,4 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 		return paramStack;
 	}
 	
-//	/************************************************************************************
-//	 * 
-//	 *  Deprecated
-//	 * 
-//	 ************************************************************************************/
-//	/**
-//	 * 比如，对于
-//	 * <p>
-//	 * 
-//	 * ```<br>
-//	 * DefaultKubernetesClient client = new DefaultKubernetesClient(); <br>
-//	 * client.extensions().deployments(). <br>
-//	 * ``` <br>
-//	 * 
-//	 * 在这里，object就是client的对象，desc为extensions-deployments <br>
-//	 * 
-//	 * 故需要得到deployments对象，在client基础上，先要执行extension =
-//	 * client.extensions()，然后是extension.deployments() <br>
-//	 * 
-//	 * 以下过程描述的就是该实例化过程 <br>
-//	 * 
-//	 * @param client
-//	 * @param desc
-//	 * @return
-//	 * @throws NoSuchMethodException
-//	 * @throws IllegalAccessException
-//	 * @throws InvocationTargetException
-//	 */
-//	protected Object createKindModelByDesc(Object client, String desc)
-//			throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
-//		Object thisObject = client;
-//		for (String name : desc.split("-")) {
-//			Method method = thisObject.getClass().getMethod(name);
-//			thisObject = method.invoke(thisObject);
-//		}
-//		return thisObject;
-//	}
-//
-//	
-//
-//
-//	protected String toClassName(String fullname) {
-//		return fullname.indexOf("<") == -1 ? fullname
-//				: fullname.substring(fullname.indexOf("<") + 1, fullname.indexOf(">"));
-//	}
-//	
-//	/************************************************************************************
-//	 * 
-//	 * 
-//	 * 
-//	 ************************************************************************************/
-//	@SuppressWarnings("unchecked")
-//	protected void generateParameter(Map<String, String> paramMapping, String paramName, Map<String, Object> allParams)
-//			throws Exception {
-//
-//		String classname = paramMapping.get(paramName);
-//
-//		if (JavaObjectRule.isList(classname)) {
-//			List<Object> thisObject = new ArrayList<Object>();
-//			generateThisParameter(paramName, thisObject);
-//			if (JavaObjectRule.isStringList(classname)) {
-//				List<String> list = (List<String>) allParams.get(paramName);
-//				for(String value : list) {
-//					thisObject.add(value);
-//				}
-//			} else {
-//				generateListParameters(paramMapping, paramName, allParams, thisObject);
-//			}
-//		} else if (JavaObjectRule.isMap(classname)) {
-//			if (JavaObjectRule.isStringMap(classname)) {
-//				generateStringMapParameters(paramName, allParams);
-//			} else {
-//				generatObjectMapParameters(paramName, allParams, getClassNameForMapStyle(classname));
-//			}
-// 		}else {
-//			generateThisParameter(paramName, 
-//					getInstance(paramName, paramMapping.get(paramName), allParams));
-//		}
-//
-//	}
-//
-//	@SuppressWarnings("unchecked")
-//	protected void generatObjectMapParameters(String paramName, 
-//			Map<String, Object> allParams, String classname) throws Exception {
-//		Map<String, Object> objects = new HashMap<String, Object>();
-//		Map<String, String> maps = (Map<String, String>)allParams.get(paramName);
-//		for (String key : maps.keySet()) {
-//			Class<?> clazz = Class.forName(classname);
-//			Constructor<?> cst = clazz.getConstructor(String.class);
-//			Object obj = cst.newInstance(maps.get(key));
-//			objects.put(key.substring(3).toLowerCase(), obj);
-//		}
-//		generateThisParameter(paramName, objects);
-//	}
-//	
-//	@SuppressWarnings("unchecked")
-//	protected void generateStringMapParameters(String paramName, Map<String, Object> allParams) throws Exception {
-//		Map<String, String> objects = new HashMap<String, String>();
-//		Map<String, String> maps = (Map<String, String>)allParams.get(paramName);
-//		for (String key : maps.keySet()) {
-//			objects.put(key, maps.get(key));
-//		}
-//		generateThisParameter(paramName, objects);
-//	}
-//
-//	@SuppressWarnings("unchecked")
-//	protected void generateListParameters(Map<String, String> paramMapping, String paramName,
-//			Map<String, Object> allParams, List<Object> objects) throws InstantiationException, IllegalAccessException,
-//			ClassNotFoundException, Exception, NoSuchMethodException, InvocationTargetException {
-//		List<Object> list = (List<Object>) allParams.get(paramName);
-//		Map<String, Object> tempParams = new HashMap<String, Object>();
-//		for (int i = 0; i < list.size(); i++) {
-//			String className = toClassName(paramMapping.get(paramName));
-//			Object newInstance = Class.forName(className).newInstance();
-//			objCaches.put(paramName, newInstance);
-//			objects.add(newInstance);
-//			tempParams.put(paramName, newInstance);
-//			if (list.get(i) instanceof Map) {
-//				Map<String, Object> map = (Map<String, Object>) list.get(i);
-//				for (String key : map.keySet()) {
-//
-//					tempParams.put(paramName + "-" + key, map.get(key));
-//					if(map.get(key) instanceof List) {
-//						List<Object> values = (List<Object>) map.get(key);
-//						if(values.size() > 0 && values.get(0) instanceof String) {
-//							generateThisParameter(paramName + "-" + key, values);
-//						} else {
-//							generateListParameters(paramMapping, paramName + "-" + key, tempParams, (List<Object>)map.get(key));
-//						}
-//					} else if (map.get(key) instanceof Map) {
-//						generateStringMapParameters(paramName + "-" + key, (Map<String, Object>)map.get(key));
-//					} else {
-//						generateThisParameter(paramName + "-" + key, 
-//												getInstance(paramName + "-" + key, 
-//														map.get(key).getClass().getName(), tempParams));
-//					}
-//					tempParams.remove(paramName + "-" + key);
-//				}
-//				tempParams.remove(paramName);
-//				objCaches.remove(paramName);
-//			}
-//		}
-//	}
-//
-//	
-//	protected void generateThisParameter(String paramName, Object instance) throws Exception {
-//		if (ObjectUtils.isNull(instance)) {
-//			return;
-//		}
-//		
-//		int idx = paramName.lastIndexOf("-");
-//		String realParamName = (idx == -1) ? paramName : paramName.substring(idx + 1);
-//		String objectIndex = (idx == -1) ? paramName : paramName.substring(0, idx);
-//		Object thisObject = (idx == -1) ? kindModel : objCaches.get(objectIndex);
-//		Method thisMethod = getMethod(thisObject, realParamName);
-//		thisMethod.invoke(thisObject, instance);
-//	}
-//
-//
-//	/************************************************************************************
-//	 * 
-//	 * 
-//	 * 
-//	 ************************************************************************************/
-//
-//	
-//	
-//	protected Object getInstance(String paramName, String paramValue, Map<String, Object> allParams)
-//			throws NoSuchMethodException, ClassNotFoundException, InstantiationException, IllegalAccessException,
-//			InvocationTargetException {
-//		Object newInstance = null;
-//		if (JavaObjectRule.isPrimitive(paramValue)) {
-//			// valueOf
-//			String value = String.valueOf(allParams.get(paramName));
-//			Constructor<?> csr = Class.forName(paramValue).getConstructor(String.class);
-//			newInstance = csr.newInstance(value);
-//		} else {
-//			if (objCaches.containsKey(paramName)) {
-//				return null;
-//			}
-//			newInstance = Class.forName(paramValue).newInstance();
-//			objCaches.put(paramName, newInstance);
-//		}
-//		return newInstance;
-//	}
-//	
-//	protected static Method getPrimitiveMethod(Class<?> clazz, String name) {
-//
-//		if (ObjectUtils.isNull(clazz) || StringUtils.isNull(name)) {
-//			return null;
-//		}
-//
-//		for (Method method : clazz.getMethods()) {
-//			if (name.equals(method.getName()) && method.getParameterCount() == 1
-//					&& (method.getParameterTypes()[0].getName().equals("java.lang.String")
-//							|| method.getParameterTypes()[0].getName().equals("java.lang.Object"))) {
-//				return method;
-//			}
-//		}
-//		return null;
-//	}
-//
-//	protected Map<String, String> getModelParams(String kind) {
-//		return createParamsType(kind);
-//	}
-//
-//	/**
-//	 * 暂时不清楚如何反射出来的，只能暂时用最简单的遍历方法
-//	 * 
-//	 * @param kindModel
-//	 * @param name
-//	 * @return
-//	 */
-//	protected Method getMethod(Object kindModel, String name) {
-//		for (Method method : kindModel.getClass().getMethods()) {
-//			if (method.getName().equals(name)) {
-//				return method;
-//			}
-//		}
-//		return null;
-//	}
-
 }

@@ -90,11 +90,11 @@ public class ResourceQuotaTest extends TestCase {
 		
 	}
 	
-//	public void testDeleteResourceQuota() throws Exception {
-//		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
-//		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-//		generator.delete(client, Constants.YAML_RESOURCEQUOTA, "wuheng", "compute-resources");
-//		
-//	}
+	public void testDeleteResourceQuota() throws Exception {
+		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
+		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
+		generator.delete(client, Constants.YAML_RESOURCEQUOTA, "wuheng", "compute-resources");
+		
+	}
 	
 }
