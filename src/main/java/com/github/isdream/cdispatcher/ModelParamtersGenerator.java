@@ -158,7 +158,7 @@ public abstract class ModelParamtersGenerator {
 	 * @param client 客户端
 	 * @param kind 类型
 	 * @param namespace 命名空间
-	 * @param name名字
+	 * @param name 名字
 	 * @return 对象
 	 * @throws Exception 返回异常
 	 */
@@ -192,7 +192,7 @@ public abstract class ModelParamtersGenerator {
 	 * 
 	 * @param client 客户端
 	 * @param kind 类型
-	 * @param name名字
+	 * @param name 名字
 	 * @return 对象
 	 * @throws Exception 返回异常
 	 */
@@ -206,7 +206,7 @@ public abstract class ModelParamtersGenerator {
 	 * @param client 客户端
 	 * @param kind 类型
 	 * @param namespace 命名空间
-	 * @param name名字
+	 * @param name 名字
 	 * @return 对象
 	 * @throws Exception 返回异常
 	 */
@@ -230,7 +230,7 @@ public abstract class ModelParamtersGenerator {
 	/**
 	 * @param client 客户端
 	 * @param kind 类型
-	 * @return kind对应的对象实例
+	 * @return kind 对应的对象实例
 	 * @throws Exception 反射异常
 	 */
 	public abstract Object getKindModel(Object client, String kind) throws Exception;

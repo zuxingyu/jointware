@@ -63,9 +63,9 @@ public abstract class KindsAnalyzer {
 	/**
 	 * 分析出客户端(KubernetesClient，OpenShiftClient)的所有kind的类型
 	 * 
-	 * @param classname
-	 * @param parent
-	 * @throws Exception
+	 * @param classname 类名
+	 * @param parent 父节点
+	 * @throws Exception 反射异常
 	 */
 	protected void analyse(String classname, String parent) throws Exception {
 		Class<?> client = Class.forName(classname);
