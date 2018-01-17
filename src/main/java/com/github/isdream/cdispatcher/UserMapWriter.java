@@ -78,6 +78,11 @@ public class UserMapWriter {
 		cases.put("setTargetPort-setStrVal", "setTargetPort-setIntVal");
 	}
 	
+	/**
+	 * @param object YAML对象
+	 * @return Map对象
+	 * @throws Exception 反射异常
+	 */
 	public String yamlToMap(Object object) throws Exception {
 		
 		if (ObjectUtils.isNull(object)) {
@@ -97,6 +102,9 @@ public class UserMapWriter {
 	 *
 	 *******************************************************************/
 	
+	/**
+	 * @return Map的组成
+	 */
 	protected StringBuffer initInstance() {
 		StringBuffer sb = new StringBuffer();
 		return sb.append(INDENT_TAB).append(NEW_PARAMS).append(INDENT_NEWLINE);
@@ -104,6 +112,15 @@ public class UserMapWriter {
 	
 	
 	// 下一个版本再优化
+	/**
+	 * @param object 对象
+	 * @param parent 父节点
+	 * @param style 类型
+	 * @param indent 缩进
+	 * @param sb 字符集
+	 * @return Map的组成
+	 * @throws Exception 反射异常
+	 */
 	@SuppressWarnings("unchecked")
 	protected StringBuffer initParameters(Object object, 
 					String parent, String style, 
@@ -292,6 +309,11 @@ public class UserMapWriter {
 	 *
 	 *******************************************************************/
 	
+	/**
+	 * @param parent 父节点
+	 * @param method 方法名
+	 * @return 字符串
+	 */
 	protected static String getThisParam(String parent, Method method) {
 		if (!method.getName().startsWith("get")) {
 			return parent;
@@ -300,12 +322,21 @@ public class UserMapWriter {
 												: parent + "-set" + method.getName().substring(3);
 	}
 	
+	/**
+	 * @param name 名字
+	 * @return 类型
+	 */
 	protected String getParentForMapStyle(String name) {
 		int idx = name.indexOf(".");
 		return (idx == -1) ? name : name.substring(0, idx);
 	}
 	
 
+	/**
+	 * @param style 类型
+	 * @return 前缀
+	 * @throws Exception 反射异常
+	 */
 	protected String getPrefix(String style) throws Exception {
 		String prefix = null;
 		if (STYLE_JUST_PUT.equals(style)) {
@@ -327,12 +358,20 @@ public class UserMapWriter {
 	 *
 	 *******************************************************************/
 	
+	/**
+	 * @param method 方法名
+	 * @return 是否是get方法
+	 */
 	protected static boolean isGetMethod(Method method) {
 		return (method.getName().startsWith("get") 
 				&& method.getParameterCount() == 0) ? true : false;
 	}
 	
 	
+	/**
+	 * @param method 方法名
+	 * @return 是否忽略
+	 */
 	protected static boolean ignore(Method method) {
 		return Fabric8ModelParametersIgnoreRule.ignore(method.getName());
 	}

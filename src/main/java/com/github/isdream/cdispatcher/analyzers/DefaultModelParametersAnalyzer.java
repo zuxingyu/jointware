@@ -26,6 +26,9 @@ public class DefaultModelParametersAnalyzer extends ModelParametersAnalyzer {
 		return new HashMap<String, String>();
 	}
 
+	/**
+	 * @return 单例模式
+	 */
 	public static DefaultModelParametersAnalyzer getAnalyzer() {
 		if(analyzer == null) {
 			try {

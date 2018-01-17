@@ -20,6 +20,10 @@ public class ModelParamtersViewer {
 		this.models = analyzer.getModels();
 	}
 
+	/**
+	 * @param kind 类型
+	 * @return 结果
+	 */
 	public String printModel1(String kind) {
 		StringBuffer sb = new StringBuffer();
 		Map<String, String> map = models.get(kind);
@@ -29,6 +33,11 @@ public class ModelParamtersViewer {
 		}
 		return sb.toString();
 	}
+	
+	/**
+	 * @param kind 类型
+	 * @return 结果
+	 */
 	
 	public String printModel2(String kind) {
 		StringBuffer sb = new StringBuffer();

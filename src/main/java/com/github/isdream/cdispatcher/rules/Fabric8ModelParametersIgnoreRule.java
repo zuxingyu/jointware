@@ -69,6 +69,10 @@ public class Fabric8ModelParametersIgnoreRule {
 		
 	}
 	
+	/**
+	 * @param name 名字
+	 * @return 是否过滤
+	 */
 	public static boolean ignore(String name) {
 		return StringUtils.isNull(name) ? true : ignores.contains(name);
 	}

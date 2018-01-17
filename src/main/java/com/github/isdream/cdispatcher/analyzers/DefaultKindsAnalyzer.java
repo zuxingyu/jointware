@@ -44,6 +44,9 @@ public class DefaultKindsAnalyzer extends OpenShiftKindsAnalyzer {
 		return "";
 	}
 	
+	/** 
+	 * @return 单例模式
+	 */
 	public static KindsAnalyzer getAnalyzer() {
 		if(analyzer == null) {
 			try {

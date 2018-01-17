@@ -37,31 +37,59 @@ public class JavaObjectRule {
 		primitive.add("byte");
 	}
 	
+	/**
+	 * @param name 名 字
+	 * @return 是否是基本类型
+	 */
 	public static boolean isPrimitive(String name) {
 		return StringUtils.isNull(name) ? false : primitive.contains(name);
 	}
 	
+	/**
+	 * @param name 名字
+	 * @return 是否是Map
+	 */
 	public static boolean isMap(String name) {
 		return StringUtils.isNull(name) ? false : name.startsWith(Map.class.getName());
 	}
 	
+	/**
+	 * @param name 名字
+	 * @return 是否是String类型的List
+	 */
 	public static boolean isStringList(String name) {
 		return StringUtils.isNull(name) ? false : name.equals(List.class.getName() + "<" + String.class.getName() + ">");
 	}
 	
+	/**
+	 * @param name 名字
+	 * @return 是否是String，Object类型的Map
+	 */
 	public static boolean isObjectMap(String name) {
 		return isMap(name) && !isStringMap(name);
 	}
 	
+	/**
+	 * @param name 名字
+	 * @return 是否是String类型的Map
+	 */
 	public static boolean isStringMap(String name) {
 		return StringUtils.isNull(name) ? false : name.equals(Map.class.getName() + 
 								"<" + String.class.getName() + ", " + String.class.getName() +">");
 	}
 	
+	/**
+	 * @param name 名字
+	 * @return 是否是List
+	 */
 	public static boolean isList(String name) {
 		return StringUtils.isNull(name) ? false : name.startsWith(List.class.getName());
 	}
 	
+	/**
+	 * @param name 名字
+	 * @return 是否是Object类型的List
+	 */
 	public static boolean isObjectList(String name) {
 		return isList(name) && !isStringList(name);
 	}

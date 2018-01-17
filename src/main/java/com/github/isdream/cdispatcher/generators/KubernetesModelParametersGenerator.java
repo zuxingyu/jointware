@@ -59,6 +59,13 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 	}
 
 	// This is a test method
+	/**
+	 * @param paramValues 参数类型
+	 * @param km 对象
+	 * @param pt 参数数值
+	 * @return 对象
+	 * @throws Exception 反射异常
+	 */
 	public Object generateParameters(Map<String, Object> paramValues, 
 			Object km, Map<String, String> pt) throws Exception {
 		// 
@@ -167,11 +174,20 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 	 * 
 	 ************************************************************************************/
 	
+	/**
+	 * @param kind kind类型
+	 * @return kind对应的Map对象
+	 */
 	protected Map<String, String> createParamsType(String kind) {
 		return StringUtils.isNull(kind) ? new HashMap<String, String>()
 									: KubernetesModelParametersAnalyzer.getAnalyzer().getModelParameters(kind);
 	}
 
+	/**
+	 * @param paramName 参数名
+	 * @param instance 实例
+	 * @throws Exception 反射异常
+	 */
 	protected void createParamsObject(String paramName, Object instance) throws Exception {
 		int idx = paramName.lastIndexOf("-");
 		String realParamName = (idx == -1) ? paramName : paramName.substring(idx + 1);
@@ -183,6 +199,11 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 		parentMethod.invoke(parentObject, instance);
 	}
 	
+	/**
+	 * @param kind　kind类型
+	 * @return kind对应的fabric8对象
+	 * @throws Exception 反射异常
+	 */
 	protected Object createKindModel(String kind) throws Exception {
 		return Class.forName(KubernetesKindModelsAnalyzer
 				.getAnalyzer().getKindModel(kind)).newInstance();
@@ -194,10 +215,19 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 	 * 
 	 ************************************************************************************/
 	
+	/**
+	 * @param kind 类型
+	 * @return 描述
+	 */
 	protected String getDesc(String kind) {
 		return StringUtils.isNull(kind) ? "" : KubernetesKindsAnalyzer.getAnalyzer().getKindDesc(kind);
 	}
 	
+	/**
+	 * @param typename 名字
+	 * @return 对象的类
+	 * @throws Exception 反射异常
+	 */
 	protected Class<?> getParamType(String typename) throws Exception {
 		// if fullname is setMetadata-setName, paramName is setName
 		// if fullname is setMatadata paramName is setMatadata
@@ -210,6 +240,13 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 		}
 	}
 	
+	/**
+	 * @param object 对象
+	 * @param fullname 名字
+	 * @param paramType 类型
+	 * @return 方法
+	 * @throws Exception 反射异常
+	 */
 	protected Method getMethod(Object object, String fullname, Class<?> paramType) throws Exception {
 		// if fullname is setMetadata-setName, paramName is setName
 		// if fullname is setMatadata paramName is setMatadata
@@ -218,18 +255,30 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 	}
 
 
+	/**
+	 * @param fullname 名字
+	 * @return 参数名
+	 */
 	protected String getParamName(String fullname) {
 		int idx = fullname.lastIndexOf("-");
 		String paramName = (idx == -1) ? fullname : fullname.substring(idx + 1);
 		return paramName;
 	}
 	
+	/**
+	 * @param fullname 名字
+	 * @return 对象
+	 */
 	protected Object getParentObject(String fullname) {
 		String methodKey = getParentMethodKey(fullname);
 		return (methodKey.equals(fullname)) ? kindModel : objCaches.get(methodKey);
 	}
 
 
+	/**
+	 * @param fullname 名字
+	 * @return 父方法名
+	 */
 	protected String getParentMethodKey(String fullname) {
 		int idx = fullname.lastIndexOf("-");
 		String methodName = (idx == -1) ? fullname : fullname.substring(0, idx);
@@ -243,6 +292,10 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 		return kindModel.getMethod(NEW_OBJECT_METHOD, NEW_OBJECT_METHOD_PARAMS);
 	}
 	
+	/**
+	 * @param fullname 名字
+	 * @return Map中对象
+	 */
 	protected String getClassNameForMapStyle(String fullname) {
 		// Map<String, Object>，需要返回Object的类名
 		int start = fullname.indexOf(",");
@@ -250,6 +303,10 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 		return fullname.substring(start + 2, end); //<String, Object>的,后有一个空格
 	}
 	
+	/**
+	 * @param fullname 名字
+	 * @return List中对象
+	 */
 	protected String getClassNameForListStyle(String fullname) {
 		// List<Object>，需要返回Object的类名
 		int start = fullname.indexOf("<");
@@ -268,10 +325,21 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 		return thisObject;
 	}
 	
+	/**
+	 * @param kind 类型
+	 * @return 所有参数
+	 */
 	protected Map<String, String> getModelParams(String kind) {
 		return createParamsType(kind);
 	}
 	
+	/**
+	 * @param paramName 参数名
+	 * @param paramType 参数类型
+	 * @param paramValue 参数数值
+	 * @return 对象
+	 * @throws Exception 反射异常
+	 */
 	protected Object getPrimitiveInstance(String paramName, String paramType, Object paramValue) throws Exception {
 		// valueOf
 		String value = String.valueOf(paramValue);
@@ -279,6 +347,12 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 		return csr.newInstance(value);
 	}
 	
+	/**
+	 * @param fullname 名字
+	 * @param paramType 类型
+	 * @return 对象
+	 * @throws Exception 反射异常
+	 */
 	protected Object getObjectInstance(String fullname, String paramType) throws Exception {
 		Object obj = objCaches.get(fullname);
 		return (obj == null) ? Class.forName(paramType).newInstance() : obj;
@@ -300,12 +374,10 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 	 * 
 	 * 以下过程描述的就是该实例化过程 <br>
 	 * 
-	 * @param client
-	 * @param desc
-	 * @return
-	 * @throws NoSuchMethodException
-	 * @throws IllegalAccessException
-	 * @throws InvocationTargetException
+	 * @param client 客户端
+	 * @param desc 描述
+	 * @return 对象
+	 * @throws Exception 反射异常
 	 */
 	protected Object createKindModelByDesc(Object client, String desc)
 			throws Exception {
@@ -322,6 +394,11 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 	 * 
 	 * 
 	 ************************************************************************************/
+	/**
+	 * @param fullname 名字
+	 * @param ignore 是否忽略
+	 * @return 参数栈
+	 */
 	protected Stack<String> initParamStack(String fullname, String ignore) {
 		/**
 		 * 使用stack的原因，是参数是由如下形式组成 setMetadata-setInitializers 首先需要先反射setMetadata

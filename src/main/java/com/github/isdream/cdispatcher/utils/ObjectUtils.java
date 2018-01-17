@@ -13,8 +13,8 @@ public class ObjectUtils {
 	/**
 	 * 判断对象是否为空
 	 * 
-	 * @param obj
-	 * @return
+	 * @param obj 对象
+	 * @return 是否为空
 	 */
 	public static boolean isNull(Object obj) {
 		return (obj == null) ? true : false;

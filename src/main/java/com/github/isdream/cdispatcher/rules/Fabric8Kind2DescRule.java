@@ -26,10 +26,18 @@ public class Fabric8Kind2DescRule {
 		rules.put("Ingresses", "Ingress");
 	}
 	
+	/**
+	 * @param name 名字
+	 * @return 获取真实名字
+	 */
 	public static String getName(String name) {
 		return StringUtils.isNull(name) ? null : _getName(name);
 	}
 	
+	/**
+	 * @param name 名字
+	 * @return 获取真是名字
+	 */
 	public static String _getName(String name) {
 		name = name.substring(0, 1).toUpperCase() + name.substring(1);
 		return rules.get(name) != null ? rules.get(name) : 

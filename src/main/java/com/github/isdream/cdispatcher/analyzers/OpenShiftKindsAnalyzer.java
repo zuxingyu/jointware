@@ -24,6 +24,9 @@ public class OpenShiftKindsAnalyzer extends KubernetesKindsAnalyzer {
 		return Constants.CLIENT_OPENSHIFT;
 	}
 
+	/**
+	 * @return 单例模式
+	 */
 	public static KindsAnalyzer getAnalyzer() {
 		if(analyzer == null) {
 			try {

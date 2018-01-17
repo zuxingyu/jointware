@@ -22,6 +22,9 @@ public class KubernetesModelParametersAnalyzer extends ModelParametersAnalyzer {
 	}
 
 
+	/** 
+	 * @return 单例模式
+	 */
 	public static ModelParametersAnalyzer getAnalyzer() {
 		if(analyzer == null) {
 			try {

@@ -32,6 +32,10 @@ public class Fabric8Kind2ModelFilterRule {
 		filters.add(Set.class.getName());
 	}
 	
+	/**
+	 * @param name 名字
+	 * @return 是否过滤
+	 */
 	public static boolean filter(String name) {
 		return StringUtils.isNull(name) ? true : filters.contains(name);
 	}

@@ -84,7 +84,7 @@ public abstract class KindsAnalyzer {
 	 * 获取指定客户端(KubernetesClient，OpenShiftClient)的所有的kind的类型
 	 * kind比如Deployment，Pod等
 	 * 
-	 * @return
+	 * @return 获取指定客户端(KubernetesClient，OpenShiftClient)的所有的kind的类型
 	 */
 	public Set<String> getKinds() {
 		return kinds.keySet();
@@ -95,8 +95,8 @@ public abstract class KindsAnalyzer {
 	 * 比如kind是Deployment，desc是extensions-deployments
 	 * 表示可以通过client.extensions().deployments()进行实例化
 	 * 
-	 * @param kind
-	 * @return
+	 * @param kind 具体kind类型
+	 * @return 获取kind的描述，以便后续可以通过反射进行实例化
 	 */
 	public String getKindDesc(String kind) {
 		return StringUtils.isNull(kind) ? null : kinds.get(kind);
@@ -109,13 +109,35 @@ public abstract class KindsAnalyzer {
 	 * 
 	 ************************************************************************************/
 	
+	/**
+	 * 
+	 * @param method 方法名
+	 * @return 方法名对应的kind
+	 */
 	protected abstract boolean isKind(Method method);
 	
+	/**
+	 * 
+	 * @param method 方法名
+	 * @return 是不是kindGroup
+	 */
 	protected abstract boolean isKindGroup(Method method);
 	
+	/**
+	 * @param name 名字
+	 * @return 转换为kind的类型
+	 */
 	protected abstract String toKind(String name);
 	
+	/**
+	 * @param parent 父节点是什么
+	 * @param name 方法名
+	 * @return 描述
+	 */
 	protected abstract String getDesc(String parent, String name);
 	
+	/**
+	 * @return 客户端
+	 */
 	protected abstract String getClient();
 }

@@ -78,8 +78,7 @@ public abstract class KindModelsAnalyzer {
 	 * 
 	 ************************************************************************************/
 	/**
-	 * 获取所有的kind
-	 * 
+	 * @return 获取所有的kind
 	 */
 	protected abstract Set<String> getKinds();
 	
@@ -89,10 +88,17 @@ public abstract class KindModelsAnalyzer {
 	 */
 	protected abstract void initPackages();
 	
+	/**
+	 * @return 获取所有的kind对应的fabric8模型
+	 */
 	public Map<String, String> getKindModels() {
 		return models;
 	}
 	
+	/**
+	 * @param kind 具体的kind
+	 * @return 获取指定kind对应的fabric8模型
+	 */
 	public String getKindModel(String kind) {
 		return StringUtils.isNull(kind) ? null : models.get(kind);
 	}

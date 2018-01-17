@@ -28,6 +28,9 @@ public class OpenShiftKindModelsAnalyzer extends KindModelsAnalyzer {
 		this.initCommonsPackages();
 	}
 	
+	/**
+	 * @return 单例模式
+	 */
 	public static KindModelsAnalyzer getAnalyzer() {
 		if(analyzer == null) {
 			try {

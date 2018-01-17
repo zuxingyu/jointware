@@ -110,6 +110,8 @@ public abstract class ModelParametersAnalyzer {
 	 * setMetadata-setOwnerReferences=java.util.List<io.fabric8.kubernetes.api.model.OwnerReference>
 	 * 则参数的类型是io.fabric8.kubernetes.api.model.OwnerReference
 	 * 
+	 * @param method 方法名
+	 * @return 参数类型
 	 */
 	private String getParamType(Method method) {
 		String fullname = method.getGenericParameterTypes()[0].getTypeName();
@@ -134,6 +136,9 @@ public abstract class ModelParametersAnalyzer {
 	 * 对于setMetadata，则models记录的key为setMetadata
 	 * 对于setMetadata后再执行setName此类u操作，models里记录的应该是setMetadata-setName
 	 * 
+	 * @param parent 父节点
+	 * @param method 方法名
+	 * @return 得到父节点
 	 */
 	protected String getParent(String parent, Method method) {
 		return DEFAULT_PARENT.equals(parent) 
@@ -144,6 +149,8 @@ public abstract class ModelParametersAnalyzer {
 	 * 根据fabric8的代码规范，只过滤add和set开头，且只有一个参数的方法
 	 * 这些方法可以说明这个方法的反射规则
 	 * 
+	 * @param method 方法名
+	 * @return 是否可以反射
 	 */
 	protected boolean canReflect(Method method) {
 		return ObjectUtils.isNull(method) ? false 
@@ -159,6 +166,8 @@ public abstract class ModelParametersAnalyzer {
 	 * 
 	 * 如果不满足上述两个条件，则说明需要进一步进行分析
 	 * 
+	 * @param typename 类型名
+	 * @return 是否可以循环
 	 */
 	protected boolean canLoop(String typename) {
 		return !Fabric8Kind2ModelFilterRule.filter(typename) // 不是基础类型 
@@ -171,12 +180,22 @@ public abstract class ModelParametersAnalyzer {
 	 * 
 	 ************************************************************************************/
 	
+	/**
+	 * @return 获取所有kind对应的模型
+	 */
 	protected abstract Map<String, String> getKindModels();
 
+	/**
+	 * @return 获取所有模型
+	 */
 	public Map<String, Map<String, String>> getModels() {
 		return models;
 	}
 	
+	/**
+	 * @param kind kind类型
+	 * @return 获取所有模型参数
+	 */
 	public Map<String, String> getModelParameters(String kind) {
 		return StringUtils.isNull(kind) 
 				? new HashMap<String, String>() : models.get(kind);

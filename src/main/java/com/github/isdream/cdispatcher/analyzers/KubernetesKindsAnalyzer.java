@@ -83,6 +83,9 @@ public class KubernetesKindsAnalyzer extends KindsAnalyzer {
 		return Constants.CLIENT_KUBERNETES;
 	}
 
+	/**
+	 * @return 单例模式
+	 */
 	public static KindsAnalyzer getAnalyzer() {
 		if(analyzer == null) {
 			try {

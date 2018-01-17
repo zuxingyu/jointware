@@ -13,6 +13,8 @@ public class StringUtils {
 	/**
 	 * 判断对象是否为空
 	 * 
+	 * @param str 字符串
+	 * @return 是否为空
 	 */
 	public static boolean isNull(String str) {
 		return (str == null || "".equals(str)) ? true : false;

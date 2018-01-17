@@ -53,7 +53,13 @@ public abstract class ModelParamtersGenerator {
 	 * 
 	 * 如果输入参数有问题，则会返回异常，通常包括空指针异常、无该方法可反射等异常
 	 * 
-	 * 此外，该方法适用于所有的kind，详情见https://github.com/is-dream/cluster-dispatcher/blob/master/docs/yaml-kinds.md
+	 * 此外，该方法适用于所有的kind，详情见https://github.com/isdream/cluster-dispatcher/blob/master/docs/yaml-kinds.md
+	 * 
+	 * @param client 客户端
+	 * @param kind 类型
+	 * @param params 参数
+	 * @return 具体对象
+	 * @throws Exception 返回异常
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public Object create(Object client, String kind, Map<String, Object> params) throws Exception {
@@ -75,6 +81,12 @@ public abstract class ModelParamtersGenerator {
 	 * 如果输入参数有问题，则会返回异常，通常包括空指针异常、无该方法可反射等异常
 	 * 
 	 * 此外，该方法适用于所有的kind，详情见https://github.com/is-dream/cluster-dispatcher/blob/master/docs/yaml-kinds.md
+	 * 
+	 * @param client 客户端
+	 * @param kind 类型
+	 * @param params 参数
+	 * @return 具体对象
+	 * @throws Exception 返回异常
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public Object createOrReplace(Object client, String kind, Map<String, Object> params) throws Exception {
@@ -108,6 +120,13 @@ public abstract class ModelParamtersGenerator {
 	 * - StatefulSet  <br>
 	 * - DeploymentConfig  <br>
 	 * 
+	 * @param client 客户端
+	 * @param kind 类型
+	 * @param namespace 命名空间
+	 * @param name 名字
+	 * @param numbers 数量
+	 * @return 返回对象
+	 * @throws Exception 返回异常
 	 */
 	@SuppressWarnings("rawtypes")
 	public Object scaleTo(Object client, String kind, String namespace, String name, int numbers) throws Exception {
@@ -135,6 +154,13 @@ public abstract class ModelParamtersGenerator {
 	 * 返回的是指定类型的对象
 	 * 
      * 此外，该方法适用于所有的kind，详情见https://github.com/is-dream/cluster-dispatcher/blob/master/docs/yaml-kinds.md
+     * 
+	 * @param client 客户端
+	 * @param kind 类型
+	 * @param namespace 命名空间
+	 * @param name名字
+	 * @return 对象
+	 * @throws Exception 返回异常
 	 */
 	@SuppressWarnings("rawtypes")
 	public Object query(Object client, String kind, String namespace, String name) throws Exception {
@@ -163,6 +189,12 @@ public abstract class ModelParamtersGenerator {
 	
 	/**
 	 * 删除不需要namespace的资源，比如Namespace自身
+	 * 
+	 * @param client 客户端
+	 * @param kind 类型
+	 * @param name名字
+	 * @return 对象
+	 * @throws Exception 返回异常
 	 */
 	public boolean delete(Object client, String kind, String name) throws Exception {
 		return delete(client, kind, IGNORE_NAMESPACE, name);
@@ -170,6 +202,13 @@ public abstract class ModelParamtersGenerator {
 	
 	/**
 	 * 删除需要namespace的资源，比如Deployment、Job等
+	 * 
+	 * @param client 客户端
+	 * @param kind 类型
+	 * @param namespace 命名空间
+	 * @param name名字
+	 * @return 对象
+	 * @throws Exception 返回异常
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean delete(Object client, String kind, String namespace, String name) throws Exception {
@@ -188,9 +227,27 @@ public abstract class ModelParamtersGenerator {
 	}
 	
 	
+	/**
+	 * @param client 客户端
+	 * @param kind 类型
+	 * @return kind对应的对象实例
+	 * @throws Exception 反射异常
+	 */
 	public abstract Object getKindModel(Object client, String kind) throws Exception;
 	
+	/**
+	 * @param params 参数集
+	 * @param kind 类型
+	 * @return 对应的实例
+	 * @throws Exception 反射一场
+	 */
 	public abstract Object generateParameters(Map<String, Object> params, String kind) throws Exception;
 	
+	/**
+	 * @param client 客户端
+	 * @param kind 类型
+	 * @return 方法
+	 * @throws Exception 反射异常
+	 */
 	protected abstract Method getCreateMethod(Object client, String kind) throws Exception;
 }
