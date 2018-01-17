@@ -17,7 +17,7 @@ import com.github.isdream.cdispatcher.utils.StringUtils;
  * 2018年1月3日
  * 
  * 发现kind对应fabric8的对象。
- * models是由<key, value>组成的Map <br>
+ * models是由key, value组成的Map <br>
  * 
  * 比如： <br> <br>
  * 

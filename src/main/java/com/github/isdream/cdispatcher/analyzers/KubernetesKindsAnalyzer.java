@@ -36,7 +36,7 @@ public class KubernetesKindsAnalyzer extends KindsAnalyzer {
 	 * 为io.fabric8.kubernetes.client.dsl.MixedOperation， 则说明它是一种kind的类型. <br>
 	 * <br>
 	 * 
-	 * 更进一步，要求这些方法的没有参数，以及不是<code>Deprecated.class<code>的类型
+	 * 更进一步，要求这些方法的没有参数，以及不是<code>Deprecated.class</code>的类型
 	 */
 	@Override
 	protected boolean isKind(Method method) {
@@ -50,7 +50,7 @@ public class KubernetesKindsAnalyzer extends KindsAnalyzer {
 	 * 对于fabric8的DefaultKubernetesClient而言，如果返回值是以GroupDSL结尾的， 则说明它是一种kind的类型. <br>
 	 * <br>
 	 * 
-	 * 更进一步，要求这些方法不是<code>Deprecated.class<code>的类型
+	 * 更进一步，要求这些方法不是<code>Deprecated.class</code>的类型
 	 */
 	@Override
 	protected boolean isKindGroup(Method method) {
