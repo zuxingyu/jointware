@@ -11,10 +11,9 @@ import java.util.Set;
 import com.github.isdream.cdispatcher.utils.StringUtils;
 
 /**
- * @author henry
- * @email  wuheng@otcaix.iscas.ac.cn
+ * @author henry, wuheng@otcaix.iscas.ac.cn
  *
- * @date   2018年1月3日
+ * 2018年1月3日
  * 
  * 通过反射分析的方法，获取容器编排工具，如Kubernetes，OpenShift等所支持的kinds的类型 
  * kinds是由<key, value>组成的Map <br>

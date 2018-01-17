@@ -20,11 +20,6 @@ import io.fabric8.kubernetes.api.model.PodTemplateSpec;
 import io.fabric8.kubernetes.api.model.extensions.Deployment;
 import io.fabric8.kubernetes.api.model.extensions.DeploymentSpec;
 
-/**
- * @author wuheng@otcaix.iscas.ac.cn
- * @date   2018年1月16日
- *
- */
 public class PerfComparator {
 
 	public static Map<String, Object> params = new HashMap<String, Object>();

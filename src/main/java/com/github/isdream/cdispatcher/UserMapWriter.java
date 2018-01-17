@@ -15,7 +15,8 @@ import com.github.isdream.cdispatcher.utils.ObjectUtils;
 
 /**
  * @author wuheng@otcaix.iscas.ac.cn
- * @date 2018年1月12日
+ * 
+ * 2018年1月12日
  *
  */
 public class UserMapWriter {

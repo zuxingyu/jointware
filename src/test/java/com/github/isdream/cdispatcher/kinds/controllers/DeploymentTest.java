@@ -8,19 +8,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.github.isdream.cdispatcher.Constants;
-import com.github.isdream.cdispatcher.analyzers.OpenShiftModelParametersAnalyzer;
 import com.github.isdream.cdispatcher.generators.KubernetesModelParametersGenerator;
-import com.github.isdream.cdispatcher.generators.OpenShiftModelParametersGenerator;
 
 import io.fabric8.kubernetes.client.DefaultKubernetesClient;
-import io.fabric8.openshift.client.DefaultOpenShiftClient;
 import junit.framework.TestCase;
 
-/**
- * @author wuheng@otcaix.iscas.ac.cn
- * @date   2018年1月10日
- *
- */
 @SuppressWarnings("serial")
 public class DeploymentTest extends TestCase {
 
@@ -72,15 +64,15 @@ public class DeploymentTest extends TestCase {
 		
 	}
 	
-//	public void testUpdateDeployment() throws Exception {
-//		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
-//		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-//		generator.scaleTo(client, Constants.YAML_DEPLOYMENT, "default", "busybox-dm", 4);
-//	}
-//	
-//	public void testDeleteDeployment() throws Exception {
-//		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
-//		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-//		generator.delete(client, Constants.YAML_DEPLOYMENT, "default", "busybox-dm");
-//	}
+	public void testUpdateDeployment() throws Exception {
+		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
+		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
+		generator.scaleTo(client, Constants.YAML_DEPLOYMENT, "default", "busybox-dm", 4);
+	}
+	
+	public void testDeleteDeployment() throws Exception {
+		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
+		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
+		generator.delete(client, Constants.YAML_DEPLOYMENT, "default", "busybox-dm");
+	}
 }

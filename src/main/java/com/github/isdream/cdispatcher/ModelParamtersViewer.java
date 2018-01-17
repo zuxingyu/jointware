@@ -7,7 +7,8 @@ import java.util.Map;
 
 /**
  * @author wuheng@otcaix.iscas.ac.cn
- * @date   2018年1月9日
+ * 
+ * 2018年1月9日
  *
  */
 public class ModelParamtersViewer {

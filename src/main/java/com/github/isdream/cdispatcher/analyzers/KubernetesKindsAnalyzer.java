@@ -12,10 +12,9 @@ import com.github.isdream.cdispatcher.utils.ObjectUtils;
 import com.github.isdream.cdispatcher.utils.StringUtils;
 
 /**
- * @author henry
- * @email wuheng@otcaix.iscas.ac.cn
+ * @author henry, wuheng@otcaix.iscas.ac.cn
  *
- * @date 2018年1月3日
+ * 2018年1月3日
  */
 public class KubernetesKindsAnalyzer extends KindsAnalyzer {
 	

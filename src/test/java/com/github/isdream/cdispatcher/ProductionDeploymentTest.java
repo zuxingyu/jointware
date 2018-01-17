@@ -13,11 +13,6 @@ import com.github.isdream.cdispatcher.generators.KubernetesModelParametersGenera
 import io.fabric8.kubernetes.client.DefaultKubernetesClient;
 import junit.framework.TestCase;
 
-/**
- * @author wuheng@otcaix.iscas.ac.cn
- * @date   2018年1月10日
- *
- */
 @SuppressWarnings("serial")
 public class ProductionDeploymentTest extends TestCase {
 

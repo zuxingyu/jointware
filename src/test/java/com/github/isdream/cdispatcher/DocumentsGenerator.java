@@ -16,10 +16,6 @@ import com.github.isdream.cdispatcher.analyzers.OpenShiftModelParametersAnalyzer
 
 import junit.framework.TestCase;
 
-/**
- * @author Henry
- *
- */
 public class DocumentsGenerator extends TestCase {
 
 	public void testGeneratorKinds() {

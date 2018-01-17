@@ -4,11 +4,7 @@
 package com.github.isdream.cdispatcher;
 
 import java.lang.reflect.Method;
-/**
- * @author wuheng@otcaix.iscas.ac.cn
- * @date   2018年1月15日
- *
- */
+
 public class ReflectTest {
 
 	/**

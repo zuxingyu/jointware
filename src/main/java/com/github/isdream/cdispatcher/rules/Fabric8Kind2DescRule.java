@@ -9,10 +9,9 @@ import java.util.Map;
 import com.github.isdream.cdispatcher.utils.StringUtils;
 
 /**
- * @author henry
- * @email  wuheng@otcaix.iscas.ac.cn
+ * @author henry, wuheng@otcaix.iscas.ac.cn
  *
- * @date   2018年1月3日
+ * 2018年1月3日
  * 
  * 记录单词转换的规则
  */

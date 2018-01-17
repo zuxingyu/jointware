@@ -12,10 +12,9 @@ import java.util.Set;
 import com.github.isdream.cdispatcher.utils.StringUtils;
 
 /**
- * @author henry
- * @email  wuheng@otcaix.iscas.ac.cn
+ * @author henry, wuheng@otcaix.iscas.ac.cn
  *
- * @date   2018年1月3日
+ * 2018年1月3日
  * 
  * 发现kind对应fabric8的对象。
  * models是由<key, value>组成的Map <br>

@@ -8,10 +8,8 @@ import java.lang.reflect.Method;
 import com.github.isdream.cdispatcher.KindsAnalyzer;
 
 /**
- * @author henry
- * @email  wuheng@otcaix.iscas.ac.cn
- *
- * @date   2018年1月3日
+ * @author henry, wuheng@otcaix.iscas.ac.cn
+ * 2018年1月3日
  */
 public class DefaultKindsAnalyzer extends OpenShiftKindsAnalyzer {
 

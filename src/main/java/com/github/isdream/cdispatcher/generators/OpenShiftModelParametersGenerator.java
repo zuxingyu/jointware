@@ -11,10 +11,9 @@ import com.github.isdream.cdispatcher.analyzers.OpenShiftModelParametersAnalyzer
 import com.github.isdream.cdispatcher.utils.StringUtils;
 
 /**
- * @author henry
- * @email  wuheng@otcaix.iscas.ac.cn
+ * @author henry,wuheng@otcaix.iscas.ac.cn
  *
- * @date   2018年1月8日
+ * 2018年1月8日
  */
 public class OpenShiftModelParametersGenerator extends KubernetesModelParametersGenerator {
 

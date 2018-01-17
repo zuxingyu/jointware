@@ -12,11 +12,6 @@ import com.github.isdream.cdispatcher.Constants;
 import com.github.isdream.cdispatcher.UserMapWriter;
 import com.github.isdream.cdispatcher.analyzers.KubernetesKindModelsAnalyzer;
 
-/**
- * @author wuheng@otcaix.iscas.ac.cn
- * @date   2018年1月14日
- *
- */
 public class UserMapWriterTest  {
 
 	public static void main(String[] args) throws Exception {
