@@ -4,7 +4,7 @@
 
 	<groupId>com.github.isdream</groupId>
 	<artifactId>cluster-dispatcher</artifactId>
-	<version>1.2.0</version>
+	<version>1.1.0</version>
 	<packaging>jar</packaging>
 
 	<name>cluster-dispatcher</name>
@@ -74,8 +74,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.5.1</version>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>1.8</source>
+					<target>1.8</target>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -83,8 +83,20 @@
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>2.10.4</version>
 				<configuration>
+					<encoding>UTF-8</encoding>
 					<aggregate>true</aggregate>
+					<charset>UTF-8</charset>
+					<docencoding>UTF-8</docencoding>
+					<additionalparam>${javadoc.opts}</additionalparam>
 				</configuration>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
