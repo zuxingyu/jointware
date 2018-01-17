@@ -16,7 +16,7 @@ import com.github.isdream.cdispatcher.utils.StringUtils;
  * 2018年1月3日
  * 
  * 通过反射分析的方法，获取容器编排工具，如Kubernetes，OpenShift等所支持的kinds的类型 
- * kinds是由<key, value>组成的Map <br>
+ * kinds是由key, value组成的Map <br>
  * 
  * 比如： <br> <br>
  * 

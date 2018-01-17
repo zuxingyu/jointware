@@ -80,14 +80,12 @@ public abstract class KindModelsAnalyzer {
 	/**
 	 * 获取所有的kind
 	 * 
-	 * @return
 	 */
 	protected abstract Set<String> getKinds();
 	
 	/**
 	 * 在指定的Packages中查询kind对应的fabric8的model
 	 * 
-	 * @return
 	 */
 	protected abstract void initPackages();
 	

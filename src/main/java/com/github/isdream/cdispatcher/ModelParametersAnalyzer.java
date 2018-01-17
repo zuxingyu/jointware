@@ -110,9 +110,6 @@ public abstract class ModelParametersAnalyzer {
 	 * setMetadata-setOwnerReferences=java.util.List<io.fabric8.kubernetes.api.model.OwnerReference>
 	 * 则参数的类型是io.fabric8.kubernetes.api.model.OwnerReference
 	 * 
-	 * @param method
-	 * 
-	 * @return
 	 */
 	private String getParamType(Method method) {
 		String fullname = method.getGenericParameterTypes()[0].getTypeName();
@@ -127,9 +124,6 @@ public abstract class ModelParametersAnalyzer {
 	 * setMetadata=io.fabric8.kubernetes.api.model.ObjectMeta
 	 * setMetadata-setName=java.lang.String
 	 * 
-	 * @param kind
-	 * @param parent
-	 * @param method
 	 */
 	private void addToModel(String kind, String parent, Method method) {
 		Map<String, String> results = models.get(kind);
@@ -140,9 +134,6 @@ public abstract class ModelParametersAnalyzer {
 	 * 对于setMetadata，则models记录的key为setMetadata
 	 * 对于setMetadata后再执行setName此类u操作，models里记录的应该是setMetadata-setName
 	 * 
-	 * @param parent
-	 * @param method
-	 * @return
 	 */
 	protected String getParent(String parent, Method method) {
 		return DEFAULT_PARENT.equals(parent) 
@@ -153,8 +144,6 @@ public abstract class ModelParametersAnalyzer {
 	 * 根据fabric8的代码规范，只过滤add和set开头，且只有一个参数的方法
 	 * 这些方法可以说明这个方法的反射规则
 	 * 
-	 * @param method
-	 * @return
 	 */
 	protected boolean canReflect(Method method) {
 		return ObjectUtils.isNull(method) ? false 
@@ -166,12 +155,10 @@ public abstract class ModelParametersAnalyzer {
 	
 	/**
 	 * （1）不是基础类型，如int, String等
-	 * （2）也不是Map类型，因为在fabric8中，Map中只会存储String类型的<key, value>对
+	 * （2）也不是Map类型，因为在fabric8中，Map中只会存储String类型的key, value对
 	 * 
 	 * 如果不满足上述两个条件，则说明需要进一步进行分析
 	 * 
-	 * @param typename
-	 * @return
 	 */
 	protected boolean canLoop(String typename) {
 		return !Fabric8Kind2ModelFilterRule.filter(typename) // 不是基础类型 

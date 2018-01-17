@@ -46,7 +46,7 @@ public abstract class ModelParamtersGenerator {
 	protected Map<String, String> paramTypes = null;
 	
 	/**
-	 * 根据 用户 需要 发布的kind（如 Deployment, StatefulSet等），以及用户指定的<key, value>对params
+	 * 根据 用户 需要 发布的kind（如 Deployment, StatefulSet等），以及用户指定的key, value对params
 	 * 向指定的Kubernetes和OpenShift进行部署
 	 * 
 	 * 如果名字存在重名，则发布失败，
@@ -67,7 +67,7 @@ public abstract class ModelParamtersGenerator {
 	}
 	
 	/**
-	 * 根据 用户 需要 发布的kind（如 Deployment, StatefulSet等），以及用户指定的<key, value>对params
+	 * 根据 用户 需要 发布的kind（如 Deployment, StatefulSet等），以及用户指定的key, value对params
 	 * 向指定的Kubernetes和OpenShift进行部署
 	 * 
 	 * 如果名字存在重名，则会替换，不会报错。
