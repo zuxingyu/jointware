@@ -6,6 +6,7 @@ package com.github.isdream.cdispatcher.generators;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.github.isdream.cdispatcher.analyzers.OpenShiftKindModelsAnalyzer;
 import com.github.isdream.cdispatcher.analyzers.OpenShiftKindsAnalyzer;
 import com.github.isdream.cdispatcher.analyzers.OpenShiftModelParametersAnalyzer;
 import com.github.isdream.cdispatcher.utils.StringUtils;
@@ -35,5 +36,16 @@ public class OpenShiftModelParametersGenerator extends KubernetesModelParameters
 				: OpenShiftKindsAnalyzer.getAnalyzer().getKindDesc(kind);
 	}
 
+	@Override
+	protected Object createKindModel(String kind) throws Exception {
+		return Class.forName(OpenShiftKindModelsAnalyzer
+				.getAnalyzer().getKindModel(kind)).newInstance();
+	}
+
+	@Override
+	protected Map<String, String> createParamsType(String kind) {
+		return StringUtils.isNull(kind) ? new HashMap<String, String>()
+				: OpenShiftModelParametersAnalyzer.getAnalyzer().getModelParameters(kind);
+	}
 	
 }
