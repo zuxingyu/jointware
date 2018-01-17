@@ -14,7 +14,6 @@ import junit.framework.TestCase;
 
 /**
  * @author wuheng@otcaix.iscas.ac.cn
- * @date   2018年1月9日
  *
  */
 @SuppressWarnings("serial")
@@ -28,7 +27,7 @@ public class NamespaceTest extends TestCase {
 	public static Map<String, Object> createNSParams = new HashMap<String, Object>();
 
 	static {
-		createNSParams.put("setMetadata-setName", "wuheng");
+		createNSParams.put("setMetadata-setName", "test1234");
 		createNSParams.put("setMetadata-setLabels", new HashMap<String, String>() {
 			{
 				put("name", "busybox-wuheng");

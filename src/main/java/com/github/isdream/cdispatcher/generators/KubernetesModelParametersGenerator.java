@@ -59,6 +59,16 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 		return kindModel;
 	}
 
+	// This is a test method
+	public Object generateParameters(Map<String, Object> paramValues, 
+			Object km, Map<String, String> pt) throws Exception {
+		// 
+		kindModel = km;
+		paramTypes =  pt;
+		initAndGenerateParameters(paramValues, NO_IGNORE);
+		objCaches.clear();
+		return kindModel;
+	}
 
 	protected void initAndGenerateParameters(Map<String, Object> paramValues, String ignore) throws Exception {
 		for (String fullname : paramValues.keySet()) {
