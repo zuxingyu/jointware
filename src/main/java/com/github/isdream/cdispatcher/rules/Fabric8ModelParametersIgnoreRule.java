@@ -18,7 +18,6 @@ public class Fabric8ModelParametersIgnoreRule {
 	private final static Set<String> ignores = new HashSet<String>();
 	
 	static {
-		ignores.add("setStatus");
 		ignores.add("setResult");
 		ignores.add("setApiVersion");
 		ignores.add("setKind");

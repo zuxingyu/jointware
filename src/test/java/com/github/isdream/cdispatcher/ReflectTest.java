@@ -3,8 +3,6 @@
  */
 package com.github.isdream.cdispatcher;
 
-import java.lang.reflect.Method;
-
 public class ReflectTest {
 
 	/**
@@ -14,17 +12,8 @@ public class ReflectTest {
 	public static void main(String[] args) throws Exception {
 //		System.out.println(UserMapWriterTest.write(Constants.YAML_SERVICE, "examples/constructors/service.yaml"));
 //		System.out.println(UserMapWriterTest.write(Constants.YAML_RESOURCEQUOTA, "examples/generators/ResourceQuota.yaml"));
-		System.out.println(UserMapWriterTest.write(Constants.YAML_DEPLOYMENT, "examples/controllers/busybox-dm.yaml"));
-		
+//		System.out.println(UserMapWriterTest.write(Constants.YAML_DEPLOYMENT, "examples/controllers/busybox-dm.yaml"));
+		System.out.println(UserMapWriterTest.write(Constants.YAML_BUILDCONFIG, "examples/openshift/buildconfig.yaml"));
 	}
 	
-	public static Object getKindModel(Object client, String desc) throws Exception {
-		Object obj = client;
-		for (String name : desc.split("-")) {
-			Method method = obj.getClass().getMethod(name);
-			obj = method.invoke(obj);
-		}
-		return obj;
-	}
-
 }
