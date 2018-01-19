@@ -1,3 +1,15 @@
+## Prerequisite
+
+We have updated this project to MAVEN Center (Public), and you can use it by configuring your pom.xml.
+
+```
+<dependency>
+    <groupId>com.github.isdream</groupId>
+    <artifactId>cluster-dispatcher</artifactId>
+    <version>1.1.1</version>
+</dependency>
+```
+
 
 ## Prepare YAML
 
@@ -135,15 +147,3 @@ OpenShift:
 ```
 
  Please see https://github.com/isdream/cluster-dispatcher/blob/master/src/main/java/com/github/isdream/cdispatcher/ModelParamtersGenerator.java for more detail 
-
-## Coming soon
-
-We have updated this project to MAVEN Center (Public), and you can use it by configuring your pom.xml.
-
-```
-<dependency>
-    <groupId>com.github.isdream</groupId>
-    <artifactId>cluster-dispatcher</artifactId>
-    <version>1.1.1</version>
-</dependency>
-```
