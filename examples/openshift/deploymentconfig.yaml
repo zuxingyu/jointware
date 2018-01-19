@@ -1,0 +1,90 @@
+apiVersion: v1
+kind: DeploymentConfig
+metadata:
+  name: jenkins
+  namespace: jenkins
+  labels:
+    app: jenkins-ephemeral
+    template: jenkins-ephemeral-template
+spec:
+  strategy:
+    type: Recreate
+    recreateParams:
+      timeoutSeconds: 600
+    resources: {}
+  triggers:
+    - type: ImageChange
+      imageChangeParams:
+        automatic: true
+        containerNames:
+          - jenkins
+        from:
+          kind: ImageStreamTag
+          namespace: openshift
+          name: 'jenkins:latest'
+        lastTriggeredImage: 'registry.example.com:5000/openshift3/jenkins-2-rhel7@sha256:35c6d6ff8645928b10f41293c20a005cd704a0ac8222600cc069313966cf535d'
+    - type: ConfigChange
+  replicas: 1
+  test: false
+  selector:
+    name: jenkins
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        name: jenkins
+    spec:
+      volumes:
+        - name: jenkins-data
+          emptyDir: {}
+      containers:
+        - name: jenkins
+          image: 'registry.example.com:5000/openshift3/jenkins-2-rhel7@sha256:35c6d6ff8645928b10f41293c20a005cd704a0ac8222600cc069313966cf535d'
+          env:
+            - name: OPENSHIFT_ENABLE_OAUTH
+              value: 'true'
+            - name: OPENSHIFT_ENABLE_REDIRECT_PROMPT
+              value: 'true'
+            - name: KUBERNETES_MASTER
+              value: 'https://kubernetes.default:443'
+            - name: KUBERNETES_TRUST_CERTIFICATES
+              value: 'true'
+            - name: JNLP_SERVICE_NAME
+              value: jenkins-jnlp
+          resources:
+            limits:
+              memory: 512Mi
+          volumeMounts:
+            - name: jenkins-data
+              mountPath: /var/lib/jenkins
+          livenessProbe:
+            httpGet:
+              path: /login
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 420
+            timeoutSeconds: 3
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 30
+          readinessProbe:
+            httpGet:
+              path: /login
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 3
+            timeoutSeconds: 3
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          terminationMessagePath: /dev/termination-log
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            capabilities: {}
+            privileged: false
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      serviceAccountName: jenkins
+      serviceAccount: jenkins
+      securityContext: {}

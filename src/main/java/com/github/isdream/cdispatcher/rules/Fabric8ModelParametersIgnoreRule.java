@@ -27,7 +27,6 @@ public class Fabric8ModelParametersIgnoreRule {
 		ignores.add("setSelfLink");
 		ignores.add("setCreationTimestamp");
 		ignores.add("setMetadatasetClasssetModifiers");
-		
 		ignores.add("getApiVersion");
 		ignores.add("getKind");
 		
@@ -37,7 +36,6 @@ public class Fabric8ModelParametersIgnoreRule {
 		ignores.add("getComponentType");
 		ignores.add("getAnnotatedInterfaces");
 		ignores.add("getAnnotatedSuperclass");
-		ignores.add("getAnnotations");
 		ignores.add("getCanonicalName");
 		ignores.add("getClassLoader");
 		ignores.add("getClasses");
