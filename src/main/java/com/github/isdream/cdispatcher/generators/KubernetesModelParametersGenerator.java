@@ -116,8 +116,10 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 			List<Object> values = (List<Object>) paramValues.get(fullname);
 			HashMap<String, Object> newParamValues = new HashMap<String, Object>();
 			for(Object subObjValue : values) {
-				Object subObject = Class.forName(
-						getClassNameForListStyle(typename)).newInstance();
+//				Object subObject = Class.forName(
+//						getClassNameForListStyle(typename)).newInstance();
+				Object subObject = getThisObject(
+						getClassNameForListStyle(typename));
 				objCaches.put(fullname, subObject);
 				((List<Object>)thisParam).add(subObject);
 				Map<String, Object> mapValues = (Map<String, Object>) subObjValue;
@@ -141,8 +143,10 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 			thisParam = new HashMap<String, Object>();
 			Map<String, List<Object>> values = (Map<String, List<Object>>) paramValues.get(fullname);
 			for (String key : values.keySet()) {
-				Object subObject = Class.forName(
-						 getClassNameForMapStyle(typename)).newInstance();
+//				Object subObject = Class.forName(
+//						 getClassNameForMapStyle(typename)).newInstance();
+				Object subObject = getThisObject(
+						 getClassNameForMapStyle(typename));
 				((Map<String, Object>)thisParam).put(key, subObject);
 				List<Object> mapValues = (List<Object>) values.get(key);
 
@@ -150,7 +154,7 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 					Map<String, Object> map = (Map<String, Object>) obj;
 					for (String newKey : map.keySet()) {
 						Object thisParameter = getPrimitiveInstance(newKey, String.class.getName(), map.get(newKey));
-						Method thisMethod = getMethod(subObject, newKey, String.class);
+						Method thisMethod = getThisMethod(subObject, newKey, String.class);
 						thisMethod.invoke(subObject, thisParameter);
 					}
 				}
@@ -163,7 +167,7 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 			thisParam = getObjectInstance(fullname, paramTypes.get(fullname));
 		}
 		Object parentObject = getParentObject(fullname);
-		Method parentMethod = getMethod(parentObject, fullname, getParamType(typename));
+		Method parentMethod = getThisMethod(parentObject, fullname, getParamType(typename));
 		parentMethod.invoke(parentObject, thisParam);
 		objCaches.put(fullname, thisParam);
 	}
@@ -195,7 +199,7 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 		// default parent is kindModel
 		Object parentObject = (idx == -1) ? kindModel : objCaches.get(objectIndex);
 //		Method parentMethod = getMethod(parentObject, realParamName);
-		Method parentMethod = getMethod(parentObject, realParamName, instance.getClass());
+		Method parentMethod = getThisMethod(parentObject, realParamName, instance.getClass());
 		parentMethod.invoke(parentObject, instance);
 	}
 	
@@ -236,7 +240,7 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 		} else if (JavaObjectRule.isList(typename)) {
 			return List.class;
 		} else {
-			return Class.forName(typename);
+			return getThisClass(typename);
 		}
 	}
 	
@@ -247,14 +251,32 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 	 * @return 方法
 	 * @throws Exception 反射异常
 	 */
-	protected Method getMethod(Object object, String fullname, Class<?> paramType) throws Exception {
+	protected Method getThisMethod(Object object, String fullname, Class<?> paramType) throws Exception {
 		// if fullname is setMetadata-setName, paramName is setName
 		// if fullname is setMatadata paramName is setMatadata
 		String paramName = getParamName(fullname);
-		return object.getClass().getMethod(paramName, paramType);
+//		return object.getClass().getMethod(paramName, paramType);
+		return object.getClass().getDeclaredMethod(paramName, paramType);
+	}
+	
+	/**
+	 * @param name 名字
+	 * @return 对象
+	 * @throws Exception 不支持该操作
+	 */
+	protected Object getThisObject(String name) throws Exception {
+		return getThisClass(name).newInstance();
 	}
 
-
+	/**
+	 * @param name 名字
+	 * @return 对象
+	 * @throws Exception 不支持该操作
+	 */
+	protected Class<?> getThisClass(String name) throws Exception {
+		return Class.forName(name);
+	}
+	
 	/**
 	 * @param fullname 名字
 	 * @return 参数名
@@ -319,7 +341,7 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 		// client.extensions.depolyments()
 		Object thisObject = client;
 		for (String name : getDesc(kind).split("-")) {
-			Method method = thisObject.getClass().getMethod(name);
+			Method method = thisObject.getClass().getDeclaredMethod(name);
 			thisObject = method.invoke(thisObject);
 		}
 		return thisObject;
@@ -355,7 +377,8 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 	 */
 	protected Object getObjectInstance(String fullname, String paramType) throws Exception {
 		Object obj = objCaches.get(fullname);
-		return (obj == null) ? Class.forName(paramType).newInstance() : obj;
+//		return (obj == null) ? Class.forName(paramType).newInstance() : obj;
+		return (obj == null) ? getThisObject(paramType) : obj;
 	}
 	
 	/**
@@ -383,7 +406,7 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 			throws Exception {
 		Object thisObject = client;
 		for (String name : desc.split("-")) {
-			Method method = thisObject.getClass().getMethod(name);
+			Method method = thisObject.getClass().getDeclaredMethod(name);
 			thisObject = method.invoke(thisObject);
 		}
 		return thisObject;

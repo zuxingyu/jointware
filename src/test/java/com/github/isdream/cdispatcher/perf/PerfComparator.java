@@ -3,6 +3,8 @@
  */
 package com.github.isdream.cdispatcher.perf;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,6 +13,7 @@ import java.util.Map;
 import com.github.isdream.cdispatcher.Constants;
 import com.github.isdream.cdispatcher.analyzers.KubernetesKindModelsAnalyzer;
 import com.github.isdream.cdispatcher.analyzers.KubernetesModelParametersAnalyzer;
+import com.github.isdream.cdispatcher.generators.FastKubernetesModelParametersGenerator;
 import com.github.isdream.cdispatcher.generators.KubernetesModelParametersGenerator;
 
 import io.fabric8.kubernetes.api.model.Container;
@@ -114,6 +117,50 @@ public class PerfComparator {
 	 * @throws Exception 
 	 */
 	public static void main(String[] args) throws Exception {
+		
+		test1();
+//		testNewinstance();
+//		testMethod();
+	}
+
+	protected static void testMethod() throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+		Deployment d = new Deployment();
+		long start1 = System.currentTimeMillis();
+		for (int i = 0; i < 100000; i++) {
+			d.setKind("test");
+		}
+		long end1 = System.currentTimeMillis();
+		System.out.println(end1-start1);
+		
+		long start2 = System.currentTimeMillis();
+		for(int i = 0; i < 100000; i++) {
+			Method m = Deployment.class.getDeclaredMethod("setKind", String.class);
+			m.invoke(d, "test");
+		}
+		long end2 = System.currentTimeMillis();
+		System.out.println(end2-start2);
+	}
+
+	protected static void testNewinstance()
+			throws Exception {
+		
+		long start1 = System.currentTimeMillis();
+		for (int i = 0; i < 100000; i++) {
+			new Deployment();
+		}
+		long end1 = System.currentTimeMillis();
+		System.out.println(end1-start1);
+		
+		long start2 = System.currentTimeMillis();
+		for(int i = 0; i < 100000; i++) {
+			Deployment.class.newInstance();
+		}
+		long end2 = System.currentTimeMillis();
+		System.out.println(end2-start2);
+	}
+
+	protected static void test1()
+			throws InstantiationException, IllegalAccessException, ClassNotFoundException, Exception {
 		long start1 = System.currentTimeMillis();
 		for (int i = 0; i < 10000; i++) {
 			createByObject();
@@ -132,6 +179,18 @@ public class PerfComparator {
 		}
 		long end2 = System.currentTimeMillis();
 		System.out.println(end2-start2);
+		
+		FastKubernetesModelParametersGenerator fkmpg = new FastKubernetesModelParametersGenerator();
+		Object fobj = Class.forName(KubernetesKindModelsAnalyzer
+						.getAnalyzer().getKindModel(Constants.YAML_DEPLOYMENT)).newInstance();
+		Map<String, String> fpt = KubernetesModelParametersAnalyzer.getAnalyzer().getModelParameters(Constants.YAML_DEPLOYMENT);
+		
+		long start3 = System.currentTimeMillis();
+		for(int i = 0; i < 10000; i++) {
+			fkmpg.generateParameters(params, fobj, fpt);
+		}
+		long end3 = System.currentTimeMillis();
+		System.out.println(end3-start3);
 	}
 
 }
