@@ -6,7 +6,7 @@ We have updated this project to MAVEN Center (Public), and you can use it by con
 <dependency>
     <groupId>com.github.isdream</groupId>
     <artifactId>cluster-dispatcher</artifactId>
-    <version>1.1.1</version>
+    <version>1.1.2</version>
 </dependency>
 ```
 
