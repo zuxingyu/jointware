@@ -7,6 +7,8 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.github.isdream.cdispatcher.analyzers.KubernetesKindModelsAnalyzer;
+
 /**
  * @author wuheng@otcaix.iscas.ac.cn
  *
@@ -37,7 +39,14 @@ public class FastKubernetesModelParametersGenerator extends KubernetesModelParam
 			classCached.put(name, Class.forName(name));
 		}
 		return classCached.get(name);
+	}
+
+	@Override
+	protected Object createKindModel(String kind) throws Exception {
+
+		Class<?> clazz = getThisClass(KubernetesKindModelsAnalyzer
+								.getAnalyzer().getKindModel(kind));
+		return clazz.newInstance();
 	} 
-	
 	
 }
