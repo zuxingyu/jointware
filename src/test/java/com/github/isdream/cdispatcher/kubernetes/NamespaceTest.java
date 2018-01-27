@@ -1,7 +1,7 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package com.github.isdream.cdispatcher.kinds.constructors;
+package com.github.isdream.cdispatcher.kubernetes;
 
 import java.util.HashMap;
 import java.util.Map;

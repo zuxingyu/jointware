@@ -1,7 +1,7 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package com.github.isdream.cdispatcher.kinds.controllers;
+package com.github.isdream.cdispatcher.kubernetes;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,65 +14,65 @@ import io.fabric8.kubernetes.client.DefaultKubernetesClient;
 import junit.framework.TestCase;
 
 @SuppressWarnings("serial")
-public class DeploymentTest extends TestCase {
+public class StatefulSetTest extends TestCase {
 
 	/*******************************************************************************
 	 * 
 	 * Create Deployment
 	 * 
 	 ********************************************************************************/
-	public static Map<String, Object> params = new HashMap<String, Object>();
+	public static Map<String, Object> createDMParams = new HashMap<String, Object>();
 
 	static {
-		params.put("setMetadata-setName", "busybox-dm");
-		params.put("setMetadata-setLabels", new HashMap<String, String>() {
+		createDMParams.put("setMetadata-setName", "busybox-statefulset");
+		createDMParams.put("setMetadata-setNamespace", "wuheng");
+		createDMParams.put("setMetadata-setLabels", new HashMap<String, String>() {
 			{
-				put("app", "busybox-dm");
+				put("app", "busybox-statefulset");
+				put("version", "20180109");
 			}
 		});
-		params.put("setMetadata-setNamespace", "test1234");
-		params.put("setSpec-setReplicas", 2);
-		params.put("setSpec-setTemplate-setMetadata-setName", "busybox-dm");
-		params.put("setSpec-setTemplate-setMetadata-setLabels", new HashMap<String, String>() {
+		createDMParams.put("setSpec-setTemplate-setMetadata-setName", "busybox-statefulset");
+		createDMParams.put("setSpec-setTemplate-setMetadata-setLabels", new HashMap<String, String>() {
 			{
-				put("app", "busybox-dm");
+				put("app", "busybox-statefulset");
+				put("version", "20180109");
 			}
 		});
-		params.put("setSpec-setTemplate-setSpec-setContainers", new ArrayList<Object>() {
+		createDMParams.put("setSpec-setTemplate-setSpec-setContainers", new ArrayList<Object>() {
 			{
 				add(new HashMap<String, Object>() {
 					{
-						put("setName", "busybox-dm");
 						put("setImage", "dcr.io:5000/busybox:latest");
+						put("setImagePullPolicy", "IfNotPresent");
+						put("setName", "busybox-statefulset");
 						put("setCommand", new ArrayList<String>() {
 							{
 								add("sleep");
 								add("3600");
 							}
 						});
-						put("setImagePullPolicy", "IfNotPresent");
 					}
 				});
 			}
 		});
 	}
 	
-	public void testCreateDeployment() throws Exception {
+	public void testCreateStatefulSet() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
 		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-		generator.create(client, Constants.YAML_DEPLOYMENT, params);
-		
+		generator.create(client, Constants.YAML_STATEFULSET, createDMParams);
 	}
 	
-	public void testUpdateDeployment() throws Exception {
+	public void testUpdateStatefulSet() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
 		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-		generator.scaleTo(client, Constants.YAML_DEPLOYMENT, "default", "busybox-dm", 4);
+		generator.scaleTo(client, Constants.YAML_STATEFULSET, "wuheng", "busybox-statefulset", 1);
 	}
 	
-	public void testDeleteDeployment() throws Exception {
+	public void testDeleteStatefulSet() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
 		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-		generator.delete(client, Constants.YAML_DEPLOYMENT, "default", "busybox-dm");
+		generator.delete(client, Constants.YAML_STATEFULSET, "wuheng", "busybox-statefulset");
 	}
 }

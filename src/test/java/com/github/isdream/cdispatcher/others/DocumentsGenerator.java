@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.github.isdream.cdispatcher.temps;
+package com.github.isdream.cdispatcher.others;
 
 import com.github.isdream.cdispatcher.KindModelsAnalyzer;
 import com.github.isdream.cdispatcher.KindsAnalyzer;

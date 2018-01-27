@@ -1,7 +1,7 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package com.github.isdream.cdispatcher.kinds.controllers;
+package com.github.isdream.cdispatcher.kubernetes;
 
 import java.util.ArrayList;
 import java.util.HashMap;
