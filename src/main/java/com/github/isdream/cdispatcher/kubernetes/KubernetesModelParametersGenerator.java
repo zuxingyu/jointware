@@ -1,7 +1,7 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package com.github.isdream.cdispatcher.generators;
+package com.github.isdream.cdispatcher.kubernetes;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
@@ -12,11 +12,8 @@ import java.util.Map;
 import java.util.Stack;
 
 import com.github.isdream.cdispatcher.ModelParamtersGenerator;
-import com.github.isdream.cdispatcher.analyzers.KubernetesKindModelsAnalyzer;
-import com.github.isdream.cdispatcher.analyzers.KubernetesKindsAnalyzer;
-import com.github.isdream.cdispatcher.analyzers.KubernetesModelParametersAnalyzer;
-import com.github.isdream.cdispatcher.rules.JavaObjectRule;
-import com.github.isdream.cdispatcher.utils.StringUtils;
+import com.github.isdream.cdispatcher.commons.rules.JavaObjectRule;
+import com.github.isdream.cdispatcher.commons.utils.StringUtils;
 
 /**
  * @author henry,wuheng@otcaix.iscas.ac.cn

@@ -4,8 +4,8 @@
 package com.github.isdream.cdispatcher;
 
 import com.github.isdream.cdispatcher.KindModelsAnalyzer;
-import com.github.isdream.cdispatcher.analyzers.KubernetesKindModelsAnalyzer;
-import com.github.isdream.cdispatcher.analyzers.OpenShiftKindModelsAnalyzer;
+import com.github.isdream.cdispatcher.kubernetes.KubernetesKindModelsAnalyzer;
+import com.github.isdream.cdispatcher.openshift.OpenShiftKindModelsAnalyzer;
 
 import junit.framework.Assert;
 import junit.framework.TestCase;

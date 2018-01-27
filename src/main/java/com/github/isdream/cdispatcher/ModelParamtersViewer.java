@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import com.github.isdream.cdispatcher.rules.JavaObjectRule;
+import com.github.isdream.cdispatcher.commons.rules.JavaObjectRule;
 
 /**
  * @author wuheng@otcaix.iscas.ac.cn

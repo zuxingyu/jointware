@@ -1,18 +1,18 @@
 /**
  * 
  */
-package com.github.isdream.cdispatcher;
+package com.github.isdream.cdispatcher.temps;
 
 import com.github.isdream.cdispatcher.KindModelsAnalyzer;
 import com.github.isdream.cdispatcher.KindsAnalyzer;
 import com.github.isdream.cdispatcher.ModelParametersAnalyzer;
 import com.github.isdream.cdispatcher.ModelParamtersViewer;
-import com.github.isdream.cdispatcher.analyzers.KubernetesKindModelsAnalyzer;
-import com.github.isdream.cdispatcher.analyzers.KubernetesKindsAnalyzer;
-import com.github.isdream.cdispatcher.analyzers.KubernetesModelParametersAnalyzer;
-import com.github.isdream.cdispatcher.analyzers.OpenShiftKindModelsAnalyzer;
-import com.github.isdream.cdispatcher.analyzers.OpenShiftKindsAnalyzer;
-import com.github.isdream.cdispatcher.analyzers.OpenShiftModelParametersAnalyzer;
+import com.github.isdream.cdispatcher.kubernetes.KubernetesKindModelsAnalyzer;
+import com.github.isdream.cdispatcher.kubernetes.KubernetesKindsAnalyzer;
+import com.github.isdream.cdispatcher.kubernetes.KubernetesModelParametersAnalyzer;
+import com.github.isdream.cdispatcher.openshift.OpenShiftKindModelsAnalyzer;
+import com.github.isdream.cdispatcher.openshift.OpenShiftKindsAnalyzer;
+import com.github.isdream.cdispatcher.openshift.OpenShiftModelParametersAnalyzer;
 
 import junit.framework.TestCase;
 

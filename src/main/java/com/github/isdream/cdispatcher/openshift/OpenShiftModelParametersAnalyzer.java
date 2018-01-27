@@ -1,34 +1,34 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package com.github.isdream.cdispatcher.analyzers;
+package com.github.isdream.cdispatcher.openshift;
 
 import java.util.Map;
 
 import com.github.isdream.cdispatcher.ModelParametersAnalyzer;
+import com.github.isdream.cdispatcher.defaultmodle.DefaultModelParametersAnalyzer;
 
 /**
  * @author henry, wuheng@otcaix.iscas.ac.cn
  *
  * 2018年1月3日
  */
-public class KubernetesModelParametersAnalyzer extends ModelParametersAnalyzer {
+public class OpenShiftModelParametersAnalyzer extends ModelParametersAnalyzer {
 
-	private static KubernetesModelParametersAnalyzer analyzer = null;
+	private static OpenShiftModelParametersAnalyzer analyzer = null;
 	
-	protected KubernetesModelParametersAnalyzer() throws Exception {
+	protected OpenShiftModelParametersAnalyzer() throws Exception {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 
-	/** 
+	/**
 	 * @return 单例模式
 	 */
 	public static ModelParametersAnalyzer getAnalyzer() {
 		if(analyzer == null) {
 			try {
-				analyzer = new KubernetesModelParametersAnalyzer();
+				analyzer = new OpenShiftModelParametersAnalyzer();
 			} catch (Exception e) {
 				return DefaultModelParametersAnalyzer.getAnalyzer();
 			}
@@ -38,7 +38,7 @@ public class KubernetesModelParametersAnalyzer extends ModelParametersAnalyzer {
 
 	@Override
 	protected Map<String, String> getKindModels() {
-		return KubernetesKindModelsAnalyzer.getAnalyzer().getKindModels();
+		return OpenShiftKindModelsAnalyzer.getAnalyzer().getKindModels();
 	}
 
 }

@@ -1,7 +1,7 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package com.github.isdream.cdispatcher;
+package com.github.isdream.cdispatcher.temps;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -10,7 +10,7 @@ import org.yaml.snakeyaml.Yaml;
 
 import com.github.isdream.cdispatcher.Constants;
 import com.github.isdream.cdispatcher.UserMapWriter;
-import com.github.isdream.cdispatcher.analyzers.OpenShiftKindModelsAnalyzer;
+import com.github.isdream.cdispatcher.openshift.OpenShiftKindModelsAnalyzer;
 
 public class UserMapWriterTest  {
 

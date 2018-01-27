@@ -1,7 +1,7 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package com.github.isdream.cdispatcher.analyzers;
+package com.github.isdream.cdispatcher.defaultmodle;
 
 import java.util.HashMap;
 import java.util.Map;

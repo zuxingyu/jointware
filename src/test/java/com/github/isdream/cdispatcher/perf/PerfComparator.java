@@ -11,10 +11,10 @@ import java.util.List;
 import java.util.Map;
 
 import com.github.isdream.cdispatcher.Constants;
-import com.github.isdream.cdispatcher.analyzers.KubernetesKindModelsAnalyzer;
-import com.github.isdream.cdispatcher.analyzers.KubernetesModelParametersAnalyzer;
-import com.github.isdream.cdispatcher.generators.FastKubernetesModelParametersGenerator;
-import com.github.isdream.cdispatcher.generators.KubernetesModelParametersGenerator;
+import com.github.isdream.cdispatcher.kubernetes.FastKubernetesModelParametersGenerator;
+import com.github.isdream.cdispatcher.kubernetes.KubernetesKindModelsAnalyzer;
+import com.github.isdream.cdispatcher.kubernetes.KubernetesModelParametersAnalyzer;
+import com.github.isdream.cdispatcher.kubernetes.KubernetesModelParametersGenerator;
 
 import io.fabric8.kubernetes.api.model.Container;
 import io.fabric8.kubernetes.api.model.ObjectMeta;

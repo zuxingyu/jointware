@@ -9,9 +9,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.github.isdream.cdispatcher.rules.Fabric8ModelParametersIgnoreRule;
-import com.github.isdream.cdispatcher.rules.JavaObjectRule;
-import com.github.isdream.cdispatcher.utils.ObjectUtils;
+import com.github.isdream.cdispatcher.commons.rules.Fabric8ModelParametersIgnoreRule;
+import com.github.isdream.cdispatcher.commons.rules.JavaObjectRule;
+import com.github.isdream.cdispatcher.commons.utils.ObjectUtils;
 
 /**
  * @author wuheng@otcaix.iscas.ac.cn

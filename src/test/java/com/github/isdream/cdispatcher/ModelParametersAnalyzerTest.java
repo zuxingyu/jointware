@@ -5,8 +5,8 @@ package com.github.isdream.cdispatcher;
 
 import com.github.isdream.cdispatcher.ModelParametersAnalyzer;
 import com.github.isdream.cdispatcher.ModelParamtersViewer;
-import com.github.isdream.cdispatcher.analyzers.KubernetesModelParametersAnalyzer;
-import com.github.isdream.cdispatcher.analyzers.OpenShiftModelParametersAnalyzer;
+import com.github.isdream.cdispatcher.kubernetes.KubernetesModelParametersAnalyzer;
+import com.github.isdream.cdispatcher.openshift.OpenShiftModelParametersAnalyzer;
 
 import junit.framework.TestCase;
 

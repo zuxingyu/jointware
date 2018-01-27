@@ -1,12 +1,12 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package com.github.isdream.cdispatcher.rules;
+package com.github.isdream.cdispatcher.commons.rules;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import com.github.isdream.cdispatcher.utils.StringUtils;
+import com.github.isdream.cdispatcher.commons.utils.StringUtils;
 
 /**
  * @author henry, wuheng@otcaix.iscas.ac.cn

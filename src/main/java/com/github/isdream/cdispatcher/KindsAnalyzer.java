@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import com.github.isdream.cdispatcher.utils.StringUtils;
+import com.github.isdream.cdispatcher.commons.utils.StringUtils;
 
 /**
  * @author henry, wuheng@otcaix.iscas.ac.cn

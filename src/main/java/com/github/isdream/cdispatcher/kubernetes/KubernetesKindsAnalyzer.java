@@ -1,15 +1,16 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package com.github.isdream.cdispatcher.analyzers;
+package com.github.isdream.cdispatcher.kubernetes;
 
 import java.lang.reflect.Method;
 
 import com.github.isdream.cdispatcher.Constants;
 import com.github.isdream.cdispatcher.KindsAnalyzer;
-import com.github.isdream.cdispatcher.rules.Fabric8Kind2DescRule;
-import com.github.isdream.cdispatcher.utils.ObjectUtils;
-import com.github.isdream.cdispatcher.utils.StringUtils;
+import com.github.isdream.cdispatcher.commons.rules.Fabric8Kind2DescRule;
+import com.github.isdream.cdispatcher.commons.utils.ObjectUtils;
+import com.github.isdream.cdispatcher.commons.utils.StringUtils;
+import com.github.isdream.cdispatcher.defaultmodle.DefaultKindsAnalyzer;
 
 /**
  * @author henry, wuheng@otcaix.iscas.ac.cn

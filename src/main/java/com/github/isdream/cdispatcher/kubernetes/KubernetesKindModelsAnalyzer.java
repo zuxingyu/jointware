@@ -1,7 +1,7 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package com.github.isdream.cdispatcher.analyzers;
+package com.github.isdream.cdispatcher.kubernetes;
 
 import java.util.Set;
 
@@ -13,19 +13,19 @@ import com.github.isdream.cdispatcher.KindModelsAnalyzer;
  *
  * 2018年1月3日
  */
-public class OpenShiftKindModelsAnalyzer extends KindModelsAnalyzer {
+public class KubernetesKindModelsAnalyzer extends KindModelsAnalyzer {
 
-	private static OpenShiftKindModelsAnalyzer analyzer = null;
+	private static KubernetesKindModelsAnalyzer analyzer = null;
 	
 	@Override
 	protected Set<String> getKinds() {
-		return OpenShiftKindsAnalyzer.getAnalyzer().getKinds();
+		return KubernetesKindsAnalyzer.getAnalyzer().getKinds();
 	}
 
 	@Override
 	protected void initPackages() {
-		packages.add(Constants.MODEL_OPENSHIFT_PACKAHE);
-		this.initCommonsPackages();
+		packages.add(Constants.MODEL_KUBERNETES_PACKAHE);
+		initCommonsPackages();
 	}
 	
 	/**
@@ -34,8 +34,9 @@ public class OpenShiftKindModelsAnalyzer extends KindModelsAnalyzer {
 	public static KindModelsAnalyzer getAnalyzer() {
 		if(analyzer == null) {
 			try {
-				analyzer = new OpenShiftKindModelsAnalyzer();
+				analyzer = new KubernetesKindModelsAnalyzer();
 			} catch (Exception e) {
+				// ignore here
 			}
 		}
 		return analyzer;

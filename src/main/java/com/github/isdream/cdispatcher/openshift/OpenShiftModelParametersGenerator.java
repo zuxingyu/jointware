@@ -1,15 +1,13 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package com.github.isdream.cdispatcher.generators;
+package com.github.isdream.cdispatcher.openshift;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import com.github.isdream.cdispatcher.analyzers.OpenShiftKindModelsAnalyzer;
-import com.github.isdream.cdispatcher.analyzers.OpenShiftKindsAnalyzer;
-import com.github.isdream.cdispatcher.analyzers.OpenShiftModelParametersAnalyzer;
-import com.github.isdream.cdispatcher.utils.StringUtils;
+import com.github.isdream.cdispatcher.commons.utils.StringUtils;
+import com.github.isdream.cdispatcher.kubernetes.KubernetesModelParametersGenerator;
 
 /**
  * @author henry,wuheng@otcaix.iscas.ac.cn

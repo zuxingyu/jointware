@@ -1,10 +1,12 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package com.github.isdream.cdispatcher.analyzers;
+package com.github.isdream.cdispatcher.openshift;
 
 import com.github.isdream.cdispatcher.Constants;
 import com.github.isdream.cdispatcher.KindsAnalyzer;
+import com.github.isdream.cdispatcher.defaultmodle.DefaultKindsAnalyzer;
+import com.github.isdream.cdispatcher.kubernetes.KubernetesKindsAnalyzer;
 
 /**
  * @author henry, wuheng@otcaix.iscas.ac.cn

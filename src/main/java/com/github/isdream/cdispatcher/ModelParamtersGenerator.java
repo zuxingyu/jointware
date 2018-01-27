@@ -8,8 +8,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import com.github.isdream.cdispatcher.utils.ObjectUtils;
-import com.github.isdream.cdispatcher.utils.StringUtils;
+import com.github.isdream.cdispatcher.commons.utils.ObjectUtils;
+import com.github.isdream.cdispatcher.commons.utils.StringUtils;
 
 import io.fabric8.kubernetes.api.model.HasMetadata;
 import io.fabric8.kubernetes.api.model.KubernetesResourceList;

@@ -1,7 +1,7 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package com.github.isdream.cdispatcher.utils;
+package com.github.isdream.cdispatcher.commons.utils;
 
 /**
  * @author henry, wuheng@otcaix.iscas.ac.cn

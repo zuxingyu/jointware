@@ -8,10 +8,10 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import com.github.isdream.cdispatcher.rules.Fabric8Kind2ModelFilterRule;
-import com.github.isdream.cdispatcher.rules.Fabric8ModelParametersIgnoreRule;
-import com.github.isdream.cdispatcher.utils.ObjectUtils;
-import com.github.isdream.cdispatcher.utils.StringUtils;
+import com.github.isdream.cdispatcher.commons.rules.Fabric8Kind2ModelFilterRule;
+import com.github.isdream.cdispatcher.commons.rules.Fabric8ModelParametersIgnoreRule;
+import com.github.isdream.cdispatcher.commons.utils.ObjectUtils;
+import com.github.isdream.cdispatcher.commons.utils.StringUtils;
 
 /**
  * @author henry, wuheng@otcaix.iscas.ac.cn

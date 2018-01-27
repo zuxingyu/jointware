@@ -1,7 +1,9 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package com.github.isdream.cdispatcher;
+package com.github.isdream.cdispatcher.temps;
+
+import com.github.isdream.cdispatcher.Constants;
 
 public class ReflectTest {
 

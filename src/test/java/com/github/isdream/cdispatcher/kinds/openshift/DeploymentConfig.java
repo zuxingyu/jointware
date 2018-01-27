@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.github.isdream.cdispatcher.Constants;
-import com.github.isdream.cdispatcher.generators.OpenShiftModelParametersGenerator;
+import com.github.isdream.cdispatcher.openshift.OpenShiftModelParametersGenerator;
 
 import io.fabric8.kubernetes.client.Config;
 import io.fabric8.kubernetes.client.ConfigBuilder;
