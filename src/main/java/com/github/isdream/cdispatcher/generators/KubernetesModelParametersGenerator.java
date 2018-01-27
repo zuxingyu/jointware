@@ -255,7 +255,6 @@ public class KubernetesModelParametersGenerator extends ModelParamtersGenerator 
 		// if fullname is setMetadata-setName, paramName is setName
 		// if fullname is setMatadata paramName is setMatadata
 		String paramName = getParamName(fullname);
-//		return object.getClass().getMethod(paramName, paramType);
 		return object.getClass().getDeclaredMethod(paramName, paramType);
 	}
 	

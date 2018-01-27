@@ -3,7 +3,11 @@
  */
 package com.github.isdream.cdispatcher;
 
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
+
+import com.github.isdream.cdispatcher.rules.JavaObjectRule;
 
 /**
  * @author wuheng@otcaix.iscas.ac.cn
@@ -13,6 +17,9 @@ import java.util.Map;
  */
 public class ModelParamtersViewer {
 
+	
+	static Set<String> sets = new HashSet<String>();
+	
 	private Map<String, Map<String, String>> models = null;
 
 	public ModelParamtersViewer(final ModelParametersAnalyzer analyzer) {
@@ -52,6 +59,22 @@ public class ModelParamtersViewer {
 			sb.append(split[i - 1]
 						.substring(3)).append("=")
 						.append(map.get(name)).append("\n");
+		}
+		return sb.toString();
+	}
+	
+	public String printModel3(String kind) {
+		StringBuffer sb = new StringBuffer();
+		Map<String, String> map = models.get(kind);
+		for(String name : map.keySet()) {
+			String clazz = map.get(name);
+			if (JavaObjectRule.isPrimitive(clazz) || sets.contains(clazz) 
+					|| JavaObjectRule.isMap(clazz) || JavaObjectRule.isList(clazz)) {
+				continue;
+			}
+			sets.add(clazz);
+			sb.append("classCached.put(\"").append(clazz).
+							append("\", Class.forName(\"").append(clazz).append("\"));").append("\n");
 		}
 		return sb.toString();
 	}

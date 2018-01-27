@@ -23,6 +23,7 @@ import io.fabric8.kubernetes.api.model.PodTemplateSpec;
 import io.fabric8.kubernetes.api.model.extensions.Deployment;
 import io.fabric8.kubernetes.api.model.extensions.DeploymentSpec;
 
+@SuppressWarnings("serial")
 public class PerfComparator {
 
 	public static Map<String, Object> params = new HashMap<String, Object>();
@@ -168,6 +169,13 @@ public class PerfComparator {
 		long end1 = System.currentTimeMillis();
 		System.out.println(end1-start1);
 		
+//		long start4 = System.currentTimeMillis();
+//		for (int i = 0; i < 10000; i++) {
+//			createByObject();
+//		}
+//		long end4 = System.currentTimeMillis();
+//		System.out.println(end4-start4);
+//		
 //		KubernetesModelParametersGenerator kmpg = new KubernetesModelParametersGenerator();
 //		Object obj = Class.forName(KubernetesKindModelsAnalyzer
 //						.getAnalyzer().getKindModel(Constants.YAML_DEPLOYMENT)).newInstance();
@@ -191,7 +199,6 @@ public class PerfComparator {
 		}
 		long end3 = System.currentTimeMillis();
 		System.out.println(end3-start3);
-		
 		
 	}
 

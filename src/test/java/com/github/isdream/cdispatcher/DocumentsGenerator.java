@@ -118,4 +118,15 @@ public class DocumentsGenerator extends TestCase {
 			System.out.println();
 		}
 	}
+	
+	public static void main(String[] args) {
+		KindsAnalyzer ocp3KindsAnalyzer = OpenShiftKindsAnalyzer.getAnalyzer();
+		ModelParametersAnalyzer ocp3ModelParametersAnalyzer = OpenShiftModelParametersAnalyzer.getAnalyzer();
+		for (String kind : ocp3KindsAnalyzer.getKinds()) {
+			if(ocp3ModelParametersAnalyzer.getModelParameters(kind) == null) {
+				continue;
+			}
+			System.out.println(new ModelParamtersViewer(ocp3ModelParametersAnalyzer).printModel3(kind));
+		}
+	}
 }

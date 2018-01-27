@@ -12,11 +12,10 @@ import com.github.isdream.cdispatcher.analyzers.KubernetesKindModelsAnalyzer;
 /**
  * @author wuheng@otcaix.iscas.ac.cn
  *
- * 2018-1-25
  */
-public class FastKubernetesModelParametersGenerator extends KubernetesModelParametersGenerator {
+public class FastOpenShiftModelParametersGenerator extends OpenShiftModelParametersGenerator {
 
-	protected final static Map<String, Method> methodCached = new HashMap<String, Method>();
+protected final static Map<String, Method> methodCached = new HashMap<String, Method>();
 	
 	@SuppressWarnings("rawtypes")
 	protected final static Map<String, Class> classCached = new HashMap<String, Class>();
@@ -192,6 +191,7 @@ public class FastKubernetesModelParametersGenerator extends KubernetesModelParam
 		}
 	}
 	
+
 	@Override
 	protected Method getThisMethod(Object object, String fullname, Class<?> paramType) throws Exception {
 		
@@ -219,5 +219,4 @@ public class FastKubernetesModelParametersGenerator extends KubernetesModelParam
 								.getAnalyzer().getKindModel(kind));
 		return clazz.newInstance();
 	} 
-	
 }
