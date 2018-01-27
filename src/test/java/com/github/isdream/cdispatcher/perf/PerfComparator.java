@@ -189,6 +189,7 @@ public class PerfComparator {
 //		System.out.println(end2-start2);
 		
 		FastKubernetesModelParametersGenerator fkmpg = new FastKubernetesModelParametersGenerator();
+//		KubernetesModelParametersGenerator fkmpg = new KubernetesModelParametersGenerator();
 		Object fobj = Class.forName(KubernetesKindModelsAnalyzer
 						.getAnalyzer().getKindModel(Constants.YAML_DEPLOYMENT)).newInstance();
 		Map<String, String> fpt = KubernetesModelParametersAnalyzer.getAnalyzer().getModelParameters(Constants.YAML_DEPLOYMENT);
