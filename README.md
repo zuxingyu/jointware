@@ -13,6 +13,7 @@ cluster-dispatcher
 
 * <a href="http://kubernetes.io/">Kubernetes</a>
 * <a href="http://https://www.openshift.com/">OpenShift</a>
+* <a href="https://www.docker.com/">Docker/Swarm</a>
 
 ### Getting Started
 
