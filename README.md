@@ -26,6 +26,10 @@ cluster-dispatcher
 * [fabric8 model parameters for both Kubernetes and OpenShift](docs/model-parameters.md)
 * [What is the classification of all fabric8 models](docs/yaml-classification.md)
 
+### Performance
+
+* [What is the performance of Reflection-based method](docs/perf-test.md)
+
 ### Building the code
 
 Please see the [building.md](docs/building.md) file.
