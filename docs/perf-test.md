@@ -38,3 +38,4 @@ for(int i = 0; i < 10000; i++) {
 #### Results
 
 - Reflection-based method (1.2s) is 30x slower that Non-reflection method (40ms) before optimization
+- Reflection-based method (600ms-700ms) is 10x slower that Non-reflection method (40ms) after optimization
