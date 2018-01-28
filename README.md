@@ -41,9 +41,9 @@ We love [contributions](docs/contributing.md) and you are very welcome to help.
 
 ### Roadmap
 
-* [1.3.0](docs/roadmap-1.3.0.md)
-* [1.2.0](docs/roadmap-1.2.0.md)
-* [1.1.0](docs/roadmap-1.1.0.md)
+* [1.3.x](docs/roadmap-1.3.0.md)
+* [1.2.x](docs/roadmap-1.2.0.md)
+* [1.1.x](docs/roadmap-1.1.0.md)
 
 
 ### License
