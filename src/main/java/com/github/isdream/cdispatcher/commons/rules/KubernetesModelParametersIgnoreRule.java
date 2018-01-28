@@ -13,7 +13,7 @@ import com.github.isdream.cdispatcher.commons.utils.StringUtils;
  *
  * 2018年1月3日
  */
-public class Fabric8ModelParametersIgnoreRule {
+public class KubernetesModelParametersIgnoreRule {
 
 	private final static Set<String> ignores = new HashSet<String>();
 	

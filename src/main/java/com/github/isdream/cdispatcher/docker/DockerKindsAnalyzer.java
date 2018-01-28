@@ -1,7 +1,7 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package com.github.isdream.cdispatcher.kubernetes;
+package com.github.isdream.cdispatcher.docker;
 
 import java.lang.reflect.Method;
 
@@ -17,9 +17,9 @@ import com.github.isdream.cdispatcher.defaultmodle.DefaultKindsAnalyzer;
  *
  * 2018年1月3日
  */
-public class KubernetesKindsAnalyzer extends KindsAnalyzer {
+public class DockerKindsAnalyzer extends KindsAnalyzer {
 	
-	private static KubernetesKindsAnalyzer analyzer = null;
+	private static DockerKindsAnalyzer analyzer = null;
 
 	protected static final String KIND_BASIC_TAG = "io.fabric8.kubernetes.client.dsl.NonNamespaceOperation";
 
@@ -27,7 +27,7 @@ public class KubernetesKindsAnalyzer extends KindsAnalyzer {
 
 	protected static final String KIND_GROUP_TAG = "GroupDSL";
 
-	protected KubernetesKindsAnalyzer() throws Exception {
+	protected DockerKindsAnalyzer() throws Exception {
 		super();
 	}
 	
@@ -90,7 +90,7 @@ public class KubernetesKindsAnalyzer extends KindsAnalyzer {
 	public static KindsAnalyzer getAnalyzer() {
 		if(analyzer == null) {
 			try {
-				analyzer = new KubernetesKindsAnalyzer();
+				analyzer = new DockerKindsAnalyzer();
 			} catch (Exception e) {
 				return DefaultKindsAnalyzer.getAnalyzer();
 			}

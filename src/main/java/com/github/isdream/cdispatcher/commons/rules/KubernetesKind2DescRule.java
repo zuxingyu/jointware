@@ -15,7 +15,7 @@ import com.github.isdream.cdispatcher.commons.utils.StringUtils;
  * 
  * 记录单词转换的规则
  */
-public class Fabric8Kind2DescRule {
+public class KubernetesKind2DescRule {
 
     private final static Map<String, String> rules = new HashMap<String, String>();
 	

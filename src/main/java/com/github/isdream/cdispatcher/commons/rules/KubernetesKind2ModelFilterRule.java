@@ -15,7 +15,7 @@ import com.github.isdream.cdispatcher.commons.utils.StringUtils;
  *
  * 2018年1月3日
  */
-public class Fabric8Kind2ModelFilterRule {
+public class KubernetesKind2ModelFilterRule {
 
 	private final static Set<String> filters = new HashSet<String>();
 	

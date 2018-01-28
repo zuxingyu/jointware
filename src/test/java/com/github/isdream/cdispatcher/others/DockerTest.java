@@ -3,14 +3,11 @@
  */
 package com.github.isdream.cdispatcher.others;
 
-import com.github.isdream.cdispatcher.docker.models.ContainerCreateRequest;
-
-import io.fabric8.docker.api.model.Container;
-import io.fabric8.docker.api.model.Image;
-import io.fabric8.docker.client.Config;
-import io.fabric8.docker.client.ConfigBuilder;
-import io.fabric8.docker.client.DefaultDockerClient;
-import io.fabric8.docker.client.DockerClient;
+import java.lang.reflect.Method;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * @author wuheng@otcaix.iscas.ac.cn
@@ -20,47 +17,69 @@ public class DockerTest {
 
 	final static String dockerUrl = "http://118.190.46.58:12375";
 	
+	private final static Set<String> cfilters = new HashSet<String>();
+	
+	private final static Set<String> mfilters = new HashSet<String>();
+	
+	static {
+		cfilters.add(String.class.getName());
+		cfilters.add(Boolean.class.getName());
+		cfilters.add(Integer.class.getName());
+		cfilters.add(Long.class.getName());
+		cfilters.add(Double.class.getName());
+		cfilters.add(Float.class.getName());
+		cfilters.add(Byte.class.getName());
+		cfilters.add(Map.class.getName());
+		cfilters.add(List.class.getName());
+		cfilters.add(Set.class.getName());
+		cfilters.add(Void.class.getName());
+	}
+	
+	static {
+		mfilters.add("getProtectionDomain");
+		mfilters.add("getModifiers");
+		mfilters.add("getSuperclass");
+		mfilters.add("getComponentType");
+		mfilters.add("getAnnotatedInterfaces");
+		mfilters.add("getAnnotatedSuperclass");
+		mfilters.add("getCanonicalName");
+		mfilters.add("getClassLoader");
+		mfilters.add("getClasses");
+		mfilters.add("getConstructors");
+		mfilters.add("getDeclaredAnnotations");
+		mfilters.add("getDeclaredClasses");
+		mfilters.add("getDeclaredConstructors");
+		mfilters.add("getDeclaredFields");
+		mfilters.add("getDeclaredMethods");
+		mfilters.add("getDeclaringClass");
+		mfilters.add("getEnclosingClass");
+		mfilters.add("getEnclosingConstructor");
+		mfilters.add("getEnclosingMethod");
+		mfilters.add("getEnumConstants");
+		mfilters.add("getFields");
+		mfilters.add("getGenericInterfaces");
+		mfilters.add("getGenericSuperclass");
+		mfilters.add("getInterfaces");
+		mfilters.add("getMethods");
+		mfilters.add("getPackage");
+		mfilters.add("getSigners");
+		mfilters.add("getSimpleName");
+		mfilters.add("getTypeName");
+		mfilters.add("getTypeParameters");
+		mfilters.add("getClass");
+		mfilters.add("getBytes");
+		mfilters.add("wait");
+		mfilters.add("hashCode");
+		mfilters.add("notify");
+		mfilters.add("notifyAll");
+		mfilters.add("close");
+	}
+	
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		DockerClient client = getClient();
-//		createConatiner(client);
-//		listContainer(client);
-//		deleteConatiner(client);
-		listImages(client);
-//		client.image().load("");
 	}
 
-	protected static void listImages(DockerClient client) {
-		for (Image image : client.image().list().allImages()) {
-			System.out.println(image);
-		}
-	}
-	
-	protected static void deleteConatiner(DockerClient client) {
-		client.container().withName("docker-test").remove();
-	}
-
-	protected static void listContainers(DockerClient client) {
-		for (Container conatiner : client.container().list().all()) {
-			System.out.println(conatiner);
-		}
-	}
-
-	protected static void createConatiner(DockerClient client) {
-		ContainerCreateRequest c = new ContainerCreateRequest();
-		c.setName("docker-test");
-		c.setImage("dcr.io:5000/busybox:latest");
-		client.container().create(c );
-	}
-
-	protected static DockerClient getClient() {
-		Config config = new ConfigBuilder()
-	            .withDockerUrl(dockerUrl)
-	            .build();
-		DockerClient client = new DefaultDockerClient(config);
-		return client;
-	}
 
 }

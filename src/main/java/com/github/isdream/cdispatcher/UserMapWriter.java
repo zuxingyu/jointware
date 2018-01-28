@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.github.isdream.cdispatcher.commons.rules.Fabric8ModelParametersIgnoreRule;
+import com.github.isdream.cdispatcher.commons.rules.KubernetesModelParametersIgnoreRule;
 import com.github.isdream.cdispatcher.commons.rules.JavaObjectRule;
 import com.github.isdream.cdispatcher.commons.utils.ObjectUtils;
 
@@ -373,7 +373,7 @@ public class UserMapWriter {
 	 * @return 是否忽略
 	 */
 	protected static boolean ignore(Method method) {
-		return Fabric8ModelParametersIgnoreRule.ignore(method.getName());
+		return KubernetesModelParametersIgnoreRule.ignore(method.getName());
 	}
 
 }
