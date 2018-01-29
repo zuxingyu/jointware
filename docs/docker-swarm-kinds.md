@@ -1,0 +1,57 @@
+## Docker features
+
+```
+- WithDockerCmdExecFact
+- AttachContainer
+- ExecCreate
+- PauseContainer
+- PullImage
+- KillContainer
+- SaveImage
+- ListContainers
+- Version
+- CreateNetwork
+- UnpauseContainer
+- CopyFileFromContainer
+- TagImage
+- SearchImages
+- RemoveVolume
+- InspectImage
+- BuildImage
+- RemoveImage
+- InspectVolume
+- RemoveNetwork
+- PushImage
+- WaitContainer
+- AuthCon
+- CopyArchiveToContainer
+- Ping
+- Stats
+- ExecStart
+- TopContainer
+- StopContainer
+- RemoveContainer
+- ListNetworks
+- ListImages
+- ListVolumes
+- ContainerDiff
+- Events
+- Auth
+- CreateImage
+- LogContainer
+- ConnectToNetwork
+- InspectNetwork
+- DisconnectFromNetwork
+- Info
+- CopyArchiveFromContainer
+- RenameContainer
+- Commit
+- InspectExec
+- StartContainer
+- UpdateContainer
+- LoadImage
+- CreateContainer
+- InspectContainer
+- CreateVolume
+- RestartContainer
+```
