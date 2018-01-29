@@ -5,6 +5,7 @@ package com.github.isdream.cdispatcher;
 
 import com.github.isdream.cdispatcher.ModelParametersAnalyzer;
 import com.github.isdream.cdispatcher.ModelParamtersViewer;
+import com.github.isdream.cdispatcher.kubernetes.KubernetesConstants;
 import com.github.isdream.cdispatcher.kubernetes.KubernetesModelParametersAnalyzer;
 import com.github.isdream.cdispatcher.openshift.OpenShiftModelParametersAnalyzer;
 
@@ -24,6 +25,6 @@ public class ModelParametersAnalyzerTest extends TestCase {
 	
 	public void testOpenShiftAnalyzer() throws Exception {
 		ModelParametersAnalyzer analyzer = OpenShiftModelParametersAnalyzer.getAnalyzer();
-		System.out.println(new ModelParamtersViewer(analyzer).printModel2("DeploymentConfig"));
+		System.out.println(new ModelParamtersViewer(analyzer).printModel2("DeploymentConfig", KubernetesConstants.MODEL_METHOD_SET.length()));
 	}
 }

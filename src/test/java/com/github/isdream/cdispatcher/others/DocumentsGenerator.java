@@ -7,6 +7,7 @@ import com.github.isdream.cdispatcher.KindModelsAnalyzer;
 import com.github.isdream.cdispatcher.KindsAnalyzer;
 import com.github.isdream.cdispatcher.ModelParametersAnalyzer;
 import com.github.isdream.cdispatcher.ModelParamtersViewer;
+import com.github.isdream.cdispatcher.kubernetes.KubernetesConstants;
 import com.github.isdream.cdispatcher.kubernetes.KubernetesKindModelsAnalyzer;
 import com.github.isdream.cdispatcher.kubernetes.KubernetesKindsAnalyzer;
 import com.github.isdream.cdispatcher.kubernetes.KubernetesModelParametersAnalyzer;
@@ -83,7 +84,7 @@ public class DocumentsGenerator extends TestCase {
 			System.out.println("#### Kubernetes " + kind);
 			System.out.println();
 			System.out.println("```");
-			System.out.println(new ModelParamtersViewer(kubeModelParametersAnalyzer).printModel2(kind));
+			System.out.println(new ModelParamtersViewer(kubeModelParametersAnalyzer).printModel2(kind, KubernetesConstants.MODEL_METHOD_SET.length()));
 			System.out.println("```");
 			System.out.println();
 		}
@@ -105,7 +106,7 @@ public class DocumentsGenerator extends TestCase {
 			System.out.println("#### OpenShift " + kind);
 			System.out.println();
 			System.out.println("```");
-			System.out.println(new ModelParamtersViewer(ocp3ModelParametersAnalyzer).printModel2(kind));
+			System.out.println(new ModelParamtersViewer(ocp3ModelParametersAnalyzer).printModel2(kind, KubernetesConstants.MODEL_METHOD_SET.length()));
 			System.out.println("```");
 			System.out.println();
 		}

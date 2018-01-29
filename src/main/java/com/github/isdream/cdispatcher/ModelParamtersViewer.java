@@ -46,7 +46,7 @@ public class ModelParamtersViewer {
 	 * @return 结果
 	 */
 	
-	public String printModel2(String kind) {
+	public String printModel2(String kind, int size) {
 		StringBuffer sb = new StringBuffer();
 		Map<String, String> map = models.get(kind);
 		for(String name : map.keySet()) {
@@ -57,7 +57,7 @@ public class ModelParamtersViewer {
 				sb.append("  ");
 			}
 			sb.append(split[i - 1]
-						.substring(3)).append("=")
+						.substring(size)).append("=")
 						.append(map.get(name)).append("\n");
 		}
 		return sb.toString();

@@ -8,11 +8,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import com.github.isdream.cdispatcher.commons.rules.KubernetesKind2ModelFilterRule;
-import com.github.isdream.cdispatcher.commons.rules.KubernetesModelParametersIgnoreRule;
-import com.github.isdream.cdispatcher.commons.utils.ObjectUtils;
 import com.github.isdream.cdispatcher.commons.utils.StringUtils;
-import com.github.isdream.cdispatcher.kubernetes.KubernetesConstants;
 
 /**
  * @author henry, wuheng@otcaix.iscas.ac.cn
@@ -89,7 +85,7 @@ public abstract class ModelParametersAnalyzer {
 		for (String kind : kindModels.keySet()) {
 			Class<?> modelClass = Class.forName(kindModels.get(kind));
 			models.put(kind, new LinkedHashMap<String, String>());
-			this.analyse(modelClass, kindModels, kind,  DEFAULT_PARENT);
+			analyse(modelClass, kindModels, kind,  DEFAULT_PARENT);
 		}
 	}
 	
@@ -153,13 +149,7 @@ public abstract class ModelParametersAnalyzer {
 	 * @param method 方法名
 	 * @return 是否可以反射
 	 */
-	protected boolean canReflect(Method method) {
-		return ObjectUtils.isNull(method) ? false 
-				: ((method.getName().startsWith(KubernetesConstants.MODEL_METHOD_ADD) // add开头的方法 
-				|| method.getName().startsWith(KubernetesConstants.MODEL_METHOD_SET)) // set开头的方法
-				&& method.getParameterCount() == 1  //该方法只有一个参数
-				&& !KubernetesModelParametersIgnoreRule.ignore(method.getName())); //可以人工指定过滤哪些方法
-	}
+	protected abstract boolean canReflect(Method method);
 	
 	/**
 	 * （1）不是基础类型，如int, String等
@@ -170,10 +160,7 @@ public abstract class ModelParametersAnalyzer {
 	 * @param typename 类型名
 	 * @return 是否可以循环
 	 */
-	protected boolean canLoop(String typename) {
-		return !KubernetesKind2ModelFilterRule.filter(typename) // 不是基础类型 
-				&& typename.split(",").length < 2;      // 不是Map，在fabric8中，Map会通过泛型表示，如Map<String, String>，则通过,划分，长度小于2的不是Map
-	}
+	protected abstract boolean canLoop(String typename);
 	
 	/************************************************************************************
 	 * 

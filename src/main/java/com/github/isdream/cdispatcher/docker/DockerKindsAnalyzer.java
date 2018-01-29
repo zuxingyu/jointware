@@ -16,7 +16,7 @@ import com.github.isdream.cdispatcher.defaultmodle.DefaultKindsAnalyzer;
 /**
  * @author henry, wuheng@otcaix.iscas.ac.cn
  *
- * 2018年1月3日
+ * 2018年1月29日
  */
 public class DockerKindsAnalyzer extends KindsAnalyzer {
 	

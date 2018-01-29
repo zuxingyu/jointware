@@ -3,6 +3,7 @@
  */
 package com.github.isdream.cdispatcher.defaultmodle;
 
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,5 +39,17 @@ public class DefaultModelParametersAnalyzer extends ModelParametersAnalyzer {
 			}
 		}
 		return analyzer;
+	}
+
+	@Override
+	protected boolean canReflect(Method method) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	protected boolean canLoop(String typename) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

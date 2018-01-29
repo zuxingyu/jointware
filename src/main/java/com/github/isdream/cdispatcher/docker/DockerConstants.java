@@ -19,7 +19,7 @@ public class DockerConstants {
 	
 	public static final String MODEL_PACKAGE_EXTENSION = "com.github.isdream.cdispatcher.docker.adapters";
 	
-	public static final String MODEL_SET_TAG = "with";
+	public static final String MODEL_METHOD_WITH = "with";
 	
 	public final static String KIND_WITHDOCKERCMDEXECFACT = "WithDockerCmdExecFact";
 
