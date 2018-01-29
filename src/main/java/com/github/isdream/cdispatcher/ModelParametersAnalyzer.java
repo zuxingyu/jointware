@@ -12,6 +12,7 @@ import com.github.isdream.cdispatcher.commons.rules.KubernetesKind2ModelFilterRu
 import com.github.isdream.cdispatcher.commons.rules.KubernetesModelParametersIgnoreRule;
 import com.github.isdream.cdispatcher.commons.utils.ObjectUtils;
 import com.github.isdream.cdispatcher.commons.utils.StringUtils;
+import com.github.isdream.cdispatcher.kubernetes.KubernetesConstants;
 
 /**
  * @author henry, wuheng@otcaix.iscas.ac.cn
@@ -154,8 +155,8 @@ public abstract class ModelParametersAnalyzer {
 	 */
 	protected boolean canReflect(Method method) {
 		return ObjectUtils.isNull(method) ? false 
-				: ((method.getName().startsWith(Constants.MODEL_ADD_TAG) // add开头的方法 
-				|| method.getName().startsWith(Constants.MODEL_SET_TAG)) // set开头的方法
+				: ((method.getName().startsWith(KubernetesConstants.MODEL_METHOD_ADD) // add开头的方法 
+				|| method.getName().startsWith(KubernetesConstants.MODEL_METHOD_SET)) // set开头的方法
 				&& method.getParameterCount() == 1  //该方法只有一个参数
 				&& !KubernetesModelParametersIgnoreRule.ignore(method.getName())); //可以人工指定过滤哪些方法
 	}

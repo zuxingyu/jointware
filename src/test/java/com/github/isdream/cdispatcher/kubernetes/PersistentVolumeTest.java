@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.github.isdream.cdispatcher.Constants;
 import com.github.isdream.cdispatcher.kubernetes.KubernetesModelParametersGenerator;
 
 import io.fabric8.kubernetes.client.DefaultKubernetesClient;
@@ -42,19 +41,19 @@ public class PersistentVolumeTest extends TestCase {
 	public void testCreatePV() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
 		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-		System.out.println(generator.create(client, Constants.YAML_PERSISTENTVOLUME, createPVParams));
+		System.out.println(generator.create(client, KubernetesConstants.KIND_PERSISTENTVOLUME, createPVParams));
 	}
 	
 	public void testDeletePV() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
 		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-		generator.delete(client, Constants.YAML_PERSISTENTVOLUME, "pv001");
+		generator.delete(client, KubernetesConstants.KIND_PERSISTENTVOLUME, "pv001");
 	}
 	
 	public void testQueryPV() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
 		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-		System.out.println(generator.query(client, Constants.YAML_PERSISTENTVOLUME, "pv001"));
+		System.out.println(generator.query(client, KubernetesConstants.KIND_PERSISTENTVOLUME, "pv001"));
 	}
 	
 }

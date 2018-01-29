@@ -6,7 +6,6 @@ package com.github.isdream.cdispatcher.kubernetes;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.github.isdream.cdispatcher.Constants;
 import com.github.isdream.cdispatcher.kubernetes.KubernetesModelParametersGenerator;
 
 import io.fabric8.kubernetes.client.DefaultKubernetesClient;
@@ -36,7 +35,7 @@ public class NamespaceTest extends TestCase {
 	public void testCreateNamespace() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
 		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-		generator.create(client, Constants.YAML_NAMESPACE, createNSParams);
+		generator.create(client, KubernetesConstants.KIND_NAMESPACE, createNSParams);
 	}
 	
 //	public void testDeleteNamespace() throws Exception {

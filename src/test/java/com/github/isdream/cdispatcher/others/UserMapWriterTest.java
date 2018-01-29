@@ -8,8 +8,8 @@ import java.io.FileNotFoundException;
 
 import org.yaml.snakeyaml.Yaml;
 
-import com.github.isdream.cdispatcher.Constants;
 import com.github.isdream.cdispatcher.UserMapWriter;
+import com.github.isdream.cdispatcher.openshift.OpenShiftConstants;
 import com.github.isdream.cdispatcher.openshift.OpenShiftKindModelsAnalyzer;
 
 public class UserMapWriterTest  {
@@ -19,7 +19,7 @@ public class UserMapWriterTest  {
 //		System.out.println(write(Constants.YAML_PERSISTENTVOLUME, "examples/constructors/persistentvolume.yaml"));
 //		System.out.println(write(Constants.YAML_SERVICE, "examples/constructors/service.yaml"));
 //		System.out.println(write(Constants.YAML_DEPLOYMENT, "examples/controllers/deployment.yaml"));
-		System.out.println(write(Constants.YAML_BUILDCONFIG, "examples/openshift/buildconfig.yaml"));
+		System.out.println(write(OpenShiftConstants.KIND_BUILDCONFIG, "examples/openshift/buildconfig.yaml"));
 	}
 
 

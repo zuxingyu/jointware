@@ -7,10 +7,8 @@
 	<version>1.2.1</version>
 	<packaging>jar</packaging>
 
-	<description>cluster-dispatcher is an open source pod, which 
-                 is the smallest deployable units created and managed 
-                 in Kubernetes-based platform, management tools based 
-                 on key-value styles</description>
+	<description>cluster-dispatcher is an open source cloud management tools based 
+                 on key-value styles, such as Kubernetes, OpenShift, OpenStack, etc</description>
 
 	<name>cluster-dispatcher</name>
 	<url>http://maven.apache.org</url>
@@ -20,12 +18,23 @@
 	</properties>
 
 	<dependencies>
+
+		<!-- ******************************************************** -->
+		<!-- Testing framework -->
+		<!-- ******************************************************** -->
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
+
+
+		<!-- ******************************************************** -->
+		<!-- Container-based platform -->
+		<!-- ******************************************************** -->
+
 		<dependency>
 			<groupId>io.fabric8</groupId>
 			<artifactId>kubernetes-client</artifactId>
@@ -43,15 +52,35 @@
 			<artifactId>docker-java</artifactId>
 			<version>3.0.14</version>
 		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/com.aliyun/aliyun-java-sdk-cs -->
+		<dependency>
+			<groupId>com.aliyun</groupId>
+			<artifactId>aliyun-java-sdk-cs</artifactId>
+			<version>2.1.0</version>
+		</dependency>
+
+
+		<!-- ******************************************************** -->
+		<!-- VM-based platform -->
+		<!-- ******************************************************** -->
+		<!-- https://mvnrepository.com/artifact/com.aliyun/aliyun-java-sdk-ecs -->
+		<dependency>
+			<groupId>com.aliyun</groupId>
+			<artifactId>aliyun-java-sdk-ecs</artifactId>
+			<version>4.6.2</version>
+		</dependency>
+
+		<!-- ******************************************************** -->
+		<!-- YAML parser -->
+		<!-- ******************************************************** -->
 		<!-- https://mvnrepository.com/artifact/org.yaml/snakeyaml -->
 		<dependency>
 			<groupId>org.yaml</groupId>
 			<artifactId>snakeyaml</artifactId>
 			<version>1.19</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-ecs -->
-		<!-- <dependency> <groupId>com.amazonaws</groupId> <artifactId>aws-java-sdk-ecs</artifactId> 
-			<version>1.11.269</version> </dependency> -->
 	</dependencies>
 
 	<issueManagement>

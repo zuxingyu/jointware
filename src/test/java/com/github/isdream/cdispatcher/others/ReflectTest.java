@@ -3,7 +3,7 @@
  */
 package com.github.isdream.cdispatcher.others;
 
-import com.github.isdream.cdispatcher.Constants;
+import com.github.isdream.cdispatcher.openshift.OpenShiftConstants;
 
 public class ReflectTest {
 
@@ -15,7 +15,7 @@ public class ReflectTest {
 //		System.out.println(UserMapWriterTest.write(Constants.YAML_SERVICE, "examples/constructors/service.yaml"));
 //		System.out.println(UserMapWriterTest.write(Constants.YAML_RESOURCEQUOTA, "examples/generators/ResourceQuota.yaml"));
 //		System.out.println(UserMapWriterTest.write(Constants.YAML_DEPLOYMENT, "examples/controllers/busybox-dm.yaml"));
-		System.out.println(UserMapWriterTest.write(Constants.YAML_BUILDCONFIG, "examples/openshift/buildconfig.yaml"));
+		System.out.println(UserMapWriterTest.write(OpenShiftConstants.KIND_BUILDCONFIG, "examples/openshift/buildconfig.yaml"));
 	}
 	
 }

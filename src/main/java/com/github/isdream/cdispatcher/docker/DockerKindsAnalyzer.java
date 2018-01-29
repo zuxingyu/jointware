@@ -8,7 +8,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.github.dockerjava.api.command.DockerCmd;
-import com.github.isdream.cdispatcher.Constants;
 import com.github.isdream.cdispatcher.KindsAnalyzer;
 import com.github.isdream.cdispatcher.commons.utils.ObjectUtils;
 import com.github.isdream.cdispatcher.commons.utils.StringUtils;
@@ -100,7 +99,7 @@ public class DockerKindsAnalyzer extends KindsAnalyzer {
 	 */
 	@Override
 	protected String toKind(String name) {
-		return name;
+		return name.substring(0, 1).toUpperCase() + name.substring(1, name.length() -3 );
 	}
 
 	/**
@@ -115,7 +114,7 @@ public class DockerKindsAnalyzer extends KindsAnalyzer {
 
 	@Override
 	protected String getClient() {
-		return Constants.CLIENT_Docker;
+		return DockerConstants.CLIENT;
 	}
 
 	/**

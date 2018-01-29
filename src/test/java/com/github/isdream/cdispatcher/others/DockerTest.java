@@ -9,7 +9,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.github.dockerjava.netty.DockerCmdExecFactoryImpl;
+import com.github.isdream.cdispatcher.docker.DockerKindModelsAnalyzer;
 import com.github.isdream.cdispatcher.docker.DockerKindsAnalyzer;
+import com.github.isdream.cdispatcher.docker.adapters.DockerClientImpl;
 
 
 /**
@@ -227,17 +230,24 @@ public class DockerTest {
 	 */
 	public static void main(String[] args) throws Exception {
 //        				URI.create(dockerUrl), null, null, null, "", "", "", null);
-//        DockerClientImpl client = DockerClientImpl.getInstance(dockerUrl)
-//        			.withDockerCmdExecFactory(new DockerCmdExecFactoryImpl());
+        DockerClientImpl client = DockerClientImpl.getInstance(dockerUrl)
+        			.withDockerCmdExecFactory(new DockerCmdExecFactoryImpl());
 ////		System.out.println(client.listImagesCmd().exec().size());
-//		client.createContainerCmd().withName("henry").withImage("dcr.io:5000/busybox:latest").exec();
-//		client.close();
-//		KubernetesModelParametersGenerator kmpg = new FastKubernetesModelParametersGenerator();
-//		kmpg.generateParameters(params, Constants.YAML_DEPLOYMENT);
 		
+//		kindAnalyser();
+        kindModelAnalyser();
+	}
+	protected static void kindModelAnalyser() {
+		DockerKindModelsAnalyzer analyzer = (DockerKindModelsAnalyzer) DockerKindModelsAnalyzer.getAnalyzer();
+        for (String kind : analyzer.getKindModels().keySet()) {
+        	System.out.println("- " + kind + "=" + analyzer.getKindModels().get(kind));
+        }
+	}
+	protected static void kindAnalyser() {
 		DockerKindsAnalyzer analyzer = (DockerKindsAnalyzer) DockerKindsAnalyzer.getAnalyzer();
 		for (String kind : analyzer.getKinds()) {
-			System.out.println(kind + ":" + kind);
+			System.out.println("- " + kind);
+//			System.out.println("public final static String KIND_" + kind.toUpperCase() + " = \"" + kind + "\";\n");
 		}
 	}
 

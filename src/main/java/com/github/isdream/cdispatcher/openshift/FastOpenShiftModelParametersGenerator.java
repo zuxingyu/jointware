@@ -7,7 +7,6 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.github.isdream.cdispatcher.kubernetes.KubernetesKindModelsAnalyzer;
 
 /**
  * @author wuheng@otcaix.iscas.ac.cn
@@ -215,7 +214,7 @@ protected final static Map<String, Method> methodCached = new HashMap<String, Me
 	@Override
 	protected Object createKindModel(String kind) throws Exception {
 
-		Class<?> clazz = getThisClass(KubernetesKindModelsAnalyzer
+		Class<?> clazz = getThisClass(OpenShiftKindModelsAnalyzer
 								.getAnalyzer().getKindModel(kind));
 		return clazz.newInstance();
 	} 

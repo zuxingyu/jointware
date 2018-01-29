@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.github.isdream.cdispatcher.Constants;
 import com.github.isdream.cdispatcher.kubernetes.KubernetesModelParametersGenerator;
 
 import io.fabric8.kubernetes.client.DefaultKubernetesClient;
@@ -60,19 +59,19 @@ public class DeploymentTest extends TestCase {
 	public void testCreateDeployment() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
 		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-		generator.create(client, Constants.YAML_DEPLOYMENT, params);
+		generator.create(client, KubernetesConstants.KIND_DEPLOYMENT, params);
 		
 	}
 	
 	public void testUpdateDeployment() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
 		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-		generator.scaleTo(client, Constants.YAML_DEPLOYMENT, "default", "busybox-dm", 4);
+		generator.scaleTo(client, KubernetesConstants.KIND_DEPLOYMENT, "default", "busybox-dm", 4);
 	}
 	
 	public void testDeleteDeployment() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
 		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-		generator.delete(client, Constants.YAML_DEPLOYMENT, "default", "busybox-dm");
+		generator.delete(client, KubernetesConstants.KIND_DEPLOYMENT, "default", "busybox-dm");
 	}
 }

@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.github.isdream.cdispatcher.Constants;
 import com.github.isdream.cdispatcher.kubernetes.KubernetesModelParametersGenerator;
 
 import io.fabric8.kubernetes.client.DefaultKubernetesClient;
@@ -54,7 +53,7 @@ public class ServiceTest extends TestCase {
 	public void testCreateSVC() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
 		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-		System.out.println(generator.create(client, Constants.YAML_SERVICE, params));
+		System.out.println(generator.create(client, KubernetesConstants.KIND_SERVICE, params));
 	}
 	
 //	public void testDeleteNode() throws Exception {

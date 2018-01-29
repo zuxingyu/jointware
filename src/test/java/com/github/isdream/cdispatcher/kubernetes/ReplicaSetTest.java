@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.github.isdream.cdispatcher.Constants;
 import com.github.isdream.cdispatcher.kubernetes.KubernetesModelParametersGenerator;
 
 import io.fabric8.kubernetes.client.DefaultKubernetesClient;
@@ -62,18 +61,18 @@ public class ReplicaSetTest extends TestCase {
 	public void testCreateReplicaSet() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
 		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-		generator.create(client, Constants.YAML_REPLICASET, createDMParams);
+		generator.create(client, KubernetesConstants.KIND_REPLICASET, createDMParams);
 	}
 	
 	public void testUpdateReplicaSet() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
 		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-		generator.scaleTo(client, Constants.YAML_REPLICASET, "wuheng", "busybox-replicaset", 1);
+		generator.scaleTo(client, KubernetesConstants.KIND_REPLICASET, "wuheng", "busybox-replicaset", 1);
 	}
 	
 	public void testDeleteReplicaSet() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
 		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-		generator.delete(client, Constants.YAML_REPLICASET, "wuheng", "busybox-replicaset");
+		generator.delete(client, KubernetesConstants.KIND_REPLICASET, "wuheng", "busybox-replicaset");
 	}
 }

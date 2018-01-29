@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.Set;
 
 import com.github.isdream.cdispatcher.commons.utils.StringUtils;
+import com.github.isdream.cdispatcher.kubernetes.KubernetesConstants;
 
 /**
  * @author henry, wuheng@otcaix.iscas.ac.cn
@@ -56,21 +57,12 @@ public abstract class KindModelsAnalyzer {
 	}
 
 	protected void initCommonsPackages() {
-		packages.add(Constants.MODEL_COMMON_AUTH_PACKAHE);
-		packages.add(Constants.MODEL_COMMON_EXTENSION_PACKAHE);
-		packages.add(Constants.MODEL_COMMON_API_PACKAHE);
+		packages.add(KubernetesConstants.MODEL_PACKAHE_COMMON_AUTH);
+		packages.add(KubernetesConstants.MODEL_PACKAHE_COMMON_EXTENSION);
+		packages.add(KubernetesConstants.MODEL_PACKAHE_COMMON_API);
 	}
 	
-	protected void analyse(String pakagesName) {
-		 for (String kind : getKinds()) {
-			 try {
-				 Class.forName(pakagesName + "." + kind);
-				 models.put(kind, pakagesName + "." + kind);
-			} catch (ClassNotFoundException e) {
-				// ignore here
-			}
-		 }
-	}
+	protected abstract void analyse(String pakagesName);
 	
 	/************************************************************************************
 	 * 

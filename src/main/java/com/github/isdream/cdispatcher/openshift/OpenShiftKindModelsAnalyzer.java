@@ -5,7 +5,6 @@ package com.github.isdream.cdispatcher.openshift;
 
 import java.util.Set;
 
-import com.github.isdream.cdispatcher.Constants;
 import com.github.isdream.cdispatcher.KindModelsAnalyzer;
 
 /**
@@ -24,7 +23,7 @@ public class OpenShiftKindModelsAnalyzer extends KindModelsAnalyzer {
 
 	@Override
 	protected void initPackages() {
-		packages.add(Constants.MODEL_OPENSHIFT_PACKAHE);
+		packages.add(OpenShiftConstants.MODEL_OPENSHIFT_PACKAHE);
 		this.initCommonsPackages();
 	}
 	
@@ -39,6 +38,18 @@ public class OpenShiftKindModelsAnalyzer extends KindModelsAnalyzer {
 			}
 		}
 		return analyzer;
+	}
+
+	@Override
+	protected void analyse(String pakagesName) {
+		for (String kind : getKinds()) {
+			 try {
+				 Class.forName(pakagesName + "." + kind);
+				 models.put(kind, pakagesName + "." + kind);
+			} catch (ClassNotFoundException e) {
+				// ignore here
+			}
+		 }
 	}
 
 }

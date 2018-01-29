@@ -3,7 +3,6 @@
  */
 package com.github.isdream.cdispatcher.openshift;
 
-import com.github.isdream.cdispatcher.Constants;
 import com.github.isdream.cdispatcher.KindsAnalyzer;
 import com.github.isdream.cdispatcher.defaultmodle.DefaultKindsAnalyzer;
 import com.github.isdream.cdispatcher.kubernetes.KubernetesKindsAnalyzer;
@@ -23,7 +22,7 @@ public class OpenShiftKindsAnalyzer extends KubernetesKindsAnalyzer {
 
 	@Override
 	protected String getClient() {
-		return Constants.CLIENT_OPENSHIFT;
+		return OpenShiftConstants.CLIENT;
 	}
 
 	/**

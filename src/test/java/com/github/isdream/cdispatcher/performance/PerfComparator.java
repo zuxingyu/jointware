@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.github.isdream.cdispatcher.Constants;
+import com.github.isdream.cdispatcher.kubernetes.KubernetesConstants;
 import com.github.isdream.cdispatcher.kubernetes.FastKubernetesModelParametersGenerator;
 import com.github.isdream.cdispatcher.kubernetes.KubernetesKindModelsAnalyzer;
 import com.github.isdream.cdispatcher.kubernetes.KubernetesModelParametersAnalyzer;
@@ -191,8 +191,8 @@ public class PerfComparator {
 		FastKubernetesModelParametersGenerator fkmpg = new FastKubernetesModelParametersGenerator();
 //		KubernetesModelParametersGenerator fkmpg = new KubernetesModelParametersGenerator();
 		Object fobj = Class.forName(KubernetesKindModelsAnalyzer
-						.getAnalyzer().getKindModel(Constants.YAML_DEPLOYMENT)).newInstance();
-		Map<String, String> fpt = KubernetesModelParametersAnalyzer.getAnalyzer().getModelParameters(Constants.YAML_DEPLOYMENT);
+						.getAnalyzer().getKindModel(KubernetesConstants.KIND_DEPLOYMENT)).newInstance();
+		Map<String, String> fpt = KubernetesModelParametersAnalyzer.getAnalyzer().getModelParameters(KubernetesConstants.KIND_DEPLOYMENT);
 		
 		long start3 = System.currentTimeMillis();
 		for(int i = 0; i < 10000; i++) {

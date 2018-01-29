@@ -5,7 +5,6 @@ package com.github.isdream.cdispatcher.kubernetes;
 
 import java.util.Set;
 
-import com.github.isdream.cdispatcher.Constants;
 import com.github.isdream.cdispatcher.KindModelsAnalyzer;
 
 /**
@@ -24,7 +23,7 @@ public class KubernetesKindModelsAnalyzer extends KindModelsAnalyzer {
 
 	@Override
 	protected void initPackages() {
-		packages.add(Constants.MODEL_KUBERNETES_PACKAHE);
+		packages.add(KubernetesConstants.MODEL_PACKAHE_KUBERNETES);
 		initCommonsPackages();
 	}
 	
@@ -40,6 +39,18 @@ public class KubernetesKindModelsAnalyzer extends KindModelsAnalyzer {
 			}
 		}
 		return analyzer;
+	}
+
+	@Override
+	protected void analyse(String pakagesName) {
+		for (String kind : getKinds()) {
+			 try {
+				 Class.forName(pakagesName + "." + kind);
+				 models.put(kind, pakagesName + "." + kind);
+			} catch (ClassNotFoundException e) {
+				// ignore here
+			}
+		 }
 	}
 
 }

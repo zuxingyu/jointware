@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.github.isdream.cdispatcher.Constants;
 import com.github.isdream.cdispatcher.kubernetes.KubernetesModelParametersGenerator;
 
 import io.fabric8.kubernetes.client.DefaultKubernetesClient;
@@ -62,18 +61,18 @@ public class JobTest extends TestCase {
 	public void testCreateJob() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
 		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-		generator.create(client, Constants.YAML_STATEFULSET, createDMParams);
+		generator.create(client, KubernetesConstants.KIND_STATEFULSET, createDMParams);
 	}
 	
 	public void testUpdateJob() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
 		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-		generator.scaleTo(client, Constants.YAML_STATEFULSET, "wuheng", "busybox-job", 1);
+		generator.scaleTo(client, KubernetesConstants.KIND_STATEFULSET, "wuheng", "busybox-job", 1);
 	}
 	
 	public void testDeleteJob() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
 		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-		generator.delete(client, Constants.YAML_STATEFULSET, "wuheng", "busybox-job");
+		generator.delete(client, KubernetesConstants.KIND_STATEFULSET, "wuheng", "busybox-job");
 	}
 }

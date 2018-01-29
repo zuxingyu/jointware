@@ -5,7 +5,6 @@ package com.github.isdream.cdispatcher.kubernetes;
 
 import java.lang.reflect.Method;
 
-import com.github.isdream.cdispatcher.Constants;
 import com.github.isdream.cdispatcher.KindsAnalyzer;
 import com.github.isdream.cdispatcher.commons.rules.KubernetesKind2DescRule;
 import com.github.isdream.cdispatcher.commons.utils.ObjectUtils;
@@ -81,7 +80,7 @@ public class KubernetesKindsAnalyzer extends KindsAnalyzer {
 
 	@Override
 	protected String getClient() {
-		return Constants.CLIENT_KUBERNETES;
+		return KubernetesConstants.CLIENT;
 	}
 
 	/**
