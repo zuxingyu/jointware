@@ -15,6 +15,8 @@ public class Constants {
 
 	public static final String CLIENT_OPENSHIFT = "io.fabric8.openshift.client.DefaultOpenShiftClient";
 	
+	public static final String CLIENT_Docker = "com.github.dockerjava.core.DockerClientImpl";
+	
 	//
 	public static final String MODEL_KUBERNETES_PACKAHE = "io.fabric8.kubernetes.api.model";
 	

@@ -56,6 +56,9 @@ public abstract class KindsAnalyzer {
 	 * 
 	 ************************************************************************************/
 
+	/**
+	 * @throws Exception 反射异常
+	 */
 	protected KindsAnalyzer() throws Exception {
 		this.analyse(getClient(), DEFAULT_PARENT);
 	}

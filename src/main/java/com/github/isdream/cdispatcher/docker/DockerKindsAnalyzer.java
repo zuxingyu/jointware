@@ -4,7 +4,12 @@
 package com.github.isdream.cdispatcher.docker;
 
 import java.lang.reflect.Method;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
+import com.github.dockerjava.api.command.DockerCmd;
 import com.github.isdream.cdispatcher.Constants;
 import com.github.isdream.cdispatcher.KindsAnalyzer;
 import com.github.isdream.cdispatcher.commons.rules.KubernetesKind2DescRule;
@@ -21,12 +26,54 @@ public class DockerKindsAnalyzer extends KindsAnalyzer {
 	
 	private static DockerKindsAnalyzer analyzer = null;
 
-	protected static final String KIND_BASIC_TAG = "io.fabric8.kubernetes.client.dsl.NonNamespaceOperation";
+	protected static final Class<?> KIND_TAG = DockerCmd.class;
 
-	protected static final String KIND_MIXED_TAG = "io.fabric8.kubernetes.client.dsl.MixedOperation";
-
-	protected static final String KIND_GROUP_TAG = "GroupDSL";
-
+	protected final static Set<String> mfilters = new HashSet<String>();
+	
+	static {
+		mfilters.add("getProtectionDomain");
+		mfilters.add("getModifiers");
+		mfilters.add("getSuperclass");
+		mfilters.add("getComponentType");
+		mfilters.add("getAnnotatedInterfaces");
+		mfilters.add("getAnnotatedSuperclass");
+		mfilters.add("getCanonicalName");
+		mfilters.add("getClassLoader");
+		mfilters.add("getClasses");
+		mfilters.add("getConstructors");
+		mfilters.add("getDeclaredAnnotations");
+		mfilters.add("getDeclaredClasses");
+		mfilters.add("getDeclaredConstructors");
+		mfilters.add("getDeclaredFields");
+		mfilters.add("getDeclaredMethods");
+		mfilters.add("getDeclaringClass");
+		mfilters.add("getEnclosingClass");
+		mfilters.add("getEnclosingConstructor");
+		mfilters.add("getEnclosingMethod");
+		mfilters.add("getEnumConstants");
+		mfilters.add("getFields");
+		mfilters.add("getGenericInterfaces");
+		mfilters.add("getGenericSuperclass");
+		mfilters.add("getInterfaces");
+		mfilters.add("getMethods");
+		mfilters.add("getPackage");
+		mfilters.add("getSigners");
+		mfilters.add("getSimpleName");
+		mfilters.add("getTypeName");
+		mfilters.add("getTypeParameters");
+		mfilters.add("getClass");
+		mfilters.add("getBytes");
+		mfilters.add("wait");
+		mfilters.add("hashCode");
+		mfilters.add("notify");
+		mfilters.add("notifyAll");
+		mfilters.add("close");
+		mfilters.add("toString");
+		mfilters.add("equals");
+		mfilters.add("getInstance");
+		
+	}
+	
 	protected DockerKindsAnalyzer() throws Exception {
 		super();
 	}
@@ -42,24 +89,15 @@ public class DockerKindsAnalyzer extends KindsAnalyzer {
 	@Override
 	protected boolean isKind(Method method) {
 		return ObjectUtils.isNull(method) ? false
-				: ((KIND_MIXED_TAG.equals(method.getReturnType().getName())
-						|| KIND_BASIC_TAG.equals(method.getReturnType().getName())) && (method.getParameterCount() == 0)
-						&& (!method.isAnnotationPresent(Deprecated.class)));
+				: (method.getGenericReturnType().getClass()
+						.isInstance(DockerCmd.class) && !mfilters.contains(method.getName()));
 	}
 
-	/**
-	 * 对于fabric8的DefaultKubernetesClient而言，如果返回值是以GroupDSL结尾的， 则说明它是一种kind的类型. <br>
-	 * <br>
-	 * 
-	 * 更进一步，要求这些方法不是<code>Deprecated.class</code>的类型
-	 */
 	@Override
 	protected boolean isKindGroup(Method method) {
-		return ObjectUtils.isNull(method) ? false
-				: ((method.getReturnType().getName().endsWith(KIND_GROUP_TAG))
-						&& (!method.isAnnotationPresent(Deprecated.class)));
+		return false;
 	}
-
+	
 	/**
 	 * 根据名字方法名返回kind类型，如果不存在，返回null
 	 * 
@@ -81,7 +119,7 @@ public class DockerKindsAnalyzer extends KindsAnalyzer {
 
 	@Override
 	protected String getClient() {
-		return Constants.CLIENT_KUBERNETES;
+		return Constants.CLIENT_Docker;
 	}
 
 	/**
@@ -97,4 +135,5 @@ public class DockerKindsAnalyzer extends KindsAnalyzer {
 		}
 		return analyzer;
 	}
+
 }

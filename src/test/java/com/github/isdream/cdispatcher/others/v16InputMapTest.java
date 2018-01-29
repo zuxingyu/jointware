@@ -11,8 +11,8 @@ public class v16InputMapTest {
     public static Map<String, Object> params = new HashMap<String, Object>();
 
     static {
-        params.put("apiVersion","extensions/v1beta1");
-        params.put("configType","releaseFullApplicationConfig");
+//        params.put("apiVersion","extensions/v1beta1");
+//        params.put("configType","releaseFullApplicationConfig");
         params.put("deploymentName","appnam3versionname");
         params.put("images",new ArrayList<Map<String,Object>>(){
             {
@@ -83,7 +83,7 @@ public class v16InputMapTest {
                 });
             }
         });
-        params.put("kind","Deployment");
+//        params.put("kind","Deployment");
         params.put("imageGroupLabels",new ArrayList<HashMap<String,Object>>(){
             {
                 add(new HashMap<String,Object>(){
@@ -120,12 +120,12 @@ public class v16InputMapTest {
                 });
             }
         });
-        params.put("masterIp","118.190.46.58");
-        params.put("masterPort","9888");
-        params.put("masterType","http");
+//        params.put("masterIp","118.190.46.58");
+//        params.put("masterPort","9888");
+//        params.put("masterType","http");
         params.put("name","appnam3");
         params.put("namespace","default");
-        params.put("platformType","kubernetes");
+//        params.put("platformType","kubernetes");
         params.put("replica",2);
         params.put("volumes",new ArrayList<Map<String,Object>>(){
             {
