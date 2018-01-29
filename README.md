@@ -33,6 +33,7 @@ cluster-dispatcher
 
   * [Docker and Swarm features](docs/docker-swarm-kinds.md)
   * [docker-java model for both Docker and Swarm features](docs/docker-swarm-kind-models.md) 
+  * [docker-java model parameters for both Docker and Swarm](docks/docker-swarm-model-parameters.md)
   
 ### Performance
 
