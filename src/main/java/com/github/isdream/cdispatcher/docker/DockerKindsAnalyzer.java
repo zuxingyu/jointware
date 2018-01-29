@@ -5,14 +5,11 @@ package com.github.isdream.cdispatcher.docker;
 
 import java.lang.reflect.Method;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import com.github.dockerjava.api.command.DockerCmd;
 import com.github.isdream.cdispatcher.Constants;
 import com.github.isdream.cdispatcher.KindsAnalyzer;
-import com.github.isdream.cdispatcher.commons.rules.KubernetesKind2DescRule;
 import com.github.isdream.cdispatcher.commons.utils.ObjectUtils;
 import com.github.isdream.cdispatcher.commons.utils.StringUtils;
 import com.github.isdream.cdispatcher.defaultmodle.DefaultKindsAnalyzer;
@@ -26,7 +23,6 @@ public class DockerKindsAnalyzer extends KindsAnalyzer {
 	
 	private static DockerKindsAnalyzer analyzer = null;
 
-	protected static final Class<?> KIND_TAG = DockerCmd.class;
 
 	protected final static Set<String> mfilters = new HashSet<String>();
 	
@@ -104,7 +100,7 @@ public class DockerKindsAnalyzer extends KindsAnalyzer {
 	 */
 	@Override
 	protected String toKind(String name) {
-		return KubernetesKind2DescRule.getName(name);
+		return name;
 	}
 
 	/**

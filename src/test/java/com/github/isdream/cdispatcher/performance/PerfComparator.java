@@ -169,24 +169,24 @@ public class PerfComparator {
 		long end1 = System.currentTimeMillis();
 		System.out.println(end1-start1);
 		
-		long start4 = System.currentTimeMillis();
-		for (int i = 0; i < 10000; i++) {
-			createByObject();
-		}
-		long end4 = System.currentTimeMillis();
-		System.out.println(end4-start4);
+//		long start4 = System.currentTimeMillis();
+//		for (int i = 0; i < 10000; i++) {
+//			createByObject();
+//		}
+//		long end4 = System.currentTimeMillis();
+//		System.out.println(end4-start4);
 		
-		KubernetesModelParametersGenerator kmpg = new KubernetesModelParametersGenerator();
-		Object obj = Class.forName(KubernetesKindModelsAnalyzer
-						.getAnalyzer().getKindModel(Constants.YAML_DEPLOYMENT)).newInstance();
-		Map<String, String> pt = KubernetesModelParametersAnalyzer.getAnalyzer().getModelParameters(Constants.YAML_DEPLOYMENT);
-		
-		long start2 = System.currentTimeMillis();
-		for(int i = 0; i < 10000; i++) {
-			kmpg.generateParameters(params, obj, pt);
-		}
-		long end2 = System.currentTimeMillis();
-		System.out.println(end2-start2);
+//		KubernetesModelParametersGenerator kmpg = new KubernetesModelParametersGenerator();
+//		Object obj = Class.forName(KubernetesKindModelsAnalyzer
+//						.getAnalyzer().getKindModel(Constants.YAML_DEPLOYMENT)).newInstance();
+//		Map<String, String> pt = KubernetesModelParametersAnalyzer.getAnalyzer().getModelParameters(Constants.YAML_DEPLOYMENT);
+//		
+//		long start2 = System.currentTimeMillis();
+//		for(int i = 0; i < 10000; i++) {
+//			kmpg.generateParameters(params, obj, pt);
+//		}
+//		long end2 = System.currentTimeMillis();
+//		System.out.println(end2-start2);
 		
 		FastKubernetesModelParametersGenerator fkmpg = new FastKubernetesModelParametersGenerator();
 //		KubernetesModelParametersGenerator fkmpg = new KubernetesModelParametersGenerator();

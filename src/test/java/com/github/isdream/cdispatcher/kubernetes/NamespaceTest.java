@@ -23,7 +23,7 @@ public class NamespaceTest extends TestCase {
 	public static Map<String, Object> createNSParams = new HashMap<String, Object>();
 
 	static {
-		createNSParams.put("setMetadata-setName", "test4321");
+		createNSParams.put("setMetadata-setName", "test431");
 		createNSParams.put("setMetadata-setLabels", new HashMap<String, String>() {
 			{
 				put("name", "busybox-wuheng");

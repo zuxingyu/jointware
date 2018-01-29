@@ -119,4 +119,112 @@ public class Constants {
 	public static final String YAML_DEPLOYMENTCONFIG = "DeploymentConfig";
 
 	public static final String YAML_STATEFULSET = "StatefulSet";
+	
+	//
+	public final static String CMD_TAGIMAGECMD = "tagImageCmd";
+
+	public final static String CMD_STATSCMD = "statsCmd";
+
+	public final static String CMD_AUTHCMD = "authCmd";
+
+	public final static String CMD_REMOVECONTAINERCMD = "removeContainerCmd";
+
+	public final static String CMD_CREATENETWORKCMD = "createNetworkCmd";
+
+	public final static String CMD_RENAMECONTAINERCMD = "renameContainerCmd";
+
+	public final static String CMD_EVENTSCMD = "eventsCmd";
+
+	public final static String CMD_LISTVOLUMESCMD = "listVolumesCmd";
+
+	public final static String CMD_SAVEIMAGECMD = "saveImageCmd";
+
+	public final static String CMD_BUILDIMAGECMD = "buildImageCmd";
+
+	public final static String CMD_SEARCHIMAGESCMD = "searchImagesCmd";
+
+	public final static String CMD_INSPECTEXECCMD = "inspectExecCmd";
+
+	public final static String CMD_COMMITCMD = "commitCmd";
+
+	public final static String CMD_REMOVEVOLUMECMD = "removeVolumeCmd";
+
+	public final static String CMD_WITHDOCKERCMDEXECFACTORY = "withDockerCmdExecFactory";
+
+	public final static String CMD_RESTARTCONTAINERCMD = "restartContainerCmd";
+
+	public final static String CMD_UNPAUSECONTAINERCMD = "unpauseContainerCmd";
+
+	public final static String CMD_INSPECTNETWORKCMD = "inspectNetworkCmd";
+
+	public final static String CMD_PAUSECONTAINERCMD = "pauseContainerCmd";
+
+	public final static String CMD_LOADIMAGECMD = "loadImageCmd";
+
+	public final static String CMD_ATTACHCONTAINERCMD = "attachContainerCmd";
+
+	public final static String CMD_INSPECTIMAGECMD = "inspectImageCmd";
+
+	public final static String CMD_WAITCONTAINERCMD = "waitContainerCmd";
+
+	public final static String CMD_TOPCONTAINERCMD = "topContainerCmd";
+
+	public final static String CMD_KILLCONTAINERCMD = "killContainerCmd";
+
+	public final static String CMD_EXECSTARTCMD = "execStartCmd";
+
+	public final static String CMD_LOGCONTAINERCMD = "logContainerCmd";
+
+	public final static String CMD_EXECCREATECMD = "execCreateCmd";
+
+	public final static String CMD_REMOVEIMAGECMD = "removeImageCmd";
+
+	public final static String CMD_CREATEIMAGECMD = "createImageCmd";
+
+	public final static String CMD_LISTCONTAINERSCMD = "listContainersCmd";
+
+	public final static String CMD_PUSHIMAGECMD = "pushImageCmd";
+
+	public final static String CMD_AUTHCONFIG = "authConfig";
+
+	public final static String CMD_VERSIONCMD = "versionCmd";
+
+	public final static String CMD_PINGCMD = "pingCmd";
+
+	public final static String CMD_COPYARCHIVEFROMCONTAINERCMD = "copyArchiveFromContainerCmd";
+
+	public final static String CMD_COPYARCHIVETOCONTAINERCMD = "copyArchiveToContainerCmd";
+
+	public final static String CMD_INFOCMD = "infoCmd";
+
+	public final static String CMD_CONNECTTONETWORKCMD = "connectToNetworkCmd";
+
+	public final static String CMD_LISTNETWORKSCMD = "listNetworksCmd";
+
+	public final static String CMD_UPDATECONTAINERCMD = "updateContainerCmd";
+
+	public final static String CMD_REMOVENETWORKCMD = "removeNetworkCmd";
+
+	public final static String CMD_STARTCONTAINERCMD = "startContainerCmd";
+
+	public final static String CMD_LISTIMAGESCMD = "listImagesCmd";
+
+	public final static String CMD_COPYFILEFROMCONTAINERCMD = "copyFileFromContainerCmd";
+
+	public final static String CMD_PULLIMAGECMD = "pullImageCmd";
+
+	public final static String CMD_CREATEVOLUMECMD = "createVolumeCmd";
+
+	public final static String CMD_INSPECTCONTAINERCMD = "inspectContainerCmd";
+
+	public final static String CMD_CREATECONTAINERCMD = "createContainerCmd";
+
+	public final static String CMD_STOPCONTAINERCMD = "stopContainerCmd";
+
+	public final static String CMD_INSPECTVOLUMECMD = "inspectVolumeCmd";
+
+	public final static String CMD_CONTAINERDIFFCMD = "containerDiffCmd";
+
+	public final static String CMD_DISCONNECTFROMNETWORKCMD = "disconnectFromNetworkCmd";
+
 }

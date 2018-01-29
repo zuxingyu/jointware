@@ -3,19 +3,14 @@
  */
 package com.github.isdream.cdispatcher.others;
 
-import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import com.github.dockerjava.api.command.DockerCmd;
-import com.github.dockerjava.core.DockerClientImpl;
-import com.github.isdream.cdispatcher.Constants;
-import com.github.isdream.cdispatcher.kubernetes.FastKubernetesModelParametersGenerator;
-import com.github.isdream.cdispatcher.kubernetes.KubernetesModelParametersGenerator;
+import com.github.isdream.cdispatcher.docker.DockerKindsAnalyzer;
+
 
 /**
  * @author wuheng@otcaix.iscas.ac.cn
@@ -96,7 +91,7 @@ public class DockerTest {
 	
 	static {
 //		params.put("setMetadata-setLabels-Map0-asd", "abvs");
-		params.put("setSpec-setTemplate-setSpec-setContainers-Map1-setCommand-List0", "sleep");
+//		params.put("setSpec-setTemplate-setSpec-setContainers-Map1-setCommand-List0", "sleep");
 //		params.put("setSpec-setTemplate-setSpec-setContainers-Map1-setCommand-List0", "3");
 //		params.put("setSpec-setTemplate-setSpec-setContainers-List1-Map1-setName", "tomcat1");
 //		params.put("setSpec-setTemplate-setSpec-setContainers-List1-Map1-setResources-setLimits-Map1-cpu-List1-Map1-setAmount", "800m");
@@ -231,16 +226,19 @@ public class DockerTest {
 	 * @throws Exception 
 	 */
 	public static void main(String[] args) throws Exception {
-//		DockerClientImpl client = DockerClientImpl.getInstance(dockerUrl);
-//		for (Method m : client.getClass().getMethods()) {
-//			if (m.getGenericReturnType().getClass().isInstance(DockerCmd.class)
-//					&& !mfilters.contains(m.getName())) {
-//				System.out.println(m.getName() + ":" + m.getGenericReturnType());
-//			}
-//		}
+//        				URI.create(dockerUrl), null, null, null, "", "", "", null);
+//        DockerClientImpl client = DockerClientImpl.getInstance(dockerUrl)
+//        			.withDockerCmdExecFactory(new DockerCmdExecFactoryImpl());
+////		System.out.println(client.listImagesCmd().exec().size());
+//		client.createContainerCmd().withName("henry").withImage("dcr.io:5000/busybox:latest").exec();
+//		client.close();
+//		KubernetesModelParametersGenerator kmpg = new FastKubernetesModelParametersGenerator();
+//		kmpg.generateParameters(params, Constants.YAML_DEPLOYMENT);
 		
-		KubernetesModelParametersGenerator kmpg = new FastKubernetesModelParametersGenerator();
-		kmpg.generateParameters(params, Constants.YAML_DEPLOYMENT);
+		DockerKindsAnalyzer analyzer = (DockerKindsAnalyzer) DockerKindsAnalyzer.getAnalyzer();
+		for (String kind : analyzer.getKinds()) {
+			System.out.println(kind + ":" + kind);
+		}
 	}
 
 }
