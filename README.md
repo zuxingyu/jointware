@@ -24,13 +24,16 @@ cluster-dispatcher
 
 #### Kubernetes and OpenShift
 
-  * [Kubernetes and OpenShift features](docs/yaml-kinds.md)
-  * [fabric8 model for both Kubernetes and OpenShift features](docs/kind-models.md) 
-  * [fabric8 model parameters for both Kubernetes and OpenShift](docs/model-parameters.md)
-  * [What is the classification of all fabric8 models](docs/yaml-classification.md)
+  * [Kubernetes and OpenShift features](docs/k8s-ocp-yaml-kinds.md)
+  * [fabric8 model for both Kubernetes and OpenShift features](docs/k8s-ocp-kind-models.md) 
+  * [fabric8 model parameters for both Kubernetes and OpenShift](docs/k8s-ocp-model-parameters.md)
+  * [What is the classification of all fabric8 models](docs/k8s-ocp-yaml-classification.md)
   
 #### Docker and Swarm
 
+  * [Docker and Swarm features](docs/docker-swarm-kinds.md)
+  * [docker-java model for both Docker and Swarm features](docs/docker-swarm-kind-models.md) 
+  
 ### Performance
 
 * [What is the performance of Reflection-based method](docs/perf-test.md)
