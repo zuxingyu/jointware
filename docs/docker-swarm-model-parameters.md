@@ -1,13 +1,13 @@
 ####  Docker AttachContainer
 
 ```
-ContainerId=java.lang.String
-FollowStream=java.lang.Boolean
-Timestamps=java.lang.Boolean
-StdOut=java.lang.Boolean
-StdErr=java.lang.Boolean
-StdIn=java.io.InputStream
-Logs=java.lang.Boolean
+withContainerId=java.lang.String
+withFollowStream=java.lang.Boolean
+withTimestamps=java.lang.Boolean
+withStdOut=java.lang.Boolean
+withStdErr=java.lang.Boolean
+withStdIn=java.io.InputStream
+withLogs=java.lang.Boolean
 
 ```
 
@@ -15,12 +15,12 @@ Logs=java.lang.Boolean
 ####  Docker ExecCreate
 
 ```
-AttachStderr=java.lang.Boolean
-AttachStdin=java.lang.Boolean
-AttachStdout=java.lang.Boolean
-Tty=java.lang.Boolean
-User=java.lang.String
-ContainerId=java.lang.String
+withAttachStderr=java.lang.Boolean
+withAttachStdin=java.lang.Boolean
+withAttachStdout=java.lang.Boolean
+withTty=java.lang.Boolean
+withUser=java.lang.String
+withContainerId=java.lang.String
 
 ```
 
@@ -28,7 +28,7 @@ ContainerId=java.lang.String
 ####  Docker PauseContainer
 
 ```
-ContainerId=java.lang.String
+withContainerId=java.lang.String
 
 ```
 
@@ -36,16 +36,16 @@ ContainerId=java.lang.String
 ####  Docker PullImage
 
 ```
-AuthConfig=com.github.dockerjava.api.model.AuthConfig
-  RegistryAddress=java.lang.String
-  Username=java.lang.String
-  Password=java.lang.String
-  Email=java.lang.String
-  Auth=java.lang.String
-  Registrytoken=java.lang.String
-Tag=java.lang.String
-Repository=java.lang.String
-Registry=java.lang.String
+withRepository=java.lang.String
+withRegistry=java.lang.String
+withAuthConfig=com.github.dockerjava.api.model.AuthConfig
+  withRegistryAddress=java.lang.String
+  withUsername=java.lang.String
+  withPassword=java.lang.String
+  withEmail=java.lang.String
+  withAuth=java.lang.String
+  withRegistrytoken=java.lang.String
+withTag=java.lang.String
 
 ```
 
@@ -53,8 +53,8 @@ Registry=java.lang.String
 ####  Docker KillContainer
 
 ```
-ContainerId=java.lang.String
-Signal=java.lang.String
+withContainerId=java.lang.String
+withSignal=java.lang.String
 
 ```
 
@@ -62,8 +62,8 @@ Signal=java.lang.String
 ####  Docker SaveImage
 
 ```
-Tag=java.lang.String
-Name=java.lang.String
+withName=java.lang.String
+withTag=java.lang.String
 
 ```
 
@@ -71,14 +71,14 @@ Name=java.lang.String
 ####  Docker ListContainers
 
 ```
-ExitcodeFilter=java.lang.Integer
-Before=java.lang.String
-StatusFilter=java.lang.String
-LabelFilter=java.util.Map<java.lang.String, java.lang.String>
-Limit=java.lang.Integer
-ShowAll=java.lang.Boolean
-ShowSize=java.lang.Boolean
-Since=java.lang.String
+withExitcodeFilter=java.lang.Integer
+withBefore=java.lang.String
+withStatusFilter=java.lang.String
+withLabelFilter=java.util.Map<java.lang.String, java.lang.String>
+withLimit=java.lang.Integer
+withShowAll=java.lang.Boolean
+withShowSize=java.lang.Boolean
+withSince=java.lang.String
 
 ```
 
@@ -93,19 +93,20 @@ Since=java.lang.String
 ####  Docker CreateNetwork
 
 ```
-Labels=java.util.Map<java.lang.String, java.lang.String>
-Name=java.lang.String
-CheckDuplicate=boolean
-Driver=java.lang.String
-Ipam=com.github.dockerjava.api.model.Network$Ipam
-  Config=java.util.List<com.github.dockerjava.api.model.Network$Ipam$Config>
-    Subnet=java.lang.String
-    IpRange=java.lang.String
-    Gateway=java.lang.String
-Options=java.util.Map<java.lang.String, java.lang.String>
-Internal=boolean
-EnableIpv6=boolean
-Attachable=java.lang.Boolean
+withLabels=java.util.Map<java.lang.String, java.lang.String>
+withName=java.lang.String
+withIpam=com.github.dockerjava.api.model.Network$Ipam
+  withConfig=java.util.List<com.github.dockerjava.api.model.Network$Ipam$Config>
+    withSubnet=java.lang.String
+    withIpRange=java.lang.String
+    withGateway=java.lang.String
+    setNetworkID=java.lang.String
+withOptions=java.util.Map<java.lang.String, java.lang.String>
+withInternal=boolean
+withEnableIpv6=boolean
+withAttachable=java.lang.Boolean
+withDriver=java.lang.String
+withCheckDuplicate=boolean
 
 ```
 
@@ -113,7 +114,7 @@ Attachable=java.lang.Boolean
 ####  Docker UnpauseContainer
 
 ```
-ContainerId=java.lang.String
+withContainerId=java.lang.String
 
 ```
 
@@ -121,9 +122,9 @@ ContainerId=java.lang.String
 ####  Docker CopyFileFromContainer
 
 ```
-ContainerId=java.lang.String
-HostPath=java.lang.String
-Resource=java.lang.String
+withContainerId=java.lang.String
+withHostPath=java.lang.String
+withResource=java.lang.String
 
 ```
 
@@ -131,10 +132,10 @@ Resource=java.lang.String
 ####  Docker TagImage
 
 ```
-Tag=java.lang.String
-Repository=java.lang.String
-Force=java.lang.Boolean
-ImageId=java.lang.String
+withForce=java.lang.Boolean
+withRepository=java.lang.String
+withImageId=java.lang.String
+withTag=java.lang.String
 
 ```
 
@@ -142,7 +143,7 @@ ImageId=java.lang.String
 ####  Docker SearchImages
 
 ```
-Term=java.lang.String
+withTerm=java.lang.String
 
 ```
 
@@ -150,7 +151,7 @@ Term=java.lang.String
 ####  Docker RemoveVolume
 
 ```
-Name=java.lang.String
+withName=java.lang.String
 
 ```
 
@@ -158,7 +159,7 @@ Name=java.lang.String
 ####  Docker InspectImage
 
 ```
-ImageId=java.lang.String
+withImageId=java.lang.String
 
 ```
 
@@ -166,26 +167,41 @@ ImageId=java.lang.String
 ####  Docker BuildImage
 
 ```
-Tag=java.lang.String
-Labels=java.util.Map<java.lang.String, java.lang.String>
-Memory=java.lang.Long
-BaseDirectory=java.io.File
-DockerfilePath=java.lang.String
-BuildAuthConfigs=com.github.dockerjava.api.model.AuthConfigurations
-Forcerm=java.lang.Boolean
-Quiet=java.lang.Boolean
-Pull=java.lang.Boolean
-Memswap=java.lang.Long
-Cpushares=java.lang.String
-Cpusetcpus=java.lang.String
-Shmsize=java.lang.Long
-Tags=java.util.Set<java.lang.String>
-CacheFrom=java.util.Set<java.lang.String>
-Remote=java.net.URI
-Dockerfile=java.io.File
-NoCache=java.lang.Boolean
-Remove=java.lang.Boolean
-TarInputStream=java.io.InputStream
+withTarInputStream=java.io.InputStream
+withLabels=java.util.Map<java.lang.String, java.lang.String>
+withMemory=java.lang.Long
+withTag=java.lang.String
+withBaseDirectory=java.io.File
+  setExecutable=boolean
+  setLastModified=long
+  setReadable=boolean
+  setWritable=boolean
+withDockerfilePath=java.lang.String
+withBuildAuthConfigs=com.github.dockerjava.api.model.AuthConfigurations
+  addConfig=com.github.dockerjava.api.model.AuthConfig
+    withRegistryAddress=java.lang.String
+    withUsername=java.lang.String
+    withPassword=java.lang.String
+    withEmail=java.lang.String
+    withAuth=java.lang.String
+    withRegistrytoken=java.lang.String
+withTags=java.util.Set<java.lang.String>
+withCacheFrom=java.util.Set<java.lang.String>
+withRemote=java.net.URI
+withDockerfile=java.io.File
+  setExecutable=boolean
+  setLastModified=long
+  setReadable=boolean
+  setWritable=boolean
+withNoCache=java.lang.Boolean
+withRemove=java.lang.Boolean
+withForcerm=java.lang.Boolean
+withQuiet=java.lang.Boolean
+withPull=java.lang.Boolean
+withMemswap=java.lang.Long
+withCpushares=java.lang.String
+withCpusetcpus=java.lang.String
+withShmsize=java.lang.Long
 
 ```
 
@@ -193,9 +209,9 @@ TarInputStream=java.io.InputStream
 ####  Docker RemoveImage
 
 ```
-Force=java.lang.Boolean
-ImageId=java.lang.String
-NoPrune=java.lang.Boolean
+withForce=java.lang.Boolean
+withImageId=java.lang.String
+withNoPrune=java.lang.Boolean
 
 ```
 
@@ -203,7 +219,7 @@ NoPrune=java.lang.Boolean
 ####  Docker InspectVolume
 
 ```
-Name=java.lang.String
+withName=java.lang.String
 
 ```
 
@@ -211,7 +227,7 @@ Name=java.lang.String
 ####  Docker RemoveNetwork
 
 ```
-NetworkId=java.lang.String
+withNetworkId=java.lang.String
 
 ```
 
@@ -219,15 +235,15 @@ NetworkId=java.lang.String
 ####  Docker PushImage
 
 ```
-AuthConfig=com.github.dockerjava.api.model.AuthConfig
-  RegistryAddress=java.lang.String
-  Username=java.lang.String
-  Password=java.lang.String
-  Email=java.lang.String
-  Auth=java.lang.String
-  Registrytoken=java.lang.String
-Tag=java.lang.String
-Name=java.lang.String
+withName=java.lang.String
+withAuthConfig=com.github.dockerjava.api.model.AuthConfig
+  withRegistryAddress=java.lang.String
+  withUsername=java.lang.String
+  withPassword=java.lang.String
+  withEmail=java.lang.String
+  withAuth=java.lang.String
+  withRegistrytoken=java.lang.String
+withTag=java.lang.String
 
 ```
 
@@ -235,7 +251,7 @@ Name=java.lang.String
 ####  Docker WaitContainer
 
 ```
-ContainerId=java.lang.String
+withContainerId=java.lang.String
 
 ```
 
@@ -243,12 +259,12 @@ ContainerId=java.lang.String
 ####  Docker CopyArchiveToContainer
 
 ```
-ContainerId=java.lang.String
-HostResource=java.lang.String
-RemotePath=java.lang.String
-TarInputStream=java.io.InputStream
-NoOverwriteDirNonDir=boolean
-DirChildrenOnly=boolean
+withTarInputStream=java.io.InputStream
+withNoOverwriteDirNonDir=boolean
+withDirChildrenOnly=boolean
+withContainerId=java.lang.String
+withHostResource=java.lang.String
+withRemotePath=java.lang.String
 
 ```
 
@@ -263,7 +279,7 @@ DirChildrenOnly=boolean
 ####  Docker Stats
 
 ```
-ContainerId=java.lang.String
+withContainerId=java.lang.String
 
 ```
 
@@ -271,10 +287,10 @@ ContainerId=java.lang.String
 ####  Docker ExecStart
 
 ```
-Tty=java.lang.Boolean
-StdIn=java.io.InputStream
-Detach=java.lang.Boolean
-ExecId=java.lang.String
+withTty=java.lang.Boolean
+withStdIn=java.io.InputStream
+withDetach=java.lang.Boolean
+withExecId=java.lang.String
 
 ```
 
@@ -282,8 +298,8 @@ ExecId=java.lang.String
 ####  Docker TopContainer
 
 ```
-ContainerId=java.lang.String
-PsArgs=java.lang.String
+withContainerId=java.lang.String
+withPsArgs=java.lang.String
 
 ```
 
@@ -291,8 +307,8 @@ PsArgs=java.lang.String
 ####  Docker StopContainer
 
 ```
-ContainerId=java.lang.String
-Timeout=java.lang.Integer
+withContainerId=java.lang.String
+withTimeout=java.lang.Integer
 
 ```
 
@@ -300,9 +316,9 @@ Timeout=java.lang.Integer
 ####  Docker RemoveContainer
 
 ```
-ContainerId=java.lang.String
-Force=java.lang.Boolean
-RemoveVolumes=java.lang.Boolean
+withContainerId=java.lang.String
+withForce=java.lang.Boolean
+withRemoveVolumes=java.lang.Boolean
 
 ```
 
@@ -317,10 +333,10 @@ RemoveVolumes=java.lang.Boolean
 ####  Docker ListImages
 
 ```
-LabelFilter=java.util.Map<java.lang.String, java.lang.String>
-ShowAll=java.lang.Boolean
-ImageNameFilter=java.lang.String
-DanglingFilter=java.lang.Boolean
+withLabelFilter=java.util.Map<java.lang.String, java.lang.String>
+withShowAll=java.lang.Boolean
+withImageNameFilter=java.lang.String
+withDanglingFilter=java.lang.Boolean
 
 ```
 
@@ -328,7 +344,7 @@ DanglingFilter=java.lang.Boolean
 ####  Docker ListVolumes
 
 ```
-DanglingFilter=java.lang.Boolean
+withDanglingFilter=java.lang.Boolean
 
 ```
 
@@ -336,7 +352,7 @@ DanglingFilter=java.lang.Boolean
 ####  Docker ContainerDiff
 
 ```
-ContainerId=java.lang.String
+withContainerId=java.lang.String
 
 ```
 
@@ -344,9 +360,9 @@ ContainerId=java.lang.String
 ####  Docker Events
 
 ```
-Until=java.lang.String
-LabelFilter=java.util.Map<java.lang.String, java.lang.String>
-Since=java.lang.String
+withLabelFilter=java.util.Map<java.lang.String, java.lang.String>
+withSince=java.lang.String
+withUntil=java.lang.String
 
 ```
 
@@ -354,13 +370,13 @@ Since=java.lang.String
 ####  Docker Auth
 
 ```
-AuthConfig=com.github.dockerjava.api.model.AuthConfig
-  RegistryAddress=java.lang.String
-  Username=java.lang.String
-  Password=java.lang.String
-  Email=java.lang.String
-  Auth=java.lang.String
-  Registrytoken=java.lang.String
+withAuthConfig=com.github.dockerjava.api.model.AuthConfig
+  withRegistryAddress=java.lang.String
+  withUsername=java.lang.String
+  withPassword=java.lang.String
+  withEmail=java.lang.String
+  withAuth=java.lang.String
+  withRegistrytoken=java.lang.String
 
 ```
 
@@ -368,9 +384,9 @@ AuthConfig=com.github.dockerjava.api.model.AuthConfig
 ####  Docker CreateImage
 
 ```
-Tag=java.lang.String
-Repository=java.lang.String
-ImageStream=java.io.InputStream
+withRepository=java.lang.String
+withImageStream=java.io.InputStream
+withTag=java.lang.String
 
 ```
 
@@ -378,13 +394,13 @@ ImageStream=java.io.InputStream
 ####  Docker LogContainer
 
 ```
-ContainerId=java.lang.String
-FollowStream=java.lang.Boolean
-Timestamps=java.lang.Boolean
-StdOut=java.lang.Boolean
-StdErr=java.lang.Boolean
-Tail=java.lang.Integer
-Since=java.lang.Integer
+withContainerId=java.lang.String
+withFollowStream=java.lang.Boolean
+withTimestamps=java.lang.Boolean
+withStdOut=java.lang.Boolean
+withStdErr=java.lang.Boolean
+withTail=java.lang.Integer
+withSince=java.lang.Integer
 
 ```
 
@@ -392,23 +408,23 @@ Since=java.lang.Integer
 ####  Docker ConnectToNetwork
 
 ```
-ContainerId=java.lang.String
-ContainerNetwork=com.github.dockerjava.api.model.ContainerNetwork
-  Aliases=java.util.List<java.lang.String>
-  Ipv4Address=java.lang.String
-  Links=java.util.List<com.github.dockerjava.api.model.Link>
-  MacAddress=java.lang.String
-  GlobalIPv6PrefixLen=java.lang.Integer
-  IpamConfig=com.github.dockerjava.api.model.ContainerNetwork$Ipam
-    Ipv4Address=java.lang.String
-    Ipv6Address=java.lang.String
-  Gateway=java.lang.String
-  EndpointId=java.lang.String
-  IpPrefixLen=java.lang.Integer
-  IpV6Gateway=java.lang.String
-  NetworkID=java.lang.String
-  GlobalIPv6Address=java.lang.String
-NetworkId=java.lang.String
+withContainerNetwork=com.github.dockerjava.api.model.ContainerNetwork
+  withAliases=java.util.List<java.lang.String>
+  withIpv4Address=java.lang.String
+  withLinks=java.util.List<com.github.dockerjava.api.model.Link>
+  withMacAddress=java.lang.String
+  withGlobalIPv6PrefixLen=java.lang.Integer
+  withGateway=java.lang.String
+  withEndpointId=java.lang.String
+  withIpPrefixLen=java.lang.Integer
+  withIpV6Gateway=java.lang.String
+  withNetworkID=java.lang.String
+  withIpamConfig=com.github.dockerjava.api.model.ContainerNetwork$Ipam
+    withIpv4Address=java.lang.String
+    withIpv6Address=java.lang.String
+  withGlobalIPv6Address=java.lang.String
+withContainerId=java.lang.String
+withNetworkId=java.lang.String
 
 ```
 
@@ -416,9 +432,9 @@ NetworkId=java.lang.String
 ####  Docker DisconnectFromNetwork
 
 ```
-ContainerId=java.lang.String
-Force=java.lang.Boolean
-NetworkId=java.lang.String
+withContainerId=java.lang.String
+withForce=java.lang.Boolean
+withNetworkId=java.lang.String
 
 ```
 
@@ -433,9 +449,9 @@ NetworkId=java.lang.String
 ####  Docker CopyArchiveFromContainer
 
 ```
-ContainerId=java.lang.String
-HostPath=java.lang.String
-Resource=java.lang.String
+withContainerId=java.lang.String
+withHostPath=java.lang.String
+withResource=java.lang.String
 
 ```
 
@@ -443,8 +459,8 @@ Resource=java.lang.String
 ####  Docker RenameContainer
 
 ```
-Name=java.lang.String
-ContainerId=java.lang.String
+withName=java.lang.String
+withContainerId=java.lang.String
 
 ```
 
@@ -452,27 +468,27 @@ ContainerId=java.lang.String
 ####  Docker Commit
 
 ```
-Tag=java.lang.String
-Repository=java.lang.String
-AttachStderr=java.lang.Boolean
-AttachStdin=java.lang.Boolean
-AttachStdout=java.lang.Boolean
-ExposedPorts=com.github.dockerjava.api.model.ExposedPorts
-Labels=java.util.Map<java.lang.String, java.lang.String>
-Memory=java.lang.Integer
-MemorySwap=java.lang.Integer
-Tty=java.lang.Boolean
-User=java.lang.String
-Volumes=com.github.dockerjava.api.model.Volumes
-WorkingDir=java.lang.String
-ContainerId=java.lang.String
-DisableNetwork=java.lang.Boolean
-Author=java.lang.String
-Hostname=java.lang.String
-Message=java.lang.String
-OpenStdin=java.lang.Boolean
-Pause=java.lang.Boolean
-StdinOnce=java.lang.Boolean
+withAttachStderr=java.lang.Boolean
+withAttachStdin=java.lang.Boolean
+withAttachStdout=java.lang.Boolean
+withExposedPorts=com.github.dockerjava.api.model.ExposedPorts
+withLabels=java.util.Map<java.lang.String, java.lang.String>
+withMemory=java.lang.Integer
+withMemorySwap=java.lang.Integer
+withTty=java.lang.Boolean
+withUser=java.lang.String
+withVolumes=com.github.dockerjava.api.model.Volumes
+withWorkingDir=java.lang.String
+withContainerId=java.lang.String
+withRepository=java.lang.String
+withTag=java.lang.String
+withDisableNetwork=java.lang.Boolean
+withAuthor=java.lang.String
+withHostname=java.lang.String
+withMessage=java.lang.String
+withOpenStdin=java.lang.Boolean
+withPause=java.lang.Boolean
+withStdinOnce=java.lang.Boolean
 
 ```
 
@@ -480,7 +496,7 @@ StdinOnce=java.lang.Boolean
 ####  Docker InspectExec
 
 ```
-ExecId=java.lang.String
+withExecId=java.lang.String
 
 ```
 
@@ -488,7 +504,7 @@ ExecId=java.lang.String
 ####  Docker StartContainer
 
 ```
-ContainerId=java.lang.String
+withContainerId=java.lang.String
 
 ```
 
@@ -496,17 +512,17 @@ ContainerId=java.lang.String
 ####  Docker UpdateContainer
 
 ```
-BlkioWeight=java.lang.Integer
-CpuPeriod=java.lang.Integer
-CpusetCpus=java.lang.String
-CpusetMems=java.lang.String
-CpuShares=java.lang.Integer
-Memory=java.lang.Long
-MemorySwap=java.lang.Long
-ContainerId=java.lang.String
-CpuQuota=java.lang.Integer
-KernelMemory=java.lang.Long
-MemoryReservation=java.lang.Long
+withMemoryReservation=java.lang.Long
+withBlkioWeight=java.lang.Integer
+withCpuPeriod=java.lang.Integer
+withCpusetCpus=java.lang.String
+withCpusetMems=java.lang.String
+withCpuShares=java.lang.Integer
+withMemory=java.lang.Long
+withMemorySwap=java.lang.Long
+withContainerId=java.lang.String
+withCpuQuota=java.lang.Integer
+withKernelMemory=java.lang.Long
 
 ```
 
@@ -514,7 +530,7 @@ MemoryReservation=java.lang.Long
 ####  Docker LoadImage
 
 ```
-ImageStream=java.io.InputStream
+withImageStream=java.io.InputStream
 
 ```
 
@@ -522,95 +538,101 @@ ImageStream=java.io.InputStream
 ####  Docker CreateContainer
 
 ```
-Aliases=java.util.List<java.lang.String>
-AttachStderr=java.lang.Boolean
-AttachStdin=java.lang.Boolean
-AttachStdout=java.lang.Boolean
-Binds=java.util.List<com.github.dockerjava.api.model.Bind>
-BlkioWeight=java.lang.Integer
-CapAdd=java.util.List<com.github.dockerjava.api.model.Capability>
-CapDrop=java.util.List<com.github.dockerjava.api.model.Capability>
-Cmd=java.util.List<java.lang.String>
-CpuPeriod=java.lang.Integer
-CpusetCpus=java.lang.String
-CpusetMems=java.lang.String
-CpuShares=java.lang.Integer
-Devices=java.util.List<com.github.dockerjava.api.model.Device>
-Dns=java.util.List<java.lang.String>
-DnsSearch=java.util.List<java.lang.String>
-DomainName=java.lang.String
-Entrypoint=java.util.List<java.lang.String>
-Env=java.util.List<java.lang.String>
-ExposedPorts=java.util.List<com.github.dockerjava.api.model.ExposedPort>
-StopSignal=java.lang.String
-ExtraHosts=java.util.List<java.lang.String>
-HostName=java.lang.String
-Image=java.lang.String
-Ipv4Address=java.lang.String
-Ipv6Address=java.lang.String
-Labels=java.util.Map<java.lang.String, java.lang.String>
-Links=java.util.List<com.github.dockerjava.api.model.Link>
-LogConfig=com.github.dockerjava.api.model.LogConfig
-LxcConf=java.util.List<com.github.dockerjava.api.model.LxcConf>
-MacAddress=java.lang.String
-Memory=java.lang.Long
-MemorySwap=java.lang.Long
-Name=java.lang.String
-NetworkMode=java.lang.String
-PortBindings=com.github.dockerjava.api.model.Ports
-PortSpecs=java.util.List<java.lang.String>
-Privileged=java.lang.Boolean
-StdInOnce=java.lang.Boolean
-StdinOpen=java.lang.Boolean
-Tty=java.lang.Boolean
-Ulimits=java.util.List<com.github.dockerjava.api.model.Ulimit>
-User=java.lang.String
-Volumes=java.util.List<com.github.dockerjava.api.model.Volume>
-VolumesFrom=java.util.List<com.github.dockerjava.api.model.VolumesFrom>
-WorkingDir=java.lang.String
-CgroupParent=java.lang.String
-PidMode=java.lang.String
-HostConfig=com.github.dockerjava.api.model.HostConfig
-  Binds=com.github.dockerjava.api.model.Binds
-  BlkioWeight=java.lang.Integer
-  CpuPeriod=java.lang.Integer
-  CpusetCpus=java.lang.String
-  CpusetMems=java.lang.String
-  CpuShares=java.lang.Integer
-  Links=com.github.dockerjava.api.model.Links
-  LogConfig=com.github.dockerjava.api.model.LogConfig
-  Memory=java.lang.Long
-  MemorySwap=java.lang.Long
-  NetworkMode=java.lang.String
-  PortBindings=com.github.dockerjava.api.model.Ports
-  Privileged=java.lang.Boolean
-  CgroupParent=java.lang.String
-  PidMode=java.lang.String
-  CpuQuota=java.lang.Integer
-  KernelMemory=java.lang.Long
-  ContainerIDFile=java.lang.String
-  OomKillDisable=java.lang.Boolean
-  PublishAllPorts=java.lang.Boolean
-  ReadonlyRootfs=java.lang.Boolean
-  RestartPolicy=com.github.dockerjava.api.model.RestartPolicy
-  MemoryReservation=java.lang.Long
-  OomScoreAdj=java.lang.Boolean
-  SecurityOpts=java.util.List<java.lang.String>
-  ShmSize=java.lang.Long
-  VolumeDriver=java.lang.String
-  PidsLimit=java.lang.Long
-  BlkioDeviceReadBps=java.util.List<java.lang.Object>
-  BlkioDeviceReadIOps=java.util.List<java.lang.Object>
-  BlkioDeviceWriteBps=java.util.List<java.lang.Object>
-  BlkioDeviceWriteIOps=java.util.List<java.lang.Object>
-  BlkioWeightDevice=java.util.List<java.lang.Object>
-  MemorySwappiness=java.lang.Integer
-ContainerIDFile=java.lang.String
-NetworkDisabled=java.lang.Boolean
-OomKillDisable=java.lang.Boolean
-PublishAllPorts=java.lang.Boolean
-ReadonlyRootfs=java.lang.Boolean
-RestartPolicy=com.github.dockerjava.api.model.RestartPolicy
+withAliases=java.util.List<java.lang.String>
+withAttachStderr=java.lang.Boolean
+withAttachStdin=java.lang.Boolean
+withAttachStdout=java.lang.Boolean
+withBinds=java.util.List<com.github.dockerjava.api.model.Bind>
+withBlkioWeight=java.lang.Integer
+withCapAdd=java.util.List<com.github.dockerjava.api.model.Capability>
+withCapDrop=java.util.List<com.github.dockerjava.api.model.Capability>
+withCmd=java.util.List<java.lang.String>
+withCpuPeriod=java.lang.Integer
+withCpusetCpus=java.lang.String
+withCpusetMems=java.lang.String
+withCpuShares=java.lang.Integer
+withDevices=java.util.List<com.github.dockerjava.api.model.Device>
+withDns=java.util.List<java.lang.String>
+withDnsSearch=java.util.List<java.lang.String>
+withDomainName=java.lang.String
+withEntrypoint=java.util.List<java.lang.String>
+withEnv=java.util.List<java.lang.String>
+withExposedPorts=java.util.List<com.github.dockerjava.api.model.ExposedPort>
+withStopSignal=java.lang.String
+withExtraHosts=java.util.List<java.lang.String>
+withHostName=java.lang.String
+withImage=java.lang.String
+withIpv4Address=java.lang.String
+withIpv6Address=java.lang.String
+withLabels=java.util.Map<java.lang.String, java.lang.String>
+withLinks=java.util.List<com.github.dockerjava.api.model.Link>
+withLogConfig=com.github.dockerjava.api.model.LogConfig
+  setConfig=java.util.Map<java.lang.String, java.lang.String>
+  setType=com.github.dockerjava.api.model.LogConfig$LoggingType
+withLxcConf=java.util.List<com.github.dockerjava.api.model.LxcConf>
+  setValue=java.lang.String
+  setKey=java.lang.String
+withMacAddress=java.lang.String
+withMemory=java.lang.Long
+withMemorySwap=java.lang.Long
+withName=java.lang.String
+withNetworkMode=java.lang.String
+withPortBindings=com.github.dockerjava.api.model.Ports
+withPortSpecs=java.util.List<java.lang.String>
+withPrivileged=java.lang.Boolean
+withStdInOnce=java.lang.Boolean
+withStdinOpen=java.lang.Boolean
+withTty=java.lang.Boolean
+withUlimits=java.util.List<com.github.dockerjava.api.model.Ulimit>
+withUser=java.lang.String
+withVolumes=java.util.List<com.github.dockerjava.api.model.Volume>
+withVolumesFrom=java.util.List<com.github.dockerjava.api.model.VolumesFrom>
+withWorkingDir=java.lang.String
+withCgroupParent=java.lang.String
+withPidMode=java.lang.String
+withHostConfig=com.github.dockerjava.api.model.HostConfig
+  withMemoryReservation=java.lang.Long
+  withBinds=com.github.dockerjava.api.model.Binds
+  withBlkioWeight=java.lang.Integer
+  withCpuPeriod=java.lang.Integer
+  withCpusetCpus=java.lang.String
+  withCpusetMems=java.lang.String
+  withCpuShares=java.lang.Integer
+  withLinks=com.github.dockerjava.api.model.Links
+  withLogConfig=com.github.dockerjava.api.model.LogConfig
+    setConfig=java.util.Map<java.lang.String, java.lang.String>
+    setType=com.github.dockerjava.api.model.LogConfig$LoggingType
+  withMemory=java.lang.Long
+  withMemorySwap=java.lang.Long
+  withNetworkMode=java.lang.String
+  withPortBindings=com.github.dockerjava.api.model.Ports
+  withPrivileged=java.lang.Boolean
+  withCgroupParent=java.lang.String
+  withPidMode=java.lang.String
+  withCpuQuota=java.lang.Integer
+  withKernelMemory=java.lang.Long
+  withContainerIDFile=java.lang.String
+  withOomKillDisable=java.lang.Boolean
+  withPublishAllPorts=java.lang.Boolean
+  withReadonlyRootfs=java.lang.Boolean
+  withRestartPolicy=com.github.dockerjava.api.model.RestartPolicy
+  withOomScoreAdj=java.lang.Boolean
+  withSecurityOpts=java.util.List<java.lang.String>
+  withShmSize=java.lang.Long
+  withVolumeDriver=java.lang.String
+  withPidsLimit=java.lang.Long
+  withBlkioDeviceReadBps=java.util.List<java.lang.Object>
+  withBlkioDeviceReadIOps=java.util.List<java.lang.Object>
+  withBlkioDeviceWriteBps=java.util.List<java.lang.Object>
+  withBlkioDeviceWriteIOps=java.util.List<java.lang.Object>
+  withBlkioWeightDevice=java.util.List<java.lang.Object>
+  withMemorySwappiness=java.lang.Integer
+withContainerIDFile=java.lang.String
+withNetworkDisabled=java.lang.Boolean
+withOomKillDisable=java.lang.Boolean
+withPublishAllPorts=java.lang.Boolean
+withReadonlyRootfs=java.lang.Boolean
+withRestartPolicy=com.github.dockerjava.api.model.RestartPolicy
 
 ```
 
@@ -618,8 +640,8 @@ RestartPolicy=com.github.dockerjava.api.model.RestartPolicy
 ####  Docker InspectContainer
 
 ```
-ContainerId=java.lang.String
-Size=java.lang.Boolean
+withContainerId=java.lang.String
+withSize=java.lang.Boolean
 
 ```
 
@@ -627,9 +649,9 @@ Size=java.lang.Boolean
 ####  Docker CreateVolume
 
 ```
-Name=java.lang.String
-Driver=java.lang.String
-DriverOpts=java.util.Map<java.lang.String, java.lang.String>
+withName=java.lang.String
+withDriver=java.lang.String
+withDriverOpts=java.util.Map<java.lang.String, java.lang.String>
 
 ```
 
@@ -637,7 +659,7 @@ DriverOpts=java.util.Map<java.lang.String, java.lang.String>
 ####  Docker RestartContainer
 
 ```
-tTimeout=java.lang.Integer
-ContainerId=java.lang.String
+withContainerId=java.lang.String
+withtTimeout=java.lang.Integer
 
 ```
