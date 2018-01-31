@@ -1,22 +1,25 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package com.github.isdream.cdispatcher;
+package com.github.isdream.cdispatcher.deprecated;
 
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import com.github.isdream.cdispatcher.ModelParametersAnalyzer;
 import com.github.isdream.cdispatcher.commons.rules.JavaObjectRule;
 
 /**
  * @author wuheng@otcaix.iscas.ac.cn
  * 
- * 2018年1月9日
+ * 2018年1月30日
  *
  */
+@Deprecated
 public class ModelParamtersViewer {
 
+	final static String dockerUrl = "tcp://118.190.46.58:12375";
 	
 	static Set<String> sets = new HashSet<String>();
 	
@@ -56,8 +59,7 @@ public class ModelParamtersViewer {
 			while (i++ < len -1) {
 				sb.append("  ");
 			}
-			sb.append(split[i - 1]
-						.substring(size)).append("=")
+			sb.append(split[i - 1]).append("=")
 						.append(map.get(name)).append("\n");
 		}
 		return sb.toString();

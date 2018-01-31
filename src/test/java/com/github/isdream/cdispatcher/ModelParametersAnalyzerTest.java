@@ -4,7 +4,7 @@
 package com.github.isdream.cdispatcher;
 
 import com.github.isdream.cdispatcher.ModelParametersAnalyzer;
-import com.github.isdream.cdispatcher.ModelParamtersViewer;
+import com.github.isdream.cdispatcher.deprecated.ModelParamtersViewer;
 import com.github.isdream.cdispatcher.kubernetes.KubernetesConstants;
 import com.github.isdream.cdispatcher.kubernetes.KubernetesModelParametersAnalyzer;
 import com.github.isdream.cdispatcher.openshift.OpenShiftModelParametersAnalyzer;

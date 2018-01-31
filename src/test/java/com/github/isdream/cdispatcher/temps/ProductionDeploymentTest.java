@@ -1,7 +1,7 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package com.github.isdream.cdispatcher.others;
+package com.github.isdream.cdispatcher.temps;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,7 +14,7 @@ import io.fabric8.kubernetes.client.DefaultKubernetesClient;
 import junit.framework.TestCase;
 
 @SuppressWarnings("serial")
-public class DeploymentTest extends TestCase {
+public class ProductionDeploymentTest extends TestCase {
 
 	/*******************************************************************************
 	 * 

@@ -1,7 +1,7 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package com.github.isdream.cdispatcher.others;
+package com.github.isdream.cdispatcher.temps;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -10,13 +10,12 @@ import java.util.Map;
 import java.util.Set;
 
 import com.github.dockerjava.netty.DockerCmdExecFactoryImpl;
-import com.github.isdream.cdispatcher.ModelParamtersViewer;
+import com.github.isdream.cdispatcher.deprecated.ModelParamtersViewer;
 import com.github.isdream.cdispatcher.docker.DockerConstants;
 import com.github.isdream.cdispatcher.docker.DockerKindModelsAnalyzer;
 import com.github.isdream.cdispatcher.docker.DockerKindsAnalyzer;
 import com.github.isdream.cdispatcher.docker.DockerModelParametersAnalyzer;
 import com.github.isdream.cdispatcher.docker.adapters.DockerClientImpl;
-import com.google.common.util.concurrent.ExecutionError;
 
 /**
  * @author wuheng@otcaix.iscas.ac.cn 2018-1-27
@@ -259,6 +258,11 @@ public class DockerTest {
 		//// System.out.println(client.listImagesCmd().exec().size());
 		// kindAnalyser();
 		// kindModelAnalyser();
+		kindModelParametersAnalyser();
+
+	}
+
+	protected static void kindModelParametersAnalyser() {
 		DockerKindsAnalyzer kinds = (DockerKindsAnalyzer) DockerKindsAnalyzer.getAnalyzer();
 		DockerModelParametersAnalyzer parameters = (DockerModelParametersAnalyzer) DockerModelParametersAnalyzer
 				.getAnalyzer();
@@ -277,7 +281,6 @@ public class DockerTest {
 				continue;
 			}
 		}
-
 	}
 
 	protected static void kindModelAnalyser() {

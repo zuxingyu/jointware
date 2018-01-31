@@ -1,4 +1,4 @@
-package com.github.isdream.cdispatcher.others;
+package com.github.isdream.cdispatcher.temps;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -18,7 +18,7 @@ import io.fabric8.openshift.client.DefaultOpenShiftClient;
  *
  */
 @SuppressWarnings("serial")
-public class DeploymentConfig {
+public class DeploymentConfigTest {
 
 	public static Map<String, Object> params = new HashMap<String, Object>();
 

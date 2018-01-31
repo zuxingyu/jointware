@@ -1,7 +1,7 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package com.github.isdream.cdispatcher;
+package com.github.isdream.cdispatcher.deprecated;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -19,6 +19,7 @@ import com.github.isdream.cdispatcher.commons.utils.ObjectUtils;
  * 2018年1月12日
  *
  */
+@Deprecated
 public class UserMapWriter {
 
 	public final static String DEFAULT_PARENT = "";

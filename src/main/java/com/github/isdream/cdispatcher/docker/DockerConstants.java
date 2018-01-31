@@ -21,6 +21,10 @@ public class DockerConstants {
 	
 	public static final String MODEL_METHOD_WITH = "with";
 	
+	public static final String MODEL_METHOD_ADD = "add";
+	
+	public static final String MODEL_METHOD_SET = "set";
+	
 	public final static String KIND_WITHDOCKERCMDEXECFACT = "WithDockerCmdExecFact";
 
 	public final static String KIND_ATTACHCONTAINER = "AttachContainer";

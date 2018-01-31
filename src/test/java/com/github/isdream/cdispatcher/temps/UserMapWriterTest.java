@@ -1,14 +1,14 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package com.github.isdream.cdispatcher.others;
+package com.github.isdream.cdispatcher.temps;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 import org.yaml.snakeyaml.Yaml;
 
-import com.github.isdream.cdispatcher.UserMapWriter;
+import com.github.isdream.cdispatcher.deprecated.UserMapWriter;
 import com.github.isdream.cdispatcher.openshift.OpenShiftConstants;
 import com.github.isdream.cdispatcher.openshift.OpenShiftKindModelsAnalyzer;
 

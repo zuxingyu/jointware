@@ -19,7 +19,7 @@ import junit.framework.TestCase;
  *
  */
 @SuppressWarnings("serial")
-public class BuildConfig extends TestCase {
+public class BuildConfigTest extends TestCase {
 
 	public static Map<String, Object> params = new HashMap<String, Object>();
 

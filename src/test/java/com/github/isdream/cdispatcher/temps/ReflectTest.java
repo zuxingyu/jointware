@@ -1,7 +1,7 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package com.github.isdream.cdispatcher.others;
+package com.github.isdream.cdispatcher.temps;
 
 import com.github.isdream.cdispatcher.openshift.OpenShiftConstants;
 

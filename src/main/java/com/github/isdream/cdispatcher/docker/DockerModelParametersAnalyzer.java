@@ -51,7 +51,9 @@ public class DockerModelParametersAnalyzer extends ModelParametersAnalyzer {
 	@Override
 	protected boolean canReflect(Method method) {
 		return ObjectUtils.isNull(method) ? false 
-				: ((method.getName().startsWith(DockerConstants.MODEL_METHOD_WITH)) // with开头的方法
+				: ((method.getName().startsWith(DockerConstants.MODEL_METHOD_WITH)
+						|| method.getName().startsWith(DockerConstants.MODEL_METHOD_SET)
+						|| method.getName().startsWith(DockerConstants.MODEL_METHOD_ADD)) // with开头的方法
 				&& method.getParameterCount() == 1  //该方法只有一个参数
 				&& !method.getGenericParameterTypes()[0].getTypeName().endsWith("[]")
 				&& !JavaMethodParametersIgnoreRule.ignore(method.getName())); //可以人工指定过滤哪些方法

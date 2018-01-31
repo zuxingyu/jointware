@@ -1,12 +1,12 @@
 /**
  * 
  */
-package com.github.isdream.cdispatcher.others;
+package com.github.isdream.cdispatcher.temps;
 
 import com.github.isdream.cdispatcher.KindModelsAnalyzer;
 import com.github.isdream.cdispatcher.KindsAnalyzer;
 import com.github.isdream.cdispatcher.ModelParametersAnalyzer;
-import com.github.isdream.cdispatcher.ModelParamtersViewer;
+import com.github.isdream.cdispatcher.deprecated.ModelParamtersViewer;
 import com.github.isdream.cdispatcher.kubernetes.KubernetesConstants;
 import com.github.isdream.cdispatcher.kubernetes.KubernetesKindModelsAnalyzer;
 import com.github.isdream.cdispatcher.kubernetes.KubernetesKindsAnalyzer;
