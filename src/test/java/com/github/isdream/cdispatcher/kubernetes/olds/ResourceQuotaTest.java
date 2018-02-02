@@ -1,12 +1,13 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package com.github.isdream.cdispatcher.kubernetes;
+package com.github.isdream.cdispatcher.kubernetes.olds;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.github.isdream.cdispatcher.kubernetes.KubernetesConstants;
 import com.github.isdream.cdispatcher.kubernetes.KubernetesModelParametersGenerator;
 
 import io.fabric8.kubernetes.client.DefaultKubernetesClient;

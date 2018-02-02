@@ -50,6 +50,14 @@ public class JavaMethodParametersIgnoreRule {
 		ignores.add("getTypeParameters");
 		ignores.add("getClass");
 		ignores.add("getBytes");
+		ignores.add("wait");
+		ignores.add("hashCode");
+		ignores.add("notify");
+		ignores.add("notifyAll");
+		ignores.add("close");
+		ignores.add("toString");
+		ignores.add("equals");
+		ignores.add("getInstance");
 	}
 	
 	/**

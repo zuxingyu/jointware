@@ -1,19 +1,20 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package com.github.isdream.cdispatcher.kubernetes;
+package com.github.isdream.cdispatcher.kubernetes.olds;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.github.isdream.cdispatcher.kubernetes.KubernetesConstants;
 import com.github.isdream.cdispatcher.kubernetes.KubernetesModelParametersGenerator;
 
 import io.fabric8.kubernetes.client.DefaultKubernetesClient;
 import junit.framework.TestCase;
 
 @SuppressWarnings("serial")
-public class DaemonSetTest extends TestCase {
+public class StatefulSetTest extends TestCase {
 
 	/*******************************************************************************
 	 * 
@@ -23,18 +24,18 @@ public class DaemonSetTest extends TestCase {
 	public static Map<String, Object> createDMParams = new HashMap<String, Object>();
 
 	static {
-		createDMParams.put("setMetadata-setName", "busybox-daemonset");
+		createDMParams.put("setMetadata-setName", "busybox-statefulset");
 		createDMParams.put("setMetadata-setNamespace", "wuheng");
 		createDMParams.put("setMetadata-setLabels", new HashMap<String, String>() {
 			{
-				put("app", "busybox-daemonset");
+				put("app", "busybox-statefulset");
 				put("version", "20180109");
 			}
 		});
-		createDMParams.put("setSpec-setTemplate-setMetadata-setName", "busybox-daemonset");
+		createDMParams.put("setSpec-setTemplate-setMetadata-setName", "busybox-statefulset");
 		createDMParams.put("setSpec-setTemplate-setMetadata-setLabels", new HashMap<String, String>() {
 			{
-				put("app", "busybox-daemonset");
+				put("app", "busybox-statefulset");
 				put("version", "20180109");
 			}
 		});
@@ -44,7 +45,7 @@ public class DaemonSetTest extends TestCase {
 					{
 						put("setImage", "dcr.io:5000/busybox:latest");
 						put("setImagePullPolicy", "IfNotPresent");
-						put("setName", "busybox-daemonset");
+						put("setName", "busybox-statefulset");
 						put("setCommand", new ArrayList<String>() {
 							{
 								add("sleep");
@@ -57,16 +58,21 @@ public class DaemonSetTest extends TestCase {
 		});
 	}
 	
-	public void testCreateDaemonSet() throws Exception {
+	public void testCreateStatefulSet() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
 		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-		generator.create(client, KubernetesConstants.KIND_DAEMONSET, createDMParams);
+		generator.create(client, KubernetesConstants.KIND_STATEFULSET, createDMParams);
 	}
 	
-	
-	public void testDeleteDaemonSet() throws Exception {
+	public void testUpdateStatefulSet() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
 		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-		generator.delete(client, KubernetesConstants.KIND_DAEMONSET, "wuheng", "busybox-daemonset");
+		generator.scaleTo(client, KubernetesConstants.KIND_STATEFULSET, "wuheng", "busybox-statefulset", 1);
+	}
+	
+	public void testDeleteStatefulSet() throws Exception {
+		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
+		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
+		generator.delete(client, KubernetesConstants.KIND_STATEFULSET, "wuheng", "busybox-statefulset");
 	}
 }
