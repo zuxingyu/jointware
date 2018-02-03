@@ -11,7 +11,7 @@ import java.util.Set;
 import com.github.isdream.cdispatcher.commons.utils.StringUtils;
 
 /**
- * @author henry, wuheng@otcaix.iscas.ac.cn
+ * @author henry(wuheng@otcaix.iscas.ac.cn)
  *
  * 2018年1月3日
  * 
@@ -48,6 +48,9 @@ public abstract class KindsAnalyzer {
 	 */
 	protected final Map<String, String> kinds = new HashMap<String, String>();
 	
+	/**
+	 * 
+	 */
 	protected final static String DEFAULT_PARENT = "";
 	
 	/************************************************************************************

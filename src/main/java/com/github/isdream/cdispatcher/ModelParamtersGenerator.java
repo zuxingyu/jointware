@@ -126,6 +126,7 @@ public abstract class ModelParamtersGenerator {
 	 * @return 返回对象
 	 * @throws Exception 返回异常
 	 */
+	@Deprecated
 	public Object scaleTo(Object client, String kind, String namespace, String name, int numbers) throws Exception {
 		if (ObjectUtils.isNull(client) || StringUtils.isNull(kind) || 
 				StringUtils.isNull(namespace) || StringUtils.isNull(name) || numbers <= 0 || numbers >= Integer.MAX_VALUE) {
@@ -168,6 +169,13 @@ public abstract class ModelParamtersGenerator {
 										String namespace, String name, 
 										int numbers) throws Exception;
 	
+	/**
+	 * @param client 客户端
+	 * @param kind   类型
+	 * @param name   名字
+	 * @return       对象
+	 * @throws Exception 反射异常
+	 */
 	public Object query(Object client, String kind, String name) throws Exception {
 		return this.query(client, kind, IGNORE_NAMESPACE, name);
 	}
