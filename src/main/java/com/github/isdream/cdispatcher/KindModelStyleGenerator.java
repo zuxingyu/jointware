@@ -14,7 +14,7 @@ import com.github.isdream.cdispatcher.commons.utils.StringUtils;
  *
  * 2018年1月3日
  */
-public abstract class ModelParamtersGenerator {
+public abstract class KindModelStyleGenerator {
 
 	
 	public final static String IGNORE_NAMESPACE = "ignore.namespace";

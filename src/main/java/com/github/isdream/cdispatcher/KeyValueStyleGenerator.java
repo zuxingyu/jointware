@@ -17,7 +17,7 @@ import com.github.isdream.cdispatcher.defaultmodle.DefaultObject;
  *
  * 2018年1月31日
  */
-public abstract class KeyValueConverter {
+public abstract class KeyValueStyleGenerator {
 
 	protected StringBuffer sb = new StringBuffer();
 	

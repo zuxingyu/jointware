@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
 
-import com.github.isdream.cdispatcher.ModelParamtersGenerator;
+import com.github.isdream.cdispatcher.KindModelStyleGenerator;
 import com.github.isdream.cdispatcher.commons.rules.JavaObjectRule;
 import com.github.isdream.cdispatcher.commons.utils.StringUtils;
 
@@ -32,7 +32,7 @@ import io.fabric8.kubernetes.client.dsl.Scaleable;
  *
  *         2018年1月3日
  */
-public class KubernetesModelParametersGenerator extends ModelParamtersGenerator {
+public class KubernetesModelParametersGenerator extends KindModelStyleGenerator {
 
 	protected final static String NEW_OBJECT_METHOD = "create";
 

@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
-import com.github.isdream.cdispatcher.ModelParamtersGenerator;
+import com.github.isdream.cdispatcher.KindModelStyleGenerator;
 import com.github.isdream.cdispatcher.commons.rules.JavaObjectRule;
 import com.github.isdream.cdispatcher.commons.utils.StringUtils;
 
@@ -20,7 +20,7 @@ import com.github.isdream.cdispatcher.commons.utils.StringUtils;
  *
  * 2018年1月29日
  */
-public class DockerModelParametersGenerator extends ModelParamtersGenerator {
+public class DockerModelParametersGenerator extends KindModelStyleGenerator {
 
 
 	protected final static String DEFAULT_PREFIX = "";

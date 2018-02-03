@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.github.isdream.cdispatcher.KeyValueConverter;
+import com.github.isdream.cdispatcher.KeyValueStyleGenerator;
 import com.github.isdream.cdispatcher.commons.rules.JavaMethodParametersIgnoreRule;
 
 /**
@@ -17,7 +17,7 @@ import com.github.isdream.cdispatcher.commons.rules.JavaMethodParametersIgnoreRu
  *
  * 2018年1月31日
  */
-public class KubernetesExampleKeyValueConverter extends KeyValueConverter {
+public class KubernetesExampleKeyValueConverter extends KeyValueStyleGenerator {
 
 	protected final static String IGNORE_PREFIX = "get";
 	
