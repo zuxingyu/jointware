@@ -1,4 +1,4 @@
-## Kubernetes kind models
+## Kubernetes features
 
 ```
 - ServiceAccount=io.fabric8.kubernetes.api.model.ServiceAccount
