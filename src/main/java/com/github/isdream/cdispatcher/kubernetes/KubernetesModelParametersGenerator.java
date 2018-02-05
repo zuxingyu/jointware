@@ -34,6 +34,8 @@ import io.fabric8.kubernetes.client.dsl.Scaleable;
 public class KubernetesModelParametersGenerator extends KindModelStyleGenerator {
 
 	protected final static String NEW_OBJECT_METHOD = "create";
+	
+	protected final static String OBJECT_PREFIX = "ref-";
 
 	protected final static String DEFAULT_PREFIX = "";
 	
@@ -126,60 +128,64 @@ public class KubernetesModelParametersGenerator extends KindModelStyleGenerator 
 		Object thisParam = null;
 		if (StringUtils.isPrimitive(typename)) {
 			thisParam = getPrimitiveInstance(fullname, paramTypes.get(fullname), paramValues.get(fullname));
-		} else if (StringUtils.isStringList(typename)) {
+		} else if (StringUtils.isList(typename)) {
 			thisParam = new ArrayList<String>();
 			List<String> values = (List<String>) paramValues.get(fullname);
 			for (String key : values) {
 				((List<String>) thisParam).add(key);
 			}
-		} else if (StringUtils.isObjectList(typename)) {
-			thisParam = new ArrayList<Object>();
-			List<Object> values = (List<Object>) paramValues.get(fullname);
-			HashMap<String, Object> newParamValues = new HashMap<String, Object>();
-			for (Object subObjValue : values) {
-				// Object subObject = Class.forName(
-				// getClassNameForListStyle(typename)).newInstance();
-				Object subObject = getThisObject(getClassNameForListStyle(typename));
-				objCaches.put(fullname, subObject);
-				((List<Object>) thisParam).add(subObject);
-				Map<String, Object> mapValues = (Map<String, Object>) subObjValue;
-				for (String newKey : mapValues.keySet()) {
-					newParamValues.put(fullname + "-" + newKey, mapValues.get(newKey));
-				}
-				initAndGenerateParameters(newParamValues, fullname);
-				for (String newKey : mapValues.keySet()) {
-					objCaches.remove(fullname + "-" + newKey);
-				}
-				objCaches.remove(fullname);
-				newParamValues.clear();
-			}
-		} else if (StringUtils.isStringStringMap(typename)) {
+		} 
+//		else if (StringUtils.isObjectList(typename)) {
+//			thisParam = new ArrayList<Object>();
+//			List<Object> values = (List<Object>) paramValues.get(fullname);
+//			HashMap<String, Object> newParamValues = new HashMap<String, Object>();
+//			for (Object subObjValue : values) {
+//				// Object subObject = Class.forName(
+//				// getClassNameForListStyle(typename)).newInstance();
+//				Object subObject = getThisObject(getClassNameForListStyle(typename));
+//				objCaches.put(fullname, subObject);
+//				((List<Object>) thisParam).add(subObject);
+//				Map<String, Object> mapValues = (Map<String, Object>) subObjValue;
+//				for (String newKey : mapValues.keySet()) {
+//					newParamValues.put(fullname + "-" + newKey, mapValues.get(newKey));
+//				}
+//				initAndGenerateParameters(newParamValues, fullname);
+//				for (String newKey : mapValues.keySet()) {
+//					objCaches.remove(fullname + "-" + newKey);
+//				}
+//				objCaches.remove(fullname);
+//				newParamValues.clear();
+//			}
+//		} 
+		else if (StringUtils.isMap(typename)) {
 			thisParam = new HashMap<String, String>();
 			Map<String, String> values = (Map<String, String>) paramValues.get(fullname);
 			for (String key : values.keySet()) {
 				((Map<String, String>) thisParam).put(key, values.get(key));
 			}
-		} else if (StringUtils.isStringObjectMap(typename)) {
-			thisParam = new HashMap<String, Object>();
-			Map<String, List<Object>> values = (Map<String, List<Object>>) paramValues.get(fullname);
-			for (String key : values.keySet()) {
-				// Object subObject = Class.forName(
-				// getClassNameForMapStyle(typename)).newInstance();
-				Object subObject = getThisObject(getClassNameForMapStyle(typename));
-				((Map<String, Object>) thisParam).put(key, subObject);
-				List<Object> mapValues = (List<Object>) values.get(key);
-
-				for (Object obj : mapValues) {
-					Map<String, Object> map = (Map<String, Object>) obj;
-					for (String newKey : map.keySet()) {
-						Object thisParameter = getPrimitiveInstance(newKey, String.class.getName(), map.get(newKey));
-						Method thisMethod = getThisMethod(subObject, newKey, String.class);
-						thisMethod.invoke(subObject, thisParameter);
-					}
-				}
-
-			}
-		} else {
+		} 
+//		else if (StringUtils.isStringObjectMap(typename)) {
+//			thisParam = new HashMap<String, Object>();
+//			Map<String, List<Object>> values = (Map<String, List<Object>>) paramValues.get(fullname);
+//			for (String key : values.keySet()) {
+//				// Object subObject = Class.forName(
+//				// getClassNameForMapStyle(typename)).newInstance();
+//				Object subObject = getThisObject(getClassNameForMapStyle(typename));
+//				((Map<String, Object>) thisParam).put(key, subObject);
+//				List<Object> mapValues = (List<Object>) values.get(key);
+//
+//				for (Object obj : mapValues) {
+//					Map<String, Object> map = (Map<String, Object>) obj;
+//					for (String newKey : map.keySet()) {
+//						Object thisParameter = getPrimitiveInstance(newKey, String.class.getName(), map.get(newKey));
+//						Method thisMethod = getThisMethod(subObject, newKey, String.class);
+//						thisMethod.invoke(subObject, thisParameter);
+//					}
+//				}
+//
+//			}
+//		} 
+		else {
 			if (objCaches.get(fullname) != null) {
 				return;
 			}
