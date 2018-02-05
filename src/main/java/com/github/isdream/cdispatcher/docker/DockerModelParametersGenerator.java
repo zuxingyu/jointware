@@ -5,14 +5,12 @@ package com.github.isdream.cdispatcher.docker;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
 import com.github.isdream.cdispatcher.KindModelStyleGenerator;
-import com.github.isdream.cdispatcher.commons.rules.JavaObjectRule;
 import com.github.isdream.cdispatcher.commons.utils.StringUtils;
 
 /**
@@ -96,7 +94,6 @@ public class DockerModelParametersGenerator extends KindModelStyleGenerator {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	protected void generateParameter(String fullname, Map<String, Map<String, Object>> paramValues) throws Exception {
 
 //		String typename = paramTypes.get(fullname);
@@ -469,32 +466,27 @@ public class DockerModelParametersGenerator extends KindModelStyleGenerator {
 	}
 
 	@Override
-	@SuppressWarnings({ "unchecked", "rawtypes" })
 	protected Object doCreate(Object client, String kind, Map<String, Map<String, Object>> params) throws Exception {
 		return null;
 	}
 
 	@Override
-	@SuppressWarnings({ "unchecked", "rawtypes" })
 	protected Object doCreateOrReplace(Object client, String kind, Map<String, Map<String, Object>> params) throws Exception {
 		return null;
 	}
 
 	@Override
-	@SuppressWarnings({ "rawtypes" })
 	protected Object doScaleTo(Object client, String kind, String namespace, String name, int numbers)
 			throws Exception {
 		return null;
 	}
 
 	@Override
-	@SuppressWarnings("rawtypes")
 	protected Object doQuery(Object client, String kind, String namespace, String name) throws Exception {
 		return null;
 	}
 
 	@Override
-	@SuppressWarnings("rawtypes")
 	protected boolean doDelete(Object client, String kind, String namespace, String name) throws Exception {
 		return false;
 	}

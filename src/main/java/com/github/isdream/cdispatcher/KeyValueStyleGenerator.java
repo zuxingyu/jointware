@@ -9,7 +9,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-import com.github.isdream.cdispatcher.commons.rules.JavaObjectRule;
 import com.github.isdream.cdispatcher.commons.utils.ObjectUtils;
 import com.github.isdream.cdispatcher.commons.utils.StringUtils;
 import com.github.isdream.cdispatcher.defaultmodle.DefaultObject;
@@ -44,7 +43,7 @@ public abstract class KeyValueStyleGenerator {
 
 			kvso.addItem(kind);
 			String thisTypeName = getTypeName(method);
-			if (JavaObjectRule.isPrimitive(thisTypeName)) {
+			if (StringUtils.isPrimitive(thisTypeName)) {
 				try {
 					kvso.addItemWithKeyValue(kind, 
 							getRealKey(key, method), getValue(obj, method));

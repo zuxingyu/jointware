@@ -14,7 +14,6 @@ import java.util.Set;
 import java.util.Stack;
 
 import com.github.isdream.cdispatcher.KindModelStyleGenerator;
-import com.github.isdream.cdispatcher.commons.rules.JavaObjectRule;
 import com.github.isdream.cdispatcher.commons.utils.StringUtils;
 
 import io.fabric8.kubernetes.api.model.HasMetadata;
@@ -125,7 +124,7 @@ public class KubernetesModelParametersGenerator extends KindModelStyleGenerator 
 
 		String typename = paramTypes.get(fullname);
 		Object thisParam = null;
-		if (JavaObjectRule.isPrimitive(typename)) {
+		if (StringUtils.isPrimitive(typename)) {
 			thisParam = getPrimitiveInstance(fullname, paramTypes.get(fullname), paramValues.get(fullname));
 		} else if (StringUtils.isStringList(typename)) {
 			thisParam = new ArrayList<String>();

@@ -8,8 +8,8 @@ import java.util.Map;
 
 import com.github.isdream.cdispatcher.ModelParametersAnalyzer;
 import com.github.isdream.cdispatcher.commons.rules.JavaMethodParametersIgnoreRule;
-import com.github.isdream.cdispatcher.commons.rules.JavaObjectRule;
 import com.github.isdream.cdispatcher.commons.utils.ObjectUtils;
+import com.github.isdream.cdispatcher.commons.utils.StringUtils;
 import com.github.isdream.cdispatcher.defaultmodle.DefaultModelParametersAnalyzer;
 
 /**
@@ -62,7 +62,7 @@ public class DockerModelParametersAnalyzer extends ModelParametersAnalyzer {
 
 	@Override
 	protected boolean canLoop(String typename) {
-		return !JavaObjectRule.isPrimitive(typename)
+		return !StringUtils.isPrimitive(typename)
 				&& typename.split(",").length < 2;
 	}
 

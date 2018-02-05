@@ -10,7 +10,6 @@ import java.util.Map;
 import java.util.Set;
 
 import com.github.dockerjava.netty.DockerCmdExecFactoryImpl;
-import com.github.isdream.cdispatcher.deprecated.ModelParamtersViewer;
 import com.github.isdream.cdispatcher.docker.DockerConstants;
 import com.github.isdream.cdispatcher.docker.DockerKindModelsAnalyzer;
 import com.github.isdream.cdispatcher.docker.DockerKindsAnalyzer;
@@ -267,20 +266,20 @@ public class DockerTest {
 		DockerModelParametersAnalyzer parameters = (DockerModelParametersAnalyzer) DockerModelParametersAnalyzer
 				.getAnalyzer();
 
-		ModelParamtersViewer viewer = new ModelParamtersViewer(parameters);
-		for (String kind : kinds.getKinds()) {
-			
-			try {
-				String printModel2 = viewer.printModel2(kind, DockerConstants.MODEL_METHOD_WITH.length());
-				System.out.println("####  Docker " + kind);
-				System.out.println("\n```");
-				System.out.println(printModel2);
-				System.out.println("```");
-				System.out.println("\n");
-			} catch (Exception e) {
-				continue;
-			}
-		}
+//		ModelParamtersViewer viewer = new ModelParamtersViewer(parameters);
+//		for (String kind : kinds.getKinds()) {
+//			
+//			try {
+//				String printModel2 = viewer.printModel2(kind, DockerConstants.MODEL_METHOD_WITH.length());
+//				System.out.println("####  Docker " + kind);
+//				System.out.println("\n```");
+//				System.out.println(printModel2);
+//				System.out.println("```");
+//				System.out.println("\n");
+//			} catch (Exception e) {
+//				continue;
+//			}
+//		}
 	}
 
 	protected static void kindModelAnalyser() {
