@@ -19,7 +19,7 @@ import com.github.isdream.cdispatcher.commons.rules.JavaMethodParametersIgnoreRu
  *
  * 2018年1月31日
  */
-public class KubernetesDocumentKeyValueConverter extends KeyValueStyleGenerator {
+public class KubernetesDocumentKeyValueStyleGenerator extends KeyValueStyleGenerator {
 
 	protected final static String IGNORE_PREFIX = "get";
 	
