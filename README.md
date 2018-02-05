@@ -23,10 +23,10 @@ cluster-dispatcher
 
 - #### Kubernetes and OpenShift
 
-  * [Kubernetes and OpenShift features](docs/k8s-ocp-yaml-kinds.md)
-  * [fabric8 model for both Kubernetes and OpenShift features](docs/k8s-ocp-kind-models.md) 
-  * [fabric8 model parameters for both Kubernetes and OpenShift](docs/k8s-ocp-model-parameters.md)
-  * [What is the classification of all fabric8 models](docs/k8s-ocp-yaml-classification.md)
+  * [Kubernetes and OpenShift features](docs/kubernetes-openshift/features-and-models.md)
+  * [fabric8 model for both Kubernetes and OpenShift features](docs/kubernetes-openshift/models-and-parameters.md) 
+  * [fabric8 model parameters for both Kubernetes and OpenShift](docs/kubernetes-openshift/parameters-keyvalue-style.md)
+  * [What is the classification of all fabric8 models](docs/kubernetes-openshift/models-classification.md)
   
 - #### Docker and Swarm
 
