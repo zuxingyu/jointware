@@ -5,6 +5,7 @@ package com.github.isdream.cdispatcher;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -31,47 +32,81 @@ public abstract class KeyValueStyleGenerator {
 	 */
 	public Map<String, Map<String, Object>> fromModelParameters(Object obj) throws Exception {
 		obj = ObjectUtils.isNull(obj) ? new DefaultObject() : obj;
-		toKayValue(obj, KeyValueStyleObject.DEFAULT_KIND, DEFAULT_KEY);
+		toKeyValue(obj, KeyValueStyleObject.DEFAULT_KIND, DEFAULT_KEY);
 		return kvso.getMap();
 	}
 
-	protected void toKayValue(Object obj, String kind, String key) throws Exception {
+	protected void toKeyValue(Object obj, String kind, String key) throws Exception {
 		for(Method method : obj.getClass().getMethods()) {
-			if (ignore(method)) {
+			if (ignore(obj, method)) {
 				continue;
 			}
 
 			kvso.addItem(kind);
-			String typeName = getTypeName(method);
-			if (JavaObjectRule.isPrimitive(typeName)
-					|| StringUtils.isStringList(typeName)
-					|| StringUtils.isStringSet(typeName)
-					|| StringUtils.isStringStringMap(typeName)) {
-				kvso.addItemWithKeyValue(kind, getKey(key, method), typeName);
-			} else if (StringUtils.isObjectList(typeName)
-					|| StringUtils.isObjectSet(typeName)) {
-				List<String> thisValues = new ArrayList<String>();
-				kvso.addItemWithKeyValue(kind, getKey(key, method), thisValues);
-				for (int i =0; i<getListOrSetStyleObjects(method).size(); i++) {
+			String thisTypeName = getTypeName(method);
+			if (JavaObjectRule.isPrimitive(thisTypeName)) {
+				try {
+					kvso.addItemWithKeyValue(kind, 
+							getRealKey(key, method), getValue(obj, method));
+				} catch (Exception e) {
+					// ignore here
+				}
+			} else if (StringUtils.isStringList(thisTypeName)
+						|| StringUtils.isStringSet(thisTypeName)) {
+				try {
+					Collection<?> value = (Collection<?>) getValue(obj, method);
+					if (ObjectUtils.isNull(value)) {
+						continue;
+					}
+					kvso.addItemWithKeyValue(kind, 
+							getRealKey(key, method), value);
+				} catch (Exception e) {
+					// ignore here
+				}
+			} else if (StringUtils.isStringStringMap(thisTypeName)) {
+				try {
+					Map<?, ?> value = (Map<?, ?>) getValue(obj, method);
+					if (ObjectUtils.isNull(value)) {
+						continue;
+					}
+					kvso.addItemWithKeyValue(kind, 
+							getRealKey(key, method), value);
+				} catch (Exception e) {
+					// ignore here
+				}
+			} else if (StringUtils.isObjectList(thisTypeName)
+					|| StringUtils.isObjectSet(thisTypeName)) {
+				List<String> newValues = new ArrayList<String>();
+				Collection<Object> objects = getListOrSetStyleObjects(obj, method);
+				for (int i =0; i<objects.toArray().length; i++) {
 					try {
-						String classname = StringUtils.getClassNameForListOrSetStyle(typeName);
-						thisValues.add("ref-" + classname + "-" + i);
-						toKayValue(Class.forName(classname).newInstance(), "ref-" + classname + "-" + i, DEFAULT_KEY);
+						String classname = StringUtils.getClassNameForListOrSetStyle(thisTypeName);
+						newValues.add("ref-" + classname + "-" + i);
+						toKeyValue(objects.toArray()[i], "ref-" + classname + "-" + i, DEFAULT_KEY);
 					} catch (Exception e) {
 						// ignore here
 					}
 				}
-			} else if (StringUtils.isStringObjectMap(typeName)) {
-				for (String extrakey : getStringObjectMapStyleObjects(method).keySet()) {
-					kvso.addItemWithKeyValue(kind, getKey(key, method) + "-" + extrakey, 
-							"ref-" + getKey(key, method) + "-" + extrakey);
-					String classname = StringUtils.getClassNameForMapStyle(typeName);
-					toKayValue(Class.forName(classname).newInstance(), 
-							"ref-" + getKey(key, method) + "-" + extrakey, DEFAULT_KEY);
+				if (!ObjectUtils.isNull(objects)) {
+					kvso.addItemWithKeyValue(kind, getRealKey(key, method), newValues);
 				}
+			} else if (StringUtils.isStringObjectMap(thisTypeName)) {
+				Map<String, Object> objects = getStringObjectMapStyleObjects(obj, method);
+				for (String extrakey : objects.keySet()) {
+					try {
+						kvso.addItemWithKeyValue(kind, getRealKey(key, method) + "-" + extrakey, 
+								"ref-" + getRealKey(key, method) + "-" + extrakey);
+						toKeyValue(objects.get(extrakey), 
+								"ref-" + getRealKey(key, method) + "-" + extrakey, DEFAULT_KEY);
+					} catch (Exception e) {
+						// ignore here
+					}
+					
+				}
+				
 			} else {
 				try {
-					toKayValue(Class.forName(typeName).newInstance(), kind, method.getName());
+					toKeyValue(getTarget(obj, method), kind, getRealParent(method));
 				} catch (Exception e) {
 					//ignore here
 				}
@@ -80,39 +115,54 @@ public abstract class KeyValueStyleGenerator {
 	}
 
 	/**
+	 * @param method 方法名
+	 * @return 真实的方法名
+	 */
+	protected abstract String getRealParent(Method method);
+
+	
+	/**
+	 * @param obj 对象
+	 * @param method 方法名
+	 * @return 对象调用方法后对象
+	 */
+	protected abstract Object getTarget(Object obj, Method method) throws Exception;
+	/**
+	 * @param obj 对象
+	 * @param method 方法
+	 * @return 数值
+	 */
+	protected abstract Object getValue(Object obj, Method method);
+
+	/**
 	 * @param key 主键
 	 * @param method 方法名
 	 * @return 新的主键
 	 */
-	protected String getKey(String key, Method method) {
-		return StringUtils.isNull(key) ? method.getName() 
-									: key + "-" + method.getName();
-	}
+	protected abstract String getRealKey(String key, Method method);
 
 	/**
 	 * @param method 方法名
 	 * @return 类型
 	 */
-	protected String getTypeName(Method method) {
-		return method.getGenericParameterTypes()[0].getTypeName();
-	}
+	protected abstract String getTypeName(Method method);
 
 	/**
 	 * @param name 方法名
 	 * @return 是否不分析
 	 */
-	protected abstract boolean ignore(Method method);
+	protected abstract boolean ignore(Object obj, Method method);
 	
 	/**
 	 * @param method 方法
 	 * @return 对象
 	 */
-	protected abstract List<Object> getListOrSetStyleObjects(Method method);
+	protected abstract Collection<Object> getListOrSetStyleObjects(Object obj, Method method);
 	
 	/**
 	 * @param method 方法
 	 * @return 对象
 	 */
-	protected abstract Map<String, Object> getStringObjectMapStyleObjects(Method method);
+	protected abstract Map<String, Object> getStringObjectMapStyleObjects(Object obj, Method method);
 
 }

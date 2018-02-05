@@ -13,7 +13,7 @@ import io.fabric8.kubernetes.api.model.ObjectMeta;
  *
  * 2018年2月1日
  */
-public class KubernetesSampleObjects {
+public class KubernetesExampleObjects {
 
 	public final static Namespace createNamespace () {
 		Namespace ns = new Namespace();

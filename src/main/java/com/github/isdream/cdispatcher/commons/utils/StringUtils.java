@@ -24,7 +24,7 @@ public class StringUtils {
 	public static boolean isNull(String str) {
 		return (str == null || "".equals(str)) ? true : false;
 	}
-
+	
 	/**
 	 * @param name
 	 *            名字

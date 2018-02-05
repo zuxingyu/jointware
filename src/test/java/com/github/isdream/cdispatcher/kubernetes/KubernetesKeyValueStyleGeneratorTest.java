@@ -56,59 +56,64 @@ import io.fabric8.openshift.api.model.User;
  */
 public class KubernetesKeyValueStyleGeneratorTest {
 
+	public final static String OPENSHIFT_KIND = "OpenShift";
+	
+	public final static String KUBERNETES_KIND = "Kubernetes";
+	
 	/**
 	 * @param args
 	 * @throws Exception 
 	 */
 	public static void main(String[] args) throws Exception {
-		testKubernetesWithAllKind();
-		testOpenShiftWithAllKind();
+//		testKubernetesWithAllKind();
+//		testOpenShiftWithAllKind();
+		info(KUBERNETES_KIND, KubernetesKeyValueStyleGenerator.class.getName(), KubernetesExampleObjects.createNamespace());
 	}
 
 	protected static void testOpenShiftWithAllKind() throws Exception {
-		info("OpenShift", OpenShiftDocumentKeyValueStyleGenerator.class.getName(), new Policy());
-		info("OpenShift", OpenShiftDocumentKeyValueStyleGenerator.class.getName(), new Group());
-		info("OpenShift", OpenShiftDocumentKeyValueStyleGenerator.class.getName(), new User());
-		info("OpenShift", OpenShiftDocumentKeyValueStyleGenerator.class.getName(), new OAuthClient());
-		info("OpenShift", OpenShiftDocumentKeyValueStyleGenerator.class.getName(), new ClusterRoleBinding());
-		info("OpenShift", OpenShiftDocumentKeyValueStyleGenerator.class.getName(), new ImageStreamTag());
-		info("OpenShift", OpenShiftDocumentKeyValueStyleGenerator.class.getName(), new ImageStream());
-		info("OpenShift", OpenShiftDocumentKeyValueStyleGenerator.class.getName(), new Build());
-		info("OpenShift", OpenShiftDocumentKeyValueStyleGenerator.class.getName(), new BuildConfig());
-		info("OpenShift", OpenShiftDocumentKeyValueStyleGenerator.class.getName(), new RoleBinding());
-		info("OpenShift", OpenShiftDocumentKeyValueStyleGenerator.class.getName(), new Route());
-		info("OpenShift", OpenShiftDocumentKeyValueStyleGenerator.class.getName(), new PolicyBinding());
-		info("OpenShift", OpenShiftDocumentKeyValueStyleGenerator.class.getName(), new OAuthAuthorizeToken());
-		info("OpenShift", OpenShiftDocumentKeyValueStyleGenerator.class.getName(), new Role());
-		info("OpenShift", OpenShiftDocumentKeyValueStyleGenerator.class.getName(), new Project());
-		info("OpenShift", OpenShiftDocumentKeyValueStyleGenerator.class.getName(), new OAuthAccessToken());
-		info("OpenShift", OpenShiftDocumentKeyValueStyleGenerator.class.getName(), new DeploymentConfig());
+		info(OPENSHIFT_KIND, OpenShiftDocumentKeyValueStyleGenerator.class.getName(), new Policy());
+		info(OPENSHIFT_KIND, OpenShiftDocumentKeyValueStyleGenerator.class.getName(), new Group());
+		info(OPENSHIFT_KIND, OpenShiftDocumentKeyValueStyleGenerator.class.getName(), new User());
+		info(OPENSHIFT_KIND, OpenShiftDocumentKeyValueStyleGenerator.class.getName(), new OAuthClient());
+		info(OPENSHIFT_KIND, OpenShiftDocumentKeyValueStyleGenerator.class.getName(), new ClusterRoleBinding());
+		info(OPENSHIFT_KIND, OpenShiftDocumentKeyValueStyleGenerator.class.getName(), new ImageStreamTag());
+		info(OPENSHIFT_KIND, OpenShiftDocumentKeyValueStyleGenerator.class.getName(), new ImageStream());
+		info(OPENSHIFT_KIND, OpenShiftDocumentKeyValueStyleGenerator.class.getName(), new Build());
+		info(OPENSHIFT_KIND, OpenShiftDocumentKeyValueStyleGenerator.class.getName(), new BuildConfig());
+		info(OPENSHIFT_KIND, OpenShiftDocumentKeyValueStyleGenerator.class.getName(), new RoleBinding());
+		info(OPENSHIFT_KIND, OpenShiftDocumentKeyValueStyleGenerator.class.getName(), new Route());
+		info(OPENSHIFT_KIND, OpenShiftDocumentKeyValueStyleGenerator.class.getName(), new PolicyBinding());
+		info(OPENSHIFT_KIND, OpenShiftDocumentKeyValueStyleGenerator.class.getName(), new OAuthAuthorizeToken());
+		info(OPENSHIFT_KIND, OpenShiftDocumentKeyValueStyleGenerator.class.getName(), new Role());
+		info(OPENSHIFT_KIND, OpenShiftDocumentKeyValueStyleGenerator.class.getName(), new Project());
+		info(OPENSHIFT_KIND, OpenShiftDocumentKeyValueStyleGenerator.class.getName(), new OAuthAccessToken());
+		info(OPENSHIFT_KIND, OpenShiftDocumentKeyValueStyleGenerator.class.getName(), new DeploymentConfig());
 	}
 
 	protected static void testKubernetesWithAllKind() throws Exception {
-		info("Kubernetes", KubernetesDocumentKeyValueStyleGenerator.class.getName(), new ServiceAccount());
-		info("Kubernetes", KubernetesDocumentKeyValueStyleGenerator.class.getName(), new ThirdPartyResource());
-		info("Kubernetes", KubernetesDocumentKeyValueStyleGenerator.class.getName(), new ResourceQuota());
-		info("Kubernetes", KubernetesDocumentKeyValueStyleGenerator.class.getName(), new Node());
-		info("Kubernetes", KubernetesDocumentKeyValueStyleGenerator.class.getName(), new ConfigMap());
-		info("Kubernetes", KubernetesDocumentKeyValueStyleGenerator.class.getName(), new NetworkPolicy());
-		info("Kubernetes", KubernetesDocumentKeyValueStyleGenerator.class.getName(), new CustomResourceDefinition());
-		info("Kubernetes", KubernetesDocumentKeyValueStyleGenerator.class.getName(), new Ingress());
-		info("Kubernetes", KubernetesDocumentKeyValueStyleGenerator.class.getName(), new Service());
-		info("Kubernetes", KubernetesDocumentKeyValueStyleGenerator.class.getName(), new Namespace());
-		info("Kubernetes", KubernetesDocumentKeyValueStyleGenerator.class.getName(), new Secret());
-		info("Kubernetes", KubernetesDocumentKeyValueStyleGenerator.class.getName(), new LimitRange());
-		info("Kubernetes", KubernetesDocumentKeyValueStyleGenerator.class.getName(), new Event());
-		info("Kubernetes", KubernetesDocumentKeyValueStyleGenerator.class.getName(), new PersistentVolume());
-		info("Kubernetes", KubernetesDocumentKeyValueStyleGenerator.class.getName(), new StatefulSet());
-		info("Kubernetes", KubernetesDocumentKeyValueStyleGenerator.class.getName(), new PersistentVolumeClaim());
-		info("Kubernetes", KubernetesDocumentKeyValueStyleGenerator.class.getName(), new DaemonSet());
-		info("Kubernetes", KubernetesDocumentKeyValueStyleGenerator.class.getName(), new HorizontalPodAutoscaler());
-		info("Kubernetes", KubernetesDocumentKeyValueStyleGenerator.class.getName(), new Pod());
-		info("Kubernetes", KubernetesDocumentKeyValueStyleGenerator.class.getName(), new ReplicaSet());
-		info("Kubernetes", KubernetesDocumentKeyValueStyleGenerator.class.getName(), new Job());
-		info("Kubernetes", KubernetesDocumentKeyValueStyleGenerator.class.getName(), new ReplicationController());
-		info("Kubernetes", KubernetesDocumentKeyValueStyleGenerator.class.getName(), new Deployment());
+		info(KUBERNETES_KIND, KubernetesDocumentKeyValueStyleGenerator.class.getName(), new ServiceAccount());
+		info(KUBERNETES_KIND, KubernetesDocumentKeyValueStyleGenerator.class.getName(), new ThirdPartyResource());
+		info(KUBERNETES_KIND, KubernetesDocumentKeyValueStyleGenerator.class.getName(), new ResourceQuota());
+		info(KUBERNETES_KIND, KubernetesDocumentKeyValueStyleGenerator.class.getName(), new Node());
+		info(KUBERNETES_KIND, KubernetesDocumentKeyValueStyleGenerator.class.getName(), new ConfigMap());
+		info(KUBERNETES_KIND, KubernetesDocumentKeyValueStyleGenerator.class.getName(), new NetworkPolicy());
+		info(KUBERNETES_KIND, KubernetesDocumentKeyValueStyleGenerator.class.getName(), new CustomResourceDefinition());
+		info(KUBERNETES_KIND, KubernetesDocumentKeyValueStyleGenerator.class.getName(), new Ingress());
+		info(KUBERNETES_KIND, KubernetesDocumentKeyValueStyleGenerator.class.getName(), new Service());
+		info(KUBERNETES_KIND, KubernetesDocumentKeyValueStyleGenerator.class.getName(), new Namespace());
+		info(KUBERNETES_KIND, KubernetesDocumentKeyValueStyleGenerator.class.getName(), new Secret());
+		info(KUBERNETES_KIND, KubernetesDocumentKeyValueStyleGenerator.class.getName(), new LimitRange());
+		info(KUBERNETES_KIND, KubernetesDocumentKeyValueStyleGenerator.class.getName(), new Event());
+		info(KUBERNETES_KIND, KubernetesDocumentKeyValueStyleGenerator.class.getName(), new PersistentVolume());
+		info(KUBERNETES_KIND, KubernetesDocumentKeyValueStyleGenerator.class.getName(), new StatefulSet());
+		info(KUBERNETES_KIND, KubernetesDocumentKeyValueStyleGenerator.class.getName(), new PersistentVolumeClaim());
+		info(KUBERNETES_KIND, KubernetesDocumentKeyValueStyleGenerator.class.getName(), new DaemonSet());
+		info(KUBERNETES_KIND, KubernetesDocumentKeyValueStyleGenerator.class.getName(), new HorizontalPodAutoscaler());
+		info(KUBERNETES_KIND, KubernetesDocumentKeyValueStyleGenerator.class.getName(), new Pod());
+		info(KUBERNETES_KIND, KubernetesDocumentKeyValueStyleGenerator.class.getName(), new ReplicaSet());
+		info(KUBERNETES_KIND, KubernetesDocumentKeyValueStyleGenerator.class.getName(), new Job());
+		info(KUBERNETES_KIND, KubernetesDocumentKeyValueStyleGenerator.class.getName(), new ReplicationController());
+		info(KUBERNETES_KIND, KubernetesDocumentKeyValueStyleGenerator.class.getName(), new Deployment());
 	}
 
 	protected static void info(String type, String classname, Object obj) throws Exception {
