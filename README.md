@@ -25,7 +25,7 @@ cluster-dispatcher
 
   * [Kubernetes and OpenShift features](docs/kubernetes-openshift/features-and-models.md)
   * [fabric8 model for both Kubernetes and OpenShift features](docs/kubernetes-openshift/models-and-parameters.md) 
-  * [fabric8 model parameters for both Kubernetes and OpenShift](docs/kubernetes-openshift/parameters-keyvalue-style.md)
+  * [fabric8 model parameters with key-value style for both Kubernetes and OpenShift](docs/kubernetes-openshift/parameters-keyvalue-style.md)
   * [What is the classification of all fabric8 models](docs/kubernetes-openshift/models-classification.md)
   
 - #### Docker and Swarm
