@@ -3,6 +3,9 @@
  */
 package com.github.isdream.cdispatcher.kubernetes;
 
+import com.alibaba.fastjson.JSONObject;
+import com.github.isdream.cdispatcher.docs.KubernetesDocumentKeyValueConverter;
+
 import io.fabric8.kubernetes.api.model.ConfigMap;
 import io.fabric8.kubernetes.api.model.Event;
 import io.fabric8.kubernetes.api.model.HorizontalPodAutoscaler;
@@ -26,19 +29,61 @@ import io.fabric8.kubernetes.api.model.extensions.NetworkPolicy;
 import io.fabric8.kubernetes.api.model.extensions.ReplicaSet;
 import io.fabric8.kubernetes.api.model.extensions.StatefulSet;
 import io.fabric8.kubernetes.api.model.extensions.ThirdPartyResource;
+import io.fabric8.openshift.api.model.Build;
+import io.fabric8.openshift.api.model.BuildConfig;
+import io.fabric8.openshift.api.model.ClusterRoleBinding;
+import io.fabric8.openshift.api.model.DeploymentConfig;
+import io.fabric8.openshift.api.model.Group;
+import io.fabric8.openshift.api.model.ImageStream;
+import io.fabric8.openshift.api.model.ImageStreamTag;
+import io.fabric8.openshift.api.model.OAuthAccessToken;
+import io.fabric8.openshift.api.model.OAuthAuthorizeToken;
+import io.fabric8.openshift.api.model.OAuthClient;
+import io.fabric8.openshift.api.model.Policy;
+import io.fabric8.openshift.api.model.PolicyBinding;
+import io.fabric8.openshift.api.model.Project;
+import io.fabric8.openshift.api.model.Role;
+import io.fabric8.openshift.api.model.RoleBinding;
+import io.fabric8.openshift.api.model.Route;
+import io.fabric8.openshift.api.model.User;
 
 /**
  * @author wuheng@otcaix.iscas.ac.cn
  *
  *         2018年2月1日
  */
-public class KubernetesExampleKeyValueConverterTest {
+public class KubernetesKeyValueStyleGeneratorTest {
 
 	/**
 	 * @param args
 	 * @throws Exception 
 	 */
 	public static void main(String[] args) throws Exception {
+//		testKubernetesWithAllKind();
+		testOpenShiftWithAllKind();
+	}
+
+	protected static void testOpenShiftWithAllKind() throws Exception {
+		info("OpenShift", new Policy());
+		info("OpenShift", new Group());
+		info("OpenShift", new User());
+		info("OpenShift", new OAuthClient());
+		info("OpenShift", new ClusterRoleBinding());
+		info("OpenShift", new ImageStreamTag());
+		info("OpenShift", new ImageStream());
+		info("OpenShift", new Build());
+		info("OpenShift", new BuildConfig());
+		info("OpenShift", new RoleBinding());
+		info("OpenShift", new Route());
+		info("OpenShift", new PolicyBinding());
+		info("OpenShift", new OAuthAuthorizeToken());
+		info("OpenShift", new Role());
+		info("OpenShift", new Project());
+		info("OpenShift", new OAuthAccessToken());
+		info("OpenShift", new DeploymentConfig());
+	}
+
+	protected static void testKubernetesWithAllKind() throws Exception {
 		info("Kubernetes", new ServiceAccount());
 		info("Kubernetes", new ThirdPartyResource());
 		info("Kubernetes", new ResourceQuota());
@@ -66,9 +111,9 @@ public class KubernetesExampleKeyValueConverterTest {
 
 	protected static void info(String type, Object obj) throws Exception {
 		System.out.println("## " + type + " " +  obj.getClass().getSimpleName());
-		System.out.println("\n ```");
-		KubernetesExampleKeyValueConverter kc = new KubernetesExampleKeyValueConverter();
-		System.out.println(kc.fromModelParameters(obj));
+		System.out.println("\n```");
+		KubernetesDocumentKeyValueConverter kc = new KubernetesDocumentKeyValueConverter();
+		System.out.println(JSONObject.toJSONString(kc.fromModelParameters(obj)));
 		System.out.println("```\n");
 	}
 

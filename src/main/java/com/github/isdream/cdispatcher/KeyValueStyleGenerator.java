@@ -4,6 +4,7 @@
 package com.github.isdream.cdispatcher;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -19,58 +20,81 @@ import com.github.isdream.cdispatcher.defaultmodle.DefaultObject;
  */
 public abstract class KeyValueStyleGenerator {
 
-	protected StringBuffer sb = new StringBuffer();
+	protected KeyValueStyleObject kvso = new KeyValueStyleObject();
 	
-	protected final static String DEFAULT_PARENT = "";
-	
-	protected final static String DEFAULT_INDENT = "  ";
+	protected final static String DEFAULT_KEY = "";
 	
 	/**
 	 * @param obj target object
 	 * @return Key and value
 	 * @throws Exception 
 	 */
-	public String fromModelParameters(Object obj) throws Exception {
+	public Map<String, Map<String, Object>> fromModelParameters(Object obj) throws Exception {
 		obj = ObjectUtils.isNull(obj) ? new DefaultObject() : obj;
-		toKayValue(obj, DEFAULT_PARENT, DEFAULT_INDENT);
-		return sb.toString();
+		toKayValue(obj, KeyValueStyleObject.DEFAULT_KIND, DEFAULT_KEY);
+		return kvso.getMap();
 	}
 
-	protected void toKayValue(Object obj, String parent, String indent) throws Exception {
+	protected void toKayValue(Object obj, String kind, String key) throws Exception {
 		for(Method method : obj.getClass().getMethods()) {
 			if (ignore(method)) {
 				continue;
 			}
-			
-			String typeName = method.getGenericParameterTypes()[0].getTypeName();
-			String key = StringUtils.isNull(parent) ? method.getName() 
-												: parent + "-" + method.getName();
+
+			kvso.addItem(kind);
+			String typeName = getTypeName(method);
 			if (JavaObjectRule.isPrimitive(typeName)
 					|| StringUtils.isStringList(typeName)
 					|| StringUtils.isStringSet(typeName)
 					|| StringUtils.isStringStringMap(typeName)) {
-				sb.append(indent).append(key + "=" + typeName).append("\n");
+				kvso.addItemWithKeyValue(kind, getKey(key, method), typeName);
 			} else if (StringUtils.isObjectList(typeName)
 					|| StringUtils.isObjectSet(typeName)) {
+				List<String> thisValues = new ArrayList<String>();
+				kvso.addItemWithKeyValue(kind, getKey(key, method), thisValues);
 				for (int i =0; i<getListOrSetStyleObjects(method).size(); i++) {
 					try {
-						sb.append(indent).append(key + "-" + i + "=" + typeName).append("\n");
 						String classname = StringUtils.getClassNameForListOrSetStyle(typeName);
-						toKayValue(Class.forName(classname).newInstance(), DEFAULT_PARENT, indent + DEFAULT_INDENT);
+						thisValues.add("ref-" + classname + "-" + i);
+						toKayValue(Class.forName(classname).newInstance(), "ref-" + classname + "-" + i, DEFAULT_KEY);
 					} catch (Exception e) {
 						// ignore here
 					}
 				}
 			} else if (StringUtils.isStringObjectMap(typeName)) {
 				for (String extrakey : getStringObjectMapStyleObjects(method).keySet()) {
-					sb.append(indent).append(key + "-" + extrakey + "=" + typeName).append("\n");
+					kvso.addItemWithKeyValue(kind, getKey(key, method) + "-" + extrakey, 
+							"ref-" + getKey(key, method) + "-" + extrakey);
 					String classname = StringUtils.getClassNameForMapStyle(typeName);
-					toKayValue(Class.forName(classname).newInstance(), DEFAULT_PARENT, indent + DEFAULT_INDENT);
+					toKayValue(Class.forName(classname).newInstance(), 
+							"ref-" + getKey(key, method) + "-" + extrakey, DEFAULT_KEY);
 				}
 			} else {
-				toKayValue(Class.forName(typeName).newInstance(), method.getName(), indent);
+				try {
+					toKayValue(Class.forName(typeName).newInstance(), kind, method.getName());
+				} catch (Exception e) {
+					//ignore here
+				}
 			}
 		}
+	}
+
+	/**
+	 * @param key 主键
+	 * @param method 方法名
+	 * @return 新的主键
+	 */
+	protected String getKey(String key, Method method) {
+		return StringUtils.isNull(key) ? method.getName() 
+									: key + "-" + method.getName();
+	}
+
+	/**
+	 * @param method 方法名
+	 * @return 类型
+	 */
+	protected String getTypeName(Method method) {
+		return method.getGenericParameterTypes()[0].getTypeName();
 	}
 
 	/**
