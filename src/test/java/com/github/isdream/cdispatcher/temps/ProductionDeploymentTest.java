@@ -179,11 +179,11 @@ public class ProductionDeploymentTest extends TestCase {
 		});
 	}
 	
-	public void testCreateDeployment() throws Exception {
-		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
-		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-		generator.create(client, KubernetesConstants.KIND_DEPLOYMENT, params);
-	}
+//	public void testCreateDeployment() throws Exception {
+//		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
+//		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
+//		generator.create(client, KubernetesConstants.KIND_DEPLOYMENT, params);
+//	}
 	
 //	public void testUpdateDeployment() throws Exception {
 //		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");

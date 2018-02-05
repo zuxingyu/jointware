@@ -58,11 +58,11 @@ public class StatefulSetTest extends TestCase {
 		});
 	}
 	
-	public void testCreateStatefulSet() throws Exception {
-		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
-		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-		generator.create(client, KubernetesConstants.KIND_STATEFULSET, createDMParams);
-	}
+//	public void testCreateStatefulSet() throws Exception {
+//		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
+//		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
+//		generator.create(client, KubernetesConstants.KIND_STATEFULSET, createDMParams);
+//	}
 	
 	public void testUpdateStatefulSet() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");

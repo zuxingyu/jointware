@@ -37,11 +37,11 @@ public class CreateContainerTest extends TestCase {
 		});
 	}
 	
-	public void testCreateDeployment() throws Exception {
-		DockerClientImpl client = DockerClientImpl.getInstance(dockerUrl)
-				.withDockerCmdExecFactory(new DockerCmdExecFactoryImpl());
-		DockerModelParametersGenerator generator = new DockerModelParametersGenerator();
-		generator.create(client, DockerConstants.KIND_CREATECONTAINER, params);
-		
-	}
+//	public void testCreateDeployment() throws Exception {
+//		DockerClientImpl client = DockerClientImpl.getInstance(dockerUrl)
+//				.withDockerCmdExecFactory(new DockerCmdExecFactoryImpl());
+//		DockerModelParametersGenerator generator = new DockerModelParametersGenerator();
+//		generator.create(client, DockerConstants.KIND_CREATECONTAINER, params);
+//		
+//	}
 }

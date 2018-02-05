@@ -39,7 +39,7 @@ public abstract class KindModelStyleGenerator {
 	 * @return 具体对象
 	 * @throws Exception 返回异常
 	 */
-	public Object create(Object client, String kind, Map<String, Object> params) throws Exception {
+	public Object create(Object client, String kind, Map<String, Map<String, Object>> params) throws Exception {
 		if (ObjectUtils.isNull(params) || ObjectUtils.isNull(client) || StringUtils.isNull(kind)) {
 			throw new Exception("neither name or namespace is null,  or the number is less than 0.");
 		}
@@ -54,7 +54,7 @@ public abstract class KindModelStyleGenerator {
 	 * @return
 	 * @throws Exception
 	 */
-	protected abstract Object doCreate(Object client, String kind, Map<String, Object> params) throws Exception;
+	protected abstract Object doCreate(Object client, String kind, Map<String, Map<String, Object>> params) throws Exception;
 	
 	/**
 	 * 根据 用户 需要 发布的kind（如 Deployment, StatefulSet等），以及用户指定的key, value对params
@@ -72,7 +72,7 @@ public abstract class KindModelStyleGenerator {
 	 * @return 具体对象
 	 * @throws Exception 返回异常
 	 */
-	public Object createOrReplace(Object client, String kind, Map<String, Object> params) throws Exception {
+	public Object createOrReplace(Object client, String kind, Map<String, Map<String, Object>> params) throws Exception {
 		if (ObjectUtils.isNull(params) || ObjectUtils.isNull(client) || StringUtils.isNull(kind)) {
 			throw new Exception("neither name or namespace is null,  or the number is less than 0.");
 		}
@@ -96,7 +96,7 @@ public abstract class KindModelStyleGenerator {
 	 * @return 具体对象
 	 * @throws Exception 返回异常
 	 */
-	protected abstract Object doCreateOrReplace(Object client, String kind, Map<String, Object> params) throws Exception;
+	protected abstract Object doCreateOrReplace(Object client, String kind, Map<String, Map<String, Object>> params) throws Exception;
 	
 	/**
 	 * 根用户 向指定的Kubernetes和OpenShift发起发送扩容/缩容请求，必须满足特定类型、namespace和name
@@ -281,7 +281,7 @@ public abstract class KindModelStyleGenerator {
 	 * @return 对应的实例
 	 * @throws Exception 反射一场
 	 */
-	public abstract Object generateParameters(Map<String, Object> params, String kind) throws Exception;
+	public abstract Object generateParameters(Map<String, Map<String, Object>> params, String kind) throws Exception;
 	
 	/**
 	 * @param client 客户端

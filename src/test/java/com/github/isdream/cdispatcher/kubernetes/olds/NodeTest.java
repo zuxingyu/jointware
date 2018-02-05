@@ -44,11 +44,11 @@ public class NodeTest extends TestCase {
 	}
 
 	
-	public void testCreateNode() throws Exception {
-		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
-		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-		System.out.println(generator.create(client, KubernetesConstants.KIND_NODE, createNodeParams));
-	}
+//	public void testCreateNode() throws Exception {
+//		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
+//		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
+//		System.out.println(generator.create(client, KubernetesConstants.KIND_NODE, createNodeParams));
+//	}
 	
 	public void testDeleteNode() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");

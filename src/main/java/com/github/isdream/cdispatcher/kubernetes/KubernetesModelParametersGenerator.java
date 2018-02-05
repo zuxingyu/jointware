@@ -37,6 +37,8 @@ public class KubernetesModelParametersGenerator extends KindModelStyleGenerator 
 	protected final static String NEW_OBJECT_METHOD = "create";
 
 	protected final static String DEFAULT_PREFIX = "";
+	
+	protected final static String DEFAULT_KEY = "main";
 
 	protected final static String NO_IGNORE = "";
 
@@ -69,11 +71,11 @@ public class KubernetesModelParametersGenerator extends KindModelStyleGenerator 
 	 * java.lang.String)
 	 */
 	@Override
-	public Object generateParameters(Map<String, Object> paramValues, String kind) throws Exception {
+	public Object generateParameters(Map<String, Map<String, Object>> paramValues, String kind) throws Exception {
 		//
 		kindModel = createKindModel(kind);
 		paramTypes = createParamsType(kind);
-		initAndGenerateParameters(paramValues, NO_IGNORE);
+		initAndGenerateParameters(paramValues.get(DEFAULT_KEY), NO_IGNORE);
 		objCaches.clear();
 		return kindModel;
 	}
@@ -90,12 +92,12 @@ public class KubernetesModelParametersGenerator extends KindModelStyleGenerator 
 	 * @throws Exception
 	 *             反射异常
 	 */
-	public Object generateParameters(Map<String, Object> paramValues, Object km, Map<String, String> pt)
+	public Object generateParameters(Map<String, Map<String, Object>> paramValues, Object km, Map<String, String> pt)
 			throws Exception {
 		//
 		kindModel = km;
 		paramTypes = pt;
-		initAndGenerateParameters(paramValues, NO_IGNORE);
+		initAndGenerateParameters(paramValues.get(DEFAULT_KEY), NO_IGNORE);
 		objCaches.clear();
 		return kindModel;
 	}
@@ -113,7 +115,6 @@ public class KubernetesModelParametersGenerator extends KindModelStyleGenerator 
 			 * 所以出栈stack的顺序应该是先setMetadata，再setMetadata-setInitializers
 			 */
 			while (!paramStack.isEmpty()) {
-				// generateParameter(paramTypes, paramStack.pop(), paramValues);
 				generateParameter(paramStack.pop(), paramValues);
 			}
 		}
@@ -126,13 +127,13 @@ public class KubernetesModelParametersGenerator extends KindModelStyleGenerator 
 		Object thisParam = null;
 		if (JavaObjectRule.isPrimitive(typename)) {
 			thisParam = getPrimitiveInstance(fullname, paramTypes.get(fullname), paramValues.get(fullname));
-		} else if (JavaObjectRule.isStringList(typename)) {
+		} else if (StringUtils.isStringList(typename)) {
 			thisParam = new ArrayList<String>();
 			List<String> values = (List<String>) paramValues.get(fullname);
 			for (String key : values) {
 				((List<String>) thisParam).add(key);
 			}
-		} else if (JavaObjectRule.isObjectList(typename)) {
+		} else if (StringUtils.isObjectList(typename)) {
 			thisParam = new ArrayList<Object>();
 			List<Object> values = (List<Object>) paramValues.get(fullname);
 			HashMap<String, Object> newParamValues = new HashMap<String, Object>();
@@ -153,13 +154,13 @@ public class KubernetesModelParametersGenerator extends KindModelStyleGenerator 
 				objCaches.remove(fullname);
 				newParamValues.clear();
 			}
-		} else if (JavaObjectRule.isStringMap(typename)) {
+		} else if (StringUtils.isStringStringMap(typename)) {
 			thisParam = new HashMap<String, String>();
 			Map<String, String> values = (Map<String, String>) paramValues.get(fullname);
 			for (String key : values.keySet()) {
 				((Map<String, String>) thisParam).put(key, values.get(key));
 			}
-		} else if (JavaObjectRule.isObjectMap(typename)) {
+		} else if (StringUtils.isStringObjectMap(typename)) {
 			thisParam = new HashMap<String, Object>();
 			Map<String, List<Object>> values = (Map<String, List<Object>>) paramValues.get(fullname);
 			for (String key : values.keySet()) {
@@ -262,11 +263,13 @@ public class KubernetesModelParametersGenerator extends KindModelStyleGenerator 
 	protected Class<?> getParamType(String typename) throws Exception {
 		// if fullname is setMetadata-setName, paramName is setName
 		// if fullname is setMatadata paramName is setMatadata
-		if (JavaObjectRule.isMap(typename)) {
+		if (StringUtils.isMap(typename)) {
 			return Map.class;
-		} else if (JavaObjectRule.isList(typename)) {
+		} else if (StringUtils.isList(typename)) {
 			return List.class;
-		} else {
+		} else if (StringUtils.isSet(typename)){
+			return Set.class;
+		}else {
 			return getThisClass(typename);
 		}
 	}
@@ -495,7 +498,7 @@ public class KubernetesModelParametersGenerator extends KindModelStyleGenerator 
 
 	@Override
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	protected Object doCreate(Object client, String kind, Map<String, Object> params) throws Exception {
+	protected Object doCreate(Object client, String kind, Map<String, Map<String, Object>> params) throws Exception {
 		Createable instance = (Createable) getKindModel(client, kind);
 		Object param = generateParameters(params, kind);
 		return instance.create(param);
@@ -503,7 +506,7 @@ public class KubernetesModelParametersGenerator extends KindModelStyleGenerator 
 
 	@Override
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	protected Object doCreateOrReplace(Object client, String kind, Map<String, Object> params) throws Exception {
+	protected Object doCreateOrReplace(Object client, String kind, Map<String, Map<String, Object>> params) throws Exception {
 		CreateOrReplaceable instance = (CreateOrReplaceable) getKindModel(client, kind);
 		Object param = generateParameters(params, kind);
 		return instance.createOrReplace(param);

@@ -78,12 +78,12 @@ public class ResourceQuotaTest extends TestCase {
 	}
 
 	
-	public void testCreateResourceQuota() throws Exception {
-		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
-		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-		generator.create(client, KubernetesConstants.KIND_RESOURCEQUOTA, params);
-		
-	}
+//	public void testCreateResourceQuota() throws Exception {
+//		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
+//		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
+//		generator.create(client, KubernetesConstants.KIND_RESOURCEQUOTA, params);
+//		
+//	}
 	
 	public void testDeleteResourceQuota() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");

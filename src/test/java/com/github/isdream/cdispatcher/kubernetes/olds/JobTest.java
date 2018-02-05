@@ -59,11 +59,11 @@ public class JobTest extends TestCase {
 		});
 	}
 	
-	public void testCreateJob() throws Exception {
-		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
-		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-		generator.create(client, KubernetesConstants.KIND_STATEFULSET, createDMParams);
-	}
+//	public void testCreateJob() throws Exception {
+//		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
+//		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
+//		generator.create(client, KubernetesConstants.KIND_STATEFULSET, createDMParams);
+//	}
 	
 	public void testUpdateJob() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");

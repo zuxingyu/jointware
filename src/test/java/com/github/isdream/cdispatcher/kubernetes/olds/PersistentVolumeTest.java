@@ -39,11 +39,11 @@ public class PersistentVolumeTest extends TestCase {
 		createPVParams.put("setSpec-setHostPath-setPath", "/abcs/data/pv002");
 	}
 	
-	public void testCreatePV() throws Exception {
-		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
-		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-		System.out.println(generator.create(client, KubernetesConstants.KIND_PERSISTENTVOLUME, createPVParams));
-	}
+//	public void testCreatePV() throws Exception {
+//		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
+//		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
+//		System.out.println(generator.create(client, KubernetesConstants.KIND_PERSISTENTVOLUME, createPVParams));
+//	}
 	
 	public void testDeletePV() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");

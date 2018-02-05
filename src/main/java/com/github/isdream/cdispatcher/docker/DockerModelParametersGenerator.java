@@ -46,11 +46,11 @@ public class DockerModelParametersGenerator extends KindModelStyleGenerator {
 	 * java.lang.String)
 	 */
 	@Override
-	public Object generateParameters(Map<String, Object> paramValues, String kind) throws Exception {
+	public Object generateParameters(Map<String, Map<String, Object>> paramValues, String kind) throws Exception {
 		//
 		kindModel = createKindModel(kind);
 		paramTypes = createParamsType(kind);
-		initAndGenerateParameters(paramValues, NO_IGNORE);
+//		initAndGenerateParameters(paramValues, NO_IGNORE);
 		objCaches.clear();
 		return kindModel;
 	}
@@ -67,17 +67,17 @@ public class DockerModelParametersGenerator extends KindModelStyleGenerator {
 	 * @throws Exception
 	 *             反射异常
 	 */
-	public Object generateParameters(Map<String, Object> paramValues, Object km, Map<String, String> pt)
+	public Object generateParameters(Map<String, Map<String, Object>> paramValues, Object km, Map<String, String> pt)
 			throws Exception {
 		//
 		kindModel = km;
 		paramTypes = pt;
-		initAndGenerateParameters(paramValues, NO_IGNORE);
+//		initAndGenerateParameters(paramValues, NO_IGNORE);
 		objCaches.clear();
 		return kindModel;
 	}
 
-	protected void initAndGenerateParameters(Map<String, Object> paramValues, String ignore) throws Exception {
+	protected void initAndGenerateParameters(Map<String,Object> paramValues, String ignore) throws Exception {
 		for (String fullname : paramValues.keySet()) {
 			/**
 			 * 使用stack的原因，是参数是由如下形式组成 setMetadata-setInitializers 首先需要先反射setMetadata
@@ -91,81 +91,81 @@ public class DockerModelParametersGenerator extends KindModelStyleGenerator {
 			 */
 			while (!paramStack.isEmpty()) {
 				// generateParameter(paramTypes, paramStack.pop(), paramValues);
-				generateParameter(paramStack.pop(), paramValues);
+//				generateParameter(paramStack.pop(), paramValues);
 			}
 		}
 	}
 
 	@SuppressWarnings("unchecked")
-	protected void generateParameter(String fullname, Map<String, Object> paramValues) throws Exception {
+	protected void generateParameter(String fullname, Map<String, Map<String, Object>> paramValues) throws Exception {
 
-		String typename = paramTypes.get(fullname);
-		Object thisParam = null;
-		if (JavaObjectRule.isPrimitive(typename)) {
-			thisParam = getPrimitiveInstance(fullname, paramTypes.get(fullname), paramValues.get(fullname));
-		} else if (JavaObjectRule.isStringList(typename)) {
-			thisParam = new ArrayList<String>();
-			List<String> values = (List<String>) paramValues.get(fullname);
-			for (String key : values) {
-				((List<String>) thisParam).add(key);
-			}
-		} else if (JavaObjectRule.isObjectList(typename)) {
-			thisParam = new ArrayList<Object>();
-			List<Object> values = (List<Object>) paramValues.get(fullname);
-			HashMap<String, Object> newParamValues = new HashMap<String, Object>();
-			for (Object subObjValue : values) {
-				// Object subObject = Class.forName(
-				// getClassNameForListStyle(typename)).newInstance();
-				Object subObject = getThisObject(getClassNameForListStyle(typename));
-				objCaches.put(fullname, subObject);
-				((List<Object>) thisParam).add(subObject);
-				Map<String, Object> mapValues = (Map<String, Object>) subObjValue;
-				for (String newKey : mapValues.keySet()) {
-					newParamValues.put(fullname + "-" + newKey, mapValues.get(newKey));
-				}
-				initAndGenerateParameters(newParamValues, fullname);
-				for (String newKey : mapValues.keySet()) {
-					objCaches.remove(fullname + "-" + newKey);
-				}
-				objCaches.remove(fullname);
-				newParamValues.clear();
-			}
-		} else if (JavaObjectRule.isStringMap(typename)) {
-			thisParam = new HashMap<String, String>();
-			Map<String, String> values = (Map<String, String>) paramValues.get(fullname);
-			for (String key : values.keySet()) {
-				((Map<String, String>) thisParam).put(key, values.get(key));
-			}
-		} else if (JavaObjectRule.isObjectMap(typename)) {
-			thisParam = new HashMap<String, Object>();
-			Map<String, List<Object>> values = (Map<String, List<Object>>) paramValues.get(fullname);
-			for (String key : values.keySet()) {
-				// Object subObject = Class.forName(
-				// getClassNameForMapStyle(typename)).newInstance();
-				Object subObject = getThisObject(getClassNameForMapStyle(typename));
-				((Map<String, Object>) thisParam).put(key, subObject);
-				List<Object> mapValues = (List<Object>) values.get(key);
-
-				for (Object obj : mapValues) {
-					Map<String, Object> map = (Map<String, Object>) obj;
-					for (String newKey : map.keySet()) {
-						Object thisParameter = getPrimitiveInstance(newKey, String.class.getName(), map.get(newKey));
-						Method thisMethod = getThisMethod(subObject, newKey, String.class);
-						thisMethod.invoke(subObject, thisParameter);
-					}
-				}
-
-			}
-		} else {
-			if (objCaches.get(fullname) != null) {
-				return;
-			}
-			thisParam = getObjectInstance(fullname, paramTypes.get(fullname));
-		}
-		Object parentObject = getParentObject(fullname);
-		Method parentMethod = getThisMethod(parentObject, fullname, getParamType(typename));
-		parentMethod.invoke(parentObject, thisParam);
-		objCaches.put(fullname, thisParam);
+//		String typename = paramTypes.get(fullname);
+//		Object thisParam = null;
+//		if (JavaObjectRule.isPrimitive(typename)) {
+//			thisParam = getPrimitiveInstance(fullname, paramTypes.get(fullname), paramValues.get(fullname));
+//		} else if (JavaObjectRule.isStringList(typename)) {
+//			thisParam = new ArrayList<String>();
+//			List<String> values = (List<String>) paramValues.get(fullname);
+//			for (String key : values) {
+//				((List<String>) thisParam).add(key);
+//			}
+//		} else if (JavaObjectRule.isObjectList(typename)) {
+//			thisParam = new ArrayList<Object>();
+//			List<Object> values = (List<Object>) paramValues.get(fullname);
+//			HashMap<String, Object> newParamValues = new HashMap<String, Object>();
+//			for (Object subObjValue : values) {
+//				// Object subObject = Class.forName(
+//				// getClassNameForListStyle(typename)).newInstance();
+//				Object subObject = getThisObject(getClassNameForListStyle(typename));
+//				objCaches.put(fullname, subObject);
+//				((List<Object>) thisParam).add(subObject);
+//				Map<String, Object> mapValues = (Map<String, Object>) subObjValue;
+//				for (String newKey : mapValues.keySet()) {
+//					newParamValues.put(fullname + "-" + newKey, mapValues.get(newKey));
+//				}
+//				initAndGenerateParameters(newParamValues, fullname);
+//				for (String newKey : mapValues.keySet()) {
+//					objCaches.remove(fullname + "-" + newKey);
+//				}
+//				objCaches.remove(fullname);
+//				newParamValues.clear();
+//			}
+//		} else if (JavaObjectRule.isStringMap(typename)) {
+//			thisParam = new HashMap<String, String>();
+//			Map<String, String> values = (Map<String, String>) paramValues.get(fullname);
+//			for (String key : values.keySet()) {
+//				((Map<String, String>) thisParam).put(key, values.get(key));
+//			}
+//		} else if (JavaObjectRule.isObjectMap(typename)) {
+//			thisParam = new HashMap<String, Object>();
+//			Map<String, List<Object>> values = (Map<String, List<Object>>) paramValues.get(fullname);
+//			for (String key : values.keySet()) {
+//				// Object subObject = Class.forName(
+//				// getClassNameForMapStyle(typename)).newInstance();
+//				Object subObject = getThisObject(getClassNameForMapStyle(typename));
+//				((Map<String, Object>) thisParam).put(key, subObject);
+//				List<Object> mapValues = (List<Object>) values.get(key);
+//
+//				for (Object obj : mapValues) {
+//					Map<String, Object> map = (Map<String, Object>) obj;
+//					for (String newKey : map.keySet()) {
+//						Object thisParameter = getPrimitiveInstance(newKey, String.class.getName(), map.get(newKey));
+//						Method thisMethod = getThisMethod(subObject, newKey, String.class);
+//						thisMethod.invoke(subObject, thisParameter);
+//					}
+//				}
+//
+//			}
+//		} else {
+//			if (objCaches.get(fullname) != null) {
+//				return;
+//			}
+//			thisParam = getObjectInstance(fullname, paramTypes.get(fullname));
+//		}
+//		Object parentObject = getParentObject(fullname);
+//		Method parentMethod = getThisMethod(parentObject, fullname, getParamType(typename));
+//		parentMethod.invoke(parentObject, thisParam);
+//		objCaches.put(fullname, thisParam);
 	}
 
 	/************************************************************************************
@@ -239,9 +239,9 @@ public class DockerModelParametersGenerator extends KindModelStyleGenerator {
 	protected Class<?> getParamType(String typename) throws Exception {
 		// if fullname is setMetadata-setName, paramName is setName
 		// if fullname is setMatadata paramName is setMatadata
-		if (JavaObjectRule.isMap(typename)) {
+		if (StringUtils.isMap(typename)) {
 			return Map.class;
-		} else if (JavaObjectRule.isList(typename)) {
+		} else if (StringUtils.isList(typename)) {
 			return List.class;
 		} else {
 			return getThisClass(typename);
@@ -470,13 +470,13 @@ public class DockerModelParametersGenerator extends KindModelStyleGenerator {
 
 	@Override
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	protected Object doCreate(Object client, String kind, Map<String, Object> params) throws Exception {
+	protected Object doCreate(Object client, String kind, Map<String, Map<String, Object>> params) throws Exception {
 		return null;
 	}
 
 	@Override
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	protected Object doCreateOrReplace(Object client, String kind, Map<String, Object> params) throws Exception {
+	protected Object doCreateOrReplace(Object client, String kind, Map<String, Map<String, Object>> params) throws Exception {
 		return null;
 	}
 

@@ -195,9 +195,9 @@ public class PerfComparator {
 		Map<String, String> fpt = KubernetesModelParametersAnalyzer.getAnalyzer().getModelParameters(KubernetesConstants.KIND_DEPLOYMENT);
 		
 		long start3 = System.currentTimeMillis();
-		for(int i = 0; i < 10000; i++) {
-			fkmpg.generateParameters(params, fobj, fpt);
-		}
+//		for(int i = 0; i < 10000; i++) {
+//			fkmpg.generateParameters(params, fobj, fpt);
+//		}
 		long end3 = System.currentTimeMillis();
 		System.out.println(end3-start3);
 		

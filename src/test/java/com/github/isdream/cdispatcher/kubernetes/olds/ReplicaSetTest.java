@@ -58,12 +58,12 @@ public class ReplicaSetTest extends TestCase {
 			}
 		});
 	}
-	
-	public void testCreateReplicaSet() throws Exception {
-		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
-		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-		generator.create(client, KubernetesConstants.KIND_REPLICASET, createDMParams);
-	}
+//	
+//	public void testCreateReplicaSet() throws Exception {
+//		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
+//		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
+//		generator.create(client, KubernetesConstants.KIND_REPLICASET, createDMParams);
+//	}
 	
 	public void testUpdateReplicaSet() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");

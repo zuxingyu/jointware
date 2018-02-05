@@ -33,11 +33,11 @@ public class NamespaceTest extends TestCase {
 	}
 
 	
-	public void testCreateNamespace() throws Exception {
-		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
-		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
-		generator.create(client, KubernetesConstants.KIND_NAMESPACE, params);
-	}
+//	public void testCreateNamespace() throws Exception {
+//		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
+//		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
+//		generator.create(client, KubernetesConstants.KIND_NAMESPACE, params);
+//	}
 	
 //	public void testDeleteNamespace() throws Exception {
 //		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
