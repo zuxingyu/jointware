@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.github.isdream.cdispatcher.kubernetes.KubernetesConstants;
-import com.github.isdream.cdispatcher.kubernetes.KubernetesModelParametersGenerator;
+import com.github.isdream.cdispatcher.kubernetes.KubernetesModelGenerator;
 
 import io.fabric8.kubernetes.client.DefaultKubernetesClient;
 import junit.framework.TestCase;
@@ -67,13 +67,13 @@ public class JobTest extends TestCase {
 	
 	public void testUpdateJob() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
-		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
+		KubernetesModelGenerator generator = new KubernetesModelGenerator();
 		generator.scaleTo(client, KubernetesConstants.KIND_STATEFULSET, "wuheng", "busybox-job", 1);
 	}
 	
 	public void testDeleteJob() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
-		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
+		KubernetesModelGenerator generator = new KubernetesModelGenerator();
 		generator.delete(client, KubernetesConstants.KIND_STATEFULSET, "wuheng", "busybox-job");
 	}
 }

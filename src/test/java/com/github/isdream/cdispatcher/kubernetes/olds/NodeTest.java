@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.github.isdream.cdispatcher.kubernetes.KubernetesConstants;
-import com.github.isdream.cdispatcher.kubernetes.KubernetesModelParametersGenerator;
+import com.github.isdream.cdispatcher.kubernetes.KubernetesModelGenerator;
 
 import io.fabric8.kubernetes.client.DefaultKubernetesClient;
 import junit.framework.TestCase;
@@ -52,7 +52,7 @@ public class NodeTest extends TestCase {
 	
 	public void testDeleteNode() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
-		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
+		KubernetesModelGenerator generator = new KubernetesModelGenerator();
 		generator.delete(client, KubernetesConstants.KIND_NODE, "izm5e5tgjv84bevngsmq1az");
 	}
 }

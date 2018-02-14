@@ -65,9 +65,9 @@ public class KubernetesKeyValueStyleGeneratorTest {
 	 * @throws Exception 
 	 */
 	public static void main(String[] args) throws Exception {
-//		testKubernetesWithAllKind();
+		testKubernetesWithAllKind();
 //		testOpenShiftWithAllKind();
-		info(KUBERNETES_KIND, KubernetesKeyValueStyleGenerator.class.getName(), KubernetesExampleObjects.createNamespace());
+//		info(KUBERNETES_KIND, KubernetesKeyValueStyleGenerator.class.getName(), KubernetesExampleObjects.createNamespace());
 	}
 
 	protected static void testOpenShiftWithAllKind() throws Exception {

@@ -12,7 +12,7 @@ import java.util.Map;
  *
  *         2018-1-25
  */
-public class FastKubernetesModelParametersGenerator extends KubernetesModelParametersGenerator {
+public class FastKubernetesModelGenerator extends KubernetesModelGenerator {
 
 	protected final static Map<String, Method> methodCached = new HashMap<String, Method>();
 

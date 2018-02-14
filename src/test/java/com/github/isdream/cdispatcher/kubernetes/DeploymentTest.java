@@ -1,7 +1,7 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package com.github.isdream.cdispatcher.kubernetes.olds;
+package com.github.isdream.cdispatcher.kubernetes;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,40 +21,45 @@ public class DeploymentTest extends TestCase {
 	 * Create Deployment
 	 * 
 	 ********************************************************************************/
-	public static Map<String, Object> params = new HashMap<String, Object>();
+	public static Map<String, Map<String, Object>> params = new HashMap<String, Map<String, Object>>();
 
 	static {
-		params.put("setMetadata-setName", "busybox-dm");
-		params.put("setMetadata-setLabels", new HashMap<String, String>() {
+		
+		HashMap<String, Object> main = new HashMap<String, Object>();
+		params.put("main", main);
+		main.put("setMetadata-setName", "busybox-dm");
+		main.put("setMetadata-setLabels", new HashMap<String, String>() {
 			{
 				put("app", "busybox-dm");
 			}
 		});
-		params.put("setMetadata-setNamespace", "test1234");
-		params.put("setSpec-setReplicas", 2);
-		params.put("setSpec-setTemplate-setMetadata-setName", "busybox-dm");
-		params.put("setSpec-setTemplate-setMetadata-setLabels", new HashMap<String, String>() {
+		main.put("setMetadata-setNamespace", "test1234");
+		main.put("setSpec-setReplicas", 2);
+		main.put("setSpec-setTemplate-setMetadata-setName", "busybox-dm");
+		main.put("setSpec-setTemplate-setMetadata-setLabels", new HashMap<String, String>() {
 			{
 				put("app", "busybox-dm");
 			}
 		});
-		params.put("setSpec-setTemplate-setSpec-setContainers", new ArrayList<Object>() {
-			{
-				add(new HashMap<String, Object>() {
-					{
-						put("setName", "busybox-dm");
-						put("setImage", "dcr.io:5000/busybox:latest");
-						put("setCommand", new ArrayList<String>() {
-							{
-								add("sleep");
-								add("3600");
-							}
-						});
-						put("setImagePullPolicy", "IfNotPresent");
-					}
-				});
-			}
-		});
+		
+		
+//		params.put("setSpec-setTemplate-setSpec-setContainers", new ArrayList<Object>() {
+//			{
+//				add(new HashMap<String, Object>() {
+//					{
+//						put("setName", "busybox-dm");
+//						put("setImage", "dcr.io:5000/busybox:latest");
+//						put("setCommand", new ArrayList<String>() {
+//							{
+//								add("sleep");
+//								add("3600");
+//							}
+//						});
+//						put("setImagePullPolicy", "IfNotPresent");
+//					}
+//				});
+//			}
+//		});
 	}
 	
 //	public void testCreateDeployment() throws Exception {

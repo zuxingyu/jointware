@@ -11,10 +11,10 @@ import java.util.List;
 import java.util.Map;
 
 import com.github.isdream.cdispatcher.kubernetes.KubernetesConstants;
-import com.github.isdream.cdispatcher.kubernetes.FastKubernetesModelParametersGenerator;
+import com.github.isdream.cdispatcher.kubernetes.FastKubernetesModelGenerator;
 import com.github.isdream.cdispatcher.kubernetes.KubernetesKindModelsAnalyzer;
 import com.github.isdream.cdispatcher.kubernetes.KubernetesModelParametersAnalyzer;
-import com.github.isdream.cdispatcher.kubernetes.KubernetesModelParametersGenerator;
+import com.github.isdream.cdispatcher.kubernetes.KubernetesModelGenerator;
 
 import io.fabric8.kubernetes.api.model.Container;
 import io.fabric8.kubernetes.api.model.ObjectMeta;
@@ -188,7 +188,7 @@ public class PerfComparator {
 //		long end2 = System.currentTimeMillis();
 //		System.out.println(end2-start2);
 		
-		FastKubernetesModelParametersGenerator fkmpg = new FastKubernetesModelParametersGenerator();
+		FastKubernetesModelGenerator fkmpg = new FastKubernetesModelGenerator();
 //		KubernetesModelParametersGenerator fkmpg = new KubernetesModelParametersGenerator();
 		Object fobj = Class.forName(KubernetesKindModelsAnalyzer
 						.getAnalyzer().getKindModel(KubernetesConstants.KIND_DEPLOYMENT)).newInstance();

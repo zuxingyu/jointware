@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.github.isdream.cdispatcher.kubernetes.KubernetesConstants;
-import com.github.isdream.cdispatcher.kubernetes.KubernetesModelParametersGenerator;
+import com.github.isdream.cdispatcher.kubernetes.KubernetesModelGenerator;
 
 import io.fabric8.kubernetes.client.DefaultKubernetesClient;
 import junit.framework.TestCase;
@@ -47,13 +47,13 @@ public class PersistentVolumeTest extends TestCase {
 	
 	public void testDeletePV() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
-		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
+		KubernetesModelGenerator generator = new KubernetesModelGenerator();
 		generator.delete(client, KubernetesConstants.KIND_PERSISTENTVOLUME, "pv001");
 	}
 	
 	public void testQueryPV() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
-		KubernetesModelParametersGenerator generator = new KubernetesModelParametersGenerator();
+		KubernetesModelGenerator generator = new KubernetesModelGenerator();
 		System.out.println(generator.query(client, KubernetesConstants.KIND_PERSISTENTVOLUME, "pv001"));
 	}
 	

@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.github.isdream.cdispatcher.kubernetes.KubernetesConstants;
-import com.github.isdream.cdispatcher.kubernetes.KubernetesModelParametersGenerator;
+import com.github.isdream.cdispatcher.kubernetes.KubernetesModelGenerator;
 
 import io.fabric8.kubernetes.client.DefaultKubernetesClient;
 import junit.framework.TestCase;

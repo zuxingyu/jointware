@@ -7,14 +7,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.github.isdream.cdispatcher.commons.utils.StringUtils;
-import com.github.isdream.cdispatcher.kubernetes.KubernetesModelParametersGenerator;
+import com.github.isdream.cdispatcher.kubernetes.KubernetesModelGenerator;
 
 /**
  * @author henry,wuheng@otcaix.iscas.ac.cn
  *
  * 2018年1月8日
  */
-public class OpenShiftModelParametersGenerator extends KubernetesModelParametersGenerator {
+public class OpenShiftModelParametersGenerator extends KubernetesModelGenerator {
 
 	@Override
 	public Object getKindModel(Object client, String kind) throws Exception {

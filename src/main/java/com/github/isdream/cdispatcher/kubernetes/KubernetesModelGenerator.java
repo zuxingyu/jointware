@@ -31,7 +31,7 @@ import io.fabric8.kubernetes.client.dsl.Scaleable;
  *
  *         2018年1月3日
  */
-public class KubernetesModelParametersGenerator extends KindModelStyleGenerator {
+public class KubernetesModelGenerator extends KindModelStyleGenerator {
 
 	protected final static String NEW_OBJECT_METHOD = "create";
 	
