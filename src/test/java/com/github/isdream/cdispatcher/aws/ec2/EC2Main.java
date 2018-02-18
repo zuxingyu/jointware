@@ -21,9 +21,9 @@ public class EC2Main {
 
 //	final static String REGINE_ID = Regisions;
 
-	final static String ACCESS_KEY_ID = "AKIAJHQS6KGEYIRIYANQ";
+	final static String ACCESS_KEY_ID = "";
 
-	final static String ACCESS_KEY_SECRET = "s+i8ckA9ZZRuM8XJ4DZP0f+uhDbRg7fFBVaZUqzc";
+	final static String ACCESS_KEY_SECRET = "";
 	
 	/**
 	 * @param args

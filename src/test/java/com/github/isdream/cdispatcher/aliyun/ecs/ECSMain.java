@@ -23,9 +23,9 @@ public class ECSMain {
 
 	final static String REGINE_ID = "cn-qingdao";
 
-	final static String ACCESS_KEY_ID = "LTAIA2sF7GLHvvY7";
+	final static String ACCESS_KEY_ID = "";
 
-	final static String ACCESS_KEY_SECRET = "kyZvz4W2BoBaS8PdthpHSFyxn81HgL";
+	final static String ACCESS_KEY_SECRET = "";
 
 	/**
 	 * @param args
