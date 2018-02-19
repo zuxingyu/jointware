@@ -1,7 +1,7 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package com.github.isdream.chameleon.commons.rules;
+package com.github.isdream.chameleon.container;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +15,7 @@ import com.github.isdream.chameleon.commons.utils.StringUtils;
  * 
  * 记录单词转换的规则
  */
-public class KubernetesKind2DescRule {
+public class Fabric8Kind2DescRule {
 
     private final static Map<String, String> rules = new HashMap<String, String>();
 	

@@ -5,6 +5,8 @@ package com.github.isdream.chameleon.container.openshift;
 
 import com.github.isdream.chameleon.container.kubernetes.KubernetesKindsAnalyzer;
 
+import io.fabric8.openshift.client.DefaultOpenShiftClient;
+
 /**
  * @author henry, wuheng@otcaix.iscas.ac.cn
  *
@@ -18,7 +20,7 @@ public class OpenShiftKindsAnalyzer extends KubernetesKindsAnalyzer {
 
 	@Override
 	protected String getClient() {
-		return OpenShiftConstants.CLIENT;
+		return DefaultOpenShiftClient.class.getName();
 	}
 
 }

@@ -18,6 +18,8 @@ import com.github.isdream.chameleon.commons.utils.StringUtils;
  */
 public abstract class ModelParametersAnalyzer {
 
+	public static final String MODEL_METHOD_SET = "set";
+	
 	/**
 	 * 
 	 * 记录以下信息，方便通过反射，进行实例化

@@ -6,7 +6,6 @@ package com.github.isdream.chameleon.olds.kubernetes;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.github.isdream.chameleon.container.kubernetes.KubernetesConstants;
 import com.github.isdream.chameleon.container.kubernetes.KubernetesModelGenerator;
 
 import io.fabric8.kubernetes.client.DefaultKubernetesClient;
@@ -38,12 +37,12 @@ public class NamespaceTest extends TestCase {
 	public void testCreateNamespace() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
 		KubernetesModelGenerator generator = new KubernetesModelGenerator();
-		generator.create(client, KubernetesConstants.KIND_NAMESPACE, params);
+		generator.create(client, "Namespace", params);
 	}
 	
 	public void testDeleteNamespace() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
 		KubernetesModelGenerator generator = new KubernetesModelGenerator();
-		generator.delete(client, KubernetesConstants.KIND_NAMESPACE, "test431");
+		generator.delete(client, "Namespace", "test431");
 	}
 }

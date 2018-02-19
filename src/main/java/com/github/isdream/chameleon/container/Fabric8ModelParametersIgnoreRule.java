@@ -1,7 +1,7 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package com.github.isdream.chameleon.commons.rules;
+package com.github.isdream.chameleon.container;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -13,7 +13,7 @@ import com.github.isdream.chameleon.commons.utils.StringUtils;
  *
  * 2018年1月3日
  */
-public class KubernetesModelParametersIgnoreRule {
+public class Fabric8ModelParametersIgnoreRule {
 
 	private final static Set<String> ignores = new HashSet<String>();
 	
@@ -62,8 +62,6 @@ public class KubernetesModelParametersIgnoreRule {
 		ignores.add("getTypeParameters");
 		ignores.add("getClass");
 		ignores.add("getBytes");
-		
-		
 	}
 	
 	/**

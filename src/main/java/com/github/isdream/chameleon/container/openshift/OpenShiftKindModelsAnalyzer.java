@@ -14,6 +14,8 @@ import com.github.isdream.chameleon.KindModelsAnalyzer;
  * 2018年1月3日
  */
 public class OpenShiftKindModelsAnalyzer extends KindModelsAnalyzer {
+	
+	public static final String MODEL_OPENSHIFT_PACKAHE = "io.fabric8.openshift.api.model";
 
 	private static OpenShiftKindModelsAnalyzer analyzer = null;
 	
@@ -28,7 +30,7 @@ public class OpenShiftKindModelsAnalyzer extends KindModelsAnalyzer {
 
 	@Override
 	protected void initPackages() {
-		packages.add(OpenShiftConstants.MODEL_OPENSHIFT_PACKAHE);
+		packages.add(MODEL_OPENSHIFT_PACKAHE);
 		this.initCommonsPackages();
 	}
 	

@@ -15,6 +15,8 @@ import com.github.isdream.chameleon.KindModelsAnalyzer;
  */
 public class KubernetesKindModelsAnalyzer extends KindModelsAnalyzer {
 
+	public static final String MODEL_PACKAHE_KUBERNETES = "io.fabric8.kubernetes.api.model";
+	
 	private static KubernetesKindModelsAnalyzer analyzer = null;
 	
 	@Override
@@ -28,7 +30,7 @@ public class KubernetesKindModelsAnalyzer extends KindModelsAnalyzer {
 
 	@Override
 	protected void initPackages() {
-		packages.add(KubernetesConstants.MODEL_PACKAHE_KUBERNETES);
+		packages.add(MODEL_PACKAHE_KUBERNETES);
 		initCommonsPackages();
 	}
 	

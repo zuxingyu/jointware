@@ -6,10 +6,11 @@ package com.github.isdream.chameleon.container.kubernetes;
 import java.lang.reflect.Method;
 
 import com.github.isdream.chameleon.KindsAnalyzer;
-import com.github.isdream.chameleon.commons.rules.KubernetesKind2DescRule;
 import com.github.isdream.chameleon.commons.utils.ObjectUtils;
 import com.github.isdream.chameleon.commons.utils.StringUtils;
+import com.github.isdream.chameleon.container.Fabric8Kind2DescRule;
 
+import io.fabric8.kubernetes.client.DefaultKubernetesClient;
 import io.fabric8.kubernetes.client.dsl.MixedOperation;
 import io.fabric8.kubernetes.client.dsl.NonNamespaceOperation;
 
@@ -65,7 +66,7 @@ public class KubernetesKindsAnalyzer extends KindsAnalyzer {
 	 */
 	@Override
 	protected String toKind(String name) {
-		return KubernetesKind2DescRule.getName(name);
+		return Fabric8Kind2DescRule.getName(name);
 	}
 
 	/**
@@ -80,7 +81,7 @@ public class KubernetesKindsAnalyzer extends KindsAnalyzer {
 
 	@Override
 	protected String getClient() {
-		return KubernetesConstants.CLIENT;
+		return DefaultKubernetesClient.class.getName();
 	}
 
 

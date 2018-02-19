@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.github.isdream.chameleon.container.kubernetes.KubernetesConstants;
 import com.github.isdream.chameleon.container.kubernetes.KubernetesModelGenerator;
 
 import io.fabric8.kubernetes.client.DefaultKubernetesClient;
@@ -72,12 +71,12 @@ public class DeploymentTest extends TestCase {
 	public void testUpdateDeployment() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
 		KubernetesModelGenerator generator = new KubernetesModelGenerator();
-		generator.scaleTo(client, KubernetesConstants.KIND_DEPLOYMENT, "default", "busybox-dm", 4);
+		generator.scaleTo(client, "Deployment", "default", "busybox-dm", 4);
 	}
 	
 	public void testDeleteDeployment() throws Exception {
 		DefaultKubernetesClient client = new DefaultKubernetesClient("http://118.190.46.58:9888");
 		KubernetesModelGenerator generator = new KubernetesModelGenerator();
-		generator.delete(client, KubernetesConstants.KIND_DEPLOYMENT, "default", "busybox-dm");
+		generator.delete(client, "Deployment", "default", "busybox-dm");
 	}
 }

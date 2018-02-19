@@ -10,7 +10,6 @@ import java.util.Map;
 import java.util.Set;
 
 import com.github.isdream.chameleon.commons.utils.StringUtils;
-import com.github.isdream.chameleon.container.kubernetes.KubernetesConstants;
 
 /**
  * @author henry, wuheng@otcaix.iscas.ac.cn
@@ -27,6 +26,12 @@ import com.github.isdream.chameleon.container.kubernetes.KubernetesConstants;
  */
 public abstract class KindModelsAnalyzer {
 
+	public static final String MODEL_PACKAHE_COMMON_EXTENSION = "io.fabric8.kubernetes.api.model.extensions";
+	
+	public static final String MODEL_PACKAHE_COMMON_API = "io.fabric8.kubernetes.api.model.apiextensions";
+	
+	public static final String MODEL_PACKAHE_COMMON_AUTH = "io.fabric8.kubernetes.api.model.authentication";
+	
 	/**
 	 * 记录kind和model的对应关系，比如：
 	 * Deployment=io.fabric8.kubernetes.api.model.extensions.Deployment
@@ -57,9 +62,9 @@ public abstract class KindModelsAnalyzer {
 	}
 
 	protected void initCommonsPackages() {
-		packages.add(KubernetesConstants.MODEL_PACKAHE_COMMON_AUTH);
-		packages.add(KubernetesConstants.MODEL_PACKAHE_COMMON_EXTENSION);
-		packages.add(KubernetesConstants.MODEL_PACKAHE_COMMON_API);
+		packages.add(MODEL_PACKAHE_COMMON_AUTH);
+		packages.add(MODEL_PACKAHE_COMMON_EXTENSION);
+		packages.add(MODEL_PACKAHE_COMMON_API);
 	}
 	
 	protected abstract void analyse(String pakagesName);
