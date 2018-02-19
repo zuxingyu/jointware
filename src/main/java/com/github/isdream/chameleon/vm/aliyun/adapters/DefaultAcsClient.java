@@ -35,7 +35,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ModifySecurityGroupRuleRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ModifySecurityGroupRuleRequest createModifySecurityGroupRuleRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ModifySecurityGroupRuleRequest proxyModifySecurityGroupRuleRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ModifySecurityGroupRuleRequest();
 	}
 
@@ -43,7 +43,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.CreateForwardEntryRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.CreateForwardEntryRequest createCreateForwardEntryRequest() {
+	public com.aliyuncs.ecs.model.v20140526.CreateForwardEntryRequest proxyCreateForwardEntryRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.CreateForwardEntryRequest();
 	}
 
@@ -51,7 +51,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.JoinSecurityGroupRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.JoinSecurityGroupRequest createJoinSecurityGroupRequest() {
+	public com.aliyuncs.ecs.model.v20140526.JoinSecurityGroupRequest proxyJoinSecurityGroupRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.JoinSecurityGroupRequest();
 	}
 
@@ -59,7 +59,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ModifyImageSharePermissionRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ModifyImageSharePermissionRequest createModifyImageSharePermissionRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ModifyImageSharePermissionRequest proxyModifyImageSharePermissionRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ModifyImageSharePermissionRequest();
 	}
 
@@ -67,7 +67,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeInstanceVncUrlRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeInstanceVncUrlRequest createDescribeInstanceVncUrlRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeInstanceVncUrlRequest proxyDescribeInstanceVncUrlRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeInstanceVncUrlRequest();
 	}
 
@@ -75,7 +75,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ReActivateInstancesRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ReActivateInstancesRequest createReActivateInstancesRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ReActivateInstancesRequest proxyReActivateInstancesRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ReActivateInstancesRequest();
 	}
 
@@ -83,7 +83,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.EipFillProductRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.EipFillProductRequest createEipFillProductRequest() {
+	public com.aliyuncs.ecs.model.v20140526.EipFillProductRequest proxyEipFillProductRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.EipFillProductRequest();
 	}
 
@@ -91,7 +91,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.LeaveSecurityGroupRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.LeaveSecurityGroupRequest createLeaveSecurityGroupRequest() {
+	public com.aliyuncs.ecs.model.v20140526.LeaveSecurityGroupRequest proxyLeaveSecurityGroupRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.LeaveSecurityGroupRequest();
 	}
 
@@ -99,7 +99,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ResizeDiskRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ResizeDiskRequest createResizeDiskRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ResizeDiskRequest proxyResizeDiskRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ResizeDiskRequest();
 	}
 
@@ -107,7 +107,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DeleteSecurityGroupRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DeleteSecurityGroupRequest createDeleteSecurityGroupRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DeleteSecurityGroupRequest proxyDeleteSecurityGroupRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DeleteSecurityGroupRequest();
 	}
 
@@ -115,7 +115,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.CancelCopyImageRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.CancelCopyImageRequest createCancelCopyImageRequest() {
+	public com.aliyuncs.ecs.model.v20140526.CancelCopyImageRequest proxyCancelCopyImageRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.CancelCopyImageRequest();
 	}
 
@@ -123,7 +123,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ReplaceSystemDiskRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ReplaceSystemDiskRequest createReplaceSystemDiskRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ReplaceSystemDiskRequest proxyReplaceSystemDiskRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ReplaceSystemDiskRequest();
 	}
 
@@ -131,7 +131,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.CancelAgreementRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.CancelAgreementRequest createCancelAgreementRequest() {
+	public com.aliyuncs.ecs.model.v20140526.CancelAgreementRequest proxyCancelAgreementRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.CancelAgreementRequest();
 	}
 
@@ -139,7 +139,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DeletePhysicalConnectionRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DeletePhysicalConnectionRequest createDeletePhysicalConnectionRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DeletePhysicalConnectionRequest proxyDeletePhysicalConnectionRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DeletePhysicalConnectionRequest();
 	}
 
@@ -147,7 +147,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.AttachClassicLinkVpcRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.AttachClassicLinkVpcRequest createAttachClassicLinkVpcRequest() {
+	public com.aliyuncs.ecs.model.v20140526.AttachClassicLinkVpcRequest proxyAttachClassicLinkVpcRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.AttachClassicLinkVpcRequest();
 	}
 
@@ -155,7 +155,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.CreateRouteEntryRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.CreateRouteEntryRequest createCreateRouteEntryRequest() {
+	public com.aliyuncs.ecs.model.v20140526.CreateRouteEntryRequest proxyCreateRouteEntryRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.CreateRouteEntryRequest();
 	}
 
@@ -163,7 +163,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeImageSupportInstanceTypesRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeImageSupportInstanceTypesRequest createDescribeImageSupportInstanceTypesRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeImageSupportInstanceTypesRequest proxyDescribeImageSupportInstanceTypesRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeImageSupportInstanceTypesRequest();
 	}
 
@@ -171,7 +171,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.RevokeSecurityGroupRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.RevokeSecurityGroupRequest createRevokeSecurityGroupRequest() {
+	public com.aliyuncs.ecs.model.v20140526.RevokeSecurityGroupRequest proxyRevokeSecurityGroupRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.RevokeSecurityGroupRequest();
 	}
 
@@ -179,7 +179,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DeactivateRouterInterfaceRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DeactivateRouterInterfaceRequest createDeactivateRouterInterfaceRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DeactivateRouterInterfaceRequest proxyDeactivateRouterInterfaceRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DeactivateRouterInterfaceRequest();
 	}
 
@@ -187,7 +187,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.SignAgreementRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.SignAgreementRequest createSignAgreementRequest() {
+	public com.aliyuncs.ecs.model.v20140526.SignAgreementRequest proxySignAgreementRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.SignAgreementRequest();
 	}
 
@@ -195,7 +195,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeUserBusinessBehaviorRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeUserBusinessBehaviorRequest createDescribeUserBusinessBehaviorRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeUserBusinessBehaviorRequest proxyDescribeUserBusinessBehaviorRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeUserBusinessBehaviorRequest();
 	}
 
@@ -203,7 +203,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DeleteVpcRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DeleteVpcRequest createDeleteVpcRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DeleteVpcRequest proxyDeleteVpcRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DeleteVpcRequest();
 	}
 
@@ -211,7 +211,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ModifyDiskChargeTypeRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ModifyDiskChargeTypeRequest createModifyDiskChargeTypeRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ModifyDiskChargeTypeRequest proxyModifyDiskChargeTypeRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ModifyDiskChargeTypeRequest();
 	}
 
@@ -219,7 +219,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeRenewalPriceRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeRenewalPriceRequest createDescribeRenewalPriceRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeRenewalPriceRequest proxyDescribeRenewalPriceRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeRenewalPriceRequest();
 	}
 
@@ -227,7 +227,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeRouteTablesRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeRouteTablesRequest createDescribeRouteTablesRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeRouteTablesRequest proxyDescribeRouteTablesRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeRouteTablesRequest();
 	}
 
@@ -235,7 +235,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeAutoSnapshotPolicyRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeAutoSnapshotPolicyRequest createDescribeAutoSnapshotPolicyRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeAutoSnapshotPolicyRequest proxyDescribeAutoSnapshotPolicyRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeAutoSnapshotPolicyRequest();
 	}
 
@@ -243,7 +243,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.CopyImageRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.CopyImageRequest createCopyImageRequest() {
+	public com.aliyuncs.ecs.model.v20140526.CopyImageRequest proxyCopyImageRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.CopyImageRequest();
 	}
 
@@ -251,7 +251,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.StopInstanceRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.StopInstanceRequest createStopInstanceRequest() {
+	public com.aliyuncs.ecs.model.v20140526.StopInstanceRequest proxyStopInstanceRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.StopInstanceRequest();
 	}
 
@@ -259,7 +259,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeSpotPriceHistoryRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeSpotPriceHistoryRequest createDescribeSpotPriceHistoryRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeSpotPriceHistoryRequest proxyDescribeSpotPriceHistoryRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeSpotPriceHistoryRequest();
 	}
 
@@ -267,7 +267,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeClustersRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeClustersRequest createDescribeClustersRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeClustersRequest proxyDescribeClustersRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeClustersRequest();
 	}
 
@@ -275,7 +275,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ModifyImageAttributeRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ModifyImageAttributeRequest createModifyImageAttributeRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ModifyImageAttributeRequest proxyModifyImageAttributeRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ModifyImageAttributeRequest();
 	}
 
@@ -283,7 +283,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeTagsRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeTagsRequest createDescribeTagsRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeTagsRequest proxyDescribeTagsRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeTagsRequest();
 	}
 
@@ -291,7 +291,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ModifyRouterInterfaceAttributeRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ModifyRouterInterfaceAttributeRequest createModifyRouterInterfaceAttributeRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ModifyRouterInterfaceAttributeRequest proxyModifyRouterInterfaceAttributeRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ModifyRouterInterfaceAttributeRequest();
 	}
 
@@ -299,7 +299,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DeleteRecycleBinRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DeleteRecycleBinRequest createDeleteRecycleBinRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DeleteRecycleBinRequest proxyDeleteRecycleBinRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DeleteRecycleBinRequest();
 	}
 
@@ -307,7 +307,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.UnassociateHaVipRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.UnassociateHaVipRequest createUnassociateHaVipRequest() {
+	public com.aliyuncs.ecs.model.v20140526.UnassociateHaVipRequest proxyUnassociateHaVipRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.UnassociateHaVipRequest();
 	}
 
@@ -315,7 +315,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ModifyPrepayInstanceSpecRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ModifyPrepayInstanceSpecRequest createModifyPrepayInstanceSpecRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ModifyPrepayInstanceSpecRequest proxyModifyPrepayInstanceSpecRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ModifyPrepayInstanceSpecRequest();
 	}
 
@@ -323,7 +323,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeSecurityGroupReferencesRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeSecurityGroupReferencesRequest createDescribeSecurityGroupReferencesRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeSecurityGroupReferencesRequest proxyDescribeSecurityGroupReferencesRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeSecurityGroupReferencesRequest();
 	}
 
@@ -331,7 +331,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeInvocationResultsRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeInvocationResultsRequest createDescribeInvocationResultsRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeInvocationResultsRequest proxyDescribeInvocationResultsRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeInvocationResultsRequest();
 	}
 
@@ -339,7 +339,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ModifySnapshotAttributeRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ModifySnapshotAttributeRequest createModifySnapshotAttributeRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ModifySnapshotAttributeRequest proxyModifySnapshotAttributeRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ModifySnapshotAttributeRequest();
 	}
 
@@ -347,7 +347,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.CreateHpcClusterRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.CreateHpcClusterRequest createCreateHpcClusterRequest() {
+	public com.aliyuncs.ecs.model.v20140526.CreateHpcClusterRequest proxyCreateHpcClusterRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.CreateHpcClusterRequest();
 	}
 
@@ -355,7 +355,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeInstancesRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeInstancesRequest createDescribeInstancesRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeInstancesRequest proxyDescribeInstancesRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeInstancesRequest();
 	}
 
@@ -363,7 +363,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeTaskAttributeRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeTaskAttributeRequest createDescribeTaskAttributeRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeTaskAttributeRequest proxyDescribeTaskAttributeRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeTaskAttributeRequest();
 	}
 
@@ -371,7 +371,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ModifyInstanceVpcAttributeRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ModifyInstanceVpcAttributeRequest createModifyInstanceVpcAttributeRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ModifyInstanceVpcAttributeRequest proxyModifyInstanceVpcAttributeRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ModifyInstanceVpcAttributeRequest();
 	}
 
@@ -379,7 +379,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.CreateVSwitchRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.CreateVSwitchRequest createCreateVSwitchRequest() {
+	public com.aliyuncs.ecs.model.v20140526.CreateVSwitchRequest proxyCreateVSwitchRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.CreateVSwitchRequest();
 	}
 
@@ -387,7 +387,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.CreateVirtualBorderRouterRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.CreateVirtualBorderRouterRequest createCreateVirtualBorderRouterRequest() {
+	public com.aliyuncs.ecs.model.v20140526.CreateVirtualBorderRouterRequest proxyCreateVirtualBorderRouterRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.CreateVirtualBorderRouterRequest();
 	}
 
@@ -395,7 +395,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeDisksFullStatusRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeDisksFullStatusRequest createDescribeDisksFullStatusRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeDisksFullStatusRequest proxyDescribeDisksFullStatusRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeDisksFullStatusRequest();
 	}
 
@@ -403,7 +403,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.AllocateEipAddressRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.AllocateEipAddressRequest createAllocateEipAddressRequest() {
+	public com.aliyuncs.ecs.model.v20140526.AllocateEipAddressRequest proxyAllocateEipAddressRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.AllocateEipAddressRequest();
 	}
 
@@ -411,7 +411,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.AttachInstanceRamRoleRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.AttachInstanceRamRoleRequest createAttachInstanceRamRoleRequest() {
+	public com.aliyuncs.ecs.model.v20140526.AttachInstanceRamRoleRequest proxyAttachInstanceRamRoleRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.AttachInstanceRamRoleRequest();
 	}
 
@@ -419,7 +419,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.CreateAutoSnapshotPolicyRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.CreateAutoSnapshotPolicyRequest createCreateAutoSnapshotPolicyRequest() {
+	public com.aliyuncs.ecs.model.v20140526.CreateAutoSnapshotPolicyRequest proxyCreateAutoSnapshotPolicyRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.CreateAutoSnapshotPolicyRequest();
 	}
 
@@ -427,7 +427,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeZonesRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeZonesRequest createDescribeZonesRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeZonesRequest proxyDescribeZonesRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeZonesRequest();
 	}
 
@@ -435,7 +435,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DeleteVSwitchRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DeleteVSwitchRequest createDeleteVSwitchRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DeleteVSwitchRequest proxyDeleteVSwitchRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DeleteVSwitchRequest();
 	}
 
@@ -443,7 +443,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.AuthorizeSecurityGroupEgressRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.AuthorizeSecurityGroupEgressRequest createAuthorizeSecurityGroupEgressRequest() {
+	public com.aliyuncs.ecs.model.v20140526.AuthorizeSecurityGroupEgressRequest proxyAuthorizeSecurityGroupEgressRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.AuthorizeSecurityGroupEgressRequest();
 	}
 
@@ -451,7 +451,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.TerminateVirtualBorderRouterRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.TerminateVirtualBorderRouterRequest createTerminateVirtualBorderRouterRequest() {
+	public com.aliyuncs.ecs.model.v20140526.TerminateVirtualBorderRouterRequest proxyTerminateVirtualBorderRouterRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.TerminateVirtualBorderRouterRequest();
 	}
 
@@ -459,7 +459,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeSecurityGroupsRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeSecurityGroupsRequest createDescribeSecurityGroupsRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeSecurityGroupsRequest proxyDescribeSecurityGroupsRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeSecurityGroupsRequest();
 	}
 
@@ -467,7 +467,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeVirtualBorderRoutersForPhysicalConnectionRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeVirtualBorderRoutersForPhysicalConnectionRequest createDescribeVirtualBorderRoutersForPhysicalConnectionRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeVirtualBorderRoutersForPhysicalConnectionRequest proxyDescribeVirtualBorderRoutersForPhysicalConnectionRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeVirtualBorderRoutersForPhysicalConnectionRequest();
 	}
 
@@ -475,7 +475,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.CreateKeyPairRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.CreateKeyPairRequest createCreateKeyPairRequest() {
+	public com.aliyuncs.ecs.model.v20140526.CreateKeyPairRequest proxyCreateKeyPairRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.CreateKeyPairRequest();
 	}
 
@@ -483,7 +483,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeInstanceTypesRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeInstanceTypesRequest createDescribeInstanceTypesRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeInstanceTypesRequest proxyDescribeInstanceTypesRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeInstanceTypesRequest();
 	}
 
@@ -491,7 +491,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.EipFillParamsRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.EipFillParamsRequest createEipFillParamsRequest() {
+	public com.aliyuncs.ecs.model.v20140526.EipFillParamsRequest proxyEipFillParamsRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.EipFillParamsRequest();
 	}
 
@@ -499,7 +499,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ActivateRouterInterfaceRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ActivateRouterInterfaceRequest createActivateRouterInterfaceRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ActivateRouterInterfaceRequest proxyActivateRouterInterfaceRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ActivateRouterInterfaceRequest();
 	}
 
@@ -507,7 +507,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeSecurityGroupAttributeRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeSecurityGroupAttributeRequest createDescribeSecurityGroupAttributeRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeSecurityGroupAttributeRequest proxyDescribeSecurityGroupAttributeRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeSecurityGroupAttributeRequest();
 	}
 
@@ -515,7 +515,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeIpRangesRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeIpRangesRequest createDescribeIpRangesRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeIpRangesRequest proxyDescribeIpRangesRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeIpRangesRequest();
 	}
 
@@ -523,7 +523,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeClassicLinkInstancesRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeClassicLinkInstancesRequest createDescribeClassicLinkInstancesRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeClassicLinkInstancesRequest proxyDescribeClassicLinkInstancesRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeClassicLinkInstancesRequest();
 	}
 
@@ -531,7 +531,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeImageSharePermissionRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeImageSharePermissionRequest createDescribeImageSharePermissionRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeImageSharePermissionRequest proxyDescribeImageSharePermissionRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeImageSharePermissionRequest();
 	}
 
@@ -539,7 +539,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.StopInvocationRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.StopInvocationRequest createStopInvocationRequest() {
+	public com.aliyuncs.ecs.model.v20140526.StopInvocationRequest proxyStopInvocationRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.StopInvocationRequest();
 	}
 
@@ -547,7 +547,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeRouterInterfacesRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeRouterInterfacesRequest createDescribeRouterInterfacesRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeRouterInterfacesRequest proxyDescribeRouterInterfacesRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeRouterInterfacesRequest();
 	}
 
@@ -555,7 +555,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.CreateSecurityGroupRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.CreateSecurityGroupRequest createCreateSecurityGroupRequest() {
+	public com.aliyuncs.ecs.model.v20140526.CreateSecurityGroupRequest proxyCreateSecurityGroupRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.CreateSecurityGroupRequest();
 	}
 
@@ -563,7 +563,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.CheckDiskEnableAutoSnapshotValidationRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.CheckDiskEnableAutoSnapshotValidationRequest createCheckDiskEnableAutoSnapshotValidationRequest() {
+	public com.aliyuncs.ecs.model.v20140526.CheckDiskEnableAutoSnapshotValidationRequest proxyCheckDiskEnableAutoSnapshotValidationRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.CheckDiskEnableAutoSnapshotValidationRequest();
 	}
 
@@ -571,7 +571,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ResetDiskRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ResetDiskRequest createResetDiskRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ResetDiskRequest proxyResetDiskRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ResetDiskRequest();
 	}
 
@@ -579,7 +579,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ConvertNatPublicIpToEipRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ConvertNatPublicIpToEipRequest createConvertNatPublicIpToEipRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ConvertNatPublicIpToEipRequest proxyConvertNatPublicIpToEipRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ConvertNatPublicIpToEipRequest();
 	}
 
@@ -587,7 +587,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ModifyNetworkInterfaceAttributeRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ModifyNetworkInterfaceAttributeRequest createModifyNetworkInterfaceAttributeRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ModifyNetworkInterfaceAttributeRequest proxyModifyNetworkInterfaceAttributeRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ModifyNetworkInterfaceAttributeRequest();
 	}
 
@@ -595,7 +595,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeInstanceAutoRenewAttributeRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeInstanceAutoRenewAttributeRequest createDescribeInstanceAutoRenewAttributeRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeInstanceAutoRenewAttributeRequest proxyDescribeInstanceAutoRenewAttributeRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeInstanceAutoRenewAttributeRequest();
 	}
 
@@ -603,7 +603,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DeleteRouteEntryRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DeleteRouteEntryRequest createDeleteRouteEntryRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DeleteRouteEntryRequest proxyDeleteRouteEntryRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DeleteRouteEntryRequest();
 	}
 
@@ -611,7 +611,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.CancelTaskRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.CancelTaskRequest createCancelTaskRequest() {
+	public com.aliyuncs.ecs.model.v20140526.CancelTaskRequest proxyCancelTaskRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.CancelTaskRequest();
 	}
 
@@ -619,7 +619,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.AssociateHaVipRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.AssociateHaVipRequest createAssociateHaVipRequest() {
+	public com.aliyuncs.ecs.model.v20140526.AssociateHaVipRequest proxyAssociateHaVipRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.AssociateHaVipRequest();
 	}
 
@@ -627,7 +627,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeSnapshotsUsageRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeSnapshotsUsageRequest createDescribeSnapshotsUsageRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeSnapshotsUsageRequest proxyDescribeSnapshotsUsageRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeSnapshotsUsageRequest();
 	}
 
@@ -635,7 +635,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.StartInstanceRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.StartInstanceRequest createStartInstanceRequest() {
+	public com.aliyuncs.ecs.model.v20140526.StartInstanceRequest proxyStartInstanceRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.StartInstanceRequest();
 	}
 
@@ -643,7 +643,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ModifyForwardEntryRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ModifyForwardEntryRequest createModifyForwardEntryRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ModifyForwardEntryRequest proxyModifyForwardEntryRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ModifyForwardEntryRequest();
 	}
 
@@ -651,7 +651,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.CreateRouterInterfaceRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.CreateRouterInterfaceRequest createCreateRouterInterfaceRequest() {
+	public com.aliyuncs.ecs.model.v20140526.CreateRouterInterfaceRequest proxyCreateRouterInterfaceRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.CreateRouterInterfaceRequest();
 	}
 
@@ -659,7 +659,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DeleteForwardEntryRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DeleteForwardEntryRequest createDeleteForwardEntryRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DeleteForwardEntryRequest proxyDeleteForwardEntryRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DeleteForwardEntryRequest();
 	}
 
@@ -667,7 +667,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ModifyVirtualBorderRouterAttributeRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ModifyVirtualBorderRouterAttributeRequest createModifyVirtualBorderRouterAttributeRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ModifyVirtualBorderRouterAttributeRequest proxyModifyVirtualBorderRouterAttributeRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ModifyVirtualBorderRouterAttributeRequest();
 	}
 
@@ -675,7 +675,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeVSwitchesRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeVSwitchesRequest createDescribeVSwitchesRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeVSwitchesRequest proxyDescribeVSwitchesRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeVSwitchesRequest();
 	}
 
@@ -683,7 +683,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DetachInstanceRamRoleRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DetachInstanceRamRoleRequest createDetachInstanceRamRoleRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DetachInstanceRamRoleRequest proxyDetachInstanceRamRoleRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DetachInstanceRamRoleRequest();
 	}
 
@@ -691,7 +691,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.CreateDeploymentSetRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.CreateDeploymentSetRequest createCreateDeploymentSetRequest() {
+	public com.aliyuncs.ecs.model.v20140526.CreateDeploymentSetRequest proxyCreateDeploymentSetRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.CreateDeploymentSetRequest();
 	}
 
@@ -699,7 +699,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.RemoveBandwidthPackageIpsRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.RemoveBandwidthPackageIpsRequest createRemoveBandwidthPackageIpsRequest() {
+	public com.aliyuncs.ecs.model.v20140526.RemoveBandwidthPackageIpsRequest proxyRemoveBandwidthPackageIpsRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.RemoveBandwidthPackageIpsRequest();
 	}
 
@@ -707,7 +707,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.BindIpRangeRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.BindIpRangeRequest createBindIpRangeRequest() {
+	public com.aliyuncs.ecs.model.v20140526.BindIpRangeRequest proxyBindIpRangeRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.BindIpRangeRequest();
 	}
 
@@ -715,7 +715,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DeleteDiskRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DeleteDiskRequest createDeleteDiskRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DeleteDiskRequest proxyDeleteDiskRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DeleteDiskRequest();
 	}
 
@@ -723,7 +723,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeAvailableResourceRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeAvailableResourceRequest createDescribeAvailableResourceRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeAvailableResourceRequest proxyDescribeAvailableResourceRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeAvailableResourceRequest();
 	}
 
@@ -731,7 +731,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.EipNotifyPaidRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.EipNotifyPaidRequest createEipNotifyPaidRequest() {
+	public com.aliyuncs.ecs.model.v20140526.EipNotifyPaidRequest proxyEipNotifyPaidRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.EipNotifyPaidRequest();
 	}
 
@@ -739,7 +739,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ModifySecurityGroupEgressRuleRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ModifySecurityGroupEgressRuleRequest createModifySecurityGroupEgressRuleRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ModifySecurityGroupEgressRuleRequest proxyModifySecurityGroupEgressRuleRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ModifySecurityGroupEgressRuleRequest();
 	}
 
@@ -747,7 +747,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.CreateNetworkInterfaceRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.CreateNetworkInterfaceRequest createCreateNetworkInterfaceRequest() {
+	public com.aliyuncs.ecs.model.v20140526.CreateNetworkInterfaceRequest proxyCreateNetworkInterfaceRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.CreateNetworkInterfaceRequest();
 	}
 
@@ -755,7 +755,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DeleteDeploymentSetRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DeleteDeploymentSetRequest createDeleteDeploymentSetRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DeleteDeploymentSetRequest proxyDeleteDeploymentSetRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DeleteDeploymentSetRequest();
 	}
 
@@ -763,7 +763,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.UnassociateEipAddressRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.UnassociateEipAddressRequest createUnassociateEipAddressRequest() {
+	public com.aliyuncs.ecs.model.v20140526.UnassociateEipAddressRequest proxyUnassociateEipAddressRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.UnassociateEipAddressRequest();
 	}
 
@@ -771,7 +771,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeInstanceStatusRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeInstanceStatusRequest createDescribeInstanceStatusRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeInstanceStatusRequest proxyDescribeInstanceStatusRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeInstanceStatusRequest();
 	}
 
@@ -779,7 +779,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeHpcClustersRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeHpcClustersRequest createDescribeHpcClustersRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeHpcClustersRequest proxyDescribeHpcClustersRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeHpcClustersRequest();
 	}
 
@@ -787,7 +787,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeTagKeysRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeTagKeysRequest createDescribeTagKeysRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeTagKeysRequest proxyDescribeTagKeysRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeTagKeysRequest();
 	}
 
@@ -795,7 +795,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ModifyVSwitchAttributeRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ModifyVSwitchAttributeRequest createModifyVSwitchAttributeRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ModifyVSwitchAttributeRequest proxyModifyVSwitchAttributeRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ModifyVSwitchAttributeRequest();
 	}
 
@@ -803,7 +803,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ModifyHaVipAttributeRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ModifyHaVipAttributeRequest createModifyHaVipAttributeRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ModifyHaVipAttributeRequest proxyModifyHaVipAttributeRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ModifyHaVipAttributeRequest();
 	}
 
@@ -811,7 +811,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.CreateDiskRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.CreateDiskRequest createCreateDiskRequest() {
+	public com.aliyuncs.ecs.model.v20140526.CreateDiskRequest proxyCreateDiskRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.CreateDiskRequest();
 	}
 
@@ -819,7 +819,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.RecoverVirtualBorderRouterRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.RecoverVirtualBorderRouterRequest createRecoverVirtualBorderRouterRequest() {
+	public com.aliyuncs.ecs.model.v20140526.RecoverVirtualBorderRouterRequest proxyRecoverVirtualBorderRouterRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.RecoverVirtualBorderRouterRequest();
 	}
 
@@ -827,7 +827,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DeleteHpcClusterRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DeleteHpcClusterRequest createDeleteHpcClusterRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DeleteHpcClusterRequest proxyDeleteHpcClusterRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DeleteHpcClusterRequest();
 	}
 
@@ -835,7 +835,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ModifyAutoSnapshotPolicyRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ModifyAutoSnapshotPolicyRequest createModifyAutoSnapshotPolicyRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ModifyAutoSnapshotPolicyRequest proxyModifyAutoSnapshotPolicyRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ModifyAutoSnapshotPolicyRequest();
 	}
 
@@ -843,7 +843,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeNetworkInterfacesRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeNetworkInterfacesRequest createDescribeNetworkInterfacesRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeNetworkInterfacesRequest proxyDescribeNetworkInterfacesRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeNetworkInterfacesRequest();
 	}
 
@@ -851,7 +851,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeInstancePhysicalAttributeRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeInstancePhysicalAttributeRequest createDescribeInstancePhysicalAttributeRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeInstancePhysicalAttributeRequest proxyDescribeInstancePhysicalAttributeRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeInstancePhysicalAttributeRequest();
 	}
 
@@ -859,7 +859,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DeleteKeyPairsRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DeleteKeyPairsRequest createDeleteKeyPairsRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DeleteKeyPairsRequest proxyDeleteKeyPairsRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DeleteKeyPairsRequest();
 	}
 
@@ -867,7 +867,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.EnablePhysicalConnectionRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.EnablePhysicalConnectionRequest createEnablePhysicalConnectionRequest() {
+	public com.aliyuncs.ecs.model.v20140526.EnablePhysicalConnectionRequest proxyEnablePhysicalConnectionRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.EnablePhysicalConnectionRequest();
 	}
 
@@ -875,7 +875,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.TerminatePhysicalConnectionRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.TerminatePhysicalConnectionRequest createTerminatePhysicalConnectionRequest() {
+	public com.aliyuncs.ecs.model.v20140526.TerminatePhysicalConnectionRequest proxyTerminatePhysicalConnectionRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.TerminatePhysicalConnectionRequest();
 	}
 
@@ -883,7 +883,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeInstanceTypeFamiliesRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeInstanceTypeFamiliesRequest createDescribeInstanceTypeFamiliesRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeInstanceTypeFamiliesRequest proxyDescribeInstanceTypeFamiliesRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeInstanceTypeFamiliesRequest();
 	}
 
@@ -891,7 +891,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeRecycleBinRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeRecycleBinRequest createDescribeRecycleBinRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeRecycleBinRequest proxyDescribeRecycleBinRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeRecycleBinRequest();
 	}
 
@@ -899,7 +899,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeIntranetAttributeKbRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeIntranetAttributeKbRequest createDescribeIntranetAttributeKbRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeIntranetAttributeKbRequest proxyDescribeIntranetAttributeKbRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeIntranetAttributeKbRequest();
 	}
 
@@ -907,7 +907,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ModifyCommandRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ModifyCommandRequest createModifyCommandRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ModifyCommandRequest proxyModifyCommandRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ModifyCommandRequest();
 	}
 
@@ -915,7 +915,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.AttachNetworkInterfaceRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.AttachNetworkInterfaceRequest createAttachNetworkInterfaceRequest() {
+	public com.aliyuncs.ecs.model.v20140526.AttachNetworkInterfaceRequest proxyAttachNetworkInterfaceRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.AttachNetworkInterfaceRequest();
 	}
 
@@ -923,7 +923,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeCommandsRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeCommandsRequest createDescribeCommandsRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeCommandsRequest proxyDescribeCommandsRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeCommandsRequest();
 	}
 
@@ -931,7 +931,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.InvokeCommandRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.InvokeCommandRequest createInvokeCommandRequest() {
+	public com.aliyuncs.ecs.model.v20140526.InvokeCommandRequest proxyInvokeCommandRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.InvokeCommandRequest();
 	}
 
@@ -939,7 +939,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.AddBandwidthPackageIpsRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.AddBandwidthPackageIpsRequest createAddBandwidthPackageIpsRequest() {
+	public com.aliyuncs.ecs.model.v20140526.AddBandwidthPackageIpsRequest proxyAddBandwidthPackageIpsRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.AddBandwidthPackageIpsRequest();
 	}
 
@@ -947,7 +947,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeUserDataRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeUserDataRequest createDescribeUserDataRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeUserDataRequest proxyDescribeUserDataRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeUserDataRequest();
 	}
 
@@ -955,7 +955,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeInstanceRamRoleRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeInstanceRamRoleRequest createDescribeInstanceRamRoleRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeInstanceRamRoleRequest proxyDescribeInstanceRamRoleRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeInstanceRamRoleRequest();
 	}
 
@@ -963,7 +963,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.CreateInstanceRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.CreateInstanceRequest createCreateInstanceRequest() {
+	public com.aliyuncs.ecs.model.v20140526.CreateInstanceRequest proxyCreateInstanceRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.CreateInstanceRequest();
 	}
 
@@ -971,7 +971,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ImportImageRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ImportImageRequest createImportImageRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ImportImageRequest proxyImportImageRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ImportImageRequest();
 	}
 
@@ -979,7 +979,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeDeploymentSetsRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeDeploymentSetsRequest createDescribeDeploymentSetsRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeDeploymentSetsRequest proxyDescribeDeploymentSetsRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeDeploymentSetsRequest();
 	}
 
@@ -987,7 +987,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeBandwidthPackagesRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeBandwidthPackagesRequest createDescribeBandwidthPackagesRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeBandwidthPackagesRequest proxyDescribeBandwidthPackagesRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeBandwidthPackagesRequest();
 	}
 
@@ -995,7 +995,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DeleteBandwidthPackageRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DeleteBandwidthPackageRequest createDeleteBandwidthPackageRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DeleteBandwidthPackageRequest proxyDeleteBandwidthPackageRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DeleteBandwidthPackageRequest();
 	}
 
@@ -1003,7 +1003,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DeleteImageRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DeleteImageRequest createDeleteImageRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DeleteImageRequest proxyDeleteImageRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DeleteImageRequest();
 	}
 
@@ -1011,7 +1011,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ReleasePublicIpAddressRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ReleasePublicIpAddressRequest createReleasePublicIpAddressRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ReleasePublicIpAddressRequest proxyReleasePublicIpAddressRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ReleasePublicIpAddressRequest();
 	}
 
@@ -1019,7 +1019,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ModifyInstanceAttributeRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ModifyInstanceAttributeRequest createModifyInstanceAttributeRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ModifyInstanceAttributeRequest proxyModifyInstanceAttributeRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ModifyInstanceAttributeRequest();
 	}
 
@@ -1027,7 +1027,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ModifyAutoSnapshotPolicyExRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ModifyAutoSnapshotPolicyExRequest createModifyAutoSnapshotPolicyExRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ModifyAutoSnapshotPolicyExRequest proxyModifyAutoSnapshotPolicyExRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ModifyAutoSnapshotPolicyExRequest();
 	}
 
@@ -1035,7 +1035,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ModifyPhysicalConnectionAttributeRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ModifyPhysicalConnectionAttributeRequest createModifyPhysicalConnectionAttributeRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ModifyPhysicalConnectionAttributeRequest proxyModifyPhysicalConnectionAttributeRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ModifyPhysicalConnectionAttributeRequest();
 	}
 
@@ -1043,7 +1043,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeRegionsRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeRegionsRequest createDescribeRegionsRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeRegionsRequest proxyDescribeRegionsRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeRegionsRequest();
 	}
 
@@ -1051,7 +1051,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeResourcesModificationRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeResourcesModificationRequest createDescribeResourcesModificationRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeResourcesModificationRequest proxyDescribeResourcesModificationRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeResourcesModificationRequest();
 	}
 
@@ -1059,7 +1059,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DetachKeyPairRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DetachKeyPairRequest createDetachKeyPairRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DetachKeyPairRequest proxyDetachKeyPairRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DetachKeyPairRequest();
 	}
 
@@ -1067,7 +1067,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ModifyInstanceVncPasswdRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ModifyInstanceVncPasswdRequest createModifyInstanceVncPasswdRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ModifyInstanceVncPasswdRequest proxyModifyInstanceVncPasswdRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ModifyInstanceVncPasswdRequest();
 	}
 
@@ -1075,7 +1075,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DeleteAutoSnapshotPolicyRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DeleteAutoSnapshotPolicyRequest createDeleteAutoSnapshotPolicyRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DeleteAutoSnapshotPolicyRequest proxyDeleteAutoSnapshotPolicyRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DeleteAutoSnapshotPolicyRequest();
 	}
 
@@ -1083,7 +1083,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ModifyEipAddressAttributeRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ModifyEipAddressAttributeRequest createModifyEipAddressAttributeRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ModifyEipAddressAttributeRequest proxyModifyEipAddressAttributeRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ModifyEipAddressAttributeRequest();
 	}
 
@@ -1091,7 +1091,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DetachNetworkInterfaceRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DetachNetworkInterfaceRequest createDetachNetworkInterfaceRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DetachNetworkInterfaceRequest proxyDetachNetworkInterfaceRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DetachNetworkInterfaceRequest();
 	}
 
@@ -1099,7 +1099,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.CreateImageRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.CreateImageRequest createCreateImageRequest() {
+	public com.aliyuncs.ecs.model.v20140526.CreateImageRequest proxyCreateImageRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.CreateImageRequest();
 	}
 
@@ -1107,7 +1107,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeDeploymentSetTopologyRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeDeploymentSetTopologyRequest createDescribeDeploymentSetTopologyRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeDeploymentSetTopologyRequest proxyDescribeDeploymentSetTopologyRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeDeploymentSetTopologyRequest();
 	}
 
@@ -1115,7 +1115,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ModifyHpcClusterAttributeRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ModifyHpcClusterAttributeRequest createModifyHpcClusterAttributeRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ModifyHpcClusterAttributeRequest proxyModifyHpcClusterAttributeRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ModifyHpcClusterAttributeRequest();
 	}
 
@@ -1123,7 +1123,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ModifyRouterInterfaceSpecRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ModifyRouterInterfaceSpecRequest createModifyRouterInterfaceSpecRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ModifyRouterInterfaceSpecRequest proxyModifyRouterInterfaceSpecRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ModifyRouterInterfaceSpecRequest();
 	}
 
@@ -1131,7 +1131,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeSnapshotsRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeSnapshotsRequest createDescribeSnapshotsRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeSnapshotsRequest proxyDescribeSnapshotsRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeSnapshotsRequest();
 	}
 
@@ -1139,7 +1139,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ModifyBandwidthPackageSpecRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ModifyBandwidthPackageSpecRequest createModifyBandwidthPackageSpecRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ModifyBandwidthPackageSpecRequest proxyModifyBandwidthPackageSpecRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ModifyBandwidthPackageSpecRequest();
 	}
 
@@ -1147,7 +1147,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ModifyInstanceAutoReleaseTimeRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ModifyInstanceAutoReleaseTimeRequest createModifyInstanceAutoReleaseTimeRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ModifyInstanceAutoReleaseTimeRequest proxyModifyInstanceAutoReleaseTimeRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ModifyInstanceAutoReleaseTimeRequest();
 	}
 
@@ -1155,7 +1155,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.AllocatePublicIpAddressRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.AllocatePublicIpAddressRequest createAllocatePublicIpAddressRequest() {
+	public com.aliyuncs.ecs.model.v20140526.AllocatePublicIpAddressRequest proxyAllocatePublicIpAddressRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.AllocatePublicIpAddressRequest();
 	}
 
@@ -1163,7 +1163,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeInstancesFullStatusRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeInstancesFullStatusRequest createDescribeInstancesFullStatusRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeInstancesFullStatusRequest proxyDescribeInstancesFullStatusRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeInstancesFullStatusRequest();
 	}
 
@@ -1171,7 +1171,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.CancelAutoSnapshotPolicyRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.CancelAutoSnapshotPolicyRequest createCancelAutoSnapshotPolicyRequest() {
+	public com.aliyuncs.ecs.model.v20140526.CancelAutoSnapshotPolicyRequest proxyCancelAutoSnapshotPolicyRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.CancelAutoSnapshotPolicyRequest();
 	}
 
@@ -1179,7 +1179,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeForwardTableEntriesRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeForwardTableEntriesRequest createDescribeForwardTableEntriesRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeForwardTableEntriesRequest proxyDescribeForwardTableEntriesRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeForwardTableEntriesRequest();
 	}
 
@@ -1187,7 +1187,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeSnapshotMonitorDataRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeSnapshotMonitorDataRequest createDescribeSnapshotMonitorDataRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeSnapshotMonitorDataRequest proxyDescribeSnapshotMonitorDataRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeSnapshotMonitorDataRequest();
 	}
 
@@ -1195,7 +1195,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.CreatePhysicalConnectionRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.CreatePhysicalConnectionRequest createCreatePhysicalConnectionRequest() {
+	public com.aliyuncs.ecs.model.v20140526.CreatePhysicalConnectionRequest proxyCreatePhysicalConnectionRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.CreatePhysicalConnectionRequest();
 	}
 
@@ -1203,7 +1203,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.CheckAutoSnapshotPolicyRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.CheckAutoSnapshotPolicyRequest createCheckAutoSnapshotPolicyRequest() {
+	public com.aliyuncs.ecs.model.v20140526.CheckAutoSnapshotPolicyRequest proxyCheckAutoSnapshotPolicyRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.CheckAutoSnapshotPolicyRequest();
 	}
 
@@ -1211,7 +1211,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DeleteCommandRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DeleteCommandRequest createDeleteCommandRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DeleteCommandRequest proxyDeleteCommandRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DeleteCommandRequest();
 	}
 
@@ -1219,7 +1219,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ModifyInstanceSpecRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ModifyInstanceSpecRequest createModifyInstanceSpecRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ModifyInstanceSpecRequest proxyModifyInstanceSpecRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ModifyInstanceSpecRequest();
 	}
 
@@ -1227,7 +1227,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DeleteNatGatewayRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DeleteNatGatewayRequest createDeleteNatGatewayRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DeleteNatGatewayRequest proxyDeleteNatGatewayRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DeleteNatGatewayRequest();
 	}
 
@@ -1235,7 +1235,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ConnectRouterInterfaceRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ConnectRouterInterfaceRequest createConnectRouterInterfaceRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ConnectRouterInterfaceRequest proxyConnectRouterInterfaceRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ConnectRouterInterfaceRequest();
 	}
 
@@ -1243,7 +1243,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ModifyInstanceChargeTypeRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ModifyInstanceChargeTypeRequest createModifyInstanceChargeTypeRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ModifyInstanceChargeTypeRequest proxyModifyInstanceChargeTypeRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ModifyInstanceChargeTypeRequest();
 	}
 
@@ -1251,7 +1251,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DeleteVirtualBorderRouterRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DeleteVirtualBorderRouterRequest createDeleteVirtualBorderRouterRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DeleteVirtualBorderRouterRequest proxyDeleteVirtualBorderRouterRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DeleteVirtualBorderRouterRequest();
 	}
 
@@ -1259,7 +1259,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.RebootInstanceRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.RebootInstanceRequest createRebootInstanceRequest() {
+	public com.aliyuncs.ecs.model.v20140526.RebootInstanceRequest proxyRebootInstanceRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.RebootInstanceRequest();
 	}
 
@@ -1267,7 +1267,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ExportImageRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ExportImageRequest createExportImageRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ExportImageRequest proxyExportImageRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ExportImageRequest();
 	}
 
@@ -1275,7 +1275,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.AuthorizeSecurityGroupRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.AuthorizeSecurityGroupRequest createAuthorizeSecurityGroupRequest() {
+	public com.aliyuncs.ecs.model.v20140526.AuthorizeSecurityGroupRequest proxyAuthorizeSecurityGroupRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.AuthorizeSecurityGroupRequest();
 	}
 
@@ -1283,7 +1283,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ModifySecurityGroupPolicyRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ModifySecurityGroupPolicyRequest createModifySecurityGroupPolicyRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ModifySecurityGroupPolicyRequest proxyModifySecurityGroupPolicyRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ModifySecurityGroupPolicyRequest();
 	}
 
@@ -1291,7 +1291,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.CreateHaVipRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.CreateHaVipRequest createCreateHaVipRequest() {
+	public com.aliyuncs.ecs.model.v20140526.CreateHaVipRequest proxyCreateHaVipRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.CreateHaVipRequest();
 	}
 
@@ -1299,7 +1299,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.RemoveTagsRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.RemoveTagsRequest createRemoveTagsRequest() {
+	public com.aliyuncs.ecs.model.v20140526.RemoveTagsRequest proxyRemoveTagsRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.RemoveTagsRequest();
 	}
 
@@ -1307,7 +1307,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DeleteInstanceRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DeleteInstanceRequest createDeleteInstanceRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DeleteInstanceRequest proxyDeleteInstanceRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DeleteInstanceRequest();
 	}
 
@@ -1315,7 +1315,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeInstanceAttributeRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeInstanceAttributeRequest createDescribeInstanceAttributeRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeInstanceAttributeRequest proxyDescribeInstanceAttributeRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeInstanceAttributeRequest();
 	}
 
@@ -1323,7 +1323,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.AddIpRangeRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.AddIpRangeRequest createAddIpRangeRequest() {
+	public com.aliyuncs.ecs.model.v20140526.AddIpRangeRequest proxyAddIpRangeRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.AddIpRangeRequest();
 	}
 
@@ -1331,7 +1331,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeHaVipsRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeHaVipsRequest createDescribeHaVipsRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeHaVipsRequest proxyDescribeHaVipsRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeHaVipsRequest();
 	}
 
@@ -1339,7 +1339,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ImportKeyPairRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ImportKeyPairRequest createImportKeyPairRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ImportKeyPairRequest proxyImportKeyPairRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ImportKeyPairRequest();
 	}
 
@@ -1347,7 +1347,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribePriceRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribePriceRequest createDescribePriceRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribePriceRequest proxyDescribePriceRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribePriceRequest();
 	}
 
@@ -1355,7 +1355,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeNewProjectEipMonitorDataRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeNewProjectEipMonitorDataRequest createDescribeNewProjectEipMonitorDataRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeNewProjectEipMonitorDataRequest proxyDescribeNewProjectEipMonitorDataRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeNewProjectEipMonitorDataRequest();
 	}
 
@@ -1363,7 +1363,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeInstanceMonitorDataRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeInstanceMonitorDataRequest createDescribeInstanceMonitorDataRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeInstanceMonitorDataRequest proxyDescribeInstanceMonitorDataRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeInstanceMonitorDataRequest();
 	}
 
@@ -1371,7 +1371,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DeleteSnapshotRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DeleteSnapshotRequest createDeleteSnapshotRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DeleteSnapshotRequest proxyDeleteSnapshotRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DeleteSnapshotRequest();
 	}
 
@@ -1379,7 +1379,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.AttachDiskRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.AttachDiskRequest createAttachDiskRequest() {
+	public com.aliyuncs.ecs.model.v20140526.AttachDiskRequest proxyAttachDiskRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.AttachDiskRequest();
 	}
 
@@ -1387,7 +1387,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DetachClassicLinkVpcRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DetachClassicLinkVpcRequest createDetachClassicLinkVpcRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DetachClassicLinkVpcRequest proxyDetachClassicLinkVpcRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DetachClassicLinkVpcRequest();
 	}
 
@@ -1395,7 +1395,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.UnbindIpRangeRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.UnbindIpRangeRequest createUnbindIpRangeRequest() {
+	public com.aliyuncs.ecs.model.v20140526.UnbindIpRangeRequest proxyUnbindIpRangeRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.UnbindIpRangeRequest();
 	}
 
@@ -1403,7 +1403,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeEipAddressesRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeEipAddressesRequest createDescribeEipAddressesRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeEipAddressesRequest proxyDescribeEipAddressesRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeEipAddressesRequest();
 	}
 
@@ -1411,7 +1411,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeDiskMonitorDataRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeDiskMonitorDataRequest createDescribeDiskMonitorDataRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeDiskMonitorDataRequest proxyDescribeDiskMonitorDataRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeDiskMonitorDataRequest();
 	}
 
@@ -1419,7 +1419,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeNatGatewaysRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeNatGatewaysRequest createDescribeNatGatewaysRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeNatGatewaysRequest proxyDescribeNatGatewaysRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeNatGatewaysRequest();
 	}
 
@@ -1427,7 +1427,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeVirtualBorderRoutersRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeVirtualBorderRoutersRequest createDescribeVirtualBorderRoutersRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeVirtualBorderRoutersRequest proxyDescribeVirtualBorderRoutersRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeVirtualBorderRoutersRequest();
 	}
 
@@ -1435,7 +1435,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DetachDiskRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DetachDiskRequest createDetachDiskRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DetachDiskRequest proxyDetachDiskRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DetachDiskRequest();
 	}
 
@@ -1443,7 +1443,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.RunInstancesRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.RunInstancesRequest createRunInstancesRequest() {
+	public com.aliyuncs.ecs.model.v20140526.RunInstancesRequest proxyRunInstancesRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.RunInstancesRequest();
 	}
 
@@ -1451,7 +1451,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DeleteHaVipRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DeleteHaVipRequest createDeleteHaVipRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DeleteHaVipRequest proxyDeleteHaVipRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DeleteHaVipRequest();
 	}
 
@@ -1459,7 +1459,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ModifySecurityGroupAttributeRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ModifySecurityGroupAttributeRequest createModifySecurityGroupAttributeRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ModifySecurityGroupAttributeRequest proxyModifySecurityGroupAttributeRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ModifySecurityGroupAttributeRequest();
 	}
 
@@ -1467,7 +1467,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ModifyInstanceAutoRenewAttributeRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ModifyInstanceAutoRenewAttributeRequest createModifyInstanceAutoRenewAttributeRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ModifyInstanceAutoRenewAttributeRequest proxyModifyInstanceAutoRenewAttributeRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ModifyInstanceAutoRenewAttributeRequest();
 	}
 
@@ -1475,7 +1475,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DeleteRouterInterfaceRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DeleteRouterInterfaceRequest createDeleteRouterInterfaceRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DeleteRouterInterfaceRequest proxyDeleteRouterInterfaceRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DeleteRouterInterfaceRequest();
 	}
 
@@ -1483,7 +1483,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ModifyUserBusinessBehaviorRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ModifyUserBusinessBehaviorRequest createModifyUserBusinessBehaviorRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ModifyUserBusinessBehaviorRequest proxyModifyUserBusinessBehaviorRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ModifyUserBusinessBehaviorRequest();
 	}
 
@@ -1491,7 +1491,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ApplyAutoSnapshotPolicyRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ApplyAutoSnapshotPolicyRequest createApplyAutoSnapshotPolicyRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ApplyAutoSnapshotPolicyRequest proxyApplyAutoSnapshotPolicyRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ApplyAutoSnapshotPolicyRequest();
 	}
 
@@ -1499,7 +1499,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeEipMonitorDataRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeEipMonitorDataRequest createDescribeEipMonitorDataRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeEipMonitorDataRequest proxyDescribeEipMonitorDataRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeEipMonitorDataRequest();
 	}
 
@@ -1507,7 +1507,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeSnapshotLinksRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeSnapshotLinksRequest createDescribeSnapshotLinksRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeSnapshotLinksRequest proxyDescribeSnapshotLinksRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeSnapshotLinksRequest();
 	}
 
@@ -1515,7 +1515,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.CreateSnapshotRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.CreateSnapshotRequest createCreateSnapshotRequest() {
+	public com.aliyuncs.ecs.model.v20140526.CreateSnapshotRequest proxyCreateSnapshotRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.CreateSnapshotRequest();
 	}
 
@@ -1523,7 +1523,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DeleteNetworkInterfaceRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DeleteNetworkInterfaceRequest createDeleteNetworkInterfaceRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DeleteNetworkInterfaceRequest proxyDeleteNetworkInterfaceRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DeleteNetworkInterfaceRequest();
 	}
 
@@ -1531,7 +1531,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeResourceByTagsRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeResourceByTagsRequest createDescribeResourceByTagsRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeResourceByTagsRequest proxyDescribeResourceByTagsRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeResourceByTagsRequest();
 	}
 
@@ -1539,7 +1539,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeSnapshotPackageRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeSnapshotPackageRequest createDescribeSnapshotPackageRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeSnapshotPackageRequest proxyDescribeSnapshotPackageRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeSnapshotPackageRequest();
 	}
 
@@ -1547,7 +1547,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.AssociateEipAddressRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.AssociateEipAddressRequest createAssociateEipAddressRequest() {
+	public com.aliyuncs.ecs.model.v20140526.AssociateEipAddressRequest proxyAssociateEipAddressRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.AssociateEipAddressRequest();
 	}
 
@@ -1555,7 +1555,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.RevokeSecurityGroupEgressRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.RevokeSecurityGroupEgressRequest createRevokeSecurityGroupEgressRequest() {
+	public com.aliyuncs.ecs.model.v20140526.RevokeSecurityGroupEgressRequest proxyRevokeSecurityGroupEgressRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.RevokeSecurityGroupEgressRequest();
 	}
 
@@ -1563,7 +1563,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.AttachKeyPairRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.AttachKeyPairRequest createAttachKeyPairRequest() {
+	public com.aliyuncs.ecs.model.v20140526.AttachKeyPairRequest proxyAttachKeyPairRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.AttachKeyPairRequest();
 	}
 
@@ -1571,7 +1571,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.CreateCommandRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.CreateCommandRequest createCreateCommandRequest() {
+	public com.aliyuncs.ecs.model.v20140526.CreateCommandRequest proxyCreateCommandRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.CreateCommandRequest();
 	}
 
@@ -1579,7 +1579,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.JoinResourceGroupRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.JoinResourceGroupRequest createJoinResourceGroupRequest() {
+	public com.aliyuncs.ecs.model.v20140526.JoinResourceGroupRequest proxyJoinResourceGroupRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.JoinResourceGroupRequest();
 	}
 
@@ -1587,7 +1587,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ModifyDeploymentSetAttributeRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ModifyDeploymentSetAttributeRequest createModifyDeploymentSetAttributeRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ModifyDeploymentSetAttributeRequest proxyModifyDeploymentSetAttributeRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ModifyDeploymentSetAttributeRequest();
 	}
 
@@ -1595,7 +1595,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeAutoSnapshotPolicyExRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeAutoSnapshotPolicyExRequest createDescribeAutoSnapshotPolicyExRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeAutoSnapshotPolicyExRequest proxyDescribeAutoSnapshotPolicyExRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeAutoSnapshotPolicyExRequest();
 	}
 
@@ -1603,7 +1603,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeRecommendInstanceTypeRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeRecommendInstanceTypeRequest createDescribeRecommendInstanceTypeRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeRecommendInstanceTypeRequest proxyDescribeRecommendInstanceTypeRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeRecommendInstanceTypeRequest();
 	}
 
@@ -1611,7 +1611,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ModifyInstanceNetworkSpecRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ModifyInstanceNetworkSpecRequest createModifyInstanceNetworkSpecRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ModifyInstanceNetworkSpecRequest proxyModifyInstanceNetworkSpecRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ModifyInstanceNetworkSpecRequest();
 	}
 
@@ -1619,7 +1619,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeTasksRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeTasksRequest createDescribeTasksRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeTasksRequest proxyDescribeTasksRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeTasksRequest();
 	}
 
@@ -1627,7 +1627,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeDisksRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeDisksRequest createDescribeDisksRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeDisksRequest proxyDescribeDisksRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeDisksRequest();
 	}
 
@@ -1635,7 +1635,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ReInitDiskRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ReInitDiskRequest createReInitDiskRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ReInitDiskRequest proxyReInitDiskRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ReInitDiskRequest();
 	}
 
@@ -1643,7 +1643,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.CreateNatGatewayRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.CreateNatGatewayRequest createCreateNatGatewayRequest() {
+	public com.aliyuncs.ecs.model.v20140526.CreateNatGatewayRequest proxyCreateNatGatewayRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.CreateNatGatewayRequest();
 	}
 
@@ -1651,7 +1651,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeInstanceVncPasswdRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeInstanceVncPasswdRequest createDescribeInstanceVncPasswdRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeInstanceVncPasswdRequest proxyDescribeInstanceVncPasswdRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeInstanceVncPasswdRequest();
 	}
 
@@ -1659,7 +1659,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeKeyPairsRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeKeyPairsRequest createDescribeKeyPairsRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeKeyPairsRequest proxyDescribeKeyPairsRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeKeyPairsRequest();
 	}
 
@@ -1667,7 +1667,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ModifyImageShareGroupPermissionRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ModifyImageShareGroupPermissionRequest createModifyImageShareGroupPermissionRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ModifyImageShareGroupPermissionRequest proxyModifyImageShareGroupPermissionRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ModifyImageShareGroupPermissionRequest();
 	}
 
@@ -1675,7 +1675,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeInvocationsRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeInvocationsRequest createDescribeInvocationsRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeInvocationsRequest proxyDescribeInvocationsRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeInvocationsRequest();
 	}
 
@@ -1683,7 +1683,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ReleaseEipAddressRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ReleaseEipAddressRequest createReleaseEipAddressRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ReleaseEipAddressRequest proxyReleaseEipAddressRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ReleaseEipAddressRequest();
 	}
 
@@ -1691,7 +1691,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeImagesRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeImagesRequest createDescribeImagesRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeImagesRequest proxyDescribeImagesRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeImagesRequest();
 	}
 
@@ -1699,7 +1699,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribePhysicalConnectionsRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribePhysicalConnectionsRequest createDescribePhysicalConnectionsRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribePhysicalConnectionsRequest proxyDescribePhysicalConnectionsRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribePhysicalConnectionsRequest();
 	}
 
@@ -1707,7 +1707,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ModifyDiskAttributeRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ModifyDiskAttributeRequest createModifyDiskAttributeRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ModifyDiskAttributeRequest proxyModifyDiskAttributeRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ModifyDiskAttributeRequest();
 	}
 
@@ -1715,7 +1715,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ModifyVRouterAttributeRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ModifyVRouterAttributeRequest createModifyVRouterAttributeRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ModifyVRouterAttributeRequest proxyModifyVRouterAttributeRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ModifyVRouterAttributeRequest();
 	}
 
@@ -1723,7 +1723,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.CancelPhysicalConnectionRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.CancelPhysicalConnectionRequest createCancelPhysicalConnectionRequest() {
+	public com.aliyuncs.ecs.model.v20140526.CancelPhysicalConnectionRequest proxyCancelPhysicalConnectionRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.CancelPhysicalConnectionRequest();
 	}
 
@@ -1731,7 +1731,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeLimitationRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeLimitationRequest createDescribeLimitationRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeLimitationRequest proxyDescribeLimitationRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeLimitationRequest();
 	}
 
@@ -1739,7 +1739,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.CreateVpcRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.CreateVpcRequest createCreateVpcRequest() {
+	public com.aliyuncs.ecs.model.v20140526.CreateVpcRequest proxyCreateVpcRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.CreateVpcRequest();
 	}
 
@@ -1747,7 +1747,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.RenewInstanceRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.RenewInstanceRequest createRenewInstanceRequest() {
+	public com.aliyuncs.ecs.model.v20140526.RenewInstanceRequest proxyRenewInstanceRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.RenewInstanceRequest();
 	}
 
@@ -1755,7 +1755,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ModifyIntranetBandwidthKbRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ModifyIntranetBandwidthKbRequest createModifyIntranetBandwidthKbRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ModifyIntranetBandwidthKbRequest proxyModifyIntranetBandwidthKbRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ModifyIntranetBandwidthKbRequest();
 	}
 
@@ -1763,7 +1763,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeInstanceHistoryEventsRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeInstanceHistoryEventsRequest createDescribeInstanceHistoryEventsRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeInstanceHistoryEventsRequest proxyDescribeInstanceHistoryEventsRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeInstanceHistoryEventsRequest();
 	}
 
@@ -1771,7 +1771,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeAccessPointsRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeAccessPointsRequest createDescribeAccessPointsRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeAccessPointsRequest proxyDescribeAccessPointsRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeAccessPointsRequest();
 	}
 
@@ -1779,7 +1779,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeBandwidthLimitationRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeBandwidthLimitationRequest createDescribeBandwidthLimitationRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeBandwidthLimitationRequest proxyDescribeBandwidthLimitationRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeBandwidthLimitationRequest();
 	}
 
@@ -1787,7 +1787,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.ModifyVpcAttributeRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.ModifyVpcAttributeRequest createModifyVpcAttributeRequest() {
+	public com.aliyuncs.ecs.model.v20140526.ModifyVpcAttributeRequest proxyModifyVpcAttributeRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.ModifyVpcAttributeRequest();
 	}
 
@@ -1795,7 +1795,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeVpcsRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeVpcsRequest createDescribeVpcsRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeVpcsRequest proxyDescribeVpcsRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeVpcsRequest();
 	}
 
@@ -1803,7 +1803,7 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.DescribeVRoutersRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.DescribeVRoutersRequest createDescribeVRoutersRequest() {
+	public com.aliyuncs.ecs.model.v20140526.DescribeVRoutersRequest proxyDescribeVRoutersRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.DescribeVRoutersRequest();
 	}
 
@@ -1811,8 +1811,8 @@ public class DefaultAcsClient extends com.aliyuncs.DefaultAcsClient {
 	/**
 	 * @return com.aliyuncs.ecs.model.v20140526.AddTagsRequest
 	 */
-	public com.aliyuncs.ecs.model.v20140526.AddTagsRequest createAddTagsRequest() {
+	public com.aliyuncs.ecs.model.v20140526.AddTagsRequest proxyAddTagsRequest() {
 		return new com.aliyuncs.ecs.model.v20140526.AddTagsRequest();
 	}
-	   
+
 }

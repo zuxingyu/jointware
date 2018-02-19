@@ -21,6 +21,11 @@ import java.util.jar.JarEntry;
  */
 public class ListClassFromSpecifiedPackageRule {
 
+	/**
+	 * @param pkg packageName
+	 * @param postfixs 后缀
+	 * @return proxy方法名
+	 */
 	public static String generate(String pkg, List<String> postfixs) {
 		StringBuffer sb = new StringBuffer();
 		Set<String> classSet = listAllClasses(pkg, true);
@@ -41,7 +46,7 @@ public class ListClassFromSpecifiedPackageRule {
 				sb.append("\t")
 					.append("public ")
 					.append(fullname)
-					.append(" create")
+					.append(" proxy")
 					.append(fullname.substring(idx + 1))
 					.append("() {")
 					.append("\n");
@@ -157,6 +162,14 @@ public class ListClassFromSpecifiedPackageRule {
 	}
 	
 	public static void main(String[] args) throws Exception {
+		String packageName = "com.amazonaws.services.ec2.model";
+		List<String> postfixs = new ArrayList<String>();
+		postfixs.add("Request");
+		System.out.println(ListClassFromSpecifiedPackageRule.generate(packageName, postfixs));
+//		generateAmazonEC2Kinds();
+	}
+
+	protected static void generateAmazonEC2Kinds() {
 		String packageName = "com.aliyuncs.ecs.model.v20140526";
 		List<String> postfixs = new ArrayList<String>();
 		postfixs.add("Request");

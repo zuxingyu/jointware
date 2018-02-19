@@ -31,19 +31,16 @@ public class EC2Main {
 	public static void main(String[] args) {
 		
 		AWSCredentials ac = new BasicAWSCredentials(ACCESS_KEY_ID, ACCESS_KEY_SECRET);
-		
 		AWSCredentialsProvider credentialsProvider = new AWSStaticCredentialsProvider(ac);
-		
 		
 		AmazonEC2 ec2 = AmazonEC2ClientBuilder.standard()
 								.withRegion(Regions.AP_NORTHEAST_1)
 								.withCredentials(credentialsProvider )
 								.build();
-//		AmazonEC2 ec2 = AmazonEC2ClientBuilder.defaultClient();
-		for (com.amazonaws.services.ec2.model.Region region : ec2.describeRegions().getRegions()) {
-			System.out.println(region.getRegionName());
-		}
-//		DescribeRegionsRequest request = new DescribeRegionsRequest();
+		System.out.println(ec2.getClass().getName());
+//		for (com.amazonaws.services.ec2.model.Region region : ec2.describeRegions().getRegions()) {
+//			System.out.println(region.getRegionName());
+//		}
 	}
 
 }

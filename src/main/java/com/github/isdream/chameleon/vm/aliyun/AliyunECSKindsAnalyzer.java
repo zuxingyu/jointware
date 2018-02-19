@@ -19,13 +19,13 @@ public class AliyunECSKindsAnalyzer extends KindsAnalyzer {
 
 	protected final static String SUFFIX = "Request";
 	
-	protected final static String PREFIX = "create";
+	protected final static String STARTWITH = "proxy";
 	
 	@Override
 	protected boolean isKind(Method method) {
 		return  ObjectUtils.isNull(method) ? false :
 			(method.getParameterCount() == 0
-			&& method.getName().startsWith(PREFIX)
+			&& method.getName().startsWith(STARTWITH)
 			&& method.getName().endsWith(SUFFIX));
 	}
 
@@ -35,16 +35,16 @@ public class AliyunECSKindsAnalyzer extends KindsAnalyzer {
 	}
 
 	@Override
-	protected String toKind(String name) {
-		return StringUtils.isNull(name) ? null 
-				: name.substring(PREFIX.length(), name.length() - SUFFIX.length());
+	protected String toKind(Method method) {
+		return StringUtils.isNull(method.getName()) ? null 
+				: method.getName().substring(STARTWITH.length(), 
+						method.getName().length() - SUFFIX.length());
 	}
 
 
 	@Override
-	protected String getDesc(String parent, String name) {
-		return StringUtils.isNull(name) ? null : 
-			(StringUtils.isNull(parent) ? name : parent + "-" + name);
+	protected String getDesc(String parent, Method method) {
+		return toKind(method);
 	}
 
 	@Override

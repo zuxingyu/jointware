@@ -65,8 +65,8 @@ public class KubernetesKindsAnalyzer extends KindsAnalyzer {
 	 * 
 	 */
 	@Override
-	protected String toKind(String name) {
-		return Fabric8Kind2DescRule.getName(name);
+	protected String toKind(Method method) {
+		return Fabric8Kind2DescRule.getName(method.getName());
 	}
 
 	/**
@@ -74,9 +74,9 @@ public class KubernetesKindsAnalyzer extends KindsAnalyzer {
 	 * 
 	 */
 	@Override
-	protected String getDesc(String parent, String name) {
-		return StringUtils.isNull(name) ? null : 
-				(StringUtils.isNull(parent) ? name : parent + "-" + name);
+	protected String getDesc(String parent, Method method) {
+		return StringUtils.isNull(method.getName()) ? null : 
+				(StringUtils.isNull(parent) ? method.getName() : parent + "-" + method.getName());
 	}
 
 	@Override

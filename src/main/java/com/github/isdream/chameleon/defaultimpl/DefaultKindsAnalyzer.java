@@ -28,12 +28,12 @@ public class DefaultKindsAnalyzer extends KindsAnalyzer {
 	}
 
 	@Override
-	protected String toKind(String name) {
+	protected String toKind(Method method) {
 		return "";
 	}
 
 	@Override
-	protected String getDesc(String parent, String name) {
+	protected String getDesc(String parent, Method method) {
 		return "";
 	}
 

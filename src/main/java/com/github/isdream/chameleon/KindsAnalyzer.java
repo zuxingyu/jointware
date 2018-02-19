@@ -85,7 +85,7 @@ public abstract class KindsAnalyzer {
 		Class<?> client = Class.forName(classname);
     	for (Method method : client.getMethods()) {
     		if (isKind(method)) {
-    			kinds.put(toKind(method.getName()), getDesc(parent, method.getName()));
+    			kinds.put(toKind(method), getDesc(parent, method));
     		} else if (isKindGroup(method)) {
     			analyse(method.getReturnType().getName(), method.getName());
     		} else {
@@ -138,17 +138,17 @@ public abstract class KindsAnalyzer {
 	protected abstract boolean isKindGroup(Method method);
 	
 	/**
-	 * @param name 名字
+	 * @param method 名字
 	 * @return 转换为kind的类型
 	 */
-	protected abstract String toKind(String name);
+	protected abstract String toKind(Method method);
 	
 	/**
 	 * @param parent 父节点是什么
-	 * @param name 方法名
+	 * @param method 方法名
 	 * @return 描述
 	 */
-	protected abstract String getDesc(String parent, String name);
+	protected abstract String getDesc(String parent, Method method);
 	
 	/**
 	 * @return the client for the specified cloud
