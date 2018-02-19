@@ -13,7 +13,7 @@ import com.github.isdream.chameleon.commons.utils.StringUtils;
  *
  * 2018年1月3日
  */
-public class JavaMethodParametersIgnoreRule {
+public class IgnoreMethodNameInJavaSDKRule {
 
 	private final static Set<String> ignores = new HashSet<String>();
 	

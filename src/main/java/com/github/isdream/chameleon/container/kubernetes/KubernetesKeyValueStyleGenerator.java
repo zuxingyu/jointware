@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.Set;
 
 import com.github.isdream.chameleon.KeyValueStyleGenerator;
-import com.github.isdream.chameleon.commons.rules.JavaMethodParametersIgnoreRule;
+import com.github.isdream.chameleon.commons.rules.IgnoreMethodNameInJavaSDKRule;
 import com.github.isdream.chameleon.commons.utils.ObjectUtils;
 import com.github.isdream.chameleon.commons.utils.StringUtils;
 
@@ -45,7 +45,7 @@ public class KubernetesKeyValueStyleGenerator extends KeyValueStyleGenerator {
 			return (method.getParameterCount() == 0
 					&& !ignores.contains(method.getName())
 					&& !method.getName().startsWith(IGNORE_PREFIX) 
-					&& !JavaMethodParametersIgnoreRule.ignore(method.getName())) 
+					&& !IgnoreMethodNameInJavaSDKRule.ignore(method.getName())) 
 					? (ObjectUtils.isNull(method.invoke(obj)) ? true : false) : true;
 		} catch (Exception e) {
 			return true;

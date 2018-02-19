@@ -5,7 +5,7 @@ package com.github.isdream.chameleon.container.openshift;
 
 import java.util.Set;
 
-import com.github.isdream.chameleon.container.FeaturesUtils;
+import com.github.isdream.chameleon.FeaturesUtils;
 
 import junit.framework.Assert;
 import junit.framework.TestCase;

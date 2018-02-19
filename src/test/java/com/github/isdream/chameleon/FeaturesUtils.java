@@ -1,7 +1,7 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package com.github.isdream.chameleon.container;
+package com.github.isdream.chameleon;
 
 import java.util.Set;
 

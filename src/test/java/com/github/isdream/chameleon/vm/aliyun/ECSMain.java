@@ -3,7 +3,6 @@
  */
 package com.github.isdream.chameleon.vm.aliyun;
 
-import com.aliyuncs.DefaultAcsClient;
 import com.aliyuncs.IAcsClient;
 import com.aliyuncs.ecs.model.v20140526.DescribeInstancesRequest;
 import com.aliyuncs.ecs.model.v20140526.DescribeInstancesResponse.Instance;
@@ -13,6 +12,7 @@ import com.aliyuncs.exceptions.ClientException;
 import com.aliyuncs.exceptions.ServerException;
 import com.aliyuncs.profile.DefaultProfile;
 import com.aliyuncs.profile.IClientProfile;
+import com.github.isdream.chameleon.vm.aliyun.adapters.DefaultAcsClient;
 
 /**
  * @author wuheng@otcaix.iscas.ac.cn
