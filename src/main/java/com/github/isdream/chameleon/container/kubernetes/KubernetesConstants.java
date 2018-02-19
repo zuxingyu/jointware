@@ -3,6 +3,8 @@
  */
 package com.github.isdream.chameleon.container.kubernetes;
 
+import io.fabric8.kubernetes.client.DefaultKubernetesClient;
+
 /**
  * @author henry, wuheng@otcaix.iscas.ac.cn
  *
@@ -11,7 +13,7 @@ package com.github.isdream.chameleon.container.kubernetes;
 public class KubernetesConstants {
 
 	//
-	public static final String CLIENT = "io.fabric8.kubernetes.client.DefaultKubernetesClient";
+	public static final String CLIENT = DefaultKubernetesClient.class.getName();
 
 	
 	//

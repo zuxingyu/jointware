@@ -3,6 +3,7 @@
  */
 package com.github.isdream.chameleon.container.kubernetes;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import com.github.isdream.chameleon.KindModelsAnalyzer;
@@ -18,7 +19,11 @@ public class KubernetesKindModelsAnalyzer extends KindModelsAnalyzer {
 	
 	@Override
 	protected Set<String> getKinds() {
-		return KubernetesKindsAnalyzer.getAnalyzer().getKinds();
+		try {
+			return new KubernetesKindsAnalyzer().getKinds();
+		} catch (Exception e) {
+			return new HashSet<String>();
+		}
 	}
 
 	@Override

@@ -18,7 +18,7 @@ public class OpenShiftModelParametersGenerator extends KubernetesModelGenerator 
 
 	@Override
 	public Object getKindModel(Object client, String kind) throws Exception {
-		String desc = OpenShiftKindsAnalyzer.getAnalyzer().getKindDesc(kind);
+		String desc = new OpenShiftKindsAnalyzer().getKindDesc(kind);
 		return createKindModelByDesc(client, desc);
 	}
 
@@ -30,8 +30,12 @@ public class OpenShiftModelParametersGenerator extends KubernetesModelGenerator 
 
 	@Override
 	protected String getDesc(String kind) {
-		return StringUtils.isNull(kind) ? "" 
-				: OpenShiftKindsAnalyzer.getAnalyzer().getKindDesc(kind);
+		try {
+			return StringUtils.isNull(kind) ? "" 
+					: new OpenShiftKindsAnalyzer().getKindDesc(kind);
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	@Override

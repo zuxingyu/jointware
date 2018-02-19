@@ -3,9 +3,7 @@
  */
 package com.github.isdream.chameleon.container.openshift;
 
-import com.github.isdream.chameleon.KindsAnalyzer;
 import com.github.isdream.chameleon.container.kubernetes.KubernetesKindsAnalyzer;
-import com.github.isdream.chameleon.defaultimpl.DefaultKindsAnalyzer;
 
 /**
  * @author henry, wuheng@otcaix.iscas.ac.cn
@@ -14,9 +12,7 @@ import com.github.isdream.chameleon.defaultimpl.DefaultKindsAnalyzer;
  */
 public class OpenShiftKindsAnalyzer extends KubernetesKindsAnalyzer {
 
-	private static OpenShiftKindsAnalyzer analyzer = null;
-	
-	protected OpenShiftKindsAnalyzer() throws Exception {
+	public OpenShiftKindsAnalyzer() {
 		super();
 	}
 
@@ -25,17 +21,4 @@ public class OpenShiftKindsAnalyzer extends KubernetesKindsAnalyzer {
 		return OpenShiftConstants.CLIENT;
 	}
 
-	/**
-	 * @return 单例模式
-	 */
-	public static KindsAnalyzer getAnalyzer() {
-		if(analyzer == null) {
-			try {
-				analyzer = new OpenShiftKindsAnalyzer();
-			} catch (Exception e) {
-				return DefaultKindsAnalyzer.getAnalyzer();
-			}
-		}
-		return analyzer;
-	}
 }

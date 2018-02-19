@@ -66,8 +66,12 @@ public abstract class KindsAnalyzer {
 	/**
 	 * @throws Exception 反射异常
 	 */
-	protected KindsAnalyzer() throws Exception {
-		this.analyse(getClient(), DEFAULT_PARENT);
+	public KindsAnalyzer() {
+		try {
+			this.analyse(getClient(), DEFAULT_PARENT);
+		} catch (Exception e) {
+			// ignore here
+		}
 	}
 	
 	/**
@@ -147,7 +151,8 @@ public abstract class KindsAnalyzer {
 	protected abstract String getDesc(String parent, String name);
 	
 	/**
-	 * @return 客户端
+	 * @return the client for the specified cloud
 	 */
 	protected abstract String getClient();
+	
 }

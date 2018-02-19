@@ -9,7 +9,9 @@ import com.github.isdream.chameleon.KindsAnalyzer;
 import com.github.isdream.chameleon.commons.rules.KubernetesKind2DescRule;
 import com.github.isdream.chameleon.commons.utils.ObjectUtils;
 import com.github.isdream.chameleon.commons.utils.StringUtils;
-import com.github.isdream.chameleon.defaultimpl.DefaultKindsAnalyzer;
+
+import io.fabric8.kubernetes.client.dsl.MixedOperation;
+import io.fabric8.kubernetes.client.dsl.NonNamespaceOperation;
 
 /**
  * @author henry, wuheng@otcaix.iscas.ac.cn
@@ -18,15 +20,13 @@ import com.github.isdream.chameleon.defaultimpl.DefaultKindsAnalyzer;
  */
 public class KubernetesKindsAnalyzer extends KindsAnalyzer {
 	
-	private static KubernetesKindsAnalyzer analyzer = null;
+	protected static final String KIND_BASIC_TAG = NonNamespaceOperation.class.getName();
 
-	protected static final String KIND_BASIC_TAG = "io.fabric8.kubernetes.client.dsl.NonNamespaceOperation";
-
-	protected static final String KIND_MIXED_TAG = "io.fabric8.kubernetes.client.dsl.MixedOperation";
+	protected static final String KIND_MIXED_TAG = MixedOperation.class.getName();
 
 	protected static final String KIND_GROUP_TAG = "GroupDSL";
 
-	protected KubernetesKindsAnalyzer() throws Exception {
+	public KubernetesKindsAnalyzer() {
 		super();
 	}
 	
@@ -83,17 +83,5 @@ public class KubernetesKindsAnalyzer extends KindsAnalyzer {
 		return KubernetesConstants.CLIENT;
 	}
 
-	/**
-	 * @return 单例模式
-	 */
-	public static KindsAnalyzer getAnalyzer() {
-		if(analyzer == null) {
-			try {
-				analyzer = new KubernetesKindsAnalyzer();
-			} catch (Exception e) {
-				return DefaultKindsAnalyzer.getAnalyzer();
-			}
-		}
-		return analyzer;
-	}
+
 }

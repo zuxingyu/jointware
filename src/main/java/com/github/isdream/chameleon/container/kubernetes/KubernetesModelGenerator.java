@@ -255,7 +255,11 @@ public class KubernetesModelGenerator extends KindModelStyleGenerator {
 	 * @return 描述
 	 */
 	protected String getDesc(String kind) {
-		return StringUtils.isNull(kind) ? "" : KubernetesKindsAnalyzer.getAnalyzer().getKindDesc(kind);
+		try {
+			return StringUtils.isNull(kind) ? "" : new KubernetesKindsAnalyzer().getKindDesc(kind);
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	/**

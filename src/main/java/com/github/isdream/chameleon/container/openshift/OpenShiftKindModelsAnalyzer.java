@@ -3,6 +3,7 @@
  */
 package com.github.isdream.chameleon.container.openshift;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import com.github.isdream.chameleon.KindModelsAnalyzer;
@@ -18,7 +19,11 @@ public class OpenShiftKindModelsAnalyzer extends KindModelsAnalyzer {
 	
 	@Override
 	protected Set<String> getKinds() {
-		return OpenShiftKindsAnalyzer.getAnalyzer().getKinds();
+		try {
+			return new OpenShiftKindsAnalyzer().getKinds();
+		} catch (Exception e) {
+			return new HashSet<String>();
+		}
 	}
 
 	@Override

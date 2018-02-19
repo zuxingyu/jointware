@@ -13,9 +13,7 @@ import com.github.isdream.chameleon.KindsAnalyzer;
  */
 public class DefaultKindsAnalyzer extends KindsAnalyzer {
 
-	private static DefaultKindsAnalyzer analyzer = null;
-	
-	protected DefaultKindsAnalyzer() throws Exception {
+	protected DefaultKindsAnalyzer() {
 		super();
 	}
 
@@ -44,18 +42,4 @@ public class DefaultKindsAnalyzer extends KindsAnalyzer {
 		return "";
 	}
 	
-	/** 
-	 * @return 单例模式
-	 */
-	public static KindsAnalyzer getAnalyzer() {
-		if(analyzer == null) {
-			try {
-				analyzer = new DefaultKindsAnalyzer();
-			} catch (Exception e) {
-				// ignore here
-			}
-		}
-		return analyzer;
-	}
-
 }
