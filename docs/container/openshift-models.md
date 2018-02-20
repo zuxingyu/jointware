@@ -1,0 +1,44 @@
+## OpenShift models:
+
+```
+- Policy = io.fabric8.openshift.api.model.Policy
+- Group = io.fabric8.openshift.api.model.Group
+- ServiceAccount = io.fabric8.kubernetes.api.model.ServiceAccount
+- User = io.fabric8.openshift.api.model.User
+- OAuthClient = io.fabric8.openshift.api.model.OAuthClient
+- ClusterRoleBinding = io.fabric8.openshift.api.model.ClusterRoleBinding
+- ThirdPartyResource = io.fabric8.kubernetes.api.model.extensions.ThirdPartyResource
+- Node = io.fabric8.kubernetes.api.model.Node
+- ImageStreamTag = io.fabric8.openshift.api.model.ImageStreamTag
+- ImageStream = io.fabric8.openshift.api.model.ImageStream
+- Deployment = io.fabric8.kubernetes.api.model.extensions.Deployment
+- ResourceQuota = io.fabric8.kubernetes.api.model.ResourceQuota
+- Build = io.fabric8.openshift.api.model.Build
+- ReplicationController = io.fabric8.kubernetes.api.model.ReplicationController
+- BuildConfig = io.fabric8.openshift.api.model.BuildConfig
+- RoleBinding = io.fabric8.openshift.api.model.RoleBinding
+- Job = io.fabric8.kubernetes.api.model.Job
+- ReplicaSet = io.fabric8.kubernetes.api.model.extensions.ReplicaSet
+- Route = io.fabric8.openshift.api.model.Route
+- Pod = io.fabric8.kubernetes.api.model.Pod
+- ConfigMap = io.fabric8.kubernetes.api.model.ConfigMap
+- NetworkPolicy = io.fabric8.kubernetes.api.model.extensions.NetworkPolicy
+- CustomResourceDefinition = io.fabric8.kubernetes.api.model.apiextensions.CustomResourceDefinition
+- Service = io.fabric8.kubernetes.api.model.Service
+- Ingress = io.fabric8.kubernetes.api.model.extensions.Ingress
+- PolicyBinding = io.fabric8.openshift.api.model.PolicyBinding
+- Namespace = io.fabric8.kubernetes.api.model.Namespace
+- OAuthAuthorizeToken = io.fabric8.openshift.api.model.OAuthAuthorizeToken
+- Role = io.fabric8.openshift.api.model.Role
+- Secret = io.fabric8.kubernetes.api.model.Secret
+- Project = io.fabric8.openshift.api.model.Project
+- LimitRange = io.fabric8.kubernetes.api.model.LimitRange
+- HorizontalPodAutoscaler = io.fabric8.kubernetes.api.model.HorizontalPodAutoscaler
+- Event = io.fabric8.kubernetes.api.model.Event
+- OAuthAccessToken = io.fabric8.openshift.api.model.OAuthAccessToken
+- PersistentVolumeClaim = io.fabric8.kubernetes.api.model.PersistentVolumeClaim
+- DaemonSet = io.fabric8.kubernetes.api.model.extensions.DaemonSet
+- PersistentVolume = io.fabric8.kubernetes.api.model.PersistentVolume
+- DeploymentConfig = io.fabric8.openshift.api.model.DeploymentConfig
+- StatefulSet = io.fabric8.kubernetes.api.model.extensions.StatefulSet
+```
