@@ -27,7 +27,7 @@ public class OpenShiftKindModelsAnalyzerTest extends TestCase {
 	}
 
 	public void testEuqalFeatures() {
-		Assert.assertEquals(ModelsUtils.testEuqalFeatures(
+		Assert.assertEquals(ModelsUtils.testGreatAndEuqalFeatures(
 						new OpenShiftKindsAnalyzer().getKinds(), 
 						kindModels.keySet()), true);
 	}

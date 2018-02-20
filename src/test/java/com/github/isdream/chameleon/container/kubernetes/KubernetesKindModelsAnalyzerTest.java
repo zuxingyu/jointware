@@ -27,7 +27,7 @@ public class KubernetesKindModelsAnalyzerTest extends TestCase {
 	}
 
 	public void testEuqalFeatures() {
-		Assert.assertEquals(ModelsUtils.testEuqalFeatures(
+		Assert.assertEquals(ModelsUtils.testGreatAndEuqalFeatures(
 						new KubernetesKindsAnalyzer().getKinds(), 
 						kindModels.keySet()), true);
 	}
