@@ -240,7 +240,7 @@ public class KubernetesModelGenerator extends KindModelStyleGenerator {
 	 *             反射异常
 	 */
 	protected Object createKindModel(String kind) throws Exception {
-		return Class.forName(KubernetesKindModelsAnalyzer.getAnalyzer().getKindModel(kind)).newInstance();
+		return Class.forName(new KubernetesKindModelsAnalyzer().getKindModel(kind)).newInstance();
 	}
 
 	/************************************************************************************

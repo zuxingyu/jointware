@@ -3,60 +3,30 @@
  */
 package com.github.isdream.chameleon.container.openshift;
 
-import java.util.HashSet;
 import java.util.Set;
 
-import com.github.isdream.chameleon.KindModelsAnalyzer;
+import com.github.isdream.chameleon.container.kubernetes.KubernetesKindModelsAnalyzer;
 
 /**
  * @author henry, wuheng@otcaix.iscas.ac.cn
  *
  * 2018年1月3日
  */
-public class OpenShiftKindModelsAnalyzer extends KindModelsAnalyzer {
+public class OpenShiftKindModelsAnalyzer extends KubernetesKindModelsAnalyzer {
 	
-	public static final String MODEL_OPENSHIFT_PACKAHE = "io.fabric8.openshift.api.model";
-
-	private static OpenShiftKindModelsAnalyzer analyzer = null;
+	private static final String MODEL_PACKAHE_OPENSHIFT = "io.fabric8.openshift.api.model";
 	
-	@Override
-	protected Set<String> getKinds() {
-		try {
-			return new OpenShiftKindsAnalyzer().getKinds();
-		} catch (Exception e) {
-			return new HashSet<String>();
-		}
-	}
+	private static final OpenShiftKindsAnalyzer openshiftAnalyzer = new OpenShiftKindsAnalyzer();
 
 	@Override
 	protected void initPackages() {
-		packages.add(MODEL_OPENSHIFT_PACKAHE);
-		this.initCommonsPackages();
-	}
-	
-	/**
-	 * @return 单例模式
-	 */
-	public static KindModelsAnalyzer getAnalyzer() {
-		if(analyzer == null) {
-			try {
-				analyzer = new OpenShiftKindModelsAnalyzer();
-			} catch (Exception e) {
-			}
-		}
-		return analyzer;
+		packages.add(MODEL_PACKAHE_OPENSHIFT);
+		super.initPackages();
 	}
 
 	@Override
-	protected void analyse(String pakagesName) {
-		for (String kind : getKinds()) {
-			 try {
-				 Class.forName(pakagesName + "." + kind);
-				 models.put(kind, pakagesName + "." + kind);
-			} catch (ClassNotFoundException e) {
-				// ignore here
-			}
-		 }
+	protected Set<String> getKinds() {
+		return openshiftAnalyzer.getKinds();
 	}
-
+	
 }

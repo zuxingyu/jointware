@@ -3,7 +3,6 @@
  */
 package com.github.isdream.chameleon.container.kubernetes;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import com.github.isdream.chameleon.KindModelsAnalyzer;
@@ -15,39 +14,24 @@ import com.github.isdream.chameleon.KindModelsAnalyzer;
  */
 public class KubernetesKindModelsAnalyzer extends KindModelsAnalyzer {
 
-	public static final String MODEL_PACKAHE_KUBERNETES = "io.fabric8.kubernetes.api.model";
+	protected static final String MODEL_PACKAHE_COMMON_EXTENSION = "io.fabric8.kubernetes.api.model.extensions";
 	
-	private static KubernetesKindModelsAnalyzer analyzer = null;
+	protected static final String MODEL_PACKAHE_COMMON_API = "io.fabric8.kubernetes.api.model.apiextensions";
 	
-	@Override
-	protected Set<String> getKinds() {
-		try {
-			return new KubernetesKindsAnalyzer().getKinds();
-		} catch (Exception e) {
-			return new HashSet<String>();
-		}
-	}
+	protected static final String MODEL_PACKAHE_COMMON_AUTH = "io.fabric8.kubernetes.api.model.authentication";
+	
+	protected static final String MODEL_PACKAHE_KUBERNETES = "io.fabric8.kubernetes.api.model";
+	
+	private static final KubernetesKindsAnalyzer kubernetesAnalyzer = new KubernetesKindsAnalyzer();
 
 	@Override
 	protected void initPackages() {
 		packages.add(MODEL_PACKAHE_KUBERNETES);
-		initCommonsPackages();
+		packages.add(MODEL_PACKAHE_COMMON_AUTH);
+		packages.add(MODEL_PACKAHE_COMMON_EXTENSION);
+		packages.add(MODEL_PACKAHE_COMMON_API);
 	}
 	
-	/**
-	 * @return 单例模式
-	 */
-	public static KindModelsAnalyzer getAnalyzer() {
-		if(analyzer == null) {
-			try {
-				analyzer = new KubernetesKindModelsAnalyzer();
-			} catch (Exception e) {
-				// ignore here
-			}
-		}
-		return analyzer;
-	}
-
 	@Override
 	protected void analyse(String pakagesName) {
 		for (String kind : getKinds()) {
@@ -58,6 +42,11 @@ public class KubernetesKindModelsAnalyzer extends KindModelsAnalyzer {
 				// ignore here
 			}
 		 }
+	}
+
+	@Override
+	protected Set<String> getKinds() {
+		return kubernetesAnalyzer.getKinds();
 	}
 
 }

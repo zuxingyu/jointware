@@ -40,8 +40,7 @@ public class OpenShiftModelParametersGenerator extends KubernetesModelGenerator 
 
 	@Override
 	protected Object createKindModel(String kind) throws Exception {
-		return Class.forName(OpenShiftKindModelsAnalyzer
-				.getAnalyzer().getKindModel(kind)).newInstance();
+		return Class.forName(new OpenShiftKindModelsAnalyzer().getKindModel(kind)).newInstance();
 	}
 
 	@Override

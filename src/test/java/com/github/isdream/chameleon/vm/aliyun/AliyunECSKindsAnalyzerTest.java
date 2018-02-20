@@ -5,9 +5,10 @@ package com.github.isdream.chameleon.vm.aliyun;
 
 import java.util.Set;
 
+import org.junit.Assert;
+
 import com.github.isdream.chameleon.FeaturesUtils;
 
-import junit.framework.Assert;
 import junit.framework.TestCase;
 
 /**
@@ -482,7 +483,7 @@ public class AliyunECSKindsAnalyzerTest extends TestCase {
 	 */
 	public static void main(String[] args) {
 		AliyunECSKindsAnalyzer ecs = new AliyunECSKindsAnalyzer();
-		FeaturesUtils.showAll("Aliyun ECS", ecs.getKinds());
+		FeaturesUtils.showAllFeatures("Aliyun ECS", ecs.getKinds());
 		FeaturesUtils.testFeaturesWithTrueResults(ecs.getKinds());
 		FeaturesUtils.testFeaturesWithFalseResults(ecs.getKinds());
 	}

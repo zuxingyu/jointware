@@ -26,12 +26,6 @@ import com.github.isdream.chameleon.commons.utils.StringUtils;
  */
 public abstract class KindModelsAnalyzer {
 
-	public static final String MODEL_PACKAHE_COMMON_EXTENSION = "io.fabric8.kubernetes.api.model.extensions";
-	
-	public static final String MODEL_PACKAHE_COMMON_API = "io.fabric8.kubernetes.api.model.apiextensions";
-	
-	public static final String MODEL_PACKAHE_COMMON_AUTH = "io.fabric8.kubernetes.api.model.authentication";
-	
 	/**
 	 * 记录kind和model的对应关系，比如：
 	 * Deployment=io.fabric8.kubernetes.api.model.extensions.Deployment
@@ -60,30 +54,6 @@ public abstract class KindModelsAnalyzer {
 			analyse(pkg);
 		}
 	}
-
-	protected void initCommonsPackages() {
-		packages.add(MODEL_PACKAHE_COMMON_AUTH);
-		packages.add(MODEL_PACKAHE_COMMON_EXTENSION);
-		packages.add(MODEL_PACKAHE_COMMON_API);
-	}
-	
-	protected abstract void analyse(String pakagesName);
-	
-	/************************************************************************************
-	 * 
-	 * 
-	 * 
-	 ************************************************************************************/
-	/**
-	 * @return 获取所有的kind
-	 */
-	protected abstract Set<String> getKinds();
-	
-	/**
-	 * 在指定的Packages中查询kind对应的fabric8的model
-	 * 
-	 */
-	protected abstract void initPackages();
 	
 	/**
 	 * @return 获取所有的kind对应的fabric8模型
@@ -92,6 +62,7 @@ public abstract class KindModelsAnalyzer {
 		return models;
 	}
 	
+	
 	/**
 	 * @param kind 具体的kind
 	 * @return 获取指定kind对应的fabric8模型
@@ -99,4 +70,29 @@ public abstract class KindModelsAnalyzer {
 	public String getKindModel(String kind) {
 		return StringUtils.isNull(kind) ? null : models.get(kind);
 	}
+	
+	
+	/************************************************************************************
+	 * 
+	 * 
+	 * 
+	 ************************************************************************************/
+	
+	/**
+	 * @return 获取所有的kind
+	 */
+	protected abstract Set<String> getKinds();
+	
+	/**
+	 * @param pakagesName 包名
+	 */
+	protected abstract void analyse(String pakagesName);
+	
+	/**
+	 * 在指定的Packages中查询kind对应的fabric8的model
+	 * 
+	 */
+	protected abstract void initPackages();
+	
+
 }

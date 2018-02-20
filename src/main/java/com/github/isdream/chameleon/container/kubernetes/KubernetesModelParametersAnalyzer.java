@@ -43,7 +43,7 @@ public class KubernetesModelParametersAnalyzer extends ModelParametersAnalyzer {
 
 	@Override
 	protected Map<String, String> getKindModels() {
-		return KubernetesKindModelsAnalyzer.getAnalyzer().getKindModels();
+		return new KubernetesKindModelsAnalyzer().getKindModels();
 	}
 
 

@@ -12,7 +12,7 @@ import java.util.Set;
  */
 public class FeaturesUtils {
 
-	public static void showAll(String name, Set<String> kinds) {
+	public static void showAllFeatures(String name, Set<String> kinds) {
 		System.out.println("## " + name + " features:");
 		System.out.println();
 		System.out.println("```");

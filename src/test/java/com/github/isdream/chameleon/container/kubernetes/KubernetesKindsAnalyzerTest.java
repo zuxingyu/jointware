@@ -5,9 +5,10 @@ package com.github.isdream.chameleon.container.kubernetes;
 
 import java.util.Set;
 
+import org.junit.Assert;
+
 import com.github.isdream.chameleon.FeaturesUtils;
 
-import junit.framework.Assert;
 import junit.framework.TestCase;
 
 /**
@@ -87,7 +88,7 @@ public class KubernetesKindsAnalyzerTest extends TestCase {
 	 */
 	public static void main(String[] args) {
 		KubernetesKindsAnalyzer kka = new KubernetesKindsAnalyzer();
-		FeaturesUtils.showAll("Kubernetes", kka.getKinds());
+		FeaturesUtils.showAllFeatures("Kubernetes", kka.getKinds());
 		FeaturesUtils.testFeaturesWithTrueResults(kka.getKinds());
 		FeaturesUtils.testFeaturesWithFalseResults(kka.getKinds());
 	}

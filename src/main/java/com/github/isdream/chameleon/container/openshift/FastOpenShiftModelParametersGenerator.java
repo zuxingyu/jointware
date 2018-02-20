@@ -214,8 +214,7 @@ protected final static Map<String, Method> methodCached = new HashMap<String, Me
 	@Override
 	protected Object createKindModel(String kind) throws Exception {
 
-		Class<?> clazz = getThisClass(OpenShiftKindModelsAnalyzer
-								.getAnalyzer().getKindModel(kind));
+		Class<?> clazz = getThisClass(new OpenShiftKindModelsAnalyzer().getKindModel(kind));
 		return clazz.newInstance();
 	} 
 }

@@ -15,6 +15,22 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- Container -->
+		<fabric8.version>3.1.8</fabric8.version> <!-- Kubernetes and OpenShift -->
+		<spotify.version>8.11.1</spotify.version> <!-- Docker and Swarm -->
+		<!-- VM -->
+		<aliyun.core.version>3.5.1</aliyun.core.version>
+		<aliyun.ecs.version>4.6.3</aliyun.ecs.version>
+		<amazon.jota.version>2.9.9</amazon.jota.version>
+		<amazon.ec2.version>1.11.280</amazon.ec2.version>
+		<!-- Utils -->
+		<snakeyaml.version>1.19</snakeyaml.version>
+		<fastjson.version>1.2.45</fastjson.version>
+		<jackson.version>2.9.4</jackson.version>
+		<!-- Test -->
+		<junit.version>4.12</junit.version>
+		<!-- Build -->
+		<java.version>1.8</java.version>
 	</properties>
 
 	<dependencies>
@@ -26,7 +42,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
+			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -34,31 +50,23 @@
 		<!-- ******************************************************** -->
 		<!-- Container-based platform -->
 		<!-- ******************************************************** -->
-
+		<!-- https://mvnrepository.com/artifact/io.fabric8/kubernetes-client -->
 		<dependency>
 			<groupId>io.fabric8</groupId>
 			<artifactId>kubernetes-client</artifactId>
-			<version>3.1.8</version>
+			<version>${fabric8.version}</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/io.fabric8/openshift-client -->
 		<dependency>
 			<groupId>io.fabric8</groupId>
 			<artifactId>openshift-client</artifactId>
-			<version>3.1.8</version>
+			<version>${fabric8.version}</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.github.docker-java/docker-java -->
+		<!-- https://mvnrepository.com/artifact/com.spotify/docker-client -->
 		<dependency>
-			<groupId>com.github.docker-java</groupId>
-			<artifactId>docker-java</artifactId>
-			<version>3.0.14</version>
-		</dependency>
-
-
-		<!-- https://mvnrepository.com/artifact/com.aliyun/aliyun-java-sdk-cs -->
-		<dependency>
-			<groupId>com.aliyun</groupId>
-			<artifactId>aliyun-java-sdk-cs</artifactId>
-			<version>2.1.0</version>
+			<groupId>com.spotify</groupId>
+			<artifactId>docker-client</artifactId>
+			<version>${spotify.version}</version>
 		</dependency>
 
 
@@ -69,44 +77,60 @@
 		<dependency>
 			<groupId>com.aliyun</groupId>
 			<artifactId>aliyun-java-sdk-core</artifactId>
-			<version>3.5.1</version>
+			<version>${aliyun.core.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.aliyun</groupId>
 			<artifactId>aliyun-java-sdk-ecs</artifactId>
-			<version>4.6.3</version>
+			<version>${aliyun.ecs.version}</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/joda-time/joda-time -->
 		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
-			<version>2.9.9</version>
+			<version>${amazon.jota.version}</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk -->
 		<dependency>
 			<groupId>com.amazonaws</groupId>
 			<artifactId>aws-java-sdk</artifactId>
-			<version>1.11.280</version>
+			<version>${amazon.ec2.version}</version>
 		</dependency>
 
 
 		<!-- ******************************************************** -->
-		<!-- YAML parser -->
+		<!-- Utils -->
 		<!-- ******************************************************** -->
 		<!-- https://mvnrepository.com/artifact/org.yaml/snakeyaml -->
 		<dependency>
 			<groupId>org.yaml</groupId>
 			<artifactId>snakeyaml</artifactId>
-			<version>1.19</version>
+			<version>${snakeyaml.version}</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
-			<version>1.2.45</version>
+			<version>${fastjson.version}</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+
+
 	</dependencies>
 
 	<issueManagement>
@@ -236,8 +260,8 @@
 						<artifactId>maven-compiler-plugin</artifactId>
 						<version>2.5.1</version>
 						<configuration>
-							<source>1.8</source>
-							<target>1.8</target>
+							<source>${java.version}</source>
+							<target>${java.version}</target>
 							<encoding>UTF-8</encoding>
 							<showWarnings>true</showWarnings>
 						</configuration>

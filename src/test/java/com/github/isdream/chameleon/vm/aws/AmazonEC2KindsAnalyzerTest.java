@@ -5,9 +5,10 @@ package com.github.isdream.chameleon.vm.aws;
 
 import java.util.Set;
 
+import org.junit.Assert;
+
 import com.github.isdream.chameleon.FeaturesUtils;
 
-import junit.framework.Assert;
 import junit.framework.TestCase;
 
 /**
@@ -575,7 +576,7 @@ public class AmazonEC2KindsAnalyzerTest extends TestCase {
 	 */
 	public static void main(String[] args) {
 		AmazonEC2KindsAnalyzer ecs = new AmazonEC2KindsAnalyzer();
-		FeaturesUtils.showAll("Amazon EC2", ecs.getKinds());
+		FeaturesUtils.showAllFeatures("Amazon EC2", ecs.getKinds());
 		FeaturesUtils.testFeaturesWithTrueResults(ecs.getKinds());
 		FeaturesUtils.testFeaturesWithFalseResults(ecs.getKinds());
 	}

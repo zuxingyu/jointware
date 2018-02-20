@@ -355,7 +355,7 @@ public class FastKubernetesModelGenerator extends KubernetesModelGenerator {
 	@Override
 	protected Object createKindModel(String kind) throws Exception {
 
-		Class<?> clazz = getThisClass(KubernetesKindModelsAnalyzer.getAnalyzer().getKindModel(kind));
+		Class<?> clazz = getThisClass(new KubernetesKindModelsAnalyzer().getKindModel(kind));
 		return clazz.newInstance();
 	}
 

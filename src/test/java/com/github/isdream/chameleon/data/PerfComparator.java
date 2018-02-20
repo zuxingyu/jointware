@@ -12,7 +12,6 @@ import java.util.Map;
 
 import com.github.isdream.chameleon.container.kubernetes.FastKubernetesModelGenerator;
 import com.github.isdream.chameleon.container.kubernetes.KubernetesKindModelsAnalyzer;
-import com.github.isdream.chameleon.container.kubernetes.KubernetesModelGenerator;
 import com.github.isdream.chameleon.container.kubernetes.KubernetesModelParametersAnalyzer;
 
 import io.fabric8.kubernetes.api.model.Container;
@@ -189,8 +188,7 @@ public class PerfComparator {
 		
 		FastKubernetesModelGenerator fkmpg = new FastKubernetesModelGenerator();
 //		KubernetesModelParametersGenerator fkmpg = new KubernetesModelParametersGenerator();
-		Object fobj = Class.forName(KubernetesKindModelsAnalyzer
-						.getAnalyzer().getKindModel("Deployment")).newInstance();
+		Object fobj = Class.forName(new KubernetesKindModelsAnalyzer().getKindModel("Deployment")).newInstance();
 		Map<String, String> fpt = KubernetesModelParametersAnalyzer.getAnalyzer().getModelParameters("Deployment");
 		
 		long start3 = System.currentTimeMillis();

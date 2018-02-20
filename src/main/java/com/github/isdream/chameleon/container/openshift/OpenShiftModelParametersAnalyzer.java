@@ -42,7 +42,7 @@ public class OpenShiftModelParametersAnalyzer extends ModelParametersAnalyzer {
 
 	@Override
 	protected Map<String, String> getKindModels() {
-		return OpenShiftKindModelsAnalyzer.getAnalyzer().getKindModels();
+		return new OpenShiftKindModelsAnalyzer().getKindModels();
 	}
 
 

@@ -5,9 +5,10 @@ package com.github.isdream.chameleon.container.openshift;
 
 import java.util.Set;
 
+import org.junit.Assert;
+
 import com.github.isdream.chameleon.FeaturesUtils;
 
-import junit.framework.Assert;
 import junit.framework.TestCase;
 
 /**
@@ -121,7 +122,7 @@ public class OpenShiftKindsAnalyzerAnalyzerTest extends TestCase {
 	 */
 	public static void main(String[] args) {
 		OpenShiftKindsAnalyzer oka = new OpenShiftKindsAnalyzer();
-		FeaturesUtils.showAll("OpenShift", oka.getKinds());
+		FeaturesUtils.showAllFeatures("OpenShift", oka.getKinds());
 		FeaturesUtils.testFeaturesWithTrueResults(oka.getKinds());
 		FeaturesUtils.testFeaturesWithFalseResults(oka.getKinds());
 	}
