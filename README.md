@@ -1,18 +1,17 @@
-cluster-dispatcher
+jointware
 =======
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.fabric8/fabric8-project/badge.svg?style=flat-square)](https://maven-badges.herokuapp.com/maven-central/io.fabric8/fabric8-project/)
 
 <p align="center">
-  <a href="https://github.com/is-dream/cluster-dispatcher">
+  <a href="https://github.com/isdream/jointware">
   	<img src="https://avatars1.githubusercontent.com/u/19262176?s=200&v=4" alt="fabric8 logo"/>
   </a>
 </p>
 
-<b>cluster-dispatcher</b> is an open source pod, which is the smallest deployable units created and managed in Kubernetes-based platform, management tools based on key-value styles.
+<b>jointware</b> is Java library for interacting with heterogeneous cloud service providers using a unified API.
 
-* <a href="http://kubernetes.io/">Kubernetes</a>/<a href="http://https://www.openshift.com/">OpenShift</a>
-* <a href="https://www.docker.com/">Docker/Swarm</a>
+* <a href="http://kubernetes.io/">Kubernetes</a>
 
 ### Getting Started
 
@@ -21,22 +20,14 @@ cluster-dispatcher
 
 ### Links
 
-- #### Kubernetes and OpenShift
+- #### Containers
 
-  * [Kubernetes and OpenShift features](docs/kubernetes-openshift/features-and-models.md)
-  * [fabric8 model for both Kubernetes and OpenShift features](docs/kubernetes-openshift/models-and-parameters.md) 
-  * [fabric8 model parameters with key-value style for both Kubernetes and OpenShift](docs/kubernetes-openshift/parameters-keyvalue-style.md)
-  * [What is the classification of all fabric8 models](docs/kubernetes-openshift/models-classification.md)
+**_1. Kubernetes_**
   
-- #### Docker and Swarm
-
-  * [Docker and Swarm features](docs/docker-swarm-kinds.md)
-  * [docker-java model for both Docker and Swarm features](docs/docker-swarm-kind-models.md) 
-  * [docker-java model parameters for both Docker and Swarm](docs/docker-swarm-model-parameters.md)
-  
-### Performance
-
-* [What is the performance of Reflection-based method](docs/perf-test.md)
+  * [Kubernetes features and models](docs/containers/kubernetes/kind-model.md) 
+  * [kubernetes parameters with key-value style](docs/containers/kubernetes/model-parameters-kv.md)
+  * [kubernetes parameters with nested style](docs/containers/kubernetes/model-parameters-nested.md)
+  * [kubernetes parameters with json style](docs/containers/kubernetes/model-parameters-json.md)
 
 ### Building the code
 
