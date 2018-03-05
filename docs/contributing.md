@@ -1,24 +1,24 @@
 
-We love contributions! We really need your help to [cluster-dispatcher more awesome](https://github.com/isdream/cluster-dispatcher), so please [join our community](/community/index.html)!
+We love contributions! We really need your help to [jointware more awesome](https://github.com/isdream/jointware), so please join our community!
 
-Many thanks to all of our [existing contributors](https://github.com/isdream/cluster-dispatcher/graphs/contributors)! Why not dive in and help?
+Many thanks to all of our [existing contributors](https://github.com/isdream/jointware/graphs/contributors)! Why not dive in and help?
 
 Here's some notes to help you get started:
 
 ## Getting Started
 
 * Make sure you have a [GitHub account](https://github.com/signup/free) as you'll need it to submit issues, comments or pull requests.
-* Got any ideas for how we can improve cluster-dispatcher? Please [submit an issue](https://github.com/isdream/cluster-dispatcher/issues?state=open) with your thoughts. Constructive criticism is always greatly appreciated!
-* Fancy submitting a blog post, article, or screencast we can link to? Just [submit an issue](https://github.com/isdream/cluster-dispatcher/issues?state=open) and we'll merge it into our website.
+* Got any ideas for how we can improve cluster-dispatcher? Please [submit an issue](https://github.com/isdream/jointware/issues?state=open) with your thoughts. Constructive criticism is always greatly appreciated!
+* Fancy submitting a blog post, article, or screencast we can link to? Just [submit an issue](https://github.com/isdream/jointware/issues?state=open) and we'll merge it into our website.
 * Search [our issue tracker](https://github.com/fabric8io/fabric8/issues?state=open) and see if there's been any ideas or issues reported for what you had in mind; if so please join the conversation in the comments.
-* Submit any issues, feature requests or improvement ideas [our issue tracker](https://github.com/isdream/cluster-dispatcher/issues?state=open).
+* Submit any issues, feature requests or improvement ideas [our issue tracker](https://github.com/isdream/jointware/issues?state=open).
   * Clearly describe the issue including steps to reproduce when it is a bug.
   * Make sure you fill in the earliest version that you know has the issue.
 
 ### Fancy hacking some code?
 
 * If you fancy working on some code, check out the these lists of issues:
-   * [all open issues](https://github.com/isdream/cluster-dispatcher/issues?state=open) if you fancy being more adventurous.
+   * [all open issues](https://github.com/isdream/jointware/issues?state=open) if you fancy being more adventurous.
 
 * To make code changes, fork the repository on GitHub then you can hack on the code. We love any contribution such as:
    * fixing typos
@@ -40,7 +40,7 @@ included in the project:
    # Navigate to the newly cloned directory
    cd fabric8
    # Assign the original repo to a remote called "upstream"
-   git remote add upstream https://github.com/is-dream/cluster-dispatcher.git
+   git remote add upstream https://github.com/isdream/jointware.git
    ```
 
 2. If you cloned a while ago, get the latest changes from upstream:
