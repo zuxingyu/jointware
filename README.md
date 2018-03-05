@@ -22,12 +22,12 @@ jointware
 
 - #### Containers
 
-**_1. Kubernetes_**
+  **_1. Kubernetes_**
   
-  * [Kubernetes features and models](docs/containers/kubernetes/kind-model.md) 
-  * [kubernetes parameters with key-value style](docs/containers/kubernetes/model-parameters-kv.md)
-  * [kubernetes parameters with nested style](docs/containers/kubernetes/model-parameters-nested.md)
-  * [kubernetes parameters with json style](docs/containers/kubernetes/model-parameters-json.md)
+    * [Kubernetes features and models](docs/containers/kubernetes/kind-model.md) 
+    * [kubernetes parameters with key-value style](docs/containers/kubernetes/model-parameters-kv.md)
+    * [kubernetes parameters with nested style](docs/containers/kubernetes/model-parameters-nested.md)
+    * [kubernetes parameters with json style](docs/containers/kubernetes/model-parameters-json.md)
 
 ### Building the code
 
