@@ -209,8 +209,12 @@ public class KubernetesModelGenerator extends KindModelStyleGenerator {
 	 * @return kind对应的Map对象
 	 */
 	protected Map<String, String> createParamsType(String kind) {
-		return StringUtils.isNull(kind) ? new HashMap<String, String>()
-				: KubernetesModelParametersAnalyzer.getAnalyzer().getModelParameters(kind);
+		try {
+			return StringUtils.isNull(kind) ? new HashMap<String, String>()
+					: new KubernetesModelParametersAnalyzer().getModelParameters(kind);
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 	/**

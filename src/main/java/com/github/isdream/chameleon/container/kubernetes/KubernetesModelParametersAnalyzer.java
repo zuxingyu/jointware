@@ -10,7 +10,6 @@ import com.github.isdream.chameleon.ModelParametersAnalyzer;
 import com.github.isdream.chameleon.commons.utils.ObjectUtils;
 import com.github.isdream.chameleon.container.Fabric8Kind2ModelFilterRule;
 import com.github.isdream.chameleon.container.Fabric8ModelParametersIgnoreRule;
-import com.github.isdream.chameleon.defaultimpl.DefaultModelParametersAnalyzer;
 
 /**
  * @author henry, wuheng@otcaix.iscas.ac.cn
@@ -19,31 +18,16 @@ import com.github.isdream.chameleon.defaultimpl.DefaultModelParametersAnalyzer;
  */
 public class KubernetesModelParametersAnalyzer extends ModelParametersAnalyzer {
 
-	private static KubernetesModelParametersAnalyzer analyzer = null;
+	protected final static KubernetesKindModelsAnalyzer analyzer = new KubernetesKindModelsAnalyzer();
 	
-	protected KubernetesModelParametersAnalyzer() throws Exception {
+	public KubernetesModelParametersAnalyzer() throws Exception {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-
-	/** 
-	 * @return 单例模式
-	 */
-	public static ModelParametersAnalyzer getAnalyzer() {
-		if(analyzer == null) {
-			try {
-				analyzer = new KubernetesModelParametersAnalyzer();
-			} catch (Exception e) {
-				return DefaultModelParametersAnalyzer.getAnalyzer();
-			}
-		}
-		return analyzer;
-	}
 
 	@Override
 	protected Map<String, String> getKindModels() {
-		return new KubernetesKindModelsAnalyzer().getKindModels();
+		return analyzer.getKindModels();
 	}
 
 

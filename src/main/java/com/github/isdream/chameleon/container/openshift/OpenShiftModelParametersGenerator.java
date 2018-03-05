@@ -25,7 +25,7 @@ public class OpenShiftModelParametersGenerator extends KubernetesModelGenerator 
 	@Override
 	protected Map<String, String> getModelParams(String kind) {
 		return StringUtils.isNull(kind) ? new HashMap<String, String>() : 
-			OpenShiftModelParametersAnalyzer.getAnalyzer().getModelParameters(kind);
+			new OpenShiftModelParametersAnalyzer().getModelParameters(kind);
 	}
 
 	@Override
@@ -46,7 +46,7 @@ public class OpenShiftModelParametersGenerator extends KubernetesModelGenerator 
 	@Override
 	protected Map<String, String> createParamsType(String kind) {
 		return StringUtils.isNull(kind) ? new HashMap<String, String>()
-				: OpenShiftModelParametersAnalyzer.getAnalyzer().getModelParameters(kind);
+				: new OpenShiftModelParametersAnalyzer().getModelParameters(kind);
 	}
 	
 }

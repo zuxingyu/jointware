@@ -72,8 +72,8 @@ public abstract class ModelParametersAnalyzer {
 	 */
 	protected final static String DEFAULT_PARENT = "";
 	
-	protected ModelParametersAnalyzer() throws Exception {
-		analyseModels(this.getKindModels());
+	public ModelParametersAnalyzer() {
+		analyseModels(getKindModels());
 	}
 
 	/************************************************************************************
@@ -82,12 +82,15 @@ public abstract class ModelParametersAnalyzer {
 	 * 
 	 ************************************************************************************/
 	
-	private void analyseModels(Map<String, String> kindModels) 
-											throws Exception  {
+	private void analyseModels(Map<String, String> kindModels)  {
 		for (String kind : kindModels.keySet()) {
-			Class<?> modelClass = Class.forName(kindModels.get(kind));
-			models.put(kind, new LinkedHashMap<String, String>());
-			analyse(modelClass, kindModels, kind,  DEFAULT_PARENT);
+			try {
+				Class<?> modelClass = Class.forName(kindModels.get(kind));
+				models.put(kind, new LinkedHashMap<String, String>());
+				analyse(modelClass, kindModels, kind,  DEFAULT_PARENT);
+			} catch (Exception e) {
+				// ignore here
+			}
 		}
 	}
 	

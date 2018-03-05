@@ -18,6 +18,9 @@ public class DockerMain {
 	
 	public static void main(String[] args) throws Exception {
 		DockerClient docker = DefaultDockerClient.fromEnv().uri(URL).build();
+
+		
+		
 		ServiceSpec spec = null;
 		docker.createService(spec );
 		System.out.println(docker.listContainers());

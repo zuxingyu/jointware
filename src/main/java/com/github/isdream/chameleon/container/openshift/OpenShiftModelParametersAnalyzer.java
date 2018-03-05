@@ -10,7 +10,6 @@ import com.github.isdream.chameleon.ModelParametersAnalyzer;
 import com.github.isdream.chameleon.commons.utils.ObjectUtils;
 import com.github.isdream.chameleon.container.Fabric8Kind2ModelFilterRule;
 import com.github.isdream.chameleon.container.Fabric8ModelParametersIgnoreRule;
-import com.github.isdream.chameleon.defaultimpl.DefaultModelParametersAnalyzer;
 
 /**
  * @author henry, wuheng@otcaix.iscas.ac.cn
@@ -19,30 +18,16 @@ import com.github.isdream.chameleon.defaultimpl.DefaultModelParametersAnalyzer;
  */
 public class OpenShiftModelParametersAnalyzer extends ModelParametersAnalyzer {
 
-	private static OpenShiftModelParametersAnalyzer analyzer = null;
+	protected final static OpenShiftKindModelsAnalyzer analyzer = new OpenShiftKindModelsAnalyzer();
 	
-	protected OpenShiftModelParametersAnalyzer() throws Exception {
+	public OpenShiftModelParametersAnalyzer() {
 		super();
 	}
 
 
-	/**
-	 * @return 单例模式
-	 */
-	public static ModelParametersAnalyzer getAnalyzer() {
-		if(analyzer == null) {
-			try {
-				analyzer = new OpenShiftModelParametersAnalyzer();
-			} catch (Exception e) {
-				return DefaultModelParametersAnalyzer.getAnalyzer();
-			}
-		}
-		return analyzer;
-	}
-
 	@Override
 	protected Map<String, String> getKindModels() {
-		return new OpenShiftKindModelsAnalyzer().getKindModels();
+		return analyzer.getKindModels();
 	}
 
 
