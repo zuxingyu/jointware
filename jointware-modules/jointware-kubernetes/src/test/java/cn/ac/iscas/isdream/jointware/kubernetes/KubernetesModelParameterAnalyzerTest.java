@@ -19,8 +19,7 @@ public class KubernetesModelParameterAnalyzerTest {
 		KubernetesModelParameterAnalyzer analyzer = new KubernetesModelParameterAnalyzer();
 //		showModelParametersWithKeyValueStyle(analyzer);
 //		showModelParametersWithNetstedStyle(analyzer);
-//		showModelParametersWithJsonStyle(analyzer);
-		ParametersUtils.showModelParametersWithJsonStyle("Kubernetes", "Deployment", analyzer.getModelParameters("Deployment"));
+		showModelParametersWithJsonStyle(analyzer);
 	}
 
 	protected static void showModelParametersWithJsonStyle(KubernetesModelParameterAnalyzer analyzer) {
