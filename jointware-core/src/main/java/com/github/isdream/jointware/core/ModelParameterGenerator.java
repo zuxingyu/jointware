@@ -8,6 +8,7 @@ import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import com.alibaba.fastjson.JSON;
 import com.github.isdream.jointware.core.utils.JavaUtils;
 
 
@@ -23,7 +24,7 @@ public abstract class ModelParameterGenerator {
 	 * @param fromObj
 	 * @return Json
 	 */
-	public Map<String, Map<String, Object>> ToJNestedStyle(Object fromObj) {
+	public Map<String, Map<String, Object>> ToNestedStyle(Object fromObj) {
 		Map<String, Map<String, Object>> json = new LinkedHashMap<String, Map<String, Object>>();
 		if (fromObj == null) {
 			return json;
@@ -32,7 +33,8 @@ public abstract class ModelParameterGenerator {
 		_ToNestedStyle(fromObj, 0, "main", null, json);
 		return json;
 	}
-
+	
+	
 	/**
 	 * @param thisObject
 	 * @param id
@@ -63,13 +65,17 @@ public abstract class ModelParameterGenerator {
 					continue;
 				}
 				
-				if (JavaUtils.isPrimitive(newObject.getClass().getName())
-						|| JavaUtils.isStringList(newObject.getClass().getName())
-						|| JavaUtils.isStringSet(newObject.getClass().getName())
-						|| JavaUtils.isStringStringMap(newObject.getClass().getName())) {
+				if (m.getName().equals("getFinalizers")) {
+					System.out.println("setMetadata-setFinalizers");
+				}
+				
+				if (JavaUtils.isPrimitive(getTypeName(m))
+						|| JavaUtils.isStringList(getTypeName(m))
+						|| JavaUtils.isStringSet(getTypeName(m))
+						|| JavaUtils.isStringStringMap(getTypeName(m))) {
 					content.put(getRealKey(prefix, m.getName()), newObject);
-				} else if (JavaUtils.isObjectList(newObject.getClass().getName())
-						|| JavaUtils.isObjectSet(newObject.getClass().getName())) {
+				} else if (JavaUtils.isObjectList(getTypeName(m))
+						|| JavaUtils.isObjectSet(getTypeName(m))) {
 					Collection<?> objects = (Collection<?>) newObject;
 					for (Object obj : objects) {
 						content.put(getRealKey(prefix, m.getName()), 
@@ -80,7 +86,7 @@ public abstract class ModelParameterGenerator {
 								null,
 								json);
 					}
-				} else if (JavaUtils.isStringObjectMap(newObject.getClass().getName())) {
+				} else if (JavaUtils.isStringObjectMap(getTypeName(m))) {
 					@SuppressWarnings("unchecked")
 					Map<String, Object> objects = (Map<String, Object>) newObject;
 					for (String key : objects.keySet()) {
@@ -96,7 +102,7 @@ public abstract class ModelParameterGenerator {
 					_ToNestedStyle(newObject,
 							id, 
 							type, 
-							m.getName(),
+							getRealName(m.getName()),
 							json);
 				}
 			} catch (Exception e) {
@@ -105,6 +111,16 @@ public abstract class ModelParameterGenerator {
 		}
 	}
 
+
+	/**
+	 * @param m
+	 * @return
+	 */
+	protected String getTypeName(Method m) {
+		return m.getGenericReturnType().getTypeName();
+	}
+
+	
 	/**
 	 * @param id
 	 * @param name
@@ -120,7 +136,31 @@ public abstract class ModelParameterGenerator {
 	 * @return
 	 */
 	private String getRealKey(String prefix, String name) {
-		return (prefix == null) ? name : prefix + "-" + name;
+		return (prefix == null) ? getRealName(name) 
+							: prefix + "-" + getRealName(name);
+	}
+	
+	
+	private String getRealName(String name) {
+		return "set" + name.substring("set".length());
+	}
+	/********************************************************
+	 * 
+	 * 
+	 * 
+	 ********************************************************/
+	
+	/**
+	 * @param fromObj
+	 * @return
+	 */
+	public String toJavaCode(Object fromObj) {
+		StringBuffer sb = new StringBuffer();
+		return sb.toString();
+	}
+	
+	public String toJson(Map<String, Map<String, Object>> map) {
+		return JSON.toJSONString(map);
 	}
 	
 	/********************************************************
@@ -128,12 +168,10 @@ public abstract class ModelParameterGenerator {
 	 * 
 	 * 
 	 ********************************************************/
-	
-	public String toJavaCode(Object fromObj) {
-		StringBuffer sb = new StringBuffer();
-		return sb.toString();
-	}
-	
+	/**
+	 * @param name 名字
+	 * @return 是否过滤
+	 */
 	public abstract boolean ignoreMethod(String name);
 	
 }

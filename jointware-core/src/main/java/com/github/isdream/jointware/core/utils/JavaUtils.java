@@ -159,18 +159,6 @@ public class JavaUtils {
 	protected final static Set<String> ignoreMethods = new HashSet<String>();
 	
 	static {
-		ignoreMethods.add("setResult");
-		ignoreMethods.add("setApiVersion");
-		ignoreMethods.add("setKind");
-		ignoreMethods.add("setPaused");
-		ignoreMethods.add("setInitContainers");
-		ignoreMethods.add("setUid");
-		ignoreMethods.add("setSelfLink");
-		ignoreMethods.add("setCreationTimestamp");
-		ignoreMethods.add("setMetadatasetClasssetModifiers");
-		ignoreMethods.add("getApiVersion");
-		ignoreMethods.add("getKind");
-		
 		ignoreMethods.add("getProtectionDomain");
 		ignoreMethods.add("getModifiers");
 		ignoreMethods.add("getSuperclass");
@@ -203,6 +191,13 @@ public class JavaUtils {
 		ignoreMethods.add("getTypeParameters");
 		ignoreMethods.add("getClass");
 		ignoreMethods.add("getBytes");
+		
+		ignoreMethods.add("equals");
+		ignoreMethods.add("wait");
+		ignoreMethods.add("toString");
+		ignoreMethods.add("hashCode");
+		ignoreMethods.add("notify");
+		ignoreMethods.add("notifyAll");
 	}
 	
 	/**
