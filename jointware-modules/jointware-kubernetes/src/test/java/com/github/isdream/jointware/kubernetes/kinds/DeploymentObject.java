@@ -3,16 +3,16 @@
  */
 package com.github.isdream.jointware.kubernetes.kinds;
 
-import io.fabric8.kubernetes.api.model.Namespace;
+import io.fabric8.kubernetes.api.model.extensions.Deployment;
 
 /**
  * @author wuheng@otcaix.iscas.ac.cn
  *
  * 2018年3月6日
  */
-public class NamespaceObject extends KubernetesObject {
+public class DeploymentObject extends KubernetesObject {
 
-	public static String FILE = "examples/namespace.yaml";
+	public static String FILE = "examples/deployment.yaml";
 
 	@Override
 	public String getTargetFile() {
@@ -21,7 +21,7 @@ public class NamespaceObject extends KubernetesObject {
 
 	@Override
 	public Class<?> getTargetClass() {
-		return Namespace.class;
+		return Deployment.class;
 	}
 	
 }

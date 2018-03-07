@@ -3,6 +3,7 @@
  */
 package com.github.isdream.jointware.kubernetes;
 
+import com.github.isdream.jointware.kubernetes.kinds.DeploymentObject;
 import com.github.isdream.jointware.kubernetes.kinds.NamespaceObject;
 
 import junit.framework.TestCase;
@@ -21,7 +22,11 @@ public class KubernetesModelParameterGeneratorTest extends TestCase {
 		KubernetesModelParameterGenerator generator = new KubernetesModelParameterGenerator();
 		System.out.println(generator.toJson(
 				generator.ToNestedStyle(
-						NamespaceObject.createNamespace())));
+						new NamespaceObject().create())));
+		
+		System.out.println(generator.toJson(
+				generator.ToNestedStyle(
+						new DeploymentObject().create())));
 	}
 
 }

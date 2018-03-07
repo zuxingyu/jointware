@@ -10,6 +10,7 @@ import java.util.Map;
 
 import com.alibaba.fastjson.JSON;
 import com.github.isdream.jointware.core.utils.JavaUtils;
+import com.github.isdream.jointware.core.utils.ObjectUtils;
 
 
 /**
@@ -19,6 +20,12 @@ import com.github.isdream.jointware.core.utils.JavaUtils;
  */
 public abstract class ModelParameterGenerator {
 
+	protected final static String JOINTWARE = "jointwareRef";
+	
+	protected final static String SET = "set";
+	
+	protected final static String DEFAULT_TYPE = "main";
+	
 	/**
 	 * 
 	 * @param fromObj
@@ -30,7 +37,7 @@ public abstract class ModelParameterGenerator {
 			return json;
 		}
 
-		_ToNestedStyle(fromObj, 0, "main", null, json);
+		_ToNestedStyle(fromObj, 0, DEFAULT_TYPE, null, json);
 		return json;
 	}
 	
@@ -52,21 +59,13 @@ public abstract class ModelParameterGenerator {
 				continue;
 			}
 			
-			Map<String, Object> content = json.get(type);
-			
-			if (content == null) {
-				content = new LinkedHashMap<String, Object>();
-				json.put(type, content);
-			}
+			Map<String, Object> content = getValue(type, json);
 			
 			try {
 				Object newObject =  m.invoke(thisObject);
-				if (newObject == null) {
-					continue;
-				}
 				
-				if (m.getName().equals("getFinalizers")) {
-					System.out.println("setMetadata-setFinalizers");
+				if (ObjectUtils.isNull(newObject)) {
+					continue;
 				}
 				
 				if (JavaUtils.isPrimitive(getTypeName(m))
@@ -90,11 +89,11 @@ public abstract class ModelParameterGenerator {
 					@SuppressWarnings("unchecked")
 					Map<String, Object> objects = (Map<String, Object>) newObject;
 					for (String key : objects.keySet()) {
-						content.put(getRealKey(prefix, m.getName() + key), 
-								getRealType(++id, objects.get(key).getClass().getName()));
+						content.put(getRealKey(prefix, m.getName()), 
+								getRealType(++id, key, objects.get(key).getClass().getName()));
 						_ToNestedStyle(objects.get(key),
 								id, 
-								getRealType(id, objects.get(key).getClass().getName()), 
+								getRealType(id, key, objects.get(key).getClass().getName()), 
 								null,
 								json);
 					}
@@ -113,6 +112,21 @@ public abstract class ModelParameterGenerator {
 
 
 	/**
+	 * @param type
+	 * @param json
+	 * @return
+	 */
+	protected Map<String, Object> getValue(String type, Map<String, Map<String, Object>> json) {
+		Map<String, Object> content = json.get(type);
+		if (content == null) {
+			content = new LinkedHashMap<String, Object>();
+			json.put(type, content);
+		}
+		return content;
+	}
+
+
+	/**
 	 * @param m
 	 * @return
 	 */
@@ -127,7 +141,12 @@ public abstract class ModelParameterGenerator {
 	 * @return
 	 */
 	private String getRealType(int id, String name) {
-		return "ref" + id + "-" + JavaUtils.getClassNameForListOrSetStyle(name);
+		return JOINTWARE + id + "-" + JavaUtils.getClassNameForListOrSetStyle(name);
+	}
+	
+	private String getRealType(int id, String key, String name) {
+		return JOINTWARE + id + "-" + key 
+				+ "-" + JavaUtils.getClassNameForListOrSetStyle(name);
 	}
 	
 	/**
@@ -142,8 +161,17 @@ public abstract class ModelParameterGenerator {
 	
 	
 	private String getRealName(String name) {
-		return "set" + name.substring("set".length());
+		return SET + name.substring(SET.length());
 	}
+	
+	/**
+	 * @param map
+	 * @return
+	 */
+	public String toJson(Map<String, Map<String, Object>> map) {
+		return JSON.toJSONString(map);
+	}
+	
 	/********************************************************
 	 * 
 	 * 
@@ -155,13 +183,10 @@ public abstract class ModelParameterGenerator {
 	 * @return
 	 */
 	public String toJavaCode(Object fromObj) {
-		StringBuffer sb = new StringBuffer();
-		return sb.toString();
+		throw new UnsupportedOperationException();
 	}
 	
-	public String toJson(Map<String, Map<String, Object>> map) {
-		return JSON.toJSONString(map);
-	}
+	
 	
 	/********************************************************
 	 * 
