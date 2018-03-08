@@ -31,6 +31,8 @@ public class KubernetesModelParameterGenerator extends ModelParameterGenerator {
 		ignoreMethods.add("setFinalizers");
 		ignoreMethods.add("setCreationTimestamp");
 		ignoreMethods.add("setMetadatasetClasssetModifiers");
+		ignoreMethods.add("setAdditionalProperties");
+		
 		
 		ignoreMethods.add("getApiVersion");
 		ignoreMethods.add("getKind");
@@ -42,6 +44,7 @@ public class KubernetesModelParameterGenerator extends ModelParameterGenerator {
 		ignoreMethods.add("getFinalizers");
 		ignoreMethods.add("getCreationTimestamp");
 		ignoreMethods.add("getMetadatasetClasssetModifiers");
+		ignoreMethods.add("getAdditionalProperties");
 	}
 	
 	@Override

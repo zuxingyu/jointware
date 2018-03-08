@@ -3,6 +3,7 @@
  */
 package com.github.isdream.jointware.core;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -46,12 +47,6 @@ public abstract class ModelGenerator {
 	/**
 	 * 
 	 */
-	public Map<String, Object> objCache = new HashMap<String, Object>();
-	
-	
-	/**
-	 * 
-	 */
 	public Map<String, String> params = null;
 
 	/**
@@ -60,7 +55,6 @@ public abstract class ModelGenerator {
 	 * @return
 	 * @throws Exception 
 	 */
-	@SuppressWarnings("unchecked")
 	public Object toObject(Map<String, Map<String, Object>> inputValues, 
 									String kind) throws Exception {
 		
@@ -70,11 +64,19 @@ public abstract class ModelGenerator {
 		
 		params = getModelParameter().getModelParameters(kind);
 		Object thisObj = getKindObject(kind);
-		objCache.put(DEFAULT_PARENT, thisObj);
-		String parent = DEFAULT_PARENT;
-		Map<String, Object> typeValues = inputValues.get(
-				ModelParameterGenerator.DEFAULT_TYPE);
 		
+		_toObject(inputValues, thisObj, DEFAULT_PARENT, ModelParameterGenerator.DEFAULT_TYPE);
+		
+		return thisObj;
+	}
+
+	@SuppressWarnings("unchecked")
+	protected void _toObject(Map<String, Map<String, Object>> inputValues, Object thisObj, String parent, String type)
+			throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException,
+			InstantiationException {
+		
+		Map<String, Object> objCache = new HashMap<String, Object>();
+		Map<String, Object> typeValues = inputValues.get(type);
 		
 		for (String key : typeValues.keySet()) {
 			Stack<String> stack = getStack(key);
@@ -105,11 +107,24 @@ public abstract class ModelGenerator {
 				method.invoke(obj, typeValues.get(fullname));
 			} else if (JavaUtils.isList(params.get(getRealFullname(parent, fullname)))
 					|| JavaUtils.isSet(params.get(getRealFullname(parent, fullname)))) {
+				
+				Collection<String> thisValues = (Collection<String>)typeValues.get(fullname);
+				if (thisValues == null || thisValues.isEmpty()) {
+					continue;
+				}
+
 				Object obj = objCache.get(thisKey);
 				Method method = obj.getClass().getMethod(thisMethod, List.class);
-				List<String> thisValue = new ArrayList<String>();
-				thisValue.addAll((Collection<String>)typeValues.get(fullname));
-				method.invoke(obj, thisValue);
+				if (thisValues.iterator().next()
+						.startsWith(ModelParameterGenerator.JOINTWARE)) {
+					_toObject(inputValues, 
+							thisObj, 
+							DEFAULT_PARENT, 
+							ModelParameterGenerator.DEFAULT_TYPE);
+				} else {
+					thisValues.addAll((Collection<String>)typeValues.get(fullname));
+					method.invoke(obj, thisValues);
+				}
 			} else if (JavaUtils.isMap(params.get(getRealFullname(parent, fullname)))) {
 				Object obj = objCache.get(thisKey);
 				Method method = obj.getClass().getMethod(thisMethod, Map.class);
@@ -117,11 +132,9 @@ public abstract class ModelGenerator {
 				thisValue.putAll((Map<String, String>)typeValues.get(fullname));
 				method.invoke(obj, thisValue);
 			} else {
-				
+				throw new UnsupportedOperationException();
 			}
 		}
-		
-		return objCache.get(DEFAULT_PARENT);
 	}
 
 	protected String getName(String name) {
