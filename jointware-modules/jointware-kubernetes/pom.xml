@@ -23,7 +23,6 @@
 			<groupId>cn.ac.iscas.isdream</groupId>
 			<artifactId>jointware-core</artifactId>
 			<version>${jointware.version}</version>
-			<scope>test</scope>
 		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/io.fabric8/kubernetes-client -->

@@ -5,6 +5,7 @@ package com.github.isdream.jointware.kubernetes;
 
 import com.github.isdream.jointware.kubernetes.kinds.DeploymentObject;
 import com.github.isdream.jointware.kubernetes.kinds.NamespaceObject;
+import com.github.isdream.jointware.kubernetes.kinds.UBOCObject;
 
 import junit.framework.TestCase;
 
@@ -27,6 +28,10 @@ public class KubernetesModelParameterGeneratorTest extends TestCase {
 		System.out.println(generator.toJson(
 				generator.ToNestedStyle(
 						new DeploymentObject().create())));
+		
+		System.out.println(generator.toJson(
+				generator.ToNestedStyle(
+						new UBOCObject().create())));
 	}
 
 }

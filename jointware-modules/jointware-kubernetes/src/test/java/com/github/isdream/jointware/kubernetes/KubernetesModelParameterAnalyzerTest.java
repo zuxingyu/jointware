@@ -6,12 +6,14 @@ package com.github.isdream.jointware.kubernetes;
 import com.github.isdream.jointware.core.ParametersUtils;
 import com.github.isdream.jointware.kubernetes.KubernetesModelParameterAnalyzer;
 
+import junit.framework.TestCase;
+
 /**
  * @author wuheng@otcaix.iscas.ac.cn
  *
  * 2018年3月3日
  */
-public class KubernetesModelParameterAnalyzerTest {
+public class KubernetesModelParameterAnalyzerTest extends TestCase {
 
 	/**
 	 * @param args

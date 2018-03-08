@@ -4,6 +4,8 @@
 package com.github.isdream.jointware.core;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +22,16 @@ import com.github.isdream.jointware.core.utils.ObjectUtils;
  */
 public abstract class ModelGenerator {
 
+	/**
+	 * 
+	 */
+	public final static String GET_METHOD = "get";
+	
+	/**
+	 * 
+	 */
+	public final static String SET_METHOD = "set";
+	
 	/**
 	 * 
 	 */
@@ -43,61 +55,68 @@ public abstract class ModelGenerator {
 	public Map<String, String> params = null;
 
 	/**
-	 * @param map
+	 * @param inputValues
 	 * @param kind
 	 * @return
 	 * @throws Exception 
 	 */
-	public Object toObject(Map<String, Map<String, Object>> map, 
+	@SuppressWarnings("unchecked")
+	public Object toObject(Map<String, Map<String, Object>> inputValues, 
 									String kind) throws Exception {
 		
-		if (ObjectUtils.isNull(map) || ObjectUtils.isNull(kind)) {
+		if (ObjectUtils.isNull(inputValues) || ObjectUtils.isNull(kind)) {
 			return null;
 		}
 		
 		params = getModelParameter().getModelParameters(kind);
 		Object thisObj = getKindObject(kind);
 		objCache.put(DEFAULT_PARENT, thisObj);
-		Map<String, Object> values = map.get(ModelParameterGenerator.DEFAULT_TYPE);
-		for (String key : values.keySet()) {
+		String parent = DEFAULT_PARENT;
+		Map<String, Object> typeValues = inputValues.get(
+				ModelParameterGenerator.DEFAULT_TYPE);
+		
+		
+		for (String key : typeValues.keySet()) {
 			Stack<String> stack = getStack(key);
 			while (stack.size() > 1) {
 				String fullname = stack.pop();
 				int idx = fullname.indexOf("-");
 				String mname = (idx == -1) ? fullname : fullname.substring(0, idx);
-				if (objCache.get(fullname) == null) {
+				if (objCache.get(getRealFullname(parent, fullname)) == null) {
+					Class<?> clazz = Class.forName(
+							params.get(getRealFullname(parent, fullname)));
 					Method method = thisObj.getClass()
-							.getMethod(mname, Class.forName(params.get(fullname)));
-					Object newObject = method.invoke(thisObj);
-					objCache.put(fullname, newObject);
+							.getMethod(mname, clazz);
+					method.invoke(thisObj, clazz.newInstance());
+					objCache.put(getRealFullname(parent, fullname), 
+							thisObj.getClass().getMethod(
+									getName(mname)).invoke(thisObj));
 				}
 			}
 			
 			String fullname = stack.pop();
 			int idx = fullname.indexOf("-");
-			String realKey = (idx == -1) ? fullname : fullname.substring(0, idx);
-			String realMethod = (idx == -1) ? fullname : fullname.substring(idx + 1);
-			if (JavaUtils.isPrimitive(params.get(realKey))) {
-				Object obj = objCache.get(realKey);
-				Method method = obj.getClass().getMethod(realMethod, Class.forName(params.get(realKey)));
-				method.invoke(obj);
-			} else if (JavaUtils.isStringList(params.get(realKey))) {
-				Object obj = objCache.get(realKey);
-				Method method = obj.getClass().getMethod(realMethod, List.class);
-				method.invoke(obj);
-			} else if (JavaUtils.isStringSet(params.get(realKey))) {
-				Object obj = objCache.get(realKey);
-				Method method = obj.getClass().getMethod(realMethod, Set.class);
-				method.invoke(obj);
-			} else if (JavaUtils.isStringStringMap(params.get(realKey))) {
-				Object obj = objCache.get(realKey);
-				Method method = obj.getClass().getMethod(realMethod, Map.class);
-				method.invoke(obj);
-			} else if (JavaUtils.isObjectList(params.get(realKey))) {
-				
-			} else if (JavaUtils.isObjectSet(params.get(realKey))) {
-				
-			} else if (JavaUtils.isStringObjectMap(params.get(realKey))) {
+			String thisKey = getRealKey(parent, fullname, idx);
+			String thisMethod = (idx == -1) ? fullname : fullname.substring(idx + 1);
+			if (JavaUtils.isPrimitive(params.get(getRealFullname(parent, fullname)))) {
+				Object obj = objCache.get(thisKey);
+				Method method = obj.getClass().getMethod(
+						thisMethod, Class.forName(params.get(getRealFullname(parent, fullname))));
+				method.invoke(obj, typeValues.get(fullname));
+			} else if (JavaUtils.isList(params.get(getRealFullname(parent, fullname)))
+					|| JavaUtils.isSet(params.get(getRealFullname(parent, fullname)))) {
+				Object obj = objCache.get(thisKey);
+				Method method = obj.getClass().getMethod(thisMethod, List.class);
+				List<String> thisValue = new ArrayList<String>();
+				thisValue.addAll((Collection<String>)typeValues.get(fullname));
+				method.invoke(obj, thisValue);
+			} else if (JavaUtils.isMap(params.get(getRealFullname(parent, fullname)))) {
+				Object obj = objCache.get(thisKey);
+				Method method = obj.getClass().getMethod(thisMethod, Map.class);
+				Map<String, String> thisValue = new HashMap<String, String>();
+				thisValue.putAll((Map<String, String>)typeValues.get(fullname));
+				method.invoke(obj, thisValue);
+			} else {
 				
 			}
 		}
@@ -105,6 +124,20 @@ public abstract class ModelGenerator {
 		return objCache.get(DEFAULT_PARENT);
 	}
 
+	protected String getName(String name) {
+		return GET_METHOD + name.substring(SET_METHOD.length());
+	}
+
+	protected String getRealKey(String parent, String fullname, int idx) {
+		String realKey = (idx == -1) ? fullname : fullname.substring(0, idx);
+		return parent.equals(DEFAULT_PARENT) ? realKey : parent + "-" + realKey;
+	}
+
+	
+	protected String getRealFullname(String parent, String fullname) {
+		return (parent.equals(DEFAULT_PARENT)) ? fullname : parent + "-" + fullname;
+	}
+	
 	protected Stack<String> getStack(String key) {
 		String elem = key;
 		Stack<String> stack = new Stack<String>();
