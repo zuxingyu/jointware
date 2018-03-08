@@ -98,11 +98,19 @@ public abstract class ModelParameterGenerator {
 								json);
 					}
 				} else {
-					_ToNestedStyle(newObject,
-							id, 
-							type, 
-							getRealName(m.getName()),
-							json);
+					if (prefix == null) {
+						_ToNestedStyle(newObject,
+								id, 
+								type, 
+								getRealName(m.getName()),
+								json);
+					} else {
+						_ToNestedStyle(newObject,
+								id, 
+								type, 
+								prefix + "-" + getRealName(m.getName()),
+								json);
+					}
 				}
 			} catch (Exception e) {
 				continue;
