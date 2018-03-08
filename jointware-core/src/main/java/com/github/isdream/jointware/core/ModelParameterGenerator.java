@@ -4,8 +4,10 @@
 package com.github.isdream.jointware.core;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.alibaba.fastjson.JSON;
@@ -76,9 +78,10 @@ public abstract class ModelParameterGenerator {
 				} else if (JavaUtils.isObjectList(getTypeName(m))
 						|| JavaUtils.isObjectSet(getTypeName(m))) {
 					Collection<?> objects = (Collection<?>) newObject;
+					List<String> list = new ArrayList<String>();
+					content.put(getRealKey(prefix, m.getName()), list);
 					for (Object obj : objects) {
-						content.put(getRealKey(prefix, m.getName()), 
-								getRealType(++id, obj.getClass().getName()));
+						list.add(getRealType(++id, obj.getClass().getName()));
 						_ToNestedStyle(obj,
 								id, 
 								getRealType(id, obj.getClass().getName()), 
@@ -88,9 +91,10 @@ public abstract class ModelParameterGenerator {
 				} else if (JavaUtils.isStringObjectMap(getTypeName(m))) {
 					@SuppressWarnings("unchecked")
 					Map<String, Object> objects = (Map<String, Object>) newObject;
+					List<String> list = new ArrayList<String>();
+					content.put(getRealKey(prefix, m.getName()), list);
 					for (String key : objects.keySet()) {
-						content.put(getRealKey(prefix, m.getName()), 
-								getRealType(++id, key, objects.get(key).getClass().getName()));
+						list.add(getRealType(++id, key, objects.get(key).getClass().getName()));
 						_ToNestedStyle(objects.get(key),
 								id, 
 								getRealType(id, key, objects.get(key).getClass().getName()), 
@@ -149,12 +153,12 @@ public abstract class ModelParameterGenerator {
 	 * @return
 	 */
 	private String getRealType(int id, String name) {
-		return JOINTWARE + id + "-" + JavaUtils.getClassNameForListOrSetStyle(name);
+		return JOINTWARE + id + "-" + name;
 	}
 	
 	private String getRealType(int id, String key, String name) {
 		return JOINTWARE + id + "-" + key 
-				+ "-" + JavaUtils.getClassNameForListOrSetStyle(name);
+				+ "-" + name;
 	}
 	
 	/**
