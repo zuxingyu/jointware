@@ -6,6 +6,7 @@ package com.github.isdream.jointware.kubernetes;
 import java.lang.reflect.Method;
 import java.util.Map;
 
+import com.github.isdream.jointware.core.KindModelAnalyzer;
 import com.github.isdream.jointware.core.ModelParameterAnalyzer;
 import com.github.isdream.jointware.core.utils.JavaUtils;
 import com.github.isdream.jointware.core.utils.ObjectUtils;
@@ -26,8 +27,8 @@ public class KubernetesModelParameterAnalyzer extends ModelParameterAnalyzer {
 	}
 
 	@Override
-	protected Map<String, String> getKindModels() {
-		return analyzer.getKindModels();
+	public Map<String, String> getKindModels() {
+		return getKindModelAnalyzer().getKindModels();
 	}
 
 	@Override
@@ -45,5 +46,10 @@ public class KubernetesModelParameterAnalyzer extends ModelParameterAnalyzer {
 				: (method.getName().startsWith(MODEL_METHOD_SET) // set开头的方法
 						&& method.getParameterCount() == 1 // 该方法只有一个参数
 						&& !JavaUtils.ignoreMethod(method.getName())); // 可以人工指定过滤哪些方法
+	}
+
+	@Override
+	public KindModelAnalyzer getKindModelAnalyzer() {
+		return analyzer;
 	}
 }

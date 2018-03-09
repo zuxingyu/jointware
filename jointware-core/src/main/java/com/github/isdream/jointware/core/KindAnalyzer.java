@@ -152,5 +152,5 @@ public abstract class KindAnalyzer {
 	/**
 	 * @return the client for the specified cloud
 	 */
-	protected abstract String getClient();
+	public abstract String getClient();
 }

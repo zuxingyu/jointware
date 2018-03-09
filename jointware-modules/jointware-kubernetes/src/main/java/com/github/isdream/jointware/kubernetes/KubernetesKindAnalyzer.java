@@ -99,7 +99,7 @@ public class KubernetesKindAnalyzer extends KindAnalyzer {
 	}
 
 	@Override
-	protected String getClient() {
+	public String getClient() {
 		return DefaultKubernetesClient.class.getName();
 	}
 

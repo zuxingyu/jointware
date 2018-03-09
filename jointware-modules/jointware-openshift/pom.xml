@@ -14,8 +14,9 @@
 	<url>http://maven.apache.org</url>
 	<dependencies>
 		<dependency>
-			<groupId>cn.ac.iscas.isdream</groupId>
-			<artifactId>jointware-core</artifactId>
+			<groupId>com.github.isdream</groupId>
+			<artifactId>jointware-kubernetes</artifactId>
+			<version>${project.version}</version>
 		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/org.yaml/snakeyaml -->

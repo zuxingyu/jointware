@@ -23,7 +23,7 @@
     <dependencyManagement>
 	    <dependencies>
 			<dependency>
-				<groupId>cn.ac.iscas.isdream</groupId>
+				<groupId>com.github.isdream</groupId>
 				<artifactId>jointware-core</artifactId>
 				<version>${jointware.version}</version>
 			</dependency>

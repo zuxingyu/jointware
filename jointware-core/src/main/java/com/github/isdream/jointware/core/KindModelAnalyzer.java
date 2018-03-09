@@ -81,4 +81,9 @@ public abstract class KindModelAnalyzer {
 	 */
 	protected abstract Set<String> getKinds();
 	
+	/**
+	 * @return
+	 */
+	protected abstract KindAnalyzer getKindAnalyzer();
+	
 }

@@ -6,6 +6,7 @@ package com.github.isdream.jointware.kubernetes;
 import java.lang.reflect.Method;
 import java.util.Set;
 
+import com.github.isdream.jointware.core.KindAnalyzer;
 import com.github.isdream.jointware.core.KindModelAnalyzer;
 
 /**
@@ -24,7 +25,7 @@ public class KubernetesKindModelAnalyzer extends KindModelAnalyzer {
 
 	@Override
 	protected void analyseModels() {
-		for (String kind : analyzer.getKinds()) {
+		for (String kind : getKindAnalyzer().getKinds()) {
 			try {
 				models.put(kind, getKindClass(kind).getName());
 			} catch (Exception e) {
@@ -35,8 +36,8 @@ public class KubernetesKindModelAnalyzer extends KindModelAnalyzer {
 
 
 	protected Class<?> getKindClass(String kind) throws Exception {
-		Class<?> clazz = Class.forName(analyzer.getClient());
-		for (String name : analyzer.getKindDesc(kind).split("-")) {
+		Class<?> clazz = Class.forName(getKindAnalyzer().getClient());
+		for (String name : getKindAnalyzer().getKindDesc(kind).split("-")) {
 			Method method = clazz.getMethod(name);
 			String typename = method.getGenericReturnType().getTypeName();
 			// for example:
@@ -48,6 +49,11 @@ public class KubernetesKindModelAnalyzer extends KindModelAnalyzer {
 			clazz = Class.forName(classname);
 		}
 		return clazz;
+	}
+
+	@Override
+	protected KindAnalyzer getKindAnalyzer() {
+		return analyzer;
 	}
 
 }

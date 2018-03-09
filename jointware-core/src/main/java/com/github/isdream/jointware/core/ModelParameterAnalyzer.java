@@ -185,4 +185,9 @@ public abstract class ModelParameterAnalyzer {
 		return StringUtils.isNull(kind) 
 				? new HashMap<String, String>() : parameters.get(kind);
 	}
+	
+	/**
+	 * @return
+	 */
+	public abstract KindModelAnalyzer getKindModelAnalyzer();
 }

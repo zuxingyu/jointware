@@ -35,7 +35,7 @@ public class DefaultKindAnalyzer extends KindAnalyzer {
 	}
 
 	@Override
-	protected String getClient() {
+	public String getClient() {
 		return DefaultClient.class.getName();
 	}
 

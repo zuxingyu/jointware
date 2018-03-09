@@ -5,6 +5,7 @@ package com.github.isdream.jointware.core.impl;
 
 import java.util.Set;
 
+import com.github.isdream.jointware.core.KindAnalyzer;
 import com.github.isdream.jointware.core.KindModelAnalyzer;
 
 /**
@@ -24,6 +25,11 @@ public class DefaultKindModelAnalyzer extends KindModelAnalyzer {
 	@Override
 	protected void analyseModels() {
 		
+	}
+
+	@Override
+	protected KindAnalyzer getKindAnalyzer() {
+		return analyzer;
 	}
 
 }
