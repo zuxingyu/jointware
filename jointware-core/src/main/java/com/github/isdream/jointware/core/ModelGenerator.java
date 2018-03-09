@@ -5,12 +5,10 @@ package com.github.isdream.jointware.core;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.Stack;
 
 import com.github.isdream.jointware.core.utils.JavaUtils;
@@ -33,10 +31,21 @@ public abstract class ModelGenerator {
 	 */
 	public final static String SET_METHOD = "set";
 	
+	
 	/**
 	 * 
 	 */
 	public final static String DEFAULT_PARENT = "default";
+	
+	/**
+	 * 
+	 */
+	public final static String DEFAULT_TYPE = "default";
+	
+	/**
+	 * 
+	 */
+	public final Map<String, Object> objCache = new HashMap<String, Object>();
 	
 	/**
 	 * @return ModelParameter
@@ -63,19 +72,17 @@ public abstract class ModelGenerator {
 		}
 		
 		params = getModelParameter().getModelParameters(kind);
-		Object thisObj = getKindObject(kind);
-		
-		_toObject(inputValues, thisObj, DEFAULT_PARENT, ModelParameterGenerator.DEFAULT_TYPE);
-		
-		return thisObj;
+		objCache.put(DEFAULT_TYPE, getKindObject(kind));
+//		params.put(DEFAULT_TYPE, params.get);
+		_toObject(inputValues, objCache.get(DEFAULT_TYPE), DEFAULT_PARENT, ModelParameterGenerator.DEFAULT_TYPE);
+		return objCache.get(DEFAULT_TYPE);
 	}
 
 	@SuppressWarnings("unchecked")
-	protected void _toObject(Map<String, Map<String, Object>> inputValues, Object thisObj, String parent, String type)
+	protected void _toObject(Map<String, Map<String, Object>> inputValues, Object object, String parent, String type)
 			throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException,
 			InstantiationException {
 		
-		Map<String, Object> objCache = new HashMap<String, Object>();
 		Map<String, Object> typeValues = inputValues.get(type);
 		
 		for (String key : typeValues.keySet()) {
@@ -85,14 +92,19 @@ public abstract class ModelGenerator {
 				int idx = fullname.indexOf("-");
 				String mname = (idx == -1) ? fullname : fullname.substring(0, idx);
 				if (objCache.get(getRealFullname(parent, fullname)) == null) {
+					System.out.println(getRealFullname(parent, fullname));
 					Class<?> clazz = Class.forName(
-							params.get(getRealFullname(parent, fullname)));
-					Method method = thisObj.getClass()
-							.getMethod(mname, clazz);
-					method.invoke(thisObj, clazz.newInstance());
+							params.get(getParent(type, getRealFullname(parent, fullname))));
+//					Method method = object.getClass()
+//							.getMethod(mname, clazz);
+					Method method = clazz.getMethod(mname, clazz);
+//					method.invoke(object, clazz.newInstance());
+					method.invoke(getParent(type, 
+							getRealFullname(parent, fullname)), 
+							clazz.newInstance());
 					objCache.put(getRealFullname(parent, fullname), 
-							thisObj.getClass().getMethod(
-									getName(mname)).invoke(thisObj));
+							object.getClass().getMethod(
+									getName(mname)).invoke(object));
 				}
 			}
 			
@@ -118,7 +130,7 @@ public abstract class ModelGenerator {
 				if (thisValues.iterator().next()
 						.startsWith(ModelParameterGenerator.JOINTWARE)) {
 					_toObject(inputValues, 
-							thisObj, 
+							object, 
 							DEFAULT_PARENT, 
 							ModelParameterGenerator.DEFAULT_TYPE);
 				} else {
@@ -149,6 +161,14 @@ public abstract class ModelGenerator {
 	
 	protected String getRealFullname(String parent, String fullname) {
 		return (parent.equals(DEFAULT_PARENT)) ? fullname : parent + "-" + fullname;
+	}
+	
+	protected String getParent(String type, String fullname) {
+		int idx = fullname.indexOf("-");
+		return (idx == -1) 
+				? (type.equals("main")) ? 
+						DEFAULT_TYPE : fullname 
+							: fullname.substring(0, idx);
 	}
 	
 	protected Stack<String> getStack(String key) {
