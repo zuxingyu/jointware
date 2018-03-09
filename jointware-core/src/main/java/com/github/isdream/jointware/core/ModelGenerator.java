@@ -150,11 +150,31 @@ public abstract class ModelGenerator {
 					method.invoke(obj, thisValues);
 				}
 			} else if (JavaUtils.isMap(params.get(getRealFullname(parent, fullname)))) {
+				
+				Map<String, Object> thisValues = new HashMap<String, Object>();
+				if (thisValues == null || thisValues.keySet().isEmpty()) {
+					continue;
+				}
+				
 				Object obj = objCache.get(thisKey);
 				Method method = obj.getClass().getMethod(thisMethod, Map.class);
-				Map<String, String> thisValue = new HashMap<String, String>();
-				thisValue.putAll((Map<String, String>)typeValues.get(fullname));
-				method.invoke(obj, thisValue);
+				
+				if (thisValues.keySet().iterator().next()
+						.startsWith(ModelParameterGenerator.JOINTWARE)) {
+					Map<String, Object> list = new HashMap<String, Object>();
+					for (String str : thisValues.keySet()) {
+						Object newInstance = Class.forName(getClassForMapStyle(str)).newInstance();
+						objCache.put(key, newInstance);
+						_toObject(inputValues, newInstance, key, str);
+						objCache.remove(key);
+						list.put(getKeyForMapStyle(str), newInstance);
+					}
+					method.invoke(obj, list);
+				} else {
+					thisValues.putAll((Map<String, String>)typeValues.get(fullname));
+					method.invoke(obj, thisValues);
+				}
+				
 			} else {
 				throw new UnsupportedOperationException();
 			}
@@ -164,6 +184,17 @@ public abstract class ModelGenerator {
 	protected String getClassForCollectionStyle(String str) {
 		int idx = str.indexOf("-");
 		return str.substring(idx + 1);
+	}
+	
+	protected String getClassForMapStyle(String str) {
+		int idx = str.lastIndexOf("-");
+		return str.substring(idx + 1);
+	}
+	
+	protected String getKeyForMapStyle(String str) {
+		int sidx = str.indexOf("-");
+		int eidx = str.lastIndexOf("-");
+		return str.substring(sidx + 1, eidx);
 	}
 	
 	protected String getName(String name) {
