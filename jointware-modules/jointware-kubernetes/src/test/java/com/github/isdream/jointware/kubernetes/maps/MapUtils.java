@@ -18,7 +18,6 @@ public class MapUtils {
 	public static Map<String, Map<String, Object>> mockBOCOFrontend() {
 		Map<String, Map<String, Object>> map = new HashMap<String, Map<String, Object>>();
 		
-		
 		Map<String, Object> main = new HashMap<String, Object>();
 		main.put("setMetadata-setName", "sky-3-01");
 		main.put("setMetadata-setNamespace", "project01");

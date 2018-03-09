@@ -3,6 +3,7 @@
  */
 package com.github.isdream.jointware.core;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -118,10 +119,13 @@ public abstract class ModelGenerator {
 			String thisKey = ignore ? getParent(getRealKey(parent, fullname, idx)) : getRealKey(parent, fullname, idx);
 			String thisMethod = (idx == -1) ? fullname : fullname.substring(idx + 1);
 			if (JavaUtils.isPrimitive(params.get(getRealFullname(parent, fullname)))) {
+//				System.out.println(fullname);
 				Object obj = objCache.get(thisKey);
 				Method method = obj.getClass().getMethod(
 						thisMethod, Class.forName(params.get(getRealFullname(parent, fullname))));
-				method.invoke(obj, typeValues.get(fullname));
+				Class<?> clazz = Class.forName(params.get(getRealFullname(parent, fullname)));
+				Constructor<?> c = clazz.getConstructor(String.class);
+				method.invoke(obj, c.newInstance(typeValues.get(fullname)));
 			} else if (JavaUtils.isList(params.get(getRealFullname(parent, fullname)))) {
 				
 				Collection<String> thisValues = (Collection<String>)typeValues.get(fullname);
@@ -204,8 +208,6 @@ public abstract class ModelGenerator {
 		return stack;
 	}
 
-//	protected void instantiated()
-	
 	/**
 	 * @param kind 
 	 * @return
