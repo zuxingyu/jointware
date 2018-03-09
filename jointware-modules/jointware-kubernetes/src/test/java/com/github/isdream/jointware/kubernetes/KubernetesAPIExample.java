@@ -31,6 +31,12 @@ public class KubernetesAPIExample {
 	 */
 	public static void main(String[] args) {
 		DefaultKubernetesClient client = createClient();
+		
+		client.pods();
+		client.extensions().deployments();
+		client.replicationControllers();
+		client.secrets();
+		
 		MixedOperation<Deployment, 
 						DeploymentList, 
 						DoneableDeployment, 

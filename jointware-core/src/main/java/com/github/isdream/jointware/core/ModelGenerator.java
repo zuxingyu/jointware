@@ -89,22 +89,20 @@ public abstract class ModelGenerator {
 			Stack<String> stack = getStack(key);
 			while (stack.size() > 1) {
 				String fullname = stack.pop();
-				int idx = fullname.indexOf("-");
-				String mname = (idx == -1) ? fullname : fullname.substring(0, idx);
+				int idx = fullname.lastIndexOf("-");
+				String mname = (idx == -1) ? fullname : fullname.substring(idx + 1);
 				if (objCache.get(getRealFullname(parent, fullname)) == null) {
+					Class<?> clazz = objCache.get(getParent(type, 
+							getRealFullname(parent, fullname))).getClass();
 					System.out.println(getRealFullname(parent, fullname));
-					Class<?> clazz = Class.forName(
-							params.get(getParent(type, getRealFullname(parent, fullname))));
-//					Method method = object.getClass()
-//							.getMethod(mname, clazz);
-					Method method = clazz.getMethod(mname, clazz);
-//					method.invoke(object, clazz.newInstance());
-					method.invoke(getParent(type, 
-							getRealFullname(parent, fullname)), 
-							clazz.newInstance());
-					objCache.put(getRealFullname(parent, fullname), 
-							object.getClass().getMethod(
-									getName(mname)).invoke(object));
+					Method method = clazz.getMethod(mname, Class.forName(
+							params.get(getRealFullname(parent, fullname))));
+					Object newInstance = Class.forName(params.get(
+							getRealFullname(parent, fullname))).newInstance();
+					method.invoke(objCache.get(getParent(type, 
+							getRealFullname(parent, fullname))), 
+									newInstance);
+					objCache.put(getRealFullname(parent, fullname), newInstance);
 				}
 			}
 			
