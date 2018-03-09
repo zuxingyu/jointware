@@ -4,9 +4,9 @@
 package com.github.isdream.jointware.core;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Stack;
@@ -86,8 +86,15 @@ public abstract class ModelGenerator {
 		
 		Map<String, Object> typeValues = inputValues.get(type);
 		
+		boolean ignore = false;
+		
 		for (String key : typeValues.keySet()) {
 			Stack<String> stack = getStack(key);
+			
+			if (stack.size() <= 1) {
+				ignore = true;
+			}
+			
 			while (stack.size() > 1) {
 				String fullname = stack.pop();
 				int idx = fullname.lastIndexOf("-");
@@ -108,15 +115,14 @@ public abstract class ModelGenerator {
 			
 			String fullname = stack.pop();
 			int idx = fullname.lastIndexOf("-");
-			String thisKey = getRealKey(parent, fullname, idx);
+			String thisKey = ignore ? getParent(getRealKey(parent, fullname, idx)) : getRealKey(parent, fullname, idx);
 			String thisMethod = (idx == -1) ? fullname : fullname.substring(idx + 1);
 			if (JavaUtils.isPrimitive(params.get(getRealFullname(parent, fullname)))) {
 				Object obj = objCache.get(thisKey);
 				Method method = obj.getClass().getMethod(
 						thisMethod, Class.forName(params.get(getRealFullname(parent, fullname))));
 				method.invoke(obj, typeValues.get(fullname));
-			} else if (JavaUtils.isList(params.get(getRealFullname(parent, fullname)))
-					|| JavaUtils.isSet(params.get(getRealFullname(parent, fullname)))) {
+			} else if (JavaUtils.isList(params.get(getRealFullname(parent, fullname)))) {
 				
 				Collection<String> thisValues = (Collection<String>)typeValues.get(fullname);
 				if (thisValues == null || thisValues.isEmpty()) {
@@ -127,9 +133,15 @@ public abstract class ModelGenerator {
 				Method method = obj.getClass().getMethod(thisMethod, List.class);
 				if (thisValues.iterator().next()
 						.startsWith(ModelParameterGenerator.JOINTWARE)) {
+					List<Object> list = new ArrayList<Object>();
 					for (String str : thisValues) {
-						_toObject(inputValues, getClassForCollectionStyle(str), key, str);
+						Object newInstance = Class.forName(getClassForCollectionStyle(str)).newInstance();
+						objCache.put(key, newInstance);
+						_toObject(inputValues, newInstance, key, str);
+						objCache.remove(key);
+						list.add(newInstance);
 					}
+					method.invoke(obj, list);
 				} else {
 					thisValues.addAll((Collection<String>)typeValues.get(fullname));
 					method.invoke(obj, thisValues);
@@ -170,6 +182,12 @@ public abstract class ModelGenerator {
 		return (idx == -1) 
 				? (type.equals("main")) ? 
 						DEFAULT_TYPE : fullname 
+							: fullname.substring(0, idx);
+	}
+	
+	protected String getParent(String fullname) {
+		int idx = fullname.lastIndexOf("-");
+		return (idx == -1) ?  fullname 
 							: fullname.substring(0, idx);
 	}
 	
