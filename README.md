@@ -28,7 +28,11 @@ jointware
     * [kubernetes parameters with key-value style](docs/containers/kubernetes/model-parameters-kv.md)
     * [kubernetes parameters with nested style](docs/containers/kubernetes/model-parameters-nested.md)
     * [kubernetes parameters with json style](docs/containers/kubernetes/model-parameters-json.md)
-
+  
+  **_2. OpenShift_**
+  
+    * [OpenShift features and models](docs/containers/openshift/kind-model.md) 
+  
 ### Building the code
 
 Please see the [building.md](docs/building.md) file.
