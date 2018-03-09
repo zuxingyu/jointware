@@ -3,10 +3,10 @@
  */
 package com.github.isdream.jointware.core;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Stack;
@@ -73,15 +73,16 @@ public abstract class ModelGenerator {
 		
 		params = getModelParameter().getModelParameters(kind);
 		objCache.put(DEFAULT_TYPE, getKindObject(kind));
-//		params.put(DEFAULT_TYPE, params.get);
-		_toObject(inputValues, objCache.get(DEFAULT_TYPE), DEFAULT_PARENT, ModelParameterGenerator.DEFAULT_TYPE);
+		_toObject(inputValues, 
+				objCache.get(DEFAULT_TYPE), 
+				DEFAULT_PARENT, 
+				ModelParameterGenerator.DEFAULT_TYPE);
 		return objCache.get(DEFAULT_TYPE);
 	}
 
 	@SuppressWarnings("unchecked")
-	protected void _toObject(Map<String, Map<String, Object>> inputValues, Object object, String parent, String type)
-			throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException,
-			InstantiationException {
+	protected void _toObject(Map<String, Map<String, Object>> inputValues, 
+			Object object, String parent, String type) throws Exception {
 		
 		Map<String, Object> typeValues = inputValues.get(type);
 		
@@ -94,7 +95,6 @@ public abstract class ModelGenerator {
 				if (objCache.get(getRealFullname(parent, fullname)) == null) {
 					Class<?> clazz = objCache.get(getParent(type, 
 							getRealFullname(parent, fullname))).getClass();
-					System.out.println(getRealFullname(parent, fullname));
 					Method method = clazz.getMethod(mname, Class.forName(
 							params.get(getRealFullname(parent, fullname))));
 					Object newInstance = Class.forName(params.get(
@@ -107,7 +107,7 @@ public abstract class ModelGenerator {
 			}
 			
 			String fullname = stack.pop();
-			int idx = fullname.indexOf("-");
+			int idx = fullname.lastIndexOf("-");
 			String thisKey = getRealKey(parent, fullname, idx);
 			String thisMethod = (idx == -1) ? fullname : fullname.substring(idx + 1);
 			if (JavaUtils.isPrimitive(params.get(getRealFullname(parent, fullname)))) {
@@ -127,10 +127,9 @@ public abstract class ModelGenerator {
 				Method method = obj.getClass().getMethod(thisMethod, List.class);
 				if (thisValues.iterator().next()
 						.startsWith(ModelParameterGenerator.JOINTWARE)) {
-					_toObject(inputValues, 
-							object, 
-							DEFAULT_PARENT, 
-							ModelParameterGenerator.DEFAULT_TYPE);
+					for (String str : thisValues) {
+						_toObject(inputValues, getClassForCollectionStyle(str), key, str);
+					}
 				} else {
 					thisValues.addAll((Collection<String>)typeValues.get(fullname));
 					method.invoke(obj, thisValues);
@@ -147,6 +146,11 @@ public abstract class ModelGenerator {
 		}
 	}
 
+	protected String getClassForCollectionStyle(String str) {
+		int idx = str.indexOf("-");
+		return str.substring(idx + 1);
+	}
+	
 	protected String getName(String name) {
 		return GET_METHOD + name.substring(SET_METHOD.length());
 	}
@@ -162,7 +166,7 @@ public abstract class ModelGenerator {
 	}
 	
 	protected String getParent(String type, String fullname) {
-		int idx = fullname.indexOf("-");
+		int idx = fullname.lastIndexOf("-");
 		return (idx == -1) 
 				? (type.equals("main")) ? 
 						DEFAULT_TYPE : fullname 
