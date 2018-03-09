@@ -119,7 +119,6 @@ public abstract class ModelGenerator {
 			String thisKey = ignore ? getParent(getRealKey(parent, fullname, idx)) : getRealKey(parent, fullname, idx);
 			String thisMethod = (idx == -1) ? fullname : fullname.substring(idx + 1);
 			if (JavaUtils.isPrimitive(params.get(getRealFullname(parent, fullname)))) {
-//				System.out.println(fullname);
 				Object obj = objCache.get(thisKey);
 				Method method = obj.getClass().getMethod(
 						thisMethod, Class.forName(params.get(getRealFullname(parent, fullname))));
