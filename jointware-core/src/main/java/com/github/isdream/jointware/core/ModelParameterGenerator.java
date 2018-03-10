@@ -21,6 +21,12 @@ import com.github.isdream.jointware.core.utils.ObjectUtils;
  */
 public abstract class ModelParameterGenerator {
 
+	/************************************************************************************
+	 * 
+	 *                             Cores
+	 * 
+	 ************************************************************************************/
+	
 	protected final static String JOINTWARE = "jointwareRef";
 
 	protected final static String SET = "set";
@@ -169,11 +175,13 @@ public abstract class ModelParameterGenerator {
 		return JSON.toJSONString(map);
 	}
 
-	/********************************************************
+
+	/************************************************************************************
 	 * 
+	 *                   You should implement it by yourself
 	 * 
-	 * 
-	 ********************************************************/
+	 ************************************************************************************/
+	
 	/**
 	 * @param name
 	 *            名字
