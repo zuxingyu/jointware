@@ -23,7 +23,7 @@ public class DefaultModelParameterAnalyzer extends ModelParameterAnalyzer {
 	}
 
 	@Override
-	protected boolean canLoop(String typename) {
+	protected boolean canNested(String typename) {
 		return false;
 	}
 
