@@ -13,7 +13,7 @@
 	<modules>
 		<module>jointware-modules</module>
 		<module>jointware-core</module>
-		<module>jointware-service</module>
+		<module>jointware-services</module>
     </modules>
 
 	<build>

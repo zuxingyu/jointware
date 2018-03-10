@@ -11,7 +11,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.isdream</groupId>
-    <artifactId>jointware-service</artifactId>
+    <artifactId>jointware-services</artifactId>
     <version>2.0.0</version>
 	<modules>
 		<module>jointware-bocloud</module>
