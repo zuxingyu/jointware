@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- *  The {@code StringUtils} class provides some common functions.
+ *  The {@code StringUtils} class provides some common functions for Java.
  * <p>
  * 
  * @author wuheng@(otcaix.iscas.ac.cn)
@@ -18,10 +18,21 @@ import java.util.Set;
  */
 public class JavaUtils {
 
+	
+	/*********************************************************************
+	 *
+	 * 
+	 *                    Java type checker
+	 * 
+	 * 
+	 *********************************************************************/
+	
+	
 	/**
 	 * primitive type in Java
 	 */
 	protected final static Set<String> primitive = new HashSet<String>();
+	
 	
 	static {
 		primitive.add(String.class.getName());
@@ -40,119 +51,167 @@ public class JavaUtils {
 	}
 	
 	/**
-	 * @param name classname
-	 * @return return true if the classname in Set named primitive, otherwise return false
+	 * @param typename typename
+	 * @return return true if the classname is primitive, otherwise return false
 	 */
-	public static boolean isPrimitive(String name) {
-		return StringUtils.isNull(name) ? false : primitive.contains(name);
+	public static boolean isPrimitive(String typename) {
+		return StringUtils.isNull(typename) ? false : primitive.contains(typename);
+	}
+	
+	
+	/**
+	 * @param clazz class
+	 * @return return true if the typename is primitive, otherwise return false
+	 */
+	public static boolean isPrimitive(Class<?> clazz) {
+		return ObjectUtils.isNull(clazz) ? false : isPrimitive(clazz.getName());
 	}
 	
 	/**
-	 * @param name classname
-	 * @return return true if the classname is starts with java.util.Map, otherwise return false
+	 * @param typename typename
+	 * @return return true if the typename is starts with java.util.Map, otherwise return false
 	 */
-	public static boolean isMap(String name) {
-		return StringUtils.isNull(name) ? false : name.startsWith(Map.class.getName());
+	public static boolean isMap(String typename) {
+		return StringUtils.isNull(typename) ? false : typename.startsWith(Map.class.getName());
 	}
 
+	
 	/**
-	 * @param name classname
-	 * @return 是否是String，Object类型的Map
+	 * 
 	 */
-	public static boolean isStringObjectMap(String name) {
-		return isMap(name) && !isStringStringMap(name);
-	}
-
+	protected final static Map<String, String> map = null; 
+	
 	/**
-	 * @param name
-	 * @return 是否是String类型的Map
+	 * @param typename typename
+	 * @return return true if the typename is java.util.Map<String, String>, otherwise return false
 	 */
-	public static boolean isStringStringMap(String name) {
-		return StringUtils.isNull(name) ? false
-				: name.equals(Map.class.getName() + "<" + String.class.getName() + ", " + String.class.getName() + ">");
+	public static boolean isStringStringMap(String typename) {
+		try {
+			return StringUtils.isNull(typename) ? false
+					: typename.equals(JavaUtils.class
+							.getDeclaredField("map").getGenericType().getTypeName());
+		} catch (Exception e) {
+			return false;
+		}
 	}
 	
 	/**
-	 * @param name
-	 *            名字
-	 * @return 是否是String类型的List
+	 * @param clazz class
+	 * @return return true if the typename is starts with java.util.Map, otherwise return false
 	 */
-	public static boolean isStringList(String name) {
-		return StringUtils.isNull(name) ? false
-				: name.equals(List.class.getName() + "<" + String.class.getName() + ">");
-	}
-
-
-	/**
-	 * @param name
-	 *            名字
-	 * @return 是否是List
-	 */
-	public static boolean isList(String name) {
-		return StringUtils.isNull(name) ? false : name.startsWith(List.class.getName());
-	}
-
-	/**
-	 * @param name
-	 *            名字
-	 * @return 是否是Object类型的List
-	 */
-	public static boolean isObjectList(String name) {
-		return isList(name) && !isStringList(name);
+	public static boolean isMap(Class<?> clazz) {
+		return ObjectUtils.isNull(clazz) ? false : isMap(clazz.getName());
 	}
 	
 	/**
-	 * @param name
-	 *            名字
+	 * @param typename typename
+	 * @return return true if the typename is Map, but not java.util.Map<String, String>, otherwise return false
+	 */
+	public static boolean isStringObjectMap(String typename) {
+		return isMap(typename) && !isStringStringMap(typename);
+	}
+
+	
+	/**
+	 * 
+	 */
+	protected final static List<String> list = null; 
+	
+	/**
+	 * @param typename typename
+	 * @return return true if the typename is java.util.List<String>, otherwise return false
+	 */
+	public static boolean isStringList(String typename) {
+		try {
+			return StringUtils.isNull(typename) ? false
+					: typename.equals(JavaUtils.class
+							.getDeclaredField("list").getGenericType().getTypeName());
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+
+	/**
+	 * @param typename typename
+	 * @return return true if the typename is starts with java.util.List, otherwise return false
+	 */
+	public static boolean isList(String typename) {
+		return StringUtils.isNull(typename) ? false : typename.startsWith(List.class.getName());
+	}
+
+	/**
+	 * @param typename typename
+	 * @return return true if the typename is starts with java.util.List, but not java.util.List<String>, otherwise return false
+	 */
+	public static boolean isObjectList(String typename) {
+		return isList(typename) && !isStringList(typename);
+	}
+	
+	/**
+	 * 
+	 */
+	protected final static Set<String> set = null; 
+	
+	/**
+	 * @param typename typename
 	 * @return 是否是String类型的Set
 	 */
-	public static boolean isStringSet(String name) {
-		return StringUtils.isNull(name) ? false
-				: name.equals(Set.class.getName() + "<" + String.class.getName() + ">");
+	public static boolean isStringSet(String typename) {
+		try {
+			return StringUtils.isNull(typename) ? false
+					: typename.equals(JavaUtils.class
+							.getDeclaredField("set").getGenericType().getTypeName());
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 
 	/**
-	 * @param name
+	 * @param typename
 	 *            名字
 	 * @return 是否是Set
 	 */
-	public static boolean isSet(String name) {
-		return StringUtils.isNull(name) ? false : name.startsWith(Set.class.getName());
+	public static boolean isSet(String typename) {
+		return StringUtils.isNull(typename) ? false : typename.startsWith(Set.class.getName());
 	}
 
 	/**
-	 * @param name
+	 * @param typename
 	 *            名字
 	 * @return 是否是Object类型的Set
 	 */
-	public static boolean isObjectSet(String name) {
-		return isSet(name) && !isStringSet(name);
+	public static boolean isObjectSet(String typename) {
+		return isSet(typename) && !isStringSet(typename);
 	}
 
 	/**
-	 * @param fullname
-	 *            名字
+	 * @param typename
 	 * @return Map中对象
 	 */
-	public static String getClassNameForMapStyle(String fullname) {
-		int start = fullname.indexOf(",");
-		int end = fullname.indexOf(">");
-		return fullname.substring(start + 2, end); // <String, Object>的,后有一个空格
+	public static String getClassNameForMapStyle(String typename) {
+		int start = typename.indexOf(",");
+		int end = typename.indexOf(">");
+		return typename.substring(start + 1, end).trim(); // <String, Object>的,后有一个空格
 	}
 
 	/**
-	 * @param fullname
+	 * @param typename
 	 *            名字
 	 * @return List中对象
 	 */
-	public static String getClassNameForListOrSetStyle(String fullname) {
-		int start = fullname.indexOf("<");
-		int end = fullname.indexOf(">");
-		return fullname.substring(start + 1, end);
+	public static String getClassNameForListOrSetStyle(String typename) {
+		int start = typename.indexOf("<");
+		int end = typename.indexOf(">");
+		return typename.substring(start + 1, end).trim();
 	}
 	
 	/*********************************************************************
+	 * 
+	 * 
+	 *                         
+	 * 
 	 * 
 	 *********************************************************************/
 	
@@ -207,4 +266,5 @@ public class JavaUtils {
 	public static boolean ignoreMethod(String name) {
 		return StringUtils.isNull(name) ? true : ignoreMethods.contains(name);
 	}
+	
 }
