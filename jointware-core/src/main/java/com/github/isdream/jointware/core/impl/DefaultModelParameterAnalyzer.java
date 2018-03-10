@@ -4,7 +4,6 @@
 package com.github.isdream.jointware.core.impl;
 
 import java.lang.reflect.Method;
-import java.util.Map;
 
 import com.github.isdream.jointware.core.KindModelAnalyzer;
 import com.github.isdream.jointware.core.ModelParameterAnalyzer;
@@ -26,11 +25,6 @@ public class DefaultModelParameterAnalyzer extends ModelParameterAnalyzer {
 	@Override
 	protected boolean canLoop(String typename) {
 		return false;
-	}
-
-	@Override
-	protected Map<String, String> getKindModels() {
-		return analyzer.getKindModels();
 	}
 
 	@Override

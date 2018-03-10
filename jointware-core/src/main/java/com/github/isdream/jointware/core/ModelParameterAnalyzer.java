@@ -154,7 +154,7 @@ public abstract class ModelParameterAnalyzer {
 	/**
 	 * @return 获取所有kind对应的模型
 	 */
-	protected Map<String, String> getKindModels() {
+	public Map<String, String> getKindModels() {
 		return getKindModelAnalyzer().getKindModels();
 	}
 
