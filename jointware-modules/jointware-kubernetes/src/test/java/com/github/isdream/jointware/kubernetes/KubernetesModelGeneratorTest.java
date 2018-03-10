@@ -25,7 +25,7 @@ public class KubernetesModelGeneratorTest extends TestCase {
 	protected static void testNamespace(KubernetesModelParameterGenerator kmpgenerator) throws Exception {
 		KubernetesModelGenerator kmgenerator = new KubernetesModelGenerator();
 		System.out.println(kmgenerator.toObject(
-				kmpgenerator.ToNestedStyle(
+				kmpgenerator.toMap(
 						new NamespaceObject().create()), "Namespace"));
 	}
 }

@@ -3,17 +3,12 @@ kind: Deployment
 metadata:
   annotations:
     deployment.kubernetes.io/revision: "1"
-  creationTimestamp: 2018-03-07T06:34:32Z
-  generation: 1
   labels:
     application-real-name: demo-app-tomcat-20180307143430657
     image-group-name: demo-app-tomcat-43-v1-cf352
     version-id: version-id-50000013
   name: demo-app-tomcat-43-v1-cf352
   namespace: demo-testing
-  resourceVersion: "193163"
-  selfLink: /apis/extensions/v1beta1/namespaces/demo-testing/deployments/demo-app-tomcat-43-v1-cf352
-  uid: 986739dd-21d1-11e8-8ab0-005056a226fa
 spec:
   replicas: 1
   selector:
@@ -26,7 +21,6 @@ spec:
     type: RollingUpdate
   template:
     metadata:
-      creationTimestamp: null
       labels:
         application-real-name: demo-app-tomcat-20180307143430657
         image-group-name: demo-app-tomcat-43-v1-cf352

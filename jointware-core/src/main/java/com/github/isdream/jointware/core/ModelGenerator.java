@@ -183,18 +183,18 @@ public abstract class ModelGenerator {
 
 	protected String getClassForCollectionStyle(String str) {
 		int idx = str.indexOf("-");
-		return str.substring(idx + 1);
+		return str.substring(idx + 1).trim();
 	}
 	
 	protected String getClassForMapStyle(String str) {
 		int idx = str.lastIndexOf("-");
-		return str.substring(idx + 1);
+		return str.substring(idx + 1).trim();
 	}
 	
 	protected String getKeyForMapStyle(String str) {
 		int sidx = str.indexOf("-");
 		int eidx = str.lastIndexOf("-");
-		return str.substring(sidx + 1, eidx);
+		return str.substring(sidx + 1, eidx).trim();
 	}
 	
 	protected String getName(String name) {

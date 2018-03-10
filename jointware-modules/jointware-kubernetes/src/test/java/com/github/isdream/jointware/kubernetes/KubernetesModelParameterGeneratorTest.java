@@ -22,15 +22,15 @@ public class KubernetesModelParameterGeneratorTest extends TestCase {
 	public static void main(String[] args) {
 		KubernetesModelParameterGenerator generator = new KubernetesModelParameterGenerator();
 		System.out.println(generator.toJson(
-				generator.ToNestedStyle(
+				generator.toMap(
 						new NamespaceObject().create())));
 		
 		System.out.println(generator.toJson(
-				generator.ToNestedStyle(
+				generator.toMap(
 						new DeploymentObject().create())));
 		
 		System.out.println(generator.toJson(
-				generator.ToNestedStyle(
+				generator.toMap(
 						new UBOCObject().create())));
 	}
 
