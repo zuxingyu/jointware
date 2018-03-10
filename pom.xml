@@ -16,6 +16,45 @@
 		<module>jointware-services</module>
     </modules>
 
+	<issueManagement>
+		<system>Github Issue</system>
+		<url>https://github.com/isdream/jointware/issues</url>
+	</issueManagement>
+
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<name>Heng WU</name>
+			<email>wuheng@otcaix.iscas.ac.cn</email>
+			<organization>Institute of Software, Chinese Academy of Sciences</organization>
+			<organizationUrl>http://www.is.cas.cn/</organizationUrl>
+		</developer>
+		<developer>
+			<name>Yuanjia XU</name>
+			<email>xuyuanjia2017@otcaix.iscas.ac.cn</email>
+			<organization>Institute of Software, Chinese Academy of Sciences</organization>
+			<organizationUrl>http://www.is.cas.cn/</organizationUrl>
+		</developer>
+		<developer>
+			<name>Yunhao MA</name>
+			<email>mayunhao@beyondcent.com</email>
+			<organization>Suzhou BoCloud CO.LTD</organization>
+			<organizationUrl>http://www.bocloud.com.cn/</organizationUrl>
+		</developer>
+	</developers>
+
+	<scm>
+		<connection>scm:git@github.com:isdream/jointware.git</connection>
+		<developerConnection>scm:git@github.com:isdream/jointware.git</developerConnection>
+		<url>git@github.com:isdream/jointware.git</url>
+	</scm>
+	
 	<build>
 		<plugins>
 			<plugin>
