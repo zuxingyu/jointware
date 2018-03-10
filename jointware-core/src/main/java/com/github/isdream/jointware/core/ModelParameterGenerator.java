@@ -14,7 +14,6 @@ import com.alibaba.fastjson.JSON;
 import com.github.isdream.jointware.core.utils.JavaUtils;
 import com.github.isdream.jointware.core.utils.ObjectUtils;
 
-
 /**
  * @author wuheng@(otcaix.iscas.ac.cn)
  *
@@ -23,108 +22,96 @@ import com.github.isdream.jointware.core.utils.ObjectUtils;
 public abstract class ModelParameterGenerator {
 
 	protected final static String JOINTWARE = "jointwareRef";
-	
+
 	protected final static String SET = "set";
-	
+
 	protected final static String DEFAULT_TYPE = "main";
-	
+
+	protected int id = 0;
+
 	/**
 	 * 
 	 * @param fromObj
 	 * @return Json
 	 */
-	public Map<String, Map<String, Object>> ToNestedStyle(Object fromObj) {
-		
+	public Map<String, Map<String, Object>> toMap(Object fromObj) {
+
 		if (fromObj == null) {
 			throw new NullPointerException();
 		}
+
+		return _toMap(fromObj, DEFAULT_TYPE, null);
+	}
+
+	protected Map<String, Map<String, Object>> _toMap(Object thisObject, String type, String parent) {
 		
 		Map<String, Map<String, Object>> json = new LinkedHashMap<String, Map<String, Object>>();
 		
-		_ToNestedStyle(fromObj, 0, DEFAULT_TYPE, null, json);
-		
-		return json;
-	}
-	
-	
-	/**
-	 * @param thisObject
-	 * @param id
-	 * @param type
-	 * @param prefix
-	 * @param json
-	 */
-	protected void _ToNestedStyle(Object thisObject,
-										int id, String type, String prefix,
-										Map<String, Map<String, Object>> json) {
 		for (Method m : thisObject.getClass().getMethods()) {
-			
-			if (JavaUtils.ignoreMethod(m.getName())
+
+			if (JavaUtils.ignoreMethod(m.getName()) 
 					|| ignoreMethod(m.getName())) {
 				continue;
 			}
-			
-			Map<String, Object> kv = getValue(type, json);
-			
+
+			Map<String, Object> values = getValue(type, json);
+
 			try {
-				Object newObject =  m.invoke(thisObject);
-				
+				Object newObject = m.invoke(thisObject);
+
 				if (ObjectUtils.isNull(newObject)) {
 					continue;
 				}
-				
-				if (JavaUtils.isPrimitive(getTypeName(m))
+
+				if (JavaUtils.isPrimitive(getTypeName(m)) 
 						|| JavaUtils.isStringList(getTypeName(m))
-						|| JavaUtils.isStringSet(getTypeName(m))
+						|| JavaUtils.isStringSet(getTypeName(m)) 
 						|| JavaUtils.isStringStringMap(getTypeName(m))) {
-					kv.put(getRealKey(prefix, m.getName()), newObject);
-				} else if (JavaUtils.isObjectList(getTypeName(m))
+					values.put(getRealKey(parent, m.getName()), newObject);
+				} else if (JavaUtils.isObjectList(getTypeName(m)) 
 						|| JavaUtils.isObjectSet(getTypeName(m))) {
 					Collection<?> objects = (Collection<?>) newObject;
+					
+					if (ObjectUtils.isNull(objects) || objects.isEmpty()) {
+						continue;
+					}
+					
 					List<String> list = new ArrayList<String>();
-					kv.put(getRealKey(prefix, m.getName()), list);
+					values.put(getRealKey(parent, m.getName()), list);
 					for (Object obj : objects) {
-						list.add(getRealType(++id, obj.getClass().getName()));
-						_ToNestedStyle(obj,
-								id, 
-								getRealType(id, obj.getClass().getName()), 
-								null,
-								json);
+						list.add(getNewValue(++id, obj.getClass().getName()));
+						json.putAll(_toMap(obj, getNewValue(id, obj.getClass().getName()), null));
 					}
 				} else if (JavaUtils.isStringObjectMap(getTypeName(m))) {
 					@SuppressWarnings("unchecked")
 					Map<String, Object> objects = (Map<String, Object>) newObject;
+					
+					if (ObjectUtils.isNull(objects) || objects.isEmpty()) {
+						continue;
+					}
+					
 					List<String> list = new ArrayList<String>();
-					kv.put(getRealKey(prefix, m.getName()), list);
+					values.put(getRealKey(parent, m.getName()), list);
 					for (String key : objects.keySet()) {
 						list.add(getRealType(++id, key, objects.get(key).getClass().getName()));
-						_ToNestedStyle(objects.get(key),
-								id, 
-								getRealType(id, key, objects.get(key).getClass().getName()), 
-								null,
-								json);
+						json.putAll(_toMap(objects.get(key),
+										getRealType(id, key, 
+												objects.get(key).getClass().getName()), null));
 					}
 				} else {
-					if (prefix == null) {
-						_ToNestedStyle(newObject,
-								id, 
-								type, 
-								getRealName(m.getName()),
-								json);
+					if (parent == null) {
+						json.putAll(_toMap(newObject, type, getRealName(m.getName())));
 					} else {
-						_ToNestedStyle(newObject,
-								id, 
-								type, 
-								prefix + "-" + getRealName(m.getName()),
-								json);
+						json.putAll(_toMap(newObject, type, parent + "-" + getRealName(m.getName())));
 					}
 				}
 			} catch (Exception e) {
 				// ignore here
 			}
 		}
+		
+		return json;
 	}
-
 
 	/**
 	 * @param type
@@ -140,7 +127,6 @@ public abstract class ModelParameterGenerator {
 		return content;
 	}
 
-
 	/**
 	 * @param m
 	 * @return
@@ -149,36 +135,32 @@ public abstract class ModelParameterGenerator {
 		return m.getGenericReturnType().getTypeName();
 	}
 
-	
 	/**
 	 * @param id
 	 * @param name
 	 * @return
 	 */
-	private String getRealType(int id, String name) {
+	private String getNewValue(int id, String name) {
 		return getObjectRef() + id + "-" + name;
 	}
-	
+
 	private String getRealType(int id, String key, String name) {
-		return getObjectRef() + id + "-" + key 
-				+ "-" + name;
+		return getObjectRef() + id + "-" + key + "-" + name;
 	}
-	
+
 	/**
 	 * @param prefix
 	 * @param name
 	 * @return
 	 */
 	private String getRealKey(String prefix, String name) {
-		return (prefix == null) ? getRealName(name) 
-							: prefix + "-" + getRealName(name);
+		return (prefix == null) ? getRealName(name) : prefix + "-" + getRealName(name);
 	}
-	
-	
+
 	private String getRealName(String name) {
 		return SET + name.substring(SET.length());
 	}
-	
+
 	/**
 	 * @param map
 	 * @return
@@ -186,19 +168,18 @@ public abstract class ModelParameterGenerator {
 	public String toJson(Map<String, Map<String, Object>> map) {
 		return JSON.toJSONString(map);
 	}
-	
-	
+
 	/********************************************************
 	 * 
 	 * 
 	 * 
 	 ********************************************************/
 	/**
-	 * @param name 名字
+	 * @param name
+	 *            名字
 	 * @return 是否过滤
 	 */
 	public abstract boolean ignoreMethod(String name);
 
-	
 	public abstract String getObjectRef();
 }

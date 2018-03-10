@@ -55,4 +55,9 @@ public class OpenshiftModelParameterGenerator extends ModelParameterGenerator {
 							? false : true;
 	}
 
+	@Override
+	public String getObjectRef() {
+		return null;
+	}
+
 }

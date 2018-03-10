@@ -27,7 +27,7 @@ public class OpenshiftModelGeneratorTest extends TestCase {
 	protected static void testNamespace(OpenshiftModelParameterGenerator kmpgenerator) throws Exception {
 		OpenshiftModelGenerator kmgenerator = new OpenshiftModelGenerator();
 		System.out.println(kmgenerator.toObject(
-				kmpgenerator.ToNestedStyle(
+				kmpgenerator.toMap(
 						new NamespaceObject().create()), "Namespace"));
 	}
 }
