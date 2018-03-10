@@ -34,12 +34,15 @@ public abstract class ModelParameterGenerator {
 	 * @return Json
 	 */
 	public Map<String, Map<String, Object>> ToNestedStyle(Object fromObj) {
-		Map<String, Map<String, Object>> json = new LinkedHashMap<String, Map<String, Object>>();
+		
 		if (fromObj == null) {
-			return json;
+			throw new NullPointerException();
 		}
-
+		
+		Map<String, Map<String, Object>> json = new LinkedHashMap<String, Map<String, Object>>();
+		
 		_ToNestedStyle(fromObj, 0, DEFAULT_TYPE, null, json);
+		
 		return json;
 	}
 	
@@ -61,7 +64,7 @@ public abstract class ModelParameterGenerator {
 				continue;
 			}
 			
-			Map<String, Object> content = getValue(type, json);
+			Map<String, Object> kv = getValue(type, json);
 			
 			try {
 				Object newObject =  m.invoke(thisObject);
@@ -74,12 +77,12 @@ public abstract class ModelParameterGenerator {
 						|| JavaUtils.isStringList(getTypeName(m))
 						|| JavaUtils.isStringSet(getTypeName(m))
 						|| JavaUtils.isStringStringMap(getTypeName(m))) {
-					content.put(getRealKey(prefix, m.getName()), newObject);
+					kv.put(getRealKey(prefix, m.getName()), newObject);
 				} else if (JavaUtils.isObjectList(getTypeName(m))
 						|| JavaUtils.isObjectSet(getTypeName(m))) {
 					Collection<?> objects = (Collection<?>) newObject;
 					List<String> list = new ArrayList<String>();
-					content.put(getRealKey(prefix, m.getName()), list);
+					kv.put(getRealKey(prefix, m.getName()), list);
 					for (Object obj : objects) {
 						list.add(getRealType(++id, obj.getClass().getName()));
 						_ToNestedStyle(obj,
@@ -92,7 +95,7 @@ public abstract class ModelParameterGenerator {
 					@SuppressWarnings("unchecked")
 					Map<String, Object> objects = (Map<String, Object>) newObject;
 					List<String> list = new ArrayList<String>();
-					content.put(getRealKey(prefix, m.getName()), list);
+					kv.put(getRealKey(prefix, m.getName()), list);
 					for (String key : objects.keySet()) {
 						list.add(getRealType(++id, key, objects.get(key).getClass().getName()));
 						_ToNestedStyle(objects.get(key),
@@ -117,7 +120,7 @@ public abstract class ModelParameterGenerator {
 					}
 				}
 			} catch (Exception e) {
-				continue;
+				// ignore here
 			}
 		}
 	}
@@ -153,11 +156,11 @@ public abstract class ModelParameterGenerator {
 	 * @return
 	 */
 	private String getRealType(int id, String name) {
-		return JOINTWARE + id + "-" + name;
+		return getObjectRef() + id + "-" + name;
 	}
 	
 	private String getRealType(int id, String key, String name) {
-		return JOINTWARE + id + "-" + key 
+		return getObjectRef() + id + "-" + key 
 				+ "-" + name;
 	}
 	
@@ -184,21 +187,6 @@ public abstract class ModelParameterGenerator {
 		return JSON.toJSONString(map);
 	}
 	
-	/********************************************************
-	 * 
-	 * 
-	 * 
-	 ********************************************************/
-	
-	/**
-	 * @param fromObj
-	 * @return
-	 */
-	public String toJavaCode(Object fromObj) {
-		throw new UnsupportedOperationException();
-	}
-	
-	
 	
 	/********************************************************
 	 * 
@@ -210,5 +198,7 @@ public abstract class ModelParameterGenerator {
 	 * @return 是否过滤
 	 */
 	public abstract boolean ignoreMethod(String name);
+
 	
+	public abstract String getObjectRef();
 }

@@ -55,4 +55,9 @@ public class KubernetesModelParameterGenerator extends ModelParameterGenerator {
 							? false : true;
 	}
 
+	@Override
+	public String getObjectRef() {
+		return ModelParameterGenerator.JOINTWARE;
+	}
+
 }
