@@ -184,8 +184,8 @@
 
         <dependency>
             <groupId>com.github.isdream</groupId>
-            <artifactId>cluster-watcher</artifactId>
-            <version>1.1.2</version>
+            <artifactId>jointware-openshift</artifactId>
+            <version>2.0.0</version>
         </dependency>
     </dependencies>
     <build>
