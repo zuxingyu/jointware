@@ -5,6 +5,7 @@ package com.github.isdream.jointware.openshift;
 
 
 
+import com.github.isdream.jointware.core.ModelParameterGenerator;
 import com.github.isdream.jointware.kubernetes.OpenshiftModelParameterGenerator;
 import com.github.isdream.jointware.openshift.kind.DeploymentObject;
 import com.github.isdream.jointware.openshift.kind.NamespaceObject;
@@ -23,7 +24,7 @@ public class OpenshiftModelParameterGeneratorTest extends TestCase {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		OpenshiftModelParameterGenerator generator = new OpenshiftModelParameterGenerator();
+		OpenshiftModelParameterGenerator generator = new OpenshiftModelParameterGenerator(ModelParameterGenerator.JOINTWARE);
 		System.out.println(generator.toJson(
 				generator.toMap(
 						new NamespaceObject().create())));

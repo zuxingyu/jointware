@@ -16,6 +16,14 @@ public class OpenshiftModelGenerator extends ModelGenerator {
 	protected final static OpenshiftModelParameterAnalyzer 
 						analyzer = new OpenshiftModelParameterAnalyzer();
 	
+	public OpenshiftModelGenerator() {
+		super();
+	}
+
+	public OpenshiftModelGenerator(String objectRef) {
+		super(objectRef);
+	}
+	
 	@Override
 	public ModelParameterAnalyzer getModelParameter() {
 		return analyzer;

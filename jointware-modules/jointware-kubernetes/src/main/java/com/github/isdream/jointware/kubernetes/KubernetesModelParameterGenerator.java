@@ -20,6 +20,14 @@ public class KubernetesModelParameterGenerator extends ModelParameterGenerator {
 	
 	protected final static String GET = "get";
 	
+	public KubernetesModelParameterGenerator() {
+		super();
+	}
+
+	public KubernetesModelParameterGenerator(String objectRef) {
+		super(objectRef);
+	}
+	
 	static {
 		ignoreMethods.add("setApiVersion");
 		ignoreMethods.add("setKind");
@@ -55,9 +63,5 @@ public class KubernetesModelParameterGenerator extends ModelParameterGenerator {
 							? false : true;
 	}
 
-	@Override
-	public String getObjectRef() {
-		return ModelParameterGenerator.JOINTWARE;
-	}
 
 }
