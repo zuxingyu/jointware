@@ -30,7 +30,7 @@ public class DefaultKindAnalyzer extends KindAnalyzer {
 	}
 
 	@Override
-	protected String getDesc(String parent, Method method) {
+	protected String toDesc(String parent, Method method) {
 		return null;
 	}
 

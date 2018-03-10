@@ -23,13 +23,13 @@ public class DefaultKindModelAnalyzer extends KindModelAnalyzer {
 	}
 
 	@Override
-	protected void analyseModels() {
-		
+	protected KindAnalyzer getKindAnalyzer() {
+		return analyzer;
 	}
 
 	@Override
-	protected KindAnalyzer getKindAnalyzer() {
-		return analyzer;
+	protected Class<?> toKindModel(String kind) throws Exception {
+		return null;
 	}
 
 }

@@ -26,6 +26,12 @@ import com.github.isdream.jointware.core.utils.StringUtils;
  */
 public abstract class KindAnalyzer {
 
+	/************************************************************************************
+	 * 
+	 *                            Cores 
+	 * 
+	 ************************************************************************************/
+	
 	/**
 	 * 用来记录所有的kind及其描述，所谓描述，是指该kind如何实例化
 	 * 比如 deployment可如下获取
@@ -45,12 +51,6 @@ public abstract class KindAnalyzer {
 	 */
 	protected final static String DEFAULT_DESC = "";
 	
-	/************************************************************************************
-	 * 
-	 *
-	 * 
-	 ************************************************************************************/
-
 	/**
 	 * @throws Exception 反射异常
 	 */
@@ -62,21 +62,19 @@ public abstract class KindAnalyzer {
 	 * 分析出客户端(KubernetesClient，OpenShiftClient)的所有kind的类型
 	 * 
 	 * @param classname 类名
-	 * @param desc 父节点
+	 * @param parentDesc 父节点
 	 * @throws Exception 反射异常
 	 */
-	protected void analyseKinds(String classname, String desc) {
+	protected void analyseKinds(String classname, String parentDesc) {
 		Class<?> clazz = loadClass(classname);
     	for (Method method : clazz.getMethods()) {
     		if (isKind(method)) {
     			kinds.put(toKind(method), 
-    					  	getDesc(desc, method));
+    					  	toDesc(parentDesc, method));
     		} else if (isKindGroup(method)) {
     			analyseKinds(method.getReturnType().getName(), 
     						method.getName());
-    		} else {
-    			continue;
-    		}
+    		} 
     	}
 	}
 
@@ -118,7 +116,7 @@ public abstract class KindAnalyzer {
 	
 	/************************************************************************************
 	 * 
-	 * 
+	 *                   You should implement it by yourself
 	 * 
 	 ************************************************************************************/
 	
@@ -147,7 +145,8 @@ public abstract class KindAnalyzer {
 	 * @param method 方法名
 	 * @return 描述
 	 */
-	protected abstract String getDesc(String parent, Method method);
+	protected abstract String toDesc(String parent, Method method);
+	
 	
 	/**
 	 * @return the client for the specified cloud

@@ -3,6 +3,7 @@
  */
 package com.github.isdream.jointware.core.utils;
 
+import java.security.InvalidParameterException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -191,9 +192,13 @@ public class JavaUtils {
 	 * @return Map中对象
 	 */
 	public static String getClassNameForMapStyle(String typename) {
+		if (!isMap(typename)) {
+			throw new InvalidParameterException("typename shoule be Map");
+		}
 		int start = typename.indexOf(",");
 		int end = typename.indexOf(">");
-		return typename.substring(start + 1, end).trim(); // <String, Object>的,后有一个空格
+		return (start == -1) ? typename 
+				: typename.substring(start + 1, end).trim(); // <String, Object>的,后有一个空格
 	}
 
 	/**
@@ -202,9 +207,13 @@ public class JavaUtils {
 	 * @return List中对象
 	 */
 	public static String getClassNameForListOrSetStyle(String typename) {
+		if (!isList(typename) && !isSet(typename)) {
+			throw new InvalidParameterException("typename shoule be Map");
+		}
 		int start = typename.indexOf("<");
 		int end = typename.indexOf(">");
-		return typename.substring(start + 1, end).trim();
+		return (start == -1) ? typename 
+				: typename.substring(start + 1, end).trim();
 	}
 	
 	/*********************************************************************

@@ -18,6 +18,12 @@ import com.github.isdream.jointware.core.utils.StringUtils;
  */
 public abstract class ModelParameterAnalyzer {
 
+	/************************************************************************************
+	 * 
+	 *                                    Cores
+	 * 
+	 ************************************************************************************/
+	
 	/**
 	 * 
 	 * 记录以下信息，方便通过反射，进行实例化
@@ -139,6 +145,46 @@ public abstract class ModelParameterAnalyzer {
 				? method.getName() : parent + "-" + method.getName();
 	}
 
+	/************************************************************************************
+	 * 
+	 * 
+	 * 
+	 ************************************************************************************/
+	
+	/**
+	 * @return 获取所有kind对应的模型
+	 */
+	protected Map<String, String> getKindModels() {
+		return getKindModelAnalyzer().getKindModels();
+	}
+
+	/**
+	 * @return 获取所有模型
+	 */
+	public Map<String, Map<String, String>> getParameters() {
+		return parameters;
+	}
+	
+	/**
+	 * @param kind kind类型
+	 * @return 获取所有模型参数
+	 */
+	public Map<String, String> getModelParameters(String kind) {
+		return StringUtils.isNull(kind) 
+				? new HashMap<String, String>() : parameters.get(kind);
+	}
+	
+	/************************************************************************************
+	 * 
+	 *                   You should implement it by yourself
+	 * 
+	 ************************************************************************************/
+	
+	/**
+	 * @return
+	 */
+	public abstract KindModelAnalyzer getKindModelAnalyzer();
+	
 	/**
 	 * 根据fabric8的代码规范，只过滤add和set开头，且只有一个参数的方法
 	 * 这些方法可以说明这个方法的反射规则
@@ -158,36 +204,4 @@ public abstract class ModelParameterAnalyzer {
 	 * @return 是否可以循环
 	 */
 	protected abstract boolean canLoop(String typename);
-	
-	/************************************************************************************
-	 * 
-	 * 
-	 * 
-	 ************************************************************************************/
-	
-	/**
-	 * @return 获取所有kind对应的模型
-	 */
-	protected abstract Map<String, String> getKindModels();
-
-	/**
-	 * @return 获取所有模型
-	 */
-	public Map<String, Map<String, String>> getParameters() {
-		return parameters;
-	}
-	
-	/**
-	 * @param kind kind类型
-	 * @return 获取所有模型参数
-	 */
-	public Map<String, String> getModelParameters(String kind) {
-		return StringUtils.isNull(kind) 
-				? new HashMap<String, String>() : parameters.get(kind);
-	}
-	
-	/**
-	 * @return
-	 */
-	public abstract KindModelAnalyzer getKindModelAnalyzer();
 }

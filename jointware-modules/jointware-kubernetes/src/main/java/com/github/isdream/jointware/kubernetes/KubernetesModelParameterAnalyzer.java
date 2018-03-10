@@ -4,7 +4,6 @@
 package com.github.isdream.jointware.kubernetes;
 
 import java.lang.reflect.Method;
-import java.util.Map;
 
 import com.github.isdream.jointware.core.KindModelAnalyzer;
 import com.github.isdream.jointware.core.ModelParameterAnalyzer;
@@ -24,11 +23,6 @@ public class KubernetesModelParameterAnalyzer extends ModelParameterAnalyzer {
 
 	public KubernetesModelParameterAnalyzer() {
 		super();
-	}
-
-	@Override
-	public Map<String, String> getKindModels() {
-		return getKindModelAnalyzer().getKindModels();
 	}
 
 	@Override

@@ -93,7 +93,7 @@ public class KubernetesKindAnalyzer extends KindAnalyzer {
 	 * 
 	 */
 	@Override
-	protected String getDesc(String parent, Method method) {
+	protected String toDesc(String parent, Method method) {
 		return StringUtils.isNull(method.getName()) ? null : 
 				(StringUtils.isNull(parent) ? method.getName() : parent + "-" + method.getName());
 	}

@@ -3,9 +3,7 @@
  */
 package com.github.isdream.jointware.core;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -26,22 +24,17 @@ import com.github.isdream.jointware.core.utils.StringUtils;
  */
 public abstract class KindModelAnalyzer {
 
+	/************************************************************************************
+	 * 
+	 *                              Cores
+	 * 
+	 ************************************************************************************/
+	
 	/**
 	 * 记录kind和model的对应关系，比如：
 	 * Deployment=io.fabric8.kubernetes.api.model.extensions.Deployment
 	 */
 	protected final Map<String, String> models = new HashMap<String, String>();
-	
-	/**
-	 * 基于先验知识，给出fabrci8实现这个kind模型所在的目录
-	 */
-	protected final List<String> packages = new ArrayList<String>();
-	
-	/************************************************************************************
-	 * 
-	 * 
-	 * 
-	 ************************************************************************************/
 	
 	public KindModelAnalyzer() {
 		super();
@@ -51,7 +44,15 @@ public abstract class KindModelAnalyzer {
 	/**
 	 * 分析kind对应的model
 	 */
-	protected abstract void analyseModels();
+	protected void analyseModels() {
+		for (String kind : getKindAnalyzer().getKinds()) {
+			try {
+				models.put(kind, toKindModel(kind).getName());
+			} catch (Exception e) {
+				// ignore here
+			}
+		}
+	}
 	
 	/**
 	 * @return 获取所有的kind对应的fabric8模型
@@ -60,6 +61,12 @@ public abstract class KindModelAnalyzer {
 		return models;
 	}
 	
+	/**
+	 * @return 获取所有的kind
+	 */
+	protected Set<String> getKinds() {
+		return models.keySet();
+	}
 	
 	/**
 	 * @param kind 具体的kind
@@ -72,18 +79,22 @@ public abstract class KindModelAnalyzer {
 	
 	/************************************************************************************
 	 * 
-	 * 
+	 *                       You should implement it by yourself
 	 * 
 	 ************************************************************************************/
 	
 	/**
-	 * @return 获取所有的kind
+	 * @param kind
+	 * @return
+	 * @throws Exception
 	 */
-	protected abstract Set<String> getKinds();
+	protected abstract Class<?> toKindModel(String kind) throws Exception;
 	
 	/**
 	 * @return
 	 */
 	protected abstract KindAnalyzer getKindAnalyzer();
+	
+	
 	
 }
