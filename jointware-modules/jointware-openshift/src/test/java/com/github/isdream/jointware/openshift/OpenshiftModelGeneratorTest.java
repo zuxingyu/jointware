@@ -3,6 +3,7 @@
  */
 package com.github.isdream.jointware.openshift;
 
+import com.github.isdream.jointware.core.ModelParameterGenerator;
 import com.github.isdream.jointware.kubernetes.OpenshiftModelGenerator;
 import com.github.isdream.jointware.kubernetes.OpenshiftModelParameterGenerator;
 import com.github.isdream.jointware.openshift.kind.NamespaceObject;
@@ -18,14 +19,13 @@ import junit.framework.TestCase;
 public class OpenshiftModelGeneratorTest extends TestCase {
 
 	public static void main(String[] args) throws Exception {
-		OpenshiftModelParameterGenerator kmpgenerator = new OpenshiftModelParameterGenerator();
 //		testNamespace(kmpgenerator);
-		OpenshiftModelGenerator kmgenerator = new OpenshiftModelGenerator();
+		OpenshiftModelGenerator kmgenerator = new OpenshiftModelGenerator(ModelParameterGenerator.JOINTWARE);
 		System.out.println(kmgenerator.toObject(MapUtils.mockBOCOFrontend(), "Deployment"));
 	}
 
 	protected static void testNamespace(OpenshiftModelParameterGenerator kmpgenerator) throws Exception {
-		OpenshiftModelGenerator kmgenerator = new OpenshiftModelGenerator();
+		OpenshiftModelGenerator kmgenerator = new OpenshiftModelGenerator(ModelParameterGenerator.JOINTWARE);
 		System.out.println(kmgenerator.toObject(
 				kmpgenerator.toMap(
 						new NamespaceObject().create()), "Namespace"));

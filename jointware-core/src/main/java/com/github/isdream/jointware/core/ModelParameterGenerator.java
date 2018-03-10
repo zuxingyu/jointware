@@ -21,13 +21,30 @@ import com.github.isdream.jointware.core.utils.ObjectUtils;
  */
 public abstract class ModelParameterGenerator {
 
-	protected final static String JOINTWARE = "jointwareRef";
+	/************************************************************************************
+	 * 
+	 *                             Cores
+	 * 
+	 ************************************************************************************/
+	
+	public final static String JOINTWARE = "jointwareRef";
 
 	protected final static String SET = "set";
 
 	protected final static String DEFAULT_TYPE = "main";
+	
+	protected final String objectRef;
 
 	protected int id = 0;
+
+	public ModelParameterGenerator() {
+		this(JOINTWARE);
+	}
+	
+	public ModelParameterGenerator(String objectRef) {
+		super();
+		this.objectRef = objectRef;
+	}
 
 	/**
 	 * 
@@ -169,11 +186,20 @@ public abstract class ModelParameterGenerator {
 		return JSON.toJSONString(map);
 	}
 
-	/********************************************************
+	/**
+	 * @return
+	 */
+	public String getObjectRef() {
+		return objectRef;
+	}
+
+	/************************************************************************************
 	 * 
+	 *                   You should implement it by yourself
 	 * 
-	 * 
-	 ********************************************************/
+	 ************************************************************************************/
+	
+
 	/**
 	 * @param name
 	 *            名字
@@ -181,5 +207,4 @@ public abstract class ModelParameterGenerator {
 	 */
 	public abstract boolean ignoreMethod(String name);
 
-	public abstract String getObjectRef();
 }

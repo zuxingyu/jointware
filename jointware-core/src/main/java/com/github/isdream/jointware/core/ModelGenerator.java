@@ -22,6 +22,12 @@ import com.github.isdream.jointware.core.utils.ObjectUtils;
  */
 public abstract class ModelGenerator {
 
+	/************************************************************************************
+	 * 
+	 *                                Cores
+	 * 
+	 ************************************************************************************/
+	
 	/**
 	 * 
 	 */
@@ -58,6 +64,23 @@ public abstract class ModelGenerator {
 	 * 
 	 */
 	public Map<String, String> params = null;
+
+	/**
+	 * 
+	 */
+	protected final String objectRef;
+	
+	/**
+	 * 
+	 */
+	public ModelGenerator() {
+		this(ModelParameterGenerator.JOINTWARE);
+	}
+	
+	public ModelGenerator(String objectRef) {
+		super();
+		this.objectRef = objectRef;
+	}
 
 	/**
 	 * @param inputValues
@@ -135,7 +158,7 @@ public abstract class ModelGenerator {
 				Object obj = objCache.get(thisKey);
 				Method method = obj.getClass().getMethod(thisMethod, List.class);
 				if (thisValues.iterator().next()
-						.startsWith(ModelParameterGenerator.JOINTWARE)) {
+						.startsWith(objectRef)) {
 					List<Object> list = new ArrayList<Object>();
 					for (String str : thisValues) {
 						Object newInstance = Class.forName(getClassForCollectionStyle(str)).newInstance();

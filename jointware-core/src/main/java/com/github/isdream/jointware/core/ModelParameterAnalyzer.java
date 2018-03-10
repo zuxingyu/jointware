@@ -14,6 +14,7 @@ import com.github.isdream.jointware.core.utils.StringUtils;
 /**
  * @author wuheng@(otcaix.iscas.ac.cn)
  *
+ *
  * 2018年3月2日
  */
 public abstract class ModelParameterAnalyzer {
@@ -95,7 +96,7 @@ public abstract class ModelParameterAnalyzer {
 		for (Method method : clazz.getMethods()) {
 			if(canReflect(method)) {
 				addParametersToModel(kind, parent, method);
-				if(canLoop(getParamType(method))) {
+				if(canNested(getParamType(method))) {
 					analyseParameters(Class.forName(getParamType(method)), kind, getParent(parent, method));
 				}
 			}
@@ -145,9 +146,10 @@ public abstract class ModelParameterAnalyzer {
 				? method.getName() : parent + "-" + method.getName();
 	}
 
+	
 	/************************************************************************************
 	 * 
-	 * 
+	 *                   You should implement it by yourself
 	 * 
 	 ************************************************************************************/
 	
@@ -203,5 +205,5 @@ public abstract class ModelParameterAnalyzer {
 	 * @param typename 类型名
 	 * @return 是否可以循环
 	 */
-	protected abstract boolean canLoop(String typename);
+	protected abstract boolean canNested(String typename);
 }

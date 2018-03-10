@@ -12,14 +12,22 @@ import com.github.isdream.jointware.core.utils.StringUtils;
 /**
  * @author wuheng@otcaix.iscas.ac.cn
  *
- * 2018年3月6日
+ *         2018年3月6日
  */
 public class OpenshiftModelParameterGenerator extends ModelParameterGenerator {
 
 	protected final static Set<String> ignoreMethods = new HashSet<String>();
-	
+
 	protected final static String GET = "get";
-	
+
+	public OpenshiftModelParameterGenerator() {
+		super();
+	}
+
+	public OpenshiftModelParameterGenerator(String objectRef) {
+		super(objectRef);
+	}
+
 	static {
 		ignoreMethods.add("setApiVersion");
 		ignoreMethods.add("setKind");
@@ -32,8 +40,7 @@ public class OpenshiftModelParameterGenerator extends ModelParameterGenerator {
 		ignoreMethods.add("setCreationTimestamp");
 		ignoreMethods.add("setMetadatasetClasssetModifiers");
 		ignoreMethods.add("setAdditionalProperties");
-		
-		
+
 		ignoreMethods.add("getApiVersion");
 		ignoreMethods.add("getKind");
 		ignoreMethods.add("getResult");
@@ -46,13 +53,10 @@ public class OpenshiftModelParameterGenerator extends ModelParameterGenerator {
 		ignoreMethods.add("getMetadatasetClasssetModifiers");
 		ignoreMethods.add("getAdditionalProperties");
 	}
-	
+
 	@Override
 	public boolean ignoreMethod(String name) {
-		return StringUtils.isNull(name) ? true : 
-			(name.startsWith(GET) 
-					&& !ignoreMethods.contains(name)) 
-							? false : true;
+		return StringUtils.isNull(name) ? true : (name.startsWith(GET) && !ignoreMethods.contains(name)) ? false : true;
 	}
 
 	@Override

@@ -26,7 +26,7 @@ public class KubernetesModelParameterAnalyzer extends ModelParameterAnalyzer {
 	}
 
 	@Override
-	protected boolean canLoop(String typename) {
+	protected boolean canNested(String typename) {
 		return !JavaUtils.isPrimitive(typename) // 不是基础类型
 				&& !JavaUtils.isStringList(typename) //不是List<String>
 				&& !JavaUtils.isStringSet(typename) //不是Set<String>
