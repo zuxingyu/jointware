@@ -6,6 +6,7 @@ package com.github.isdream.jointware.core;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -97,7 +98,8 @@ public abstract class ModelParameterGenerator {
 					values.put(getRealKey(parent, m.getName()), list);
 					for (Object obj : objects) {
 						list.add(getNewValue(++id, obj.getClass().getName()));
-						json.putAll(_toMap(obj, getNewValue(id, obj.getClass().getName()), null));
+						Map<String, Map<String, Object>> pMap = _toMap(obj, getNewValue(id, obj.getClass().getName()), null);
+						json.putAll(pMap);
 					}
 				} else if (JavaUtils.isStringObjectMap(getTypeName(m))) {
 					@SuppressWarnings("unchecked")
@@ -111,16 +113,22 @@ public abstract class ModelParameterGenerator {
 					values.put(getRealKey(parent, m.getName()), list);
 					for (String key : objects.keySet()) {
 						list.add(getRealType(++id, key, objects.get(key).getClass().getName()));
-						json.putAll(_toMap(objects.get(key),
+						Map<String, Map<String, Object>> pMap = _toMap(objects.get(key),
 										getRealType(id, key, 
-												objects.get(key).getClass().getName()), null));
+												objects.get(key).getClass().getName()), null);
+						json.putAll(pMap);
 					}
 				} else {
+					Map<String, Object> thisMap = (json.get(type) == null) 
+										? new HashMap<String, Object>() : json.get(type);
+					Map<String, Map<String, Object>> newMap;
 					if (parent == null) {
-						json.putAll(_toMap(newObject, type, getRealName(m.getName())));
+						newMap = _toMap(newObject, type, getRealName(m.getName()));
 					} else {
-						json.putAll(_toMap(newObject, type, parent + "-" + getRealName(m.getName())));
+						newMap = _toMap(newObject, type, parent + "-" + getRealName(m.getName()));
 					}
+					newMap.get(type).putAll(thisMap);
+					json.putAll(newMap);
 				}
 			} catch (Exception e) {
 				// ignore here
