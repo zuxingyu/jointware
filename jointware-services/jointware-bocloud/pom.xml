@@ -181,11 +181,6 @@
             <artifactId>snakeyaml</artifactId>
             <version>1.17</version>
         </dependency>
-        <!--<dependency>-->
-        <!--<groupId>com.alibaba</groupId>-->
-        <!--<artifactId>tools</artifactId>-->
-        <!--<version>RELEASE</version>-->
-        <!--</dependency>-->
 
         <dependency>
             <groupId>com.github.isdream</groupId>
