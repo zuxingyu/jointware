@@ -187,6 +187,11 @@
             <artifactId>jointware-openshift</artifactId>
             <version>2.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.isdream</groupId>
+            <artifactId>jointware-containers</artifactId>
+            <version>2.0.0</version>
+        </dependency>
     </dependencies>
     <build>
         <finalName>jointware-bocloud</finalName>

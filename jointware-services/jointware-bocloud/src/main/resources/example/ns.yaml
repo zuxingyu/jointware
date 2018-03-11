@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+   name: xyj
+   labels:
+     name: xyj
+     type: deployment

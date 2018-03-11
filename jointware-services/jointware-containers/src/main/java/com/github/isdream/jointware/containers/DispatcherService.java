@@ -125,7 +125,6 @@ public abstract class DispatcherService {
 	 * @return 返回对象
 	 * @throws Exception 返回异常
 	 */
-	@Deprecated
 	public Object scaleTo(Object client, String kind, String namespace, String name, int numbers) throws Exception {
 		if (ObjectUtils.isNull(client) || StringUtils.isNull(kind) || 
 				StringUtils.isNull(namespace) || StringUtils.isNull(name) || numbers <= 0 || numbers >= Integer.MAX_VALUE) {

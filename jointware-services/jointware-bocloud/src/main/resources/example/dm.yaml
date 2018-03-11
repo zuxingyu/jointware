@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: xyj-dm
+  namespace: xyj
+  labels:
+    app: xyj-dm
+spec:
+  replicas: 2
+  template:
+    metadata:
+      name: xyj-dm
+      labels:
+        app: xyj-dm
+    spec:
+      containers:
+      - image: dcr.io:5000/busybox:latest
+        command:
+          - sleep
+          - "3600"
+        imagePullPolicy: IfNotPresent
+        name: xyj-dm
