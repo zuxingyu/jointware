@@ -169,9 +169,9 @@ public abstract class ModelGenerator {
 					List<Object> list = new ArrayList<Object>();
 					for (String str : thisValues) {
 						Object newInstance = Class.forName(getClassForCollectionStyle(str)).newInstance();
-						objCache.put(key, newInstance);
-						_toObject(inputValues, newInstance, key, str);
-						objCache.remove(key);
+						objCache.put(getRealFullname(parent, key), newInstance);
+						_toObject(inputValues, newInstance, getRealFullname(parent, key), str);
+						objCache.remove(getRealFullname(parent, key));
 						list.add(newInstance);
 					}
 					method.invoke(obj, list);
@@ -179,6 +179,7 @@ public abstract class ModelGenerator {
 					thisValues.addAll((Collection<String>)typeValues.get(fullname));
 					method.invoke(obj, thisValues);
 				}
+				System.out.println(objCache.get(DEFAULT_PARENT));
 			} else if (JavaUtils.isStringObjectMap(params.get(getRealFullname(parent, fullname)))) {
 				
 				Collection<String> thisValues = (Collection<String>)typeValues.get(fullname);
@@ -194,9 +195,9 @@ public abstract class ModelGenerator {
 					Map<String, Object> list = new HashMap<String, Object>();
 					for (String str : thisValues) {
 						Object newInstance = Class.forName(getClassForMapStyle(str)).newInstance();
-						objCache.put(key, newInstance);
-						_toObject(inputValues, newInstance, key, str);
-						objCache.remove(key);
+						objCache.put(getRealFullname(parent, key), newInstance);
+						_toObject(inputValues, newInstance, getRealFullname(parent, key), str);
+						objCache.remove(getRealFullname(parent, key));
 						list.put(getKeyForMapStyle(str), newInstance);
 					}
 					method.invoke(obj, list);
@@ -205,7 +206,7 @@ public abstract class ModelGenerator {
 					method.invoke(obj, thisValues);
 				}
 				
-			}  else if (JavaUtils.isStringStringMap(params.get(getRealFullname(parent, fullname)))) {
+			} else if (JavaUtils.isStringStringMap(params.get(getRealFullname(parent, fullname)))) {
 				
 				Map<String, String> thisValues = (Map<String, String>)typeValues.get(fullname);
 				if (thisValues == null || thisValues.isEmpty()) {
@@ -220,9 +221,9 @@ public abstract class ModelGenerator {
 					Map<String, Object> list = new HashMap<String, Object>();
 					for (String str : thisValues.keySet()) {
 						Object newInstance = Class.forName(getClassForMapStyle(str)).newInstance();
-						objCache.put(key, newInstance);
-						_toObject(inputValues, newInstance, key, str);
-						objCache.remove(key);
+						objCache.put(getRealFullname(parent, key), newInstance);
+						_toObject(inputValues, newInstance, getRealFullname(parent, key), str);
+						objCache.remove(getRealFullname(parent, key));
 						list.put(getKeyForMapStyle(str), newInstance);
 					}
 					method.invoke(obj, list);
@@ -231,7 +232,9 @@ public abstract class ModelGenerator {
 					method.invoke(obj, thisValues);
 				}
 				
-			} 
+			} else {
+				System.out.println(key);
+			}
 		}
 	}
 
