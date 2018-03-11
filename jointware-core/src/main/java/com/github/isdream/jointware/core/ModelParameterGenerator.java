@@ -20,6 +20,14 @@ import com.github.isdream.jointware.core.utils.ObjectUtils;
  *
  *         2018年3月5日
  */
+/**
+ * @author Henry
+ *
+ */
+/**
+ * @author Henry
+ *
+ */
 public abstract class ModelParameterGenerator {
 
 	/************************************************************************************
@@ -28,20 +36,41 @@ public abstract class ModelParameterGenerator {
 	 * 
 	 ************************************************************************************/
 	
+	/**
+	 * 
+	 */
 	public final static String JOINTWARE = "jointwareRef";
 
+	/**
+	 * 
+	 */
 	protected final static String SET = "set";
 
+	/**
+	 * 
+	 */
 	protected final static String DEFAULT_TYPE = "main";
 	
+	/**
+	 * 
+	 */
 	protected final String objectRef;
 
+	/**
+	 * 
+	 */
 	protected int id = 0;
 
+	/**
+	 * 
+	 */
 	public ModelParameterGenerator() {
 		this(JOINTWARE);
 	}
 	
+	/**
+	 * @param objectRef ref
+	 */
 	public ModelParameterGenerator(String objectRef) {
 		super();
 		this.objectRef = objectRef;
@@ -61,6 +90,12 @@ public abstract class ModelParameterGenerator {
 		return _toMap(fromObj, DEFAULT_TYPE, null);
 	}
 
+	/**
+	 * @param thisObject obj
+	 * @param type type
+	 * @param parent parent
+	 * @return map
+	 */
 	protected Map<String, Map<String, Object>> _toMap(Object thisObject, String type, String parent) {
 		
 		Map<String, Map<String, Object>> json = new LinkedHashMap<String, Map<String, Object>>();
@@ -141,7 +176,7 @@ public abstract class ModelParameterGenerator {
 	/**
 	 * @param type
 	 * @param json
-	 * @return
+	 * @return map
 	 */
 	protected Map<String, Object> getValue(String type, Map<String, Map<String, Object>> json) {
 		Map<String, Object> content = json.get(type);
@@ -153,8 +188,8 @@ public abstract class ModelParameterGenerator {
 	}
 
 	/**
-	 * @param m
-	 * @return
+	 * @param m method
+	 * @return typename
 	 */
 	protected String getTypeName(Method m) {
 		return m.getGenericReturnType().getTypeName();
@@ -163,12 +198,18 @@ public abstract class ModelParameterGenerator {
 	/**
 	 * @param id
 	 * @param name
-	 * @return
+	 * @return new value
 	 */
 	private String getNewValue(int id, String name) {
 		return getObjectRef() + id + "-" + name;
 	}
 
+	/**
+	 * @param id id
+	 * @param key key
+	 * @param name name
+	 * @return real type
+	 */
 	private String getRealType(int id, String key, String name) {
 		return getObjectRef() + id + "-" + key + "-" + name;
 	}
@@ -176,26 +217,30 @@ public abstract class ModelParameterGenerator {
 	/**
 	 * @param prefix
 	 * @param name
-	 * @return
+	 * @return real key
 	 */
 	private String getRealKey(String prefix, String name) {
 		return (prefix == null) ? getRealName(name) : prefix + "-" + getRealName(name);
 	}
 
+	/**
+	 * @param name
+	 * @return real name
+	 */
 	private String getRealName(String name) {
 		return SET + name.substring(SET.length());
 	}
 
 	/**
 	 * @param map
-	 * @return
+	 * @return json
 	 */
 	public String toJson(Map<String, Map<String, Object>> map) {
 		return JSON.toJSONString(map);
 	}
 
 	/**
-	 * @return
+	 * @return ref
 	 */
 	public String getObjectRef() {
 		return objectRef;
@@ -209,8 +254,7 @@ public abstract class ModelParameterGenerator {
 	
 
 	/**
-	 * @param name
-	 *            名字
+	 * @param name 名字
 	 * @return 是否过滤
 	 */
 	public abstract boolean ignoreMethod(String name);

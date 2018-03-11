@@ -77,6 +77,9 @@ public abstract class ModelParameterAnalyzer {
 	 */
 	protected final static String DEFAULT_PARENT = "";
 	
+	/**
+	 * 
+	 */
 	public ModelParameterAnalyzer() {
 		for (String kind : getKindModels().keySet()) {
 			try {
@@ -90,6 +93,12 @@ public abstract class ModelParameterAnalyzer {
 	}
 
 	
+	/**
+	 * @param clazz class
+	 * @param kind kind
+	 * @param parent parent
+	 * @throws Exception fail reason
+	 */
 	protected void analyseParameters(Class<?> clazz,  
 							String kind, 
 							String parent) throws Exception {
@@ -183,8 +192,8 @@ public abstract class ModelParameterAnalyzer {
 	 ************************************************************************************/
 	
 	/**
-	 * @return
-	 */
+	 * @return 分析器
+ 	 */
 	public abstract KindModelAnalyzer getKindModelAnalyzer();
 	
 	/**

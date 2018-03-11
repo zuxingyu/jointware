@@ -12,8 +12,14 @@ import java.util.*;
  *
  * 2018年3月2日
  */
+@Deprecated
 public class ParametersUtils {
 
+	/**
+	 * @param type type
+	 * @param kind kind
+	 * @param models models
+	 */
 	public static void showModelParametersWithKeyValueStyle(String type, String kind, Map<String, String> models) {
 		System.out.println("## " + type + " " + kind + " parameterss:");
 		System.out.println();
@@ -24,6 +30,11 @@ public class ParametersUtils {
 		System.out.println("```");
 	}
 	
+	/**
+	 * @param type type
+	 * @param kind kind
+	 * @param models models
+	 */
 	public static void showModelParametersWithNetstedStyle(String type, String kind, Map<String, String> models) {
 		System.out.println("## " + type + " " + kind + " parameterss:");
 		System.out.println();
@@ -34,6 +45,11 @@ public class ParametersUtils {
 		System.out.println("```");
 	}
 	
+	/**
+	 * @param type type
+	 * @param kind kind
+	 * @param models models
+	 */
 	public static void showModelParametersWithJsonStyle(String type, String kind, Map<String, String> models) {
 		System.out.println("## " + type + " " + kind + " parameterss:");
 		System.out.println();
@@ -47,6 +63,10 @@ public class ParametersUtils {
 	 * 
 	 *********************************************************************/
 	
+	/**
+	 * @param models models
+	 * @return map
+	 */
 	public static Map<String, Map<String, Object>> toJSonStyle(Map<String, String> models) {
 		Map<String, Map<String, Object>> json = new LinkedHashMap<String, Map<String, Object>>();
 		int id = 0;
@@ -97,6 +117,11 @@ public class ParametersUtils {
 		return json;
 	}
 	
+	/**
+	 * @param key  key
+	 * @param prefix prefix
+	 * @return prefix-key
+	 */
 	public static String getRealKey(String key, String prefix) {
 		try {
 			return key.substring(prefix.length() + 1);
@@ -106,11 +131,19 @@ public class ParametersUtils {
 		
 	}
 
+	/**
+	 * @param fullname fullname
+	 * @return true if ok
+	 */
 	protected static String getSimpleName(String fullname) {
 		int idx = fullname.lastIndexOf("-");
 		return idx == -1 ? fullname : fullname.substring(idx + 1);
 	}
 	
+	/**
+	 * @param fullname fullname
+	 * @return true
+	 */
 	protected static String getIndent(String fullname) {
 		int num = fullname.split("-").length;
 		StringBuffer sb = new StringBuffer();
