@@ -53,6 +53,17 @@
         </mvc:interceptor>
     </mvc:interceptors>
 
-    <bean id="springContextHelper" class="v3.application.utils.SpringContextHelper"></bean>
+    <bean id="springContextHelper" class="v3.application.utils.SpringContextHelper">
+
+    </bean>
+
+    <bean id="serviceSelector" class="v3.application.services.ServiceSelector">
+        <property name="convertors">
+            <map>
+                <entry key="default" value-ref="defaultConvertor"></entry>
+                <entry key="kubernetes-deployment" value-ref="deploymentConvertor"></entry>
+             </map>
+        </property>
+    </bean>
 
 </beans>

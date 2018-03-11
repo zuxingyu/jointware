@@ -16,8 +16,6 @@ import v3.application.kinds.NamespaceObject;
  */
 public class DmGeneratorTest extends TestCase {
 
-
-
 	/**
 	 * @param args
 	 */

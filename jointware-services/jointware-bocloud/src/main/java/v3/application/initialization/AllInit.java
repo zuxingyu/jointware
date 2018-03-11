@@ -14,7 +14,7 @@ import javax.servlet.ServletContextListener;
 
 public class AllInit implements ServletContextListener {
     private Log4JInit lji ;
-    public static String baseFilePath ="D:";
+    public static String baseFilePath ="D:\\bad\\jointware\\jointware-services\\jointware-bocloud\\src\\main\\resources";
     private static Logger logger = Logger.getLogger(AllInit.class);
     public Log4JInit getLji() {
         return lji;
