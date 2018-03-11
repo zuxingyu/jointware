@@ -110,12 +110,14 @@ public abstract class ModelGenerator {
 		
 		Map<String, Object> typeValues = inputValues.get(type);
 		
-		boolean ignore = false;
 		
 		for (String key : typeValues.keySet()) {
+			
+			boolean ignore = false;
+			
 			Stack<String> stack = getStack(key);
 			
-			if (stack.size() <= 1) {
+			if (stack.size() <= 1 && key.indexOf("-") == -1) {
 				ignore = true;
 			}
 			
@@ -145,9 +147,14 @@ public abstract class ModelGenerator {
 				Object obj = objCache.get(thisKey);
 				Method method = obj.getClass().getMethod(
 						thisMethod, Class.forName(params.get(getRealFullname(parent, fullname))));
+				
+				if (!(typeValues.get(fullname) instanceof String)) {
+					typeValues.put(fullname, String.valueOf(typeValues.get(fullname)));
+				}
 				Class<?> clazz = Class.forName(params.get(getRealFullname(parent, fullname)));
 				Constructor<?> c = clazz.getConstructor(String.class);
 				method.invoke(obj, c.newInstance(typeValues.get(fullname)));
+				
 			} else if (JavaUtils.isList(params.get(getRealFullname(parent, fullname)))) {
 				
 				Collection<String> thisValues = (Collection<String>)typeValues.get(fullname);
@@ -172,10 +179,36 @@ public abstract class ModelGenerator {
 					thisValues.addAll((Collection<String>)typeValues.get(fullname));
 					method.invoke(obj, thisValues);
 				}
-			} else if (JavaUtils.isMap(params.get(getRealFullname(parent, fullname)))) {
+			} else if (JavaUtils.isStringObjectMap(params.get(getRealFullname(parent, fullname)))) {
 				
-				Map<String, Object> thisValues = new HashMap<String, Object>();
-				if (thisValues == null || thisValues.keySet().isEmpty()) {
+				Collection<String> thisValues = (Collection<String>)typeValues.get(fullname);
+				if (thisValues == null || thisValues.isEmpty()) {
+					continue;
+				}
+				
+				Object obj = objCache.get(thisKey);
+				Method method = obj.getClass().getMethod(thisMethod, Map.class);
+				
+				if (thisValues.iterator().next()
+						.startsWith(ModelParameterGenerator.JOINTWARE)) {
+					Map<String, Object> list = new HashMap<String, Object>();
+					for (String str : thisValues) {
+						Object newInstance = Class.forName(getClassForMapStyle(str)).newInstance();
+						objCache.put(key, newInstance);
+						_toObject(inputValues, newInstance, key, str);
+						objCache.remove(key);
+						list.put(getKeyForMapStyle(str), newInstance);
+					}
+					method.invoke(obj, list);
+				} else {
+					thisValues.addAll((Collection<String>)typeValues.get(fullname));
+					method.invoke(obj, thisValues);
+				}
+				
+			}  else if (JavaUtils.isStringStringMap(params.get(getRealFullname(parent, fullname)))) {
+				
+				Map<String, String> thisValues = (Map<String, String>)typeValues.get(fullname);
+				if (thisValues == null || thisValues.isEmpty()) {
 					continue;
 				}
 				
@@ -198,9 +231,7 @@ public abstract class ModelGenerator {
 					method.invoke(obj, thisValues);
 				}
 				
-			} else {
-				throw new UnsupportedOperationException();
-			}
+			} 
 		}
 	}
 

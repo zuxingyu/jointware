@@ -12,7 +12,7 @@ metadata:
     image-group-name: tomcat-43-v1-4dc75
     version-id: version-id-50000019
   name: tomcat-43-v1-4dc75
-  namespace: default
+  namespace: development
   #resourceVersion: "220486"
   #selfLink: /apis/extensions/v1beta1/namespaces/default/deployments/tomcat-43-v1-4dc75
   #uid: 2fb46da9-f039-11e7-9153-5254004dbd78
