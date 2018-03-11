@@ -32,21 +32,16 @@ public abstract class ModelParameterAnalyzer {
 	 * setMetadata=io.fabric8.kubernetes.api.model.ObjectMeta
 	 * setMetadata-setName=java.lang.String
 	 * setMetadata-setNamespace=java.lang.String
-	 * setMetadata-setAnnotations=java.util.Map<java.lang.String, java.lang.String>
 	 * setMetadata-setClusterName=java.lang.String
-	 * setMetadata-setFinalizers=java.util.List<java.lang.String>
 	 * setMetadata-setGenerateName=java.lang.String
 	 * setMetadata-setGeneration=java.lang.Long
 	 * setMetadata-setInitializers=io.fabric8.kubernetes.api.model.Initializers
-	 * setMetadata-setInitializers-setPending=java.util.List<io.fabric8.kubernetes.api.model.Initializer>
 	 * setMetadata-setInitializers-setPending-setName=java.lang.String
-	 * setMetadata-setLabels=java.util.Map<java.lang.String, java.lang.String>
 	 * setMetadata-setSelfLink=java.lang.String
 	 * setMetadata-setUid=java.lang.String
 	 * setMetadata-setCreationTimestamp=java.lang.String
 	 * setMetadata-setDeletionGracePeriodSeconds=java.lang.Long
 	 * setMetadata-setDeletionTimestamp=java.lang.String
-	 * setMetadata-setOwnerReferences=java.util.List<io.fabric8.kubernetes.api.model.OwnerReference>
 	 * setMetadata-setOwnerReferences-setName=java.lang.String
 	 * setMetadata-setOwnerReferences-setKind=java.lang.String
 	 * setMetadata-setOwnerReferences-setBlockOwnerDeletion=java.lang.Boolean
@@ -55,9 +50,7 @@ public abstract class ModelParameterAnalyzer {
 	 * setMetadata-setResourceVersion=java.lang.String
 	 * setKind=java.lang.String
 	 * setAutomountServiceAccountToken=java.lang.Boolean
-	 * setImagePullSecrets=java.util.List<io.fabric8.kubernetes.api.model.LocalObjectReference>
 	 * setImagePullSecrets-setName=java.lang.String
-	 * setSecrets=java.util.List<io.fabric8.kubernetes.api.model.ObjectReference>
 	 * setSecrets-setName=java.lang.String
 	 * setSecrets-setKind=java.lang.String
 	 * setSecrets-setNamespace=java.lang.String
@@ -77,6 +70,9 @@ public abstract class ModelParameterAnalyzer {
 	 */
 	protected final static String DEFAULT_PARENT = "";
 	
+	/**
+	 * 
+	 */
 	public ModelParameterAnalyzer() {
 		for (String kind : getKindModels().keySet()) {
 			try {
@@ -90,6 +86,12 @@ public abstract class ModelParameterAnalyzer {
 	}
 
 	
+	/**
+	 * @param clazz class
+	 * @param kind kind
+	 * @param parent parent
+	 * @throws Exception fail reason
+	 */
 	protected void analyseParameters(Class<?> clazz,  
 							String kind, 
 							String parent) throws Exception {
@@ -106,8 +108,6 @@ public abstract class ModelParameterAnalyzer {
 
 	/**
 	 * 主要针对这种场景进行提取
-	 * setMetadata-setOwnerReferences=java.util.List<io.fabric8.kubernetes.api.model.OwnerReference>
-	 * java.util.Map<java.lang.String, io.fabric8.kubernetes.api.model.Quantity>
 	 * 则参数的类型是io.fabric8.kubernetes.api.model.OwnerReference
 	 * 
 	 * @param method 方法名
@@ -183,8 +183,8 @@ public abstract class ModelParameterAnalyzer {
 	 ************************************************************************************/
 	
 	/**
-	 * @return
-	 */
+	 * @return 分析器
+ 	 */
 	public abstract KindModelAnalyzer getKindModelAnalyzer();
 	
 	/**

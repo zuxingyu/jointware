@@ -10,8 +10,13 @@ import java.util.Set;
  *
  * 2018年3月2日
  */
+@Deprecated
 public class FeaturesUtils {
 
+	/**
+	 * @param name name
+	 * @param kinds kinds
+	 */
 	public static void showAllFeatures(String name, Set<String> kinds) {
 		System.out.println("## " + name + " features:");
 		System.out.println();
@@ -22,6 +27,9 @@ public class FeaturesUtils {
 		System.out.println("```");
 	}
 	
+	/**
+	 * @param kinds kinds
+	 */
 	public static void testFeaturesWithTrueResults(Set<String> kinds) {
 		for (String kind : kinds) {
 			System.out.println("Assert.assertEquals(kinds.contains(\"" + kind
@@ -30,6 +38,9 @@ public class FeaturesUtils {
 		
 	}
 	
+	/**
+	 * @param kinds kinds
+	 */
 	public static void testFeaturesWithFalseResults(Set<String> kinds) {
 		for (String kind : kinds) {
 			System.out.println("Assert.assertEquals(kinds.contains(\"" + kind

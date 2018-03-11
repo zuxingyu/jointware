@@ -77,16 +77,19 @@ public abstract class ModelGenerator {
 		this(ModelParameterGenerator.JOINTWARE);
 	}
 	
+	/**
+	 * @param objectRef ref
+	 */
 	public ModelGenerator(String objectRef) {
 		super();
 		this.objectRef = objectRef;
 	}
 
 	/**
-	 * @param inputValues
-	 * @param kind
-	 * @return
-	 * @throws Exception 
+	 * @param inputValues values
+	 * @param kind kind
+	 * @return Object
+	 * @throws Exception fail reason 
 	 */
 	public Object toObject(Map<String, Map<String, Object>> inputValues, 
 									String kind) throws Exception {
@@ -104,6 +107,13 @@ public abstract class ModelGenerator {
 		return objCache.get(DEFAULT_TYPE);
 	}
 
+	/**
+	 * @param inputValues values
+	 * @param object object
+	 * @param parent parent
+	 * @param type type
+	 * @throws Exception what you fail
+	 */
 	@SuppressWarnings("unchecked")
 	protected void _toObject(Map<String, Map<String, Object>> inputValues, 
 			Object object, String parent, String type) throws Exception {
@@ -238,36 +248,68 @@ public abstract class ModelGenerator {
 		}
 	}
 
+	/**
+	 * @param str str
+	 * @return style
+	 */
 	protected String getClassForCollectionStyle(String str) {
 		int idx = str.indexOf("-");
 		return str.substring(idx + 1).trim();
 	}
 	
+	/**
+	 * @param str str
+	 * @return style
+	 */
 	protected String getClassForMapStyle(String str) {
 		int idx = str.lastIndexOf("-");
 		return str.substring(idx + 1).trim();
 	}
 	
+	/**
+	 * @param str str
+	 * @return style
+	 */
 	protected String getKeyForMapStyle(String str) {
 		int sidx = str.indexOf("-");
 		int eidx = str.lastIndexOf("-");
 		return str.substring(sidx + 1, eidx).trim();
 	}
 	
+	/**
+	 * @param name name
+	 * @return real name
+	 */
 	protected String getName(String name) {
 		return GET_METHOD + name.substring(SET_METHOD.length());
 	}
 
+	/**
+	 * @param parent parent
+	 * @param fullname fullname
+	 * @param idx idx
+	 * @return real key
+	 */
 	protected String getRealKey(String parent, String fullname, int idx) {
 		String realKey = (idx == -1) ? fullname : fullname.substring(0, idx);
 		return parent.equals(DEFAULT_PARENT) ? realKey : parent + "-" + realKey;
 	}
 
 	
+	/**
+	 * @param parent parent
+	 * @param fullname fullname
+	 * @return real fullname
+	 */
 	protected String getRealFullname(String parent, String fullname) {
 		return (parent.equals(DEFAULT_PARENT)) ? fullname : parent + "-" + fullname;
 	}
 	
+	/**
+	 * @param type type
+	 * @param fullname fullname
+	 * @return parent
+	 */
 	protected String getParent(String type, String fullname) {
 		int idx = fullname.lastIndexOf("-");
 		return (idx == -1) 
@@ -276,12 +318,20 @@ public abstract class ModelGenerator {
 							: fullname.substring(0, idx);
 	}
 	
+	/**
+	 * @param fullname fullname
+	 * @return parent
+	 */
 	protected String getParent(String fullname) {
 		int idx = fullname.lastIndexOf("-");
 		return (idx == -1) ?  fullname 
 							: fullname.substring(0, idx);
 	}
 	
+	/**
+	 * @param key key
+	 * @return stack
+	 */
 	protected Stack<String> getStack(String key) {
 		String elem = key;
 		Stack<String> stack = new Stack<String>();
@@ -296,8 +346,8 @@ public abstract class ModelGenerator {
 	}
 
 	/**
-	 * @param kind 
-	 * @return
+	 * @param kind kind
+	 * @return Object
 	 */
 	protected Object getKindObject(String kind) {
 		try {

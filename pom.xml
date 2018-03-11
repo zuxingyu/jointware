@@ -10,6 +10,11 @@
 	<name>joinware</name>
 	<url>http://maven.apache.org</url>
 
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+	</properties>
+
 	<modules>
 		<module>jointware-modules</module>
 		<module>jointware-core</module>
