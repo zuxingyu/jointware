@@ -15,6 +15,7 @@
     <version>2.0.0</version>
 	<modules>
 		<module>jointware-bocloud</module>
+		<module>jointware-containers</module>
 	</modules>
 	<packaging>pom</packaging>
 
