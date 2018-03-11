@@ -3,7 +3,6 @@
  */
 package com.github.isdream.jointware.containers;
 
-import java.lang.reflect.Method;
 import java.util.Map;
 
 import com.github.isdream.jointware.core.utils.ObjectUtils;
@@ -275,19 +274,9 @@ public abstract class DispatcherService {
 	 */
 	public abstract Object getKindModel(Object client, String kind) throws Exception;
 	
-	/**
-	 * @param params 参数集
-	 * @param kind 类型
-	 * @return 对应的实例
-	 * @throws Exception 反射一场
-	 */
-	public abstract Object generateParameters(Map<String, Map<String, Object>> params, String kind) throws Exception;
 	
 	/**
-	 * @param client 客户端
-	 * @param kind 类型
-	 * @return 方法
-	 * @throws Exception 反射异常
+	 * @return
 	 */
-	protected abstract Method getCreateMethod(Object client, String kind) throws Exception;
+	public abstract String getObjectRef();
 }
