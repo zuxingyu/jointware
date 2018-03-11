@@ -78,7 +78,7 @@ public abstract class ModelGenerator {
 	}
 	
 	/**
-	 * @param objectRef
+	 * @param objectRef ref
 	 */
 	public ModelGenerator(String objectRef) {
 		super();
@@ -86,10 +86,10 @@ public abstract class ModelGenerator {
 	}
 
 	/**
-	 * @param inputValues
-	 * @param kind
-	 * @return
-	 * @throws Exception 
+	 * @param inputValues values
+	 * @param kind kind
+	 * @return Object
+	 * @throws Exception fail reason 
 	 */
 	public Object toObject(Map<String, Map<String, Object>> inputValues, 
 									String kind) throws Exception {

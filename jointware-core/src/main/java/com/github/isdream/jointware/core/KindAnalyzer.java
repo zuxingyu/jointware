@@ -52,7 +52,7 @@ public abstract class KindAnalyzer {
 	protected final static String DEFAULT_DESC = "";
 	
 	/**
-	 * @throws Exception 反射异常
+	 * 
 	 */
 	public KindAnalyzer() {
 		analyseKinds(getClient(), DEFAULT_DESC);
@@ -63,7 +63,6 @@ public abstract class KindAnalyzer {
 	 * 
 	 * @param classname 类名
 	 * @param parentDesc 父节点
-	 * @throws Exception 反射异常
 	 */
 	protected void analyseKinds(String classname, String parentDesc) {
 		Class<?> clazz = loadClass(classname);

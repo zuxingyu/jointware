@@ -84,14 +84,14 @@ public abstract class KindModelAnalyzer {
 	 ************************************************************************************/
 	
 	/**
-	 * @param kind
-	 * @return
-	 * @throws Exception
+	 * @param kind kind
+	 * @return class
+	 * @throws Exception fail reason
 	 */
 	protected abstract Class<?> toKindModel(String kind) throws Exception;
 	
 	/**
-	 * @return
+	 * @return KindAnalyzer
 	 */
 	protected abstract KindAnalyzer getKindAnalyzer();
 	
