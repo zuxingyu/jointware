@@ -84,7 +84,7 @@ public class JavaUtils {
 	
 	/**
 	 * @param typename typename
-	 * @return return true if the typename is java.util.Map<String, String>, otherwise return false
+	 * @return  true if the typename is java.util.Map with (String, String) style, otherwise return false
 	 */
 	public static boolean isStringStringMap(String typename) {
 		try {
@@ -106,7 +106,7 @@ public class JavaUtils {
 	
 	/**
 	 * @param typename typename
-	 * @return return true if the typename is Map, but not java.util.Map<String, String>, otherwise return false
+	 * @return return true if the typename is Map, but not java.util.Map with (String, String) style, otherwise return false
 	 */
 	public static boolean isStringObjectMap(String typename) {
 		return isMap(typename) && !isStringStringMap(typename);
@@ -120,7 +120,7 @@ public class JavaUtils {
 	
 	/**
 	 * @param typename typename
-	 * @return return true if the typename is java.util.List<String>, otherwise return false
+	 * @return return true if the typename is java.util.List with String style, otherwise return false
 	 */
 	public static boolean isStringList(String typename) {
 		try {
@@ -143,7 +143,7 @@ public class JavaUtils {
 
 	/**
 	 * @param typename typename
-	 * @return return true if the typename is starts with java.util.List, but not java.util.List<String>, otherwise return false
+	 * @return return true if the typename is starts with java.util.List, but not java.util.List with String style, otherwise return false
 	 */
 	public static boolean isObjectList(String typename) {
 		return isList(typename) && !isStringList(typename);

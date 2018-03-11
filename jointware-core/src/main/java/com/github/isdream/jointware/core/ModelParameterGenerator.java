@@ -78,7 +78,7 @@ public abstract class ModelParameterGenerator {
 
 	/**
 	 * 
-	 * @param fromObj
+	 * @param fromObj obj
 	 * @return Json
 	 */
 	public Map<String, Map<String, Object>> toMap(Object fromObj) {
@@ -174,8 +174,8 @@ public abstract class ModelParameterGenerator {
 	}
 
 	/**
-	 * @param type
-	 * @param json
+	 * @param type type
+	 * @param json json
 	 * @return map
 	 */
 	protected Map<String, Object> getValue(String type, Map<String, Map<String, Object>> json) {
@@ -232,7 +232,7 @@ public abstract class ModelParameterGenerator {
 	}
 
 	/**
-	 * @param map
+	 * @param map map
 	 * @return json
 	 */
 	public String toJson(Map<String, Map<String, Object>> map) {

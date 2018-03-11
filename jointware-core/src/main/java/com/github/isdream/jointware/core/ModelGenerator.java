@@ -346,8 +346,8 @@ public abstract class ModelGenerator {
 	}
 
 	/**
-	 * @param kind 
-	 * @return
+	 * @param kind kind
+	 * @return Object
 	 */
 	protected Object getKindObject(String kind) {
 		try {
