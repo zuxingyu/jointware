@@ -3,7 +3,7 @@
  */
 package com.github.isdream.jointware.kubernetes;
 
-import com.github.isdream.jointware.core.ParametersUtils;
+import com.github.isdream.jointware.core.utils.ParametersUtils;
 import com.github.isdream.jointware.kubernetes.KubernetesModelParameterAnalyzer;
 
 import junit.framework.TestCase;

@@ -7,8 +7,7 @@ import java.util.Set;
 
 import org.junit.Assert;
 
-import com.github.isdream.jointware.core.FeaturesUtils;
-import com.github.isdream.jointware.kubernetes.KubernetesKindAnalyzer;
+import com.github.isdream.jointware.core.utils.FeaturesUtils;
 
 import junit.framework.TestCase;
 

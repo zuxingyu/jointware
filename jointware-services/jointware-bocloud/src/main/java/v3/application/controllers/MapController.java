@@ -29,6 +29,9 @@ public class MapController {
     @RequestMapping("dispatch.do")
     public @ResponseBody
     ResultBean releaseApplication(@RequestBody Map<String,Object> map){
+        if(map.get("test3") instanceof Map){
+            System.out.println("test3:"+map.get("test3"));
+        }
         System.out.println(map.get("test"));
         return new ResultBean(true,"a test");
     }

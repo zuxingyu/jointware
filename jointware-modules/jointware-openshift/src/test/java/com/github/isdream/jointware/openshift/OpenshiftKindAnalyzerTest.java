@@ -7,7 +7,7 @@ import java.util.Set;
 
 import org.junit.Assert;
 
-import com.github.isdream.jointware.core.FeaturesUtils;
+import com.github.isdream.jointware.core.utils.FeaturesUtils;
 import com.github.isdream.jointware.kubernetes.OpenshiftKindAnalyzer;
 
 import junit.framework.TestCase;

@@ -3,7 +3,7 @@
  */
 package com.github.isdream.jointware.openshift;
 
-import com.github.isdream.jointware.core.ParametersUtils;
+import com.github.isdream.jointware.core.utils.ParametersUtils;
 import com.github.isdream.jointware.kubernetes.OpenshiftModelParameterAnalyzer;
 
 import junit.framework.TestCase;

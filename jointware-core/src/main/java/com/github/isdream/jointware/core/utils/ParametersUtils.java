@@ -1,16 +1,11 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package com.github.isdream.jointware.core;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+package com.github.isdream.jointware.core.utils;
 
 import com.alibaba.fastjson.JSON;
-import com.github.isdream.jointware.core.utils.JavaUtils;
+
+import java.util.*;
 
 /**
  * @author wuheng@otcaix.iscas.ac.cn

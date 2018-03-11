@@ -1,7 +1,7 @@
 /**
  * Copyright (2018, ) Institute of Software, Chinese Academy of Sciences
  */
-package com.github.isdream.jointware.core;
+package com.github.isdream.jointware.core.utils;
 
 import java.util.Set;
 

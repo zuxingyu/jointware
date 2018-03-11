@@ -8,9 +8,7 @@ import java.util.Map;
 
 import org.junit.Assert;
 
-import com.github.isdream.jointware.core.ModelsUtils;
-import com.github.isdream.jointware.kubernetes.KubernetesKindAnalyzer;
-import com.github.isdream.jointware.kubernetes.KubernetesKindModelAnalyzer;
+import com.github.isdream.jointware.core.utils.ModelsUtils;
 
 import junit.framework.TestCase;
 
