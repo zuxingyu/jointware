@@ -30,7 +30,7 @@ public class KubernetesModelParameterGeneratorTest extends TestCase {
 		System.out.println(generator.toJson(
 				generator.toMap(
 						new DeploymentObject().create())));
-		
+//		
 		System.out.println(generator.toJson(
 				generator.toMap(
 						new UBOCObject().create())));
