@@ -42,12 +42,14 @@ public abstract class AbstractHandler {
 		try {
 			typeRules = JSON.parseObject(
 					new FileInputStream(
-							new File("examples/jointware-key-rules.json")), null, null);
+							new File("examples/jointware-type-rules.json")), null, null);
 		} catch (Exception e) {
 			typeRules = new HashMap<String, Map<String, String>>();
 		}
 	}
 	
-	public abstract Map<String, Map<String, Object>> doHandle(Map<String, Map<String, Object>> originRequest, String tag, String kind);
+	public abstract Map<String, Map<String, Object>> doHandle(
+											Map<String, Map<String, Object>> originRequest, 
+											String tag, String kind) throws Exception;
 
 }
