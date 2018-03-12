@@ -3,6 +3,10 @@
  */
 package com.github.isdream.jointware.containers;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Map;
 
 import com.alibaba.fastjson.JSON;
@@ -21,12 +25,15 @@ public class JSONToExecutorSampleTest {
 	/**********************************************
 	 * 
 	 *                Mock client request
+	 * @throws IOException 
+	 * @throws FileNotFoundException 
 	 * 
 	 **********************************************/
 	
 	@SuppressWarnings("unchecked")
-	public static Map<String, Map<String, Object>> getClientRequest() {
-		return (Map<String, Map<String, Object>>) JSON.parse("examples/client-request.json");
+	public static Map<String, Map<String, Object>> getClientRequest() throws Exception {
+		// examples/client-request.json
+		return JSON.parseObject(new FileInputStream(new File("examples/client-request.json")), null, null);
 	}
 
 	/**************************************************

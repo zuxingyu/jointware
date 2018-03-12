@@ -3,7 +3,14 @@
  */
 package com.github.isdream.jointware.containers.handlers;
 
-import java.util.Properties;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import com.alibaba.fastjson.JSON;
 
 /**
  * @author wuheng@otcaix.iscas.ac.cn
@@ -11,32 +18,36 @@ import java.util.Properties;
  */
 public abstract class AbstractHandler {
 
-	public final static String OBJECT = "obj";
+	public final static String DEFAULT_TYPE = "main";
 	
-	public final static String TAG = "tag";
+	public final static String IS_MAP = "com.alibaba.fastjson.JSONObject";
 	
-	protected AbstractHandler nextHandler;
+	public final static String IS_LIST = "com.alibaba.fastjson.JSONArray";
 	
-	public AbstractHandler() {
-		super();
+	public static Map<String, Map<String, Map<String, String>>> keyRules = null;
+	
+	static {
+		try {
+			keyRules = JSON.parseObject(
+					new FileInputStream(
+							new File("examples/jointware-key-rules.json")), null, null);
+		} catch (Exception e) {
+			keyRules = new HashMap<String, Map<String, Map<String, String>>>();
+		}
 	}
 
-	public void handle(Properties props) {
-		doHandle(props);
-		
-		if (nextHandler != null) {
-			nextHandler.doHandle(props);
+	public static Map<String, Map<String, String>> typeRules = null;
+	
+	static {
+		try {
+			typeRules = JSON.parseObject(
+					new FileInputStream(
+							new File("examples/jointware-key-rules.json")), null, null);
+		} catch (Exception e) {
+			typeRules = new HashMap<String, Map<String, String>>();
 		}
 	}
 	
-	public abstract void doHandle(Properties props);
+	public abstract Map<String, Map<String, Object>> doHandle(Map<String, Map<String, Object>> originRequest, String tag, String kind);
 
-	public AbstractHandler getNextHandler() {
-		return nextHandler;
-	}
-
-	public void setNextHandler(AbstractHandler nextHandler) {
-		this.nextHandler = nextHandler;
-	}
-	
 }
