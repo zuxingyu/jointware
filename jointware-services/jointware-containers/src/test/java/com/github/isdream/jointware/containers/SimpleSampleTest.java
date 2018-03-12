@@ -9,7 +9,6 @@ import com.alibaba.fastjson.JSON;
 import com.github.isdream.jointware.containers.impl.KubernetesDispatcherService;
 import com.github.isdream.jointware.kubernetes.KubernetesModelGenerator;
 
-import io.fabric8.kubernetes.api.model.Namespace;
 import io.fabric8.kubernetes.api.model.extensions.Deployment;
 import io.fabric8.kubernetes.client.Config;
 import io.fabric8.kubernetes.client.ConfigBuilder;
@@ -20,7 +19,7 @@ import io.fabric8.kubernetes.client.DefaultKubernetesClient;
  *
  * 2018年3月11日
  */
-public class SampleTest {
+public class SimpleSampleTest {
 
 	public final static String MASTER_URL = "http://118.190.46.58:9888";
 	
@@ -32,7 +31,7 @@ public class SampleTest {
 	 * @throws Exception 
 	 */
 	public static void main(String[] args) throws Exception {
-		DispatcherService dp = new KubernetesDispatcherService();
+		ConatinerDispatcher dp = new KubernetesDispatcherService();
 //		dp.create(createClient(), Namespace.class.getSimpleName(), getParams(NAMESPACE));
 //		System.out.println(dp.query(createClient(), Namespace.class.getSimpleName(), "development"));
 		

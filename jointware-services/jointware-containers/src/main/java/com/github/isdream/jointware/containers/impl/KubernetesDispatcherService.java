@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import com.github.isdream.jointware.containers.DispatcherService;
+import com.github.isdream.jointware.containers.ConatinerDispatcher;
 import com.github.isdream.jointware.core.ModelParameterGenerator;
 import com.github.isdream.jointware.core.utils.StringUtils;
 import com.github.isdream.jointware.kubernetes.KubernetesKindAnalyzer;
@@ -29,7 +29,7 @@ import io.fabric8.kubernetes.client.dsl.Scaleable;
  *
  * 2018年3月11日
  */
-public class KubernetesDispatcherService extends DispatcherService {
+public class KubernetesDispatcherService extends ConatinerDispatcher {
 
 
 	private final static Set<String> workloadControllers = new HashSet<String>();

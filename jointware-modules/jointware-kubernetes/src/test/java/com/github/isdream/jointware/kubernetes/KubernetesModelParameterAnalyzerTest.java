@@ -20,8 +20,8 @@ public class KubernetesModelParameterAnalyzerTest extends TestCase {
 	 */
 	public static void main(String[] args) {
 		KubernetesModelParameterAnalyzer analyzer = new KubernetesModelParameterAnalyzer();
-//		showModelParametersWithKeyValueStyle(analyzer);
-//		showModelParametersWithNetstedStyle(analyzer);
+		showModelParametersWithKeyValueStyle(analyzer);
+		showModelParametersWithNetstedStyle(analyzer);
 		showModelParametersWithJsonStyle(analyzer);
 	}
 
