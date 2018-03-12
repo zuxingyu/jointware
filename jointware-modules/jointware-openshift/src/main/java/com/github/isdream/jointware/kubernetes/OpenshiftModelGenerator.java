@@ -3,7 +3,6 @@
  */
 package com.github.isdream.jointware.kubernetes;
 
-import com.github.isdream.jointware.core.ModelGenerator;
 import com.github.isdream.jointware.core.ModelParameterAnalyzer;
 
 /**
@@ -11,15 +10,21 @@ import com.github.isdream.jointware.core.ModelParameterAnalyzer;
  *
  * 2018年3月8日
  */
-public class OpenshiftModelGenerator extends ModelGenerator {
+public class OpenshiftModelGenerator extends KubernetesModelGenerator {
 
 	protected final static OpenshiftModelParameterAnalyzer 
 						analyzer = new OpenshiftModelParameterAnalyzer();
 	
+	/**
+	 * 
+	 */
 	public OpenshiftModelGenerator() {
 		super();
 	}
 
+	/**
+	 * @param objectRef
+	 */
 	public OpenshiftModelGenerator(String objectRef) {
 		super(objectRef);
 	}

@@ -24,7 +24,7 @@ public class OpenshiftModelParameterGeneratorTest extends TestCase {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		OpenshiftModelParameterGenerator generator = new OpenshiftModelParameterGenerator(ModelParameterGenerator.JOINTWARE);
+		OpenshiftModelParameterGenerator generator = new OpenshiftModelParameterGenerator();
 		System.out.println(generator.toJson(
 				generator.toMap(
 						new NamespaceObject().create())));
