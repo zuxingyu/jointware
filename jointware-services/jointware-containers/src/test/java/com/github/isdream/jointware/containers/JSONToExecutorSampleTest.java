@@ -81,8 +81,6 @@ public class JSONToExecutorSampleTest {
 	 * 
 	 **********************************************/
 	
-	public static Map<String, Map<String, Object>> kubeKeysRule = (Map<String, Map<String, Object>>) JSON.parse("examples/kubernetes-keys.json");; 
-	
 	public static Map<String, Map<String, Object>> toTargetMap(Map<String, Map<String, Object>> origin, String key) {
 		
 		return null;
@@ -105,7 +103,7 @@ public class JSONToExecutorSampleTest {
 		Map<String, Map<String, Object>> targetRequest = toTargetMap(originRequest, "bocodevopsplatform");
 		
 		// getExcutor
-		ConatinerDispatcher executor = (ConatinerDispatcher) createExecutor(originRequest.get("target"));
+		ConatinerExecutor executor = (ConatinerExecutor) createExecutor(originRequest.get("target"));
 		
 		// impl
 		executor.create(client, getKind(originRequest.remove("target")), targetRequest);

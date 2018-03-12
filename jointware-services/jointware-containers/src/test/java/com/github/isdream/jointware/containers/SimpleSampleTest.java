@@ -6,7 +6,7 @@ package com.github.isdream.jointware.containers;
 import java.util.Map;
 
 import com.alibaba.fastjson.JSON;
-import com.github.isdream.jointware.containers.impl.KubernetesDispatcherService;
+import com.github.isdream.jointware.containers.impl.KubernetesExecutor;
 import com.github.isdream.jointware.kubernetes.KubernetesModelGenerator;
 
 import io.fabric8.kubernetes.api.model.extensions.Deployment;
@@ -31,7 +31,7 @@ public class SimpleSampleTest {
 	 * @throws Exception 
 	 */
 	public static void main(String[] args) throws Exception {
-		ConatinerDispatcher dp = new KubernetesDispatcherService();
+		ConatinerExecutor dp = new KubernetesExecutor();
 //		dp.create(createClient(), Namespace.class.getSimpleName(), getParams(NAMESPACE));
 //		System.out.println(dp.query(createClient(), Namespace.class.getSimpleName(), "development"));
 		

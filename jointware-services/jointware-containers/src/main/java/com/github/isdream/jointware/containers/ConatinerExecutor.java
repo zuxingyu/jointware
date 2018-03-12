@@ -13,7 +13,7 @@ import com.github.isdream.jointware.core.utils.StringUtils;
  *
  * 2018年3月11日
  */
-public abstract class ConatinerDispatcher {
+public abstract class ConatinerExecutor {
 
 	
 	public final static String IGNORE_NAMESPACE = "ignore.namespace";

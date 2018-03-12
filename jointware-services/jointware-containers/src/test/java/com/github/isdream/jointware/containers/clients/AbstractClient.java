@@ -5,8 +5,7 @@ package com.github.isdream.jointware.containers.clients;
 
 import java.util.Map;
 
-import com.github.isdream.jointware.containers.ConatinerDispatcher;
-import com.github.isdream.jointware.core.ModelGenerator;
+import com.github.isdream.jointware.containers.ConatinerExecutor;
 
 /**
  * @author wuheng@otcaix.iscas.ac.cn
@@ -29,5 +28,5 @@ public interface AbstractClient {
 
 	public abstract Object create(Map<String, Object> map);
 	
-	public abstract ConatinerDispatcher getConatinerDispatcher();
+	public abstract ConatinerExecutor getConatinerDispatcher();
 }

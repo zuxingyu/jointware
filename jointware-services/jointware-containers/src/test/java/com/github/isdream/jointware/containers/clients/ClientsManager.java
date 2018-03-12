@@ -16,7 +16,7 @@ import com.alibaba.fastjson.JSON;
 public class ClientsManager {
 
 	@SuppressWarnings("unchecked")
-	protected static Map<String, String> clients = (Map<String, String>) JSON.parse("examples/client-type.json");;
+	protected static Map<String, String> clients = (Map<String, String>) JSON.parse("examples/jointware-clients.json");;
 	
 	static {
 	}

@@ -5,8 +5,8 @@ package com.github.isdream.jointware.containers.clients;
 
 import java.util.Map;
 
-import com.github.isdream.jointware.containers.ConatinerDispatcher;
-import com.github.isdream.jointware.containers.impl.KubernetesDispatcherService;
+import com.github.isdream.jointware.containers.ConatinerExecutor;
+import com.github.isdream.jointware.containers.impl.KubernetesExecutor;
 
 import io.fabric8.kubernetes.client.Config;
 import io.fabric8.kubernetes.client.ConfigBuilder;
@@ -38,7 +38,7 @@ public class KubernetesClient implements AbstractClient {
 	}
 
 	@Override
-	public ConatinerDispatcher getConatinerDispatcher() {
-		return new KubernetesDispatcherService();
+	public ConatinerExecutor getConatinerDispatcher() {
+		return new KubernetesExecutor();
 	}
 }
