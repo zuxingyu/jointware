@@ -25,7 +25,8 @@
 		"envs": ["jointwareRef-env"],
 		"ports": ["jointwareRef-port"],
 		"resources": ["jointwareRef-resource"],
-		"volumeMounts": ["jointwareRef-volumeMount"]
+		"volumeMounts": ["jointwareRef-volumeMount"],
+		"probes": ["jointwareRef-probe"]
 	},
 	"jointwareRef-env": [{
 		"key": "Local",
@@ -57,5 +58,16 @@
 		"path": "/user/data",
 		"type": "logPath",
 		"mountPath": "/user/data"
-	}]
+	}],
+	"jointwareRef-probe": {
+		"type": "livenessProbe",
+		"requestType": "httpGet",
+		"delaySeconds": "10",
+		"scheme": "HTTP",
+		"port": "8080",
+		"path": "/",
+		"successThreshold": "1",
+		"failureThreshold": "1",
+		"timeoutSeconds": "20"
+	}
 }

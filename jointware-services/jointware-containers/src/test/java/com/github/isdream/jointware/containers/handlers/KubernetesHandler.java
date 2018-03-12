@@ -26,6 +26,14 @@ public class KubernetesHandler extends AbstractHandler {
 	
 	public final static String KEY_LIMITES_RESOURCES = "limitsResources";
 	
+	public final static String KEY_MIN_CPU = "minCpu";
+	
+	public final static String KEY_MAX_CPU = "maxCpu";
+	
+	public final static String KEY_MIN_MEM = "minMem";
+	
+	public final static String KEY_MAX_MEM = "maxMem";
+	
 	public final static String TYPE_ENV = "env";
 	
 	public final static String TYPE_PORT = "port";
@@ -91,21 +99,27 @@ public class KubernetesHandler extends AbstractHandler {
 						for (String thisValue : list) {
 							
 							if (TYPE_ENV.equals(getRealType(thisValue))) {
-								List<Map<String, String>> thisMap = (List<Map<String, String>>) originRequest.get(thisValue);
-								
-								for (int i = 0; i < thisMap.size(); i++) {
-									newValues.add(ModelParameterGenerator.JOINTWARE + ++n + "-" + getValue(typesConvertor, thisValue));
-									Map<String, Object> tempMap = getMap(newRequests, ModelParameterGenerator.JOINTWARE + n + "-" + getValue(typesConvertor, thisValue));
-									for (String thisKey : thisMap.get(i).keySet()) {
-										tempMap.put(keysConvertor.get(TYPE_ENV).get(thisKey)
-												, thisMap.get(i).get(thisKey));
-									}
-								}
-								
-								newRequests.get(valuesConvertor.get(originType)).put(keysConvertor.get(getRealType(originType)).get(key), newValues);
+								toEnv(originType, key, newValues, thisValue);
 								continue;
 							} else if (TYPE_RESOURCE.equals(getRealType(thisValue))) {
-								System.out.println("This is resource");
+								Map<String, Object> thisMap = originRequest.get(thisValue);
+								
+								if (thisMap.get(KEY_MAX_CPU) != null) {
+									
+								}
+								
+								if (thisMap.get(KEY_MIN_CPU) != null) {
+																	
+								}
+								
+								if (thisMap.get(KEY_MAX_MEM) != null) {
+									
+								}
+								
+								if (thisMap.get(KEY_MIN_MEM) != null) {
+																	
+								}
+								
 								continue;
 							}
 							
@@ -125,7 +139,9 @@ public class KubernetesHandler extends AbstractHandler {
 				}
 			}
 		} catch (Exception e) {
-			
+//			"limitsResources": "setResources-setLimits",
+//			"requestsResources": "setResources-setRequests",
+//			"livenessProbe": "setLivenessProbe"
 			if (TYPE_PORT.equals(getRealType(originType))) {
 				List<Map<String, String>> oldMap = (List<Map<String, String>>) originRequest.get(originType);
 			} else if (TYPE_VOLUMEMOUNT.equals(getRealType(originType))) {
@@ -141,6 +157,23 @@ public class KubernetesHandler extends AbstractHandler {
 		}
 		return newRequests;
 	}
+
+	@SuppressWarnings("unchecked")
+	protected void toEnv(String originType, String key, List<String> newValues, String thisValue) {
+		
+		List<Map<String, String>> thisMap = (List<Map<String, String>>) originRequest.get(thisValue);
+		
+		for (int i = 0; i < thisMap.size(); i++) {
+			newValues.add(ModelParameterGenerator.JOINTWARE + ++n + "-" + getValue(typesConvertor, thisValue));
+			Map<String, Object> tempMap = getMap(newRequests, ModelParameterGenerator.JOINTWARE + n + "-" + getValue(typesConvertor, thisValue));
+			for (String thisKey : thisMap.get(i).keySet()) {
+				tempMap.put(keysConvertor.get(TYPE_ENV).get(thisKey)
+						, thisMap.get(i).get(thisKey));
+			}
+		}
+		
+		newRequests.get(valuesConvertor.get(originType)).put(keysConvertor.get(getRealType(originType)).get(key), newValues);
+	}
 	
 	protected String getRealType(String type) {
 		int idx = type.indexOf("-");
@@ -154,7 +187,7 @@ public class KubernetesHandler extends AbstractHandler {
 
 		this.tag = tag;
 		this.originRequest = originRequest;
-		keysConvertor = keyRules.get("kubernetes-" + kind);
+		keysConvertor = keyRules.get("kubernetes-" + kind.toLowerCase());
 		typesConvertor = typeRules.get("kubernetes");
 
 		if (keysConvertor == null || typesConvertor == null) {

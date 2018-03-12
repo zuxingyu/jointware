@@ -12,7 +12,10 @@ import java.util.Map;
 import com.alibaba.fastjson.JSON;
 import com.github.isdream.jointware.containers.clients.AbstractClient;
 import com.github.isdream.jointware.containers.clients.ClientsManager;
+import com.github.isdream.jointware.core.ModelGenerator;
+import com.github.isdream.jointware.kubernetes.KubernetesModelGenerator;
 
+import io.fabric8.kubernetes.api.model.extensions.Deployment;
 import io.fabric8.kubernetes.client.DefaultKubernetesClient;
 
 /**
@@ -89,8 +92,14 @@ public class JSONToExecutorSampleTest {
 	 **********************************************/
 	
 	public static Map<String, Map<String, Object>> toTargetMap(Map<String, Map<String, Object>> origin, String key) {
-		
-		return null;
+		try {
+			return ClientsManager.getClient((String)
+					origin.get("target").get(ClientsManager.PLATFORM_TYPE))
+					.getHandler().doHandle(origin, key, (String) origin.get("target").get("kind"));
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	/**********************************************
@@ -107,13 +116,17 @@ public class JSONToExecutorSampleTest {
 		DefaultKubernetesClient client = (DefaultKubernetesClient) createClient(originRequest.get("target"));
 		
 		// toTartgetMap
-		Map<String, Map<String, Object>> targetRequest = toTargetMap(originRequest, "bocodevopsplatform");
+//		Map<String, Map<String, Object>> targetRequest = toTargetMap(originRequest, "bocodevopsplatform");
+		Map<String, Map<String, Object>> targetRequest = toTargetMap(originRequest, "jointwareRef");
 		
+		ModelGenerator mg = new KubernetesModelGenerator();
+		System.out.println(targetRequest);
+		System.out.println(mg.toObject(targetRequest, Deployment.class.getSimpleName()));
 		// getExcutor
-		ConatinerExecutor executor = (ConatinerExecutor) createExecutor(originRequest.get("target"));
+//		ConatinerExecutor executor = (ConatinerExecutor) createExecutor(originRequest.get("target"));
 		
 		// impl
-		executor.create(client, getKind(originRequest.remove("target")), targetRequest);
+//		executor.create(client, getKind(originRequest.remove("target")), targetRequest);
 	}
 
 }

@@ -3,6 +3,10 @@
  */
 package com.github.isdream.jointware.containers.clients;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,10 +19,14 @@ import com.alibaba.fastjson.JSON;
  */
 public class ClientsManager {
 
-	@SuppressWarnings("unchecked")
-	protected static Map<String, String> clients = (Map<String, String>) JSON.parse("examples/jointware-clients.json");;
+	protected static Map<String, String> clients = null;
 	
 	static {
+		try {
+			clients = JSON.parseObject(new FileInputStream(new File("examples/jointware-clients.json")), null, null);
+		} catch (Exception e) {
+			clients = null;
+		}
 	}
 	
 	public final static String PLATFORM_TYPE = "platformType";

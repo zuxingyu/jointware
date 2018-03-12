@@ -14,10 +14,7 @@
 			"command": "setCommand",
 			"envs": "setEnv",
 			"ports": "setPorts",
-			"volumeMounts": "setVolumeMounts",
-			"limitsResources": "setResources-setLimits",
-			"requestsResources": "setResources-setRequests",
-			"livenessProbe": "setLivenessProbe"
+			"volumeMounts": "setVolumeMounts"
 		},
 		"env": {
 			"value": "setValue",

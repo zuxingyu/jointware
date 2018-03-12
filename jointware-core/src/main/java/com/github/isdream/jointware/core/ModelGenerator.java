@@ -189,7 +189,6 @@ public abstract class ModelGenerator {
 					thisValues.addAll((Collection<String>)typeValues.get(fullname));
 					method.invoke(obj, thisValues);
 				}
-				System.out.println(objCache.get(DEFAULT_PARENT));
 			} else if (JavaUtils.isStringObjectMap(params.get(getRealFullname(parent, fullname)))) {
 				
 				Collection<String> thisValues = (Collection<String>)typeValues.get(fullname);
