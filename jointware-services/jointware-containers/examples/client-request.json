@@ -31,6 +31,10 @@
 	"jointwareRef-env": [{
 		"key": "Local",
 		"value": "/user"
+	},
+	{
+		"key": "Home",
+		"value": "/home"
 	}],
 	"jointwareRef-port": [{
 		"name": "port1",
