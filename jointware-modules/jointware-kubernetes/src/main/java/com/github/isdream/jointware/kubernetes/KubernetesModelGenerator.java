@@ -16,10 +16,16 @@ public class KubernetesModelGenerator extends ModelGenerator {
 	protected final static KubernetesModelParameterAnalyzer 
 				analyzer = new KubernetesModelParameterAnalyzer();
 	
+	/**
+	 * 
+	 */
 	public KubernetesModelGenerator() {
 		super();
 	}
 
+	/**
+	 * @param objectRef
+	 */
 	public KubernetesModelGenerator(String objectRef) {
 		super(objectRef);
 	}

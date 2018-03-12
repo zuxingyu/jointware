@@ -20,10 +20,16 @@ public class KubernetesModelParameterGenerator extends ModelParameterGenerator {
 	
 	protected final static String GET = "get";
 	
+	/**
+	 * 
+	 */
 	public KubernetesModelParameterGenerator() {
 		super();
 	}
 
+	/**
+	 * @param objectRef
+	 */
 	public KubernetesModelParameterGenerator(String objectRef) {
 		super(objectRef);
 	}

@@ -41,6 +41,9 @@ public class KubernetesKindAnalyzer extends KindAnalyzer {
 		rules.put("Ingresses", "Ingress");
 	}
 
+	/**
+	 * 
+	 */
 	public KubernetesKindAnalyzer() {
 		super();
 	}

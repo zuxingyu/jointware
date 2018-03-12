@@ -21,6 +21,9 @@ public class KubernetesModelParameterAnalyzer extends ModelParameterAnalyzer {
 	
 	protected final static KubernetesKindModelAnalyzer analyzer = new KubernetesKindModelAnalyzer();
 
+	/**
+	 * 
+	 */
 	public KubernetesModelParameterAnalyzer() {
 		super();
 	}

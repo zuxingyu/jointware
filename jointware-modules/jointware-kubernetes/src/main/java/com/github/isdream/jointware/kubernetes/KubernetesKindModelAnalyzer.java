@@ -17,6 +17,13 @@ public class KubernetesKindModelAnalyzer extends KindModelAnalyzer {
 
 	private static final KubernetesKindAnalyzer analyzer = new KubernetesKindAnalyzer();
 
+	/**
+	 * 
+	 */
+	public KubernetesKindModelAnalyzer() {
+		super();
+	}
+
 	@Override
 	protected Class<?> toKindModel(String kind) throws Exception {
 		Class<?> clazz = Class.forName(getKindAnalyzer().getClient());
