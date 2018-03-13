@@ -24,7 +24,6 @@
 		"image": "dcr.io:5000/busybox:latest",
 		"envs": ["jointwareRef-env"],
 		"ports": ["jointwareRef-port"],
-		"resources": ["jointwareRef-resource"],
 		"volumeMounts": ["jointwareRef-volumeMount"]
 	},
 	"jointwareRef-env": [{
