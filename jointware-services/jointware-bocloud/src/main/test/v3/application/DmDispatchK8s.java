@@ -2,8 +2,8 @@ package v3.application;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.github.isdream.jointware.containers.DispatcherService;
-import com.github.isdream.jointware.containers.impl.KubernetesDispatcherService;
+import com.github.isdream.jointware.containers.ConatinerExecutor;
+import com.github.isdream.jointware.containers.impl.KubernetesExecutor;
 import io.fabric8.kubernetes.api.model.Namespace;
 import io.fabric8.kubernetes.api.model.extensions.Deployment;
 import io.fabric8.kubernetes.client.Config;
@@ -53,7 +53,7 @@ public class DmDispatchK8s {
 
     @Test
     public void dispatchANs() throws Exception {
-        DispatcherService dp = new KubernetesDispatcherService();
+        ConatinerExecutor dp = new KubernetesExecutor();
         //dp.create(createClient(), Deployment.class.getSimpleName(), getParams(DEPLOY));
         //dp.scaleTo(createClient(),"Deployment","xyj","xyj-dm",3);
         //System.out.println(JSONObject.toJSONString(dp.query(createClient(),"Deployment","xyj","xyj-dm")));
