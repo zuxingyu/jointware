@@ -33,28 +33,5 @@
 	{
 		"key": "Home",
 		"value": "/home"
-	}],
-	"jointwareRef-port": [{
-		"name": "port1",
-		"port": "8080",
-		"protocol": "TCP"
-	}],
-	"jointwareRef-resource": {
-		"minCpu": "400m",
-		"maxCpu": "800m",
-		"minMem": "256Mi",
-		"maxMem": "512Mi"
-	},
-	"jointwareRef-volumeMount":  [{
-		"name": "v1520492083654",
-		"path": "/local/host",
-		"type": "logPath",
-		"mountPath": "/local/host"
-	},
-	{
-		"name": "v1520492083590",
-		"path": "/user/data",
-		"type": "logPath",
-		"mountPath": "/user/data"
 	}]
 }

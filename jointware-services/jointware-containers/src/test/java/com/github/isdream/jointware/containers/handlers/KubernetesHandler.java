@@ -102,34 +102,18 @@ public class KubernetesHandler extends AbstractHandler {
 								toEnv(originType, key, newValues, thisValue);
 								continue;
 							} else if (TYPE_RESOURCE.equals(getRealType(thisValue))) {
-								Map<String, Object> thisMap = originRequest.get(thisValue);
-								
-								if (thisMap.get(KEY_MAX_CPU) != null) {
-									
-								}
-								
-								if (thisMap.get(KEY_MIN_CPU) != null) {
-																	
-								}
-								
-								if (thisMap.get(KEY_MAX_MEM) != null) {
-									
-								}
-								
-								if (thisMap.get(KEY_MIN_MEM) != null) {
-																	
-								}
-								
+								toResources(newMap, thisValue);
 								continue;
-							}
+							} else {
 							
-							newValues.add(ModelParameterGenerator.JOINTWARE + ++n + "-" + getValue(typesConvertor, thisValue));
-							valuesConvertor.put(thisValue, ModelParameterGenerator.JOINTWARE + n + "-" + getValue(typesConvertor, thisValue));
-							doConvert(
-									thisValue, ModelParameterGenerator.JOINTWARE + n + "-" 
-										+ getValue(typesConvertor, thisValue));
+								newValues.add(ModelParameterGenerator.JOINTWARE + ++n + "-" + getValue(typesConvertor, thisValue));
+								valuesConvertor.put(thisValue, ModelParameterGenerator.JOINTWARE + n + "-" + getValue(typesConvertor, thisValue));
+								doConvert(
+										thisValue, ModelParameterGenerator.JOINTWARE + n + "-" 
+											+ getValue(typesConvertor, thisValue));
+							}
+							newMap.put(keysConvertor.get(getRealType(originType)).get(key), newValues);
 						}
-						newMap.put(keysConvertor.get(getRealType(originType)).get(key), newValues);
 					} else {
 						newMap.put(keysConvertor.get(getRealType(originType)).get(key), oldMap.get(key));
 					}
@@ -139,6 +123,7 @@ public class KubernetesHandler extends AbstractHandler {
 				}
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
 //			"limitsResources": "setResources-setLimits",
 //			"requestsResources": "setResources-setRequests",
 //			"livenessProbe": "setLivenessProbe"
@@ -156,6 +141,35 @@ public class KubernetesHandler extends AbstractHandler {
 			
 		}
 		return newRequests;
+	}
+
+	protected void toResources(Map<String, Object> newMap, String thisValue) {
+		Map<String, Object> thisMap = originRequest.get(thisValue);
+		
+		if (thisMap.containsKey(KEY_MAX_CPU) && thisMap.containsKey(KEY_MIN_MEM)) {
+			List<String> listValue = new ArrayList<String>();
+			listValue.add(ModelParameterGenerator.JOINTWARE + ++n + "-" + "cpu" + "-" + getValue(typesConvertor, "-resource-requests"));
+			addResource(newRequests, thisMap, "cpu", KEY_MAX_CPU ,"-resource-requests");
+			listValue.add(ModelParameterGenerator.JOINTWARE + ++n + "-" + "memory" + "-" + getValue(typesConvertor, "-resource-requests"));
+			addResource(newRequests, thisMap, "memory", KEY_MAX_MEM ,"-resource-requests");
+			newMap.put("setResources-setRequests", listValue);
+		}
+		
+		if (thisMap.containsKey(KEY_MIN_CPU) && thisMap.containsKey(KEY_MIN_MEM)) {
+			List<String> listValue = new ArrayList<String>();
+			listValue.add(ModelParameterGenerator.JOINTWARE + ++n + "-" + "cpu" + "-" + getValue(typesConvertor, "-resource-limites"));
+			addResource(newRequests, thisMap, "cpu", KEY_MIN_CPU ,"-resource-limites");
+			listValue.add(ModelParameterGenerator.JOINTWARE + ++n + "-" + "memory" + "-" + getValue(typesConvertor, "-resource-limites"));
+			addResource(newRequests, thisMap, "memory", KEY_MIN_MEM ,"-resource-limites");
+			newMap.put("setResources-setLimits", listValue);								
+		}
+	}
+
+	protected void addResource(Map<String, Map<String, Object>> newMap, Map<String, Object> thisMap, String type, String value, String tag) {
+		Map<String, Object> addMap = new HashMap<String, Object>();
+		addMap.put("setAmount", (String) thisMap.get(value));
+		newMap.put(ModelParameterGenerator.JOINTWARE 
+				+ n + "-" + type + "-" + getValue(typesConvertor, tag), addMap);
 	}
 
 	@SuppressWarnings("unchecked")

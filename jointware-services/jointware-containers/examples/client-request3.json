@@ -23,7 +23,10 @@
 		"name": "this.app.container",
 		"image": "dcr.io:5000/busybox:latest",
 		"envs": ["jointwareRef-env"],
-		"resources": ["jointwareRef-resource"]
+		"ports": ["jointwareRef-port"],
+		"resources": ["jointwareRef-resource"],
+		"volumeMounts": ["jointwareRef-volumeMount"],
+		"probes": ["jointwareRef-probe"]
 	},
 	"jointwareRef-env": [{
 		"key": "Local",
@@ -33,10 +36,38 @@
 		"key": "Home",
 		"value": "/home"
 	}],
+	"jointwareRef-port": [{
+		"name": "port1",
+		"port": "8080",
+		"protocol": "TCP"
+	}],
 	"jointwareRef-resource": {
 		"minCpu": "400m",
 		"maxCpu": "800m",
 		"minMem": "256Mi",
 		"maxMem": "512Mi"
+	},
+	"jointwareRef-volumeMount":  [{
+		"name": "v1520492083654",
+		"path": "/local/host",
+		"type": "logPath",
+		"mountPath": "/local/host"
+	},
+	{
+		"name": "v1520492083590",
+		"path": "/user/data",
+		"type": "logPath",
+		"mountPath": "/user/data"
+	}],
+	"jointwareRef-probe": {
+		"type": "livenessProbe",
+		"requestType": "httpGet",
+		"delaySeconds": "10",
+		"scheme": "HTTP",
+		"port": "8080",
+		"path": "/",
+		"successThreshold": "1",
+		"failureThreshold": "1",
+		"timeoutSeconds": "20"
 	}
 }

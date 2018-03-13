@@ -36,7 +36,7 @@ public class JSONToExecutorSampleTest {
 	@SuppressWarnings("unchecked")
 	public static Map<String, Map<String, Object>> getClientRequest() throws Exception {
 		// examples/client-request.json
-		return JSON.parseObject(new FileInputStream(new File("examples/client-request.json")), null, null);
+		return JSON.parseObject(new FileInputStream(new File("examples/client-request2.json")), null, null);
 	}
 
 	/**************************************************
@@ -119,14 +119,14 @@ public class JSONToExecutorSampleTest {
 //		Map<String, Map<String, Object>> targetRequest = toTargetMap(originRequest, "bocodevopsplatform");
 		Map<String, Map<String, Object>> targetRequest = toTargetMap(originRequest, "jointwareRef");
 		
-//		ModelGenerator mg = new KubernetesModelGenerator();
-//		System.out.println(targetRequest);
-//		System.out.println(mg.toObject(targetRequest, Deployment.class.getSimpleName()));
+		ModelGenerator mg = new KubernetesModelGenerator();
+		System.out.println(targetRequest);
+		System.out.println(mg.toObject(targetRequest, Deployment.class.getSimpleName()));
 		// getExcutor
-		ConatinerExecutor executor = (ConatinerExecutor) createExecutor(originRequest.get("target"));
+//		ConatinerExecutor executor = (ConatinerExecutor) createExecutor(originRequest.get("target"));
 		
 		// impl
-		executor.create(client, getKind(originRequest.remove("target")), targetRequest);
+//		executor.create(client, getKind(originRequest.remove("target")), targetRequest);
 	}
 
 }

@@ -5,7 +5,7 @@
 		"port" : "io.fabric8.kubernetes.api.model.ContainerPort",
 		"volume" : "io.fabric8.kubernetes.api.model.Volume",
 		"volumeMount" : "io.fabric8.kubernetes.api.model.VolumeMount",
-		"resource-limites" : "java.lang.String, io.fabric8.kubernetes.api.model.Quantity",
-		"resource-requests" : "java.lang.String, io.fabric8.kubernetes.api.model.Quantity"
+		"resource-limites" : "io.fabric8.kubernetes.api.model.Quantity",
+		"resource-requests" : "io.fabric8.kubernetes.api.model.Quantity"
 	}
 }
