@@ -21,7 +21,7 @@ import io.fabric8.kubernetes.client.DefaultKubernetesClient;
  */
 public class SimpleSampleTest {
 
-	public final static String MASTER_URL = "http://118.190.46.58:9888";
+	public final static String MASTER_URL = "";
 	
 	public final static String NAMESPACE = "{\"main\":{\"setMetadata-setName\":\"development\",\"setMetadata-setLabels\":{\"name\":\"development\",\"version\":\"1.7.1\"}}}\r\n";
 	
