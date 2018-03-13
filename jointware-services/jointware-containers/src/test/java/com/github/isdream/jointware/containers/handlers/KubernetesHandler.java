@@ -35,11 +35,19 @@ public class KubernetesHandler extends AbstractHandler {
 	public final static String KEY_MAX_MEM = "maxMem";
 
 	public final static String KEY_PROBES = "probes";
+	
+	public final static String KEY_VOLUMEMOUNTS = "volumeMounts";
+	
+	public final static String KEY_ENVS = "env";
+	
+	public final static String KEY_PORTS = "ports";
 
 	public final static String KEY_PROBE_TYPE = "type";
+	
+	public final static String KEY_VOLUME_TYPE = "volumeType";
 
 	public final static String KEY_PROBE_REQUEST_TYPE = "requestType";
-
+	
 	public final static String TYPE_ENV = "env";
 
 	public final static String TYPE_PORT = "port";
@@ -98,7 +106,6 @@ public class KubernetesHandler extends AbstractHandler {
 
 					List<String> newValues = new ArrayList<String>();
 					for (String thisValue : list) {
-
 						if (TYPE_ENV.equals(getRealType(thisValue))) {
 							toEnv(originType, key, newValues, thisValue);
 							continue;
@@ -110,6 +117,10 @@ public class KubernetesHandler extends AbstractHandler {
 							continue;
 						} else if (TYPE_PROBE.equals(getRealType(thisValue))) {
 							toProbes(originType, newMap);
+							continue;
+						} else if (TYPE_VOLUMEMOUNT.equals(getRealType(thisValue))) {
+							toVolumes(originType, newType);
+							
 							continue;
 						} else {
 							newValues.add(ModelParameterGenerator.JOINTWARE + ++n + "-"
@@ -132,6 +143,77 @@ public class KubernetesHandler extends AbstractHandler {
 		return newRequests;
 	}
 
+	protected void toVolumes(String originType, String newType) {
+		List<String> allVolumeList = (List<String>) originRequest.get(originType).get(KEY_VOLUMEMOUNTS);
+		// setSpec-setTemplate-setSpec-setVolumes
+		// setVolumeMounts
+
+		StringBuffer sb = new StringBuffer();
+		
+		List<String> volumes = new ArrayList<String>();
+		
+		for (String volume : allVolumeList) {
+			List<Map<String, Object>> thisVolumes = (List<Map<String, Object>>) originRequest.get(volume);
+			for (Object thisVolume : thisVolumes.toArray()) {
+				
+				Map<String, Object> volumeMap = (Map<String, Object>) thisVolume;
+				
+				sb.append(volumeMap.get("name")).append("=").append(volumeMap.get("type")).append(";");
+				
+				volumes.add(ModelParameterGenerator.JOINTWARE + ++n + "-" + getValue(typesConvertor, "volume"));
+				
+				Map<String, Object> volumeValues = new HashMap<String, Object>();
+				newRequests.put(ModelParameterGenerator.JOINTWARE + n + "-" + getValue(typesConvertor, "volume"), volumeValues);
+				
+				String volumeTypeKey = "volume" + "-" +  volumeMap.getOrDefault(KEY_VOLUME_TYPE, "hostPath");
+				for (String volumeKey : volumeMap.keySet()) {
+					if (keysConvertor.get(volumeTypeKey).get(volumeKey) != null) {
+						volumeValues.put(keysConvertor.get(volumeTypeKey).get(volumeKey), volumeMap.get(volumeKey));
+					}
+				}
+				
+				
+				List<String> volumeMounts = new ArrayList<String>();
+				Map<String, Object> volumeMountsValues = new HashMap<String, Object>();
+				volumeMounts.add(ModelParameterGenerator.JOINTWARE + ++n + "-" + getValue(typesConvertor, "volumeMount"));
+				newRequests.put(ModelParameterGenerator.JOINTWARE + n + "-" + getValue(typesConvertor, "volumeMount"), volumeMountsValues);
+				
+				String volumeMountTypeKey = "volumeMount";
+				for (String volumeMountKey : volumeMap.keySet()) {
+					if (keysConvertor.get(volumeMountTypeKey).get(volumeMountKey) != null) {
+						volumeMountsValues.put(keysConvertor.get(volumeMountTypeKey).get(volumeMountKey), volumeMap.get(volumeMountKey));
+					}
+				}
+				
+				if (!volumeMounts.isEmpty()) {
+					newRequests.get(newType).put("setVolumeMounts", volumeMounts);
+				}
+			}
+		}
+		
+		if (!volumes.isEmpty()) {
+			newRequests.get("main").put("setSpec-setTemplate-setSpec-setVolumes", volumes);
+		}
+		
+		if (sb.length() != 0) {
+			Map<String, String> newLabels = (Map<String, String>) newRequests.get("main").get("setMetadata-setLabels");
+			if (newLabels == null) {
+				newLabels = new HashMap<String, String>();
+				newRequests.get("main").put("setMetadata-setLabels", newLabels);
+			}
+			newLabels.put("volumesType", sb.toString().substring(0, sb.length() -1 ));
+			
+			Map<String, String> oldLabels = (Map<String, String>) originRequest.get("main").get("labels");
+			if (oldLabels == null) {
+				oldLabels = new HashMap<String, String>();
+				originRequest.get("main").put("labels", oldLabels);
+			}
+			oldLabels.put("volumesType", sb.toString().substring(0, sb.length() - 1));
+			
+		}
+	}
+
+	@SuppressWarnings("unchecked")
 	protected void toProbes(String originType, Map<String, Object> newMap) {
 		List<String> probeList = (List<String>) originRequest.get(originType).get(KEY_PROBES);
 		for (String probe : probeList) {

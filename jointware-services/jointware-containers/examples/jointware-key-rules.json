@@ -35,6 +35,10 @@
 		"requestsResources": {
 			"amount": "setAmount"
 		},
+		"volume-hostPath": {
+			"name": "setName",
+			"path": "setHostPath-setPath"
+		},
 		"livenessProbe-httpGet": {
 			"delaySeconds": "setLivenessProbe-setInitialDelaySeconds",
 			"path": "setLivenessProbe-setHttpGet-setPath",

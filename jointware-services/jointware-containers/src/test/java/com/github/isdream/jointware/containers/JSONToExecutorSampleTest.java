@@ -36,7 +36,7 @@ public class JSONToExecutorSampleTest {
 	@SuppressWarnings("unchecked")
 	public static Map<String, Map<String, Object>> getClientRequest() throws Exception {
 		// examples/client-request.json
-		return JSON.parseObject(new FileInputStream(new File("examples/client-request4.json")), null, null);
+		return JSON.parseObject(new FileInputStream(new File("examples/client-request5.json")), null, null);
 	}
 
 	/**************************************************
