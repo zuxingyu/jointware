@@ -119,14 +119,14 @@ public class JSONToExecutorSampleTest {
 //		Map<String, Map<String, Object>> targetRequest = toTargetMap(originRequest, "bocodevopsplatform");
 		Map<String, Map<String, Object>> targetRequest = toTargetMap(originRequest, "jointwareRef");
 		
-		ModelGenerator mg = new KubernetesModelGenerator();
-		System.out.println(targetRequest);
-		System.out.println(mg.toObject(targetRequest, Deployment.class.getSimpleName()));
+//		ModelGenerator mg = new KubernetesModelGenerator();
+//		System.out.println(targetRequest);
+//		System.out.println(mg.toObject(targetRequest, Deployment.class.getSimpleName()));
 		// getExcutor
-//		ConatinerExecutor executor = (ConatinerExecutor) createExecutor(originRequest.get("target"));
+		ConatinerExecutor executor = (ConatinerExecutor) createExecutor(originRequest.get("target"));
 		
 		// impl
-//		executor.create(client, getKind(originRequest.remove("target")), targetRequest);
+		executor.create(client, getKind(originRequest.remove("target")), targetRequest);
 	}
 
 }
