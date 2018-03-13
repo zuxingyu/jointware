@@ -25,6 +25,7 @@
 		"envs": ["jointwareRef-env"],
 		"ports": ["jointwareRef-port"],
 		"resources": ["jointwareRef-resource"],
+		"volumeMounts": ["jointwareRef-volumeMount"],
 		"probes": ["jointwareRef-probe"]
 	},
 	"jointwareRef-env": [{
@@ -46,6 +47,18 @@
 		"minMem": "256Mi",
 		"maxMem": "512Mi"
 	},
+	"jointwareRef-volumeMount":  [{
+		"name": "v1520492083654",
+		"path": "/local/host",
+		"type": "logPath",
+		"mountPath": "/local/host"
+	},
+	{
+		"name": "v1520492083590",
+		"path": "/user/data",
+		"type": "logPath",
+		"mountPath": "/user/data"
+	}],
 	"jointwareRef-probe": {
 		"type": "livenessProbe",
 		"requestType": "httpGet",
