@@ -13,6 +13,7 @@ import java.util.Map;
 
 import io.fabric8.kubernetes.api.model.IntOrString;
 import io.fabric8.kubernetes.api.model.Pod;
+import io.fabric8.kubernetes.api.model.Quantity;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -197,13 +198,8 @@ public class MockExampleTest {
         params.put("main",main);
         return params;
     }
-
     @Test
     public void doRequestBody() throws Exception {
-        //Pod pod = new Pod();
-        //IntOrString ios = new IntOrString();
-        //ios.setIntVal();
-        //pod.getSpec().getContainers().get(0).getLivenessProbe().getHttpGet().setPort(8080);
         Map params = this.getTotalParams(this.getTarget(),this.getMain());
         this.getReferences(params);
         System.out.println(JSONObject.toJSONString(params));
