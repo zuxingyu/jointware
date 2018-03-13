@@ -143,6 +143,7 @@ public class KubernetesHandler extends AbstractHandler {
 		return newRequests;
 	}
 
+	@SuppressWarnings("unchecked")
 	protected void toVolumes(String originType, String newType) {
 		List<String> allVolumeList = (List<String>) originRequest.get(originType).get(KEY_VOLUMEMOUNTS);
 		// setSpec-setTemplate-setSpec-setVolumes
