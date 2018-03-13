@@ -12,7 +12,7 @@ import io.fabric8.kubernetes.api.model.extensions.Deployment;
  */
 public class DeploymentObject extends KubernetesObject {
 
-	public static String FILE = "D:\\bad\\jointware\\jointware-services\\jointware-bocloud\\src\\main\\resources\\example\\dm.yaml";
+	public static String FILE = "D:\\bad\\jointware\\jointware-services\\jointware-bocloud\\src\\main\\resources\\example\\dm-full1.yaml";
 
 	@Override
 	public String getTargetFile() {
