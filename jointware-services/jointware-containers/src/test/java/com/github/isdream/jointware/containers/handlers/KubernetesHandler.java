@@ -104,6 +104,9 @@ public class KubernetesHandler extends AbstractHandler {
 							} else if (TYPE_RESOURCE.equals(getRealType(thisValue))) {
 								toResources(newMap, thisValue);
 								continue;
+							} else if (TYPE_PORT.equals(getRealType(thisValue))) {
+								toPorts(originType, key, newValues, thisValue);
+								continue;
 							} else {
 							
 								newValues.add(ModelParameterGenerator.JOINTWARE + ++n + "-" + getValue(typesConvertor, thisValue));
@@ -141,6 +144,21 @@ public class KubernetesHandler extends AbstractHandler {
 			
 		}
 		return newRequests;
+	}
+
+	protected void toPorts(String originType, String key, List<String> newValues, String thisValue) {
+		List<Map<String, String>> thisMap = (List<Map<String, String>>) originRequest.get(thisValue);
+		
+		for (int i = 0; i < thisMap.size(); i++) {
+			newValues.add(ModelParameterGenerator.JOINTWARE + ++n + "-" + getValue(typesConvertor, thisValue));
+			Map<String, Object> tempMap = getMap(newRequests, ModelParameterGenerator.JOINTWARE + n + "-" + getValue(typesConvertor, thisValue));
+			for (String thisKey : thisMap.get(i).keySet()) {
+				tempMap.put(keysConvertor.get(TYPE_PORT).get(thisKey)
+						, thisMap.get(i).get(thisKey));
+			}
+		}
+		
+		newRequests.get(valuesConvertor.get(originType)).put(keysConvertor.get(getRealType(originType)).get(key), newValues);
 	}
 
 	protected void toResources(Map<String, Object> newMap, String thisValue) {
