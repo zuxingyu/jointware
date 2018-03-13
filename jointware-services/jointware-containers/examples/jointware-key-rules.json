@@ -35,14 +35,14 @@
 		"requestsResources": {
 			"amount": "setAmount"
 		},
-		"livenessProbe": {
-			"delaySeconds": "setInitialDelaySeconds",
-			"path": "setHttpGet-setPath",
-			"scheme": "setHttpGet-setScheme",
-			"failureThreshold": "setFailureThreshold",
-			"port": "setHttpGet-setPort-setIntVal",
-			"timeoutSeconds": "setTimeoutSeconds",
-			"successThreshold": "setSuccessThreshold"
+		"livenessProbe-httpGet": {
+			"delaySeconds": "setLivenessProbe-setInitialDelaySeconds",
+			"path": "setLivenessProbe-setHttpGet-setPath",
+			"scheme": "setLivenessProbe-setHttpGet-setScheme",
+			"failureThreshold": "setLivenessProbe-setFailureThreshold",
+			"port": "setLivenessProbe-setHttpGet-setPort-setIntVal",
+			"timeoutSeconds": "setLivenessProbe-setTimeoutSeconds",
+			"successThreshold": "setLivenessProbe-setSuccessThreshold"
 		}
 	}
 }

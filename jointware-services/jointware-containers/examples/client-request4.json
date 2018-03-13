@@ -24,7 +24,8 @@
 		"image": "dcr.io:5000/busybox:latest",
 		"envs": ["jointwareRef-env"],
 		"ports": ["jointwareRef-port"],
-		"resources": ["jointwareRef-resource"]
+		"resources": ["jointwareRef-resource"],
+		"probes": ["jointwareRef-probe"]
 	},
 	"jointwareRef-env": [{
 		"key": "Local",
@@ -44,5 +45,16 @@
 		"maxCpu": "800m",
 		"minMem": "256Mi",
 		"maxMem": "512Mi"
+	},
+	"jointwareRef-probe": {
+		"type": "livenessProbe",
+		"requestType": "httpGet",
+		"delaySeconds": "10",
+		"scheme": "HTTP",
+		"port": "8080",
+		"path": "/",
+		"successThreshold": "1",
+		"failureThreshold": "1",
+		"timeoutSeconds": "20"
 	}
 }
