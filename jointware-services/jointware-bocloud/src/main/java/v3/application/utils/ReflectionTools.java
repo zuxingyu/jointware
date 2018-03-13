@@ -10,16 +10,39 @@ public class ReflectionTools {
 
     private static Logger logger = Logger.getLogger(ReflectionTools.class);
 
-    public static void executeConvertSubMethod(Object obj,String methodName,String[] refType,Map<String,Object> oldMap,String subKey,Object subValue,Map<String,Object> newRef,Map<String,Object> oldRef) throws Exception {
+    public static void executeConvertSubMethod(Object obj,String methodName,String[] refType,Map<String,Object> oldMap,String subKey,Object subValue,Map<String,Object> newRef,Map<String,Object> oldRef,Map<String,Object> newMap) throws Exception {
         Class cls = null;
         try {
             logger.info("method name: "+methodName);
             cls = obj.getClass();
             Method setMethod = cls.getDeclaredMethod(methodName,String[].class,Map.class,
-                                                                String.class,Object.class,Map.class,Map.class);
-            setMethod.invoke(obj, refType,oldMap,subKey,subValue,newRef,oldRef);
+                                                                String.class,Object.class,Map.class,Map.class,Map.class);
+            setMethod.invoke(obj, refType,oldMap,subKey,subValue,newRef,oldRef,newMap);
         } catch (NoSuchMethodException e) {
             logger.info(methodName+" does not exist, "+subValue+" can directly convert.");
+            throw e;
+        } catch (IllegalAccessException e) {
+            logger.info("Need to check handler method's type.");
+            throw e;
+        } catch (InvocationTargetException e) {
+            logger.info("Need to check ServiceSelector's status.");
+            throw e;
+        } catch (Exception e){
+            logger.info("self defined exception");
+            throw e;
+        }
+    }
+
+    public static void executeConvertMethod(Object obj,String methodName,Map<String, Object> oldMap,String key,Object value,Map<String, Object> newMap) throws Exception {
+        Class cls = null;
+        try {
+            logger.info("method name: "+methodName);
+            cls = obj.getClass();
+            Method setMethod = cls.getDeclaredMethod(methodName,String[].class,Map.class,
+                    String.class,Object.class,Map.class,Map.class);
+            setMethod.invoke(obj, methodName,oldMap,key,value,newMap);
+        } catch (NoSuchMethodException e) {
+            logger.info(methodName+" does not exist, "+value+" can directly convert.");
             throw e;
         } catch (IllegalAccessException e) {
             logger.info("Need to check handler method's type.");

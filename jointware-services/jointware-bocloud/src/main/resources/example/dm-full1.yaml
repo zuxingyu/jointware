@@ -2,11 +2,14 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: xyj-dm
-  namespace: xyj
+  namespace: default
   labels:
     app: xyj-dm
 spec:
   replicas: 2
+  selector:
+    matchLabels:
+      app: xyj-dm
   template:
     metadata:
       name: xyj-dm
@@ -20,7 +23,7 @@ spec:
             cpu: 0.2
             memory: 256Mi
           limits:
-            cou: 0.5
+            cpu: 0.5
             memory: 512Mi
         livenessProbe: #pod内容器健康检查的设置，详情请见http://blog.csdn.net/liyingke112/article/details/77531584
           httpGet: #通过httpget检查健康，返回200-399之间，则认为容器正常
@@ -31,6 +34,8 @@ spec:
           initialDelaySeconds: 180 #表明第一次检测在容器启动后多长时间后开始
           timeoutSeconds: 5 #检测的超时时间
           periodSeconds: 15  #检查间隔时间
+          successThreshold: 1
+          failureThreshold: 1
         readinessProbe:
           httpGet: #通过httpget检查健康，返回200-399之间，则认为容器正常
             path: / #URI地址

@@ -10,6 +10,9 @@ import com.alibaba.fastjson.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import io.fabric8.kubernetes.api.model.IntOrString;
+import io.fabric8.kubernetes.api.model.Pod;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -53,12 +56,37 @@ public class MockExampleTest {
     private void getReferences(Map params){
         params.put("boco-instance",new HashMap<String,Object>(){
             {
-                put("name","containerName");
+                put("name","tomcat");
                 put("image","registry.example.com:5000/busybox");
                 put("envs",new ArrayList<String>(){
                     {
                         add("boco1-env");
                         add("boco2-env");
+                    }
+                });
+                put("ports",new ArrayList<String>(){
+                    {
+                        add("boco3-port");
+                        add("boco4-port");
+                    }
+                });
+                put("probes",new ArrayList<String>(){
+                    {
+                        add("boco5-probe");
+                        add("boco6-probe");
+                    }
+                });
+                put("resources",new HashMap<String,Object>(){
+                    {
+                        put("minCpu","0.5");
+                        put("maxCpu","1");
+                        put("minMem","128Mi");
+                        put("maxMem","256Mi");
+                    }
+                });
+                put("volumeMounts",new ArrayList<String>(){
+                    {
+                        add("boco7-volumeMount");
                     }
                 });
             }
@@ -67,12 +95,6 @@ public class MockExampleTest {
             {
                 put("key","JAVA_HOME");
                 put("value","sbxyj");
-                put("third",new ArrayList<String>(){
-                    {
-                        add("boco1-bad");
-                        add("boco2-bad");
-                    }
-                });
             }
         });
         params.put("boco2-env",new HashMap<String,Object>(){
@@ -81,19 +103,58 @@ public class MockExampleTest {
                 put("value","sbwh");
             }
         });
-        params.put("boco1-bad",new HashMap<String,Object>(){
+        params.put("boco3-port",new HashMap<String,Object>(){
             {
-                put("aaaa","aaaaa");
-                put("bbbb","bbbbb");
+                put("name","name1");
+                put("port",8080);
+                put("protocol","TCP");
             }
         });
-        params.put("boco2-bad",new HashMap<String,Object>(){
+        params.put("boco4-port",new HashMap<String,Object>(){
             {
-                put("aaaa","aaaaa");
-                put("bbbb","bbbbb");
+                put("name","name2");
+                put("port",8888);
+                put("protocol","TCP");
             }
         });
-
+        params.put("boco5-probe",new HashMap<String,Object>(){
+            {
+                put("type","livenessProbe");
+                put("delaySeconds",60);
+                put("failureThreshold",5);
+                put("path","/");
+                put("port",8080);
+                put("requestType","httpGet");
+                put("scheme","HTTP");
+                put("successThreshold",1);
+                put("timeoutSeconds",5);
+            }
+        });
+        params.put("boco6-probe",new HashMap<String,Object>(){
+            {
+                put("type","readinessProbe");
+                put("delaySeconds",60);
+                put("failureThreshold",5);
+                put("path","/");
+                put("port",80);
+                put("requestType","httpGet");
+                put("scheme","HTTP");
+                put("successThreshold",1);
+                put("timeoutSeconds",5);
+            }
+        });
+        params.put("boco7-volumeMount",new HashMap<String,Object>(){
+            {
+                put("name","name1");
+                put("mountPath","/opt");
+            }
+        });
+        params.put("boco8-volume",new HashMap<String,Object>(){
+            {
+                put("name","name1");
+                put("path","/opt");
+            }
+        });
     }
 
     private Map<String,Object> getMain(){
@@ -103,15 +164,30 @@ public class MockExampleTest {
         params.put("replica",2);
         params.put("labels",new HashMap<String,Object>(){
             {
-                put("projectId",1234);
+                put("projectId","ab1234");
             }
-
         });
         params.put("instances",new ArrayList<String>(){
             {
                 add("boco-instance");
             }
         });
+        params.put("volumes",new ArrayList<String>(){
+            {
+                add("boco8-volume");
+            }
+        });
+        params.put("selector",new HashMap<String,Object>(){
+            {
+                put("app","xyj-dm");
+            }
+        });
+        params.put("instanceLabels",new HashMap<String,Object>(){
+            {
+                put("app","xyj-dm");
+            }
+        });
+        params.put("instanceName","xyj-dm");
         return params;
     }
 
@@ -124,6 +200,10 @@ public class MockExampleTest {
 
     @Test
     public void doRequestBody() throws Exception {
+        //Pod pod = new Pod();
+        //IntOrString ios = new IntOrString();
+        //ios.setIntVal();
+        //pod.getSpec().getContainers().get(0).getLivenessProbe().getHttpGet().setPort(8080);
         Map params = this.getTotalParams(this.getTarget(),this.getMain());
         this.getReferences(params);
         System.out.println(JSONObject.toJSONString(params));
