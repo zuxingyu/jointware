@@ -12,6 +12,9 @@ jointware
 <b>jointware</b> is Java library for interacting with heterogeneous cloud service providers using a unified API.
 
 * <a href="http://kubernetes.io/">Kubernetes</a>
+* <a href="https://www.openshift.com/">OpenShift</a>
+
+
 
 ### Getting Started
 
