@@ -16,6 +16,8 @@ spec:
       labels:
         app: xyj-dm
     spec:
+      nodeSelector:
+        xyj-dm: node1_node2 #指定调度节点为带有label标记为：cloudnil.com/role=dev的node
       containers:
       - image: dcr.io:5000/busybox:latest
         name: xyj-dm

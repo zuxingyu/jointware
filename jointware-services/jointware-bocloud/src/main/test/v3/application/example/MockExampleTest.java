@@ -173,6 +173,11 @@ public class MockExampleTest {
                 add("boco-instance");
             }
         });
+        params.put("nodeSelector",new HashMap<String,Object>(){
+            {
+                put("xuyuanjia-dm","node1_node2");
+            }
+        });
         params.put("volumes",new ArrayList<String>(){
             {
                 add("boco8-volume");
